@@ -1,0 +1,66 @@
+{
+  "name": "@shamil/design-system",
+  "version": "0.1.0",
+  "description": "Vue 3 design system components",
+  "type": "module",
+  "main": "./dist/design-system.umd.cjs",
+  "module": "./dist/design-system.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint \"src/**/*.{ts,vue}\" \".storybook/**/*.{ts,js}\"",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shamilfrontend/design-system.git"
+  },
+  "keywords": [
+    "vue",
+    "design-system",
+    "components",
+    "storybook"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shamilfrontend/design-system/issues"
+  },
+  "homepage": "https://github.com/shamilfrontend/design-system#readme",
+  "packageManager": "yarn@1.22.22",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/design-system.js",
+      "require": "./dist/design-system.umd.cjs"
+    },
+    "./styles.css": "./dist/design-system.css"
+  },
+  "dependencies": {
+    "vue": "^3.5.33"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.14",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/vue3-vite": "^8.6.14",
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@typescript-eslint/parser": "^8.59.0",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "eslint": "^8.57.1",
+    "eslint-plugin-vue": "^10.9.0",
+    "sass": "^1.99.0",
+    "storybook": "^8.6.14",
+    "typescript": "^6.0.3",
+    "vite": "^6.4.2",
+    "vue-eslint-parser": "^10.4.0",
+    "vue-tsc": "^3.2.7"
+  }
+}
