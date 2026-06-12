@@ -1,0 +1,36 @@
+@keyframes q-icon-rotating {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.q-icon {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1;
+  color: inherit;
+  vertical-align: middle;
+
+  &_size {
+    &_small {
+      font-size: 16px;
+    }
+
+    &_regular {
+      font-size: 20px;
+    }
+
+    &_large {
+      font-size: 24px;
+    }
+  }
+
+  &_spin {
+    transform-origin: center;
+    animation: q-icon-rotating 2s linear infinite;
+  }
+}
