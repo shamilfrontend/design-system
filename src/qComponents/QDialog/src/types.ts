@@ -5,8 +5,7 @@ import type { Nullable, UnwrappedInstance } from '#/helpers';
 import type { QDialogAction } from './constants';
 import type { QDialogContainerInstance } from './QDialogContainer';
 
-export interface ComponentInternalInstanceWithProvides
-  extends ComponentInternalInstance {
+export interface ComponentInternalInstanceWithProvides extends ComponentInternalInstance {
   provides: Record<symbol | string, unknown>;
 }
 

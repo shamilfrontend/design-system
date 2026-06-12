@@ -71,10 +71,7 @@ export declare type Options = {
 Whether to disable the ColorPicker.
 
 ```vue {3}
-<q-color-picker
-  v-model="color"
-  disabled
-/>
+<q-color-picker v-model="color" disabled />
 ```
 
 ### clearable
@@ -85,10 +82,7 @@ Whether to disable the ColorPicker.
 Whether to show clear button.
 
 ```vue {3}
-<q-color-picker
-  v-model="color"
-  clearable
-/>
+<q-color-picker v-model="color" clearable />
 ```
 
 ### alphaShown
@@ -99,10 +93,7 @@ Whether to show clear button.
 Whether to display the alpha slider.
 
 ```vue {3}
-<q-color-picker
-  v-model="color"
-  alpha-shown
-/>
+<q-color-picker v-model="color" alpha-shown />
 ```
 
 <iframe height="350" style="width: 100%;" scrolling="no" frameborder="no" src="/QColorpicker/alpha-shown.html"></iframe>
@@ -115,10 +106,7 @@ Whether to display the alpha slider.
 Output color format.
 
 ```vue {3}
-<q-color-picker
-  v-model="color"
-  color-format="rgb"
-/>
+<q-color-picker v-model="color" color-format="rgb" />
 ```
 
 ### placement
@@ -129,10 +117,7 @@ Output color format.
 Sets picker placement around the button.
 
 ```vue {3}
-<q-color-picker
-  v-model="color"
-  placement="bottom"
-/>
+<q-color-picker v-model="color" placement="bottom" />
 ```
 
 ```ts
@@ -159,10 +144,7 @@ type VariationPlacement =
 Specifies a target element where QColorpicker will be moved from original layout place. (has to be a valid query selector, or an HTMLElement).
 
 ```vue {3}
-<q-color-picker
-  v-model="modelValue"
-  teleport-to="body"
-/>
+<q-color-picker v-model="modelValue" teleport-to="body" />
 ```
 
 ## Events

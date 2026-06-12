@@ -15,10 +15,7 @@ Default view:
 Using in template:
 
 ```vue
-<q-context-menu
-  :menu-items="menuItems"
-  @action="handleAction"
-/>
+<q-context-menu :menu-items="menuItems" @action="handleAction" />
 ```
 
 Using in component instance:
@@ -119,10 +116,7 @@ Specifies a target element where `QContextMenu` will be moved from original layo
 Handle click on menu item.
 
 ```vue {3}
-<q-context-menu
-  :menu-items="menuItems"
-  @action="handleAction"
-/>
+<q-context-menu :menu-items="menuItems" @action="handleAction" />
 ```
 
 ```js
@@ -144,10 +138,7 @@ setup() {
 Optional. HTML element that triggers dropdown
 
 ```vue {5-7}
-<q-context-menu
-  :menu-items="menuItems"
-  @action="handleAction"
->
+<q-context-menu :menu-items="menuItems" @action="handleAction">
   <template v-slot>
     <q-button size="small">Custom trigger</q-button>
   </template>

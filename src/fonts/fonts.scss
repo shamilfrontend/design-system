@@ -4,7 +4,9 @@ $-base-path: '..' !default;
   font-family: Urbanist;
   font-style: normal;
   font-weight: 800;
-  src: local('Urbanist ExtraBold'), local('Urbanist-ExtraBold'),
+  src:
+    local('Urbanist ExtraBold'),
+    local('Urbanist-ExtraBold'),
     url('#{$-base-path}/fonts/Urbanist-ExtraBold.woff2') format('woff2');
   font-display: swap;
 }
@@ -13,7 +15,9 @@ $-base-path: '..' !default;
   font-family: Urbanist;
   font-style: normal;
   font-weight: 600;
-  src: local('Urbanist Bold'), local('Urbanist-Bold'),
+  src:
+    local('Urbanist Bold'),
+    local('Urbanist-Bold'),
     url('#{$-base-path}/fonts/Urbanist-Bold.woff2') format('woff2');
   font-display: swap;
 }
@@ -22,7 +26,9 @@ $-base-path: '..' !default;
   font-family: Urbanist;
   font-style: normal;
   font-weight: 500;
-  src: local('Urbanist Medium'), local('Urbanist-Medium'),
+  src:
+    local('Urbanist Medium'),
+    local('Urbanist-Medium'),
     url('#{$-base-path}/fonts/Urbanist-Medium.woff2') format('woff2');
   font-display: swap;
 }
@@ -31,7 +37,9 @@ $-base-path: '..' !default;
   font-family: Urbanist;
   font-style: normal;
   font-weight: 400;
-  src: local('Urbanist Regular'), local('Urbanist-Regular'),
+  src:
+    local('Urbanist Regular'),
+    local('Urbanist-Regular'),
     url('#{$-base-path}/fonts/Urbanist-Regular.woff2') format('woff2');
   font-display: swap;
 }

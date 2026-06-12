@@ -2,9 +2,32 @@ version: 2
 updates:
   - package-ecosystem: npm
     directory: '/'
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 5
     versioning-strategy: increase
     schedule:
-      interval: monthly
+      interval: weekly
     labels:
       - 'pr: dependencies'
+    groups:
+      storybook:
+        patterns:
+          - 'storybook'
+          - '@storybook/*'
+      eslint:
+        patterns:
+          - 'eslint'
+          - 'eslint-*'
+          - '@eslint/*'
+          - 'typescript-eslint'
+      vue:
+        patterns:
+          - 'vue'
+          - 'vue-*'
+          - '@vue/*'
+      vite:
+        patterns:
+          - 'vite'
+          - 'vite-*'
+          - '@vitejs/*'
+          - 'vitest'
+          - '@vitest/*'

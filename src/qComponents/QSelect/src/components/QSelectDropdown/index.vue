@@ -126,23 +126,23 @@ export default defineComponent({
     const areAllSelected = computed<boolean>(() =>
       Boolean(
         qSelectState?.options &&
-          multiple?.value &&
-          isVisibleOptionExist.value &&
-          qSelectState?.options
-            .filter(({ isDisabled, isVisible }) => !isDisabled && isVisible)
-            .every(({ isSelected }) => isSelected)
+        multiple?.value &&
+        isVisibleOptionExist.value &&
+        qSelectState?.options
+          .filter(({ isDisabled, isVisible }) => !isDisabled && isVisible)
+          .every(({ isSelected }) => isSelected)
       )
     );
 
     const isIndeterminate = computed<boolean>(() =>
       Boolean(
         qSelectState?.options &&
-          multiple?.value &&
-          isVisibleOptionExist.value &&
-          !areAllSelected.value &&
-          qSelectState?.options.some(
-            ({ isVisible, isSelected }) => isVisible && isSelected
-          )
+        multiple?.value &&
+        isVisibleOptionExist.value &&
+        !areAllSelected.value &&
+        qSelectState?.options.some(
+          ({ isVisible, isSelected }) => isVisible && isSelected
+        )
       )
     );
 

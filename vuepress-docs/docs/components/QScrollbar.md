@@ -38,10 +38,7 @@ Defines permanent visibility.
 Code example:
 
 ```vue
-<q-scrollbar
-  theme="secondary"
-  visible
->Lorem ipsum dolor...</q-scrollbar>
+<q-scrollbar theme="secondary" visible>Lorem ipsum dolor...</q-scrollbar>
 ```
 
 Result:

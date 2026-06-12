@@ -11,10 +11,7 @@ Default view:
 Using in template:
 
 ```vue
-<q-popover
-  title="Title"
-  icon="q-icon-question"
->
+<q-popover title="Title" icon="q-icon-question">
   <template #reference>
     <q-button circle type="icon" theme="secondary" size="small" icon="q-icon-question-mark" />
   </template>
@@ -33,10 +30,7 @@ Using in template:
 Popover content title inside context window.
 
 ```vue {2}
-<q-popover
-  title="Title"
-  ...
-/>
+<q-popover title="Title" ... />
 ```
 
 ### icon
@@ -49,10 +43,7 @@ Popover content title inside context window.
 Popover content icon inside context window.
 
 ```vue {2}
-<q-popover
-  icon="q-icon-question"
-  ...
-/>
+<q-popover icon="q-icon-question" ... />
 ```
 
 ### iconColor
@@ -63,10 +54,7 @@ Popover content icon inside context window.
 Icon's color.
 
 ```vue {2}
-<q-popover
-  icon-color="#ececec"
-  ...
-/>
+<q-popover icon-color="#ececec" ... />
 ```
 
 ### popperOptions
@@ -98,10 +86,7 @@ We use Popper.js to show tooltips & popovers. See full options guide [here](http
 Opening event trigger.
 
 ```vue {2}
-<q-popover
-  trigger="hover"
-  ...
-/>
+<q-popover trigger="hover" ... />
 ```
 
 ### placement
@@ -128,10 +113,7 @@ type VariationPlacement =
 ```
 
 ```vue {2}
-<q-popover
-  placement="top"
-  ...
-/>
+<q-popover placement="top" ... />
 ```
 
 ### transition
@@ -142,10 +124,7 @@ type VariationPlacement =
 Custom transition's animation. Applies for the default vue `<transition>` tag as a `name`.
 
 ```vue {2}
-<q-popover
-  transition="customTransitionName"
-  ...
-/>
+<q-popover transition="customTransitionName" ... />
 ```
 
 ### openDelay
@@ -157,10 +136,7 @@ The delay before appearing, in milliseconds.
 NOTE: works only when `trigger` is `hover`.
 
 ```vue {2}
-<q-popover
-  :open-delay="100"
-  ...
-/>
+<q-popover :open-delay="100" ... />
 ```
 
 ### closeDelay
@@ -172,10 +148,7 @@ The delay before disappearing, in milliseconds.
 NOTE: works only when `trigger` is `hover`.
 
 ```vue {2}
-<q-popover
-  :close-delay="100"
-  ...
-/>
+<q-popover :close-delay="100" ... />
 ```
 
 ### minWidth
@@ -186,10 +159,7 @@ NOTE: works only when `trigger` is `hover`.
 Popover's min-width style (in px).
 
 ```vue {2}
-<q-popover
-  :min-width="100"
-  ...
-/>
+<q-popover :min-width="100" ... />
 ```
 
 ### maxWidth
@@ -200,10 +170,7 @@ Popover's min-width style (in px).
 Popover's max-width style (in px).
 
 ```vue {2}
-<q-popover
-  :max-width="100"
-  ...
-/>
+<q-popover :max-width="100" ... />
 ```
 
 ### teleportTo
@@ -214,10 +181,7 @@ Popover's max-width style (in px).
 Specifies a target element where `QPopover` will be moved from original layout place. (has to be a valid query selector, or an HTMLElement).
 
 ```vue {2}
-<q-popover
-  teleport-to="'.popover-wrapper'"
-  ...
-/>
+<q-popover teleport-to="'.popover-wrapper'" ... />
 ```
 
 ## Events

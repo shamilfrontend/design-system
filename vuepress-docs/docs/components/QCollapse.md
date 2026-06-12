@@ -90,10 +90,7 @@ Shrink all panels, except the last selected.
 Using in template:
 
 ```vue
-<q-collapse
-  v-model="activeNames"
-  accordion
->
+<q-collapse v-model="activeNames" accordion>
   ...
 </q-collapse>
 ```

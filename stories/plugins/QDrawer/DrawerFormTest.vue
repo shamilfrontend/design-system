@@ -98,10 +98,7 @@ export default defineComponent({
 });
 </script>
 
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss" scoped>
 .q-drawer-sample-content {
   &__externalprop {
     padding-bottom: 24px;

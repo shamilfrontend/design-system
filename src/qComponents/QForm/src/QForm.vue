@@ -115,7 +115,6 @@ export default defineComponent({
     const resetFields = (passedProps?: string[] | string): void => {
       if (!props.model) {
         if (process.env.NODE_ENV !== 'production') {
-          // eslint-disable-next-line no-console
           console.warn(
             '[Warn][QForm] model is required for resetFields to work.'
           );
@@ -135,7 +134,6 @@ export default defineComponent({
     ): Promise<Nullable<ValidateFnResult>> => {
       if (!props.model) {
         if (process.env.NODE_ENV !== 'production') {
-          // eslint-disable-next-line no-console
           console.warn('[Warn][QForm] model is required for validate to work!');
         }
         return null;

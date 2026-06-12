@@ -68,6 +68,7 @@
     "happy-dom": "^20.10.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
+    "postcss-html": "^1.8.1",
     "prettier": "^3.8.4",
     "release-it": "^15.0.0",
     "rollup-plugin-copy": "^3.4.0",

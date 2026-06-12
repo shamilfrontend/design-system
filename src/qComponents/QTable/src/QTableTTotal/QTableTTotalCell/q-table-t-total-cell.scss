@@ -5,9 +5,11 @@
   border-bottom: 1px solid var(--color-tertiary-gray-dark);
 
   .q-table-t_grided &.q-table-t-total-cell {
-    &:not(:last-child):not(.q-table-t-total-cell_sticked),
+    &:not(:last-child, .q-table-t-total-cell_sticked),
     &.q-table-t-total-cell_sticked_left:not(.q-table-t-total-cell_sticked_last),
-    &.q-table-t-total-cell_sticked_right:not(.q-table-t-total-cell_sticked_first) {
+    &.q-table-t-total-cell_sticked_right:not(
+        .q-table-t-total-cell_sticked_first
+      ) {
       border-right: 1px solid var(--color-tertiary-gray-dark);
     }
   }
@@ -60,13 +62,17 @@
     }
 
     .q-table-t_grided
-      .q-table-t-total-cell:not(:last-child):not(.q-table-t-total-cell_sticked)
+      .q-table-t-total-cell:not(:last-child, .q-table-t-total-cell_sticked)
       &,
     .q-table-t_grided
-      .q-table-t-total-cell.q-table-t-total-cell_sticked_left:not(.q-table-t-total-cell_sticked_last)
+      .q-table-t-total-cell.q-table-t-total-cell_sticked_left:not(
+        .q-table-t-total-cell_sticked_last
+      )
       &,
     .q-table-t_grided
-      .q-table-t-total-cell.q-table-t-total-cell_sticked_right:not(.q-table-t-total-cell_sticked_first)
+      .q-table-t-total-cell.q-table-t-total-cell_sticked_right:not(
+        .q-table-t-total-cell_sticked_first
+      )
       & {
       padding-right: 15px;
     }

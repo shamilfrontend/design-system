@@ -82,7 +82,7 @@ export default defineComponent({
       if (props.isMultiple) return textUploadFile;
 
       return props.hasValue
-        ? props.textReplaceFile ?? t('QUpload.replaceFile')
+        ? (props.textReplaceFile ?? t('QUpload.replaceFile'))
         : textUploadFile;
     });
 

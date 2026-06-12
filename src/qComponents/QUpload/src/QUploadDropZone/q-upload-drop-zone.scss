@@ -28,10 +28,7 @@
 
   &::before {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    bottom: 8px;
-    left: 8px;
+    inset: 8px;
     content: '';
     border: 1px dashed var(--border-color);
   }

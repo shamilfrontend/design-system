@@ -222,8 +222,8 @@ export default defineComponent({
 
             cell.inRange = Boolean(
               minDateNum &&
-                cell.date.getTime() >= minDateNum &&
-                cell.date.getTime() <= maxDateNum
+              cell.date.getTime() >= minDateNum &&
+              cell.date.getTime() <= maxDateNum
             );
           }
 

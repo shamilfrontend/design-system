@@ -7,8 +7,8 @@
   --radio-dot-color-base: var(--color-primary);
   --radio-dot-color-disabled: var(--color-text-muted);
   --radio-box-shadow-base: inset 0 0 0 1px var(--color-tertiary-gray-dark);
-  --radio-box-shadow-focus: var(--box-shadow-focus),
-    inset 0 0 0 1px var(--color-primary);
+  --radio-box-shadow-focus:
+    var(--box-shadow-focus), inset 0 0 0 1px var(--color-primary);
 
   position: relative;
   display: inline-flex;
@@ -131,10 +131,7 @@
 
   &__original {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     z-index: -1;
     margin: 0;
     outline: none;

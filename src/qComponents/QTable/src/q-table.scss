@@ -11,7 +11,8 @@
 
 .q-table {
   --table-box-shadow-base: 4px 0 8px -4px rgb(var(--color-rgb-shadow) / 20%);
-  --table-box-shadow-inverted: -4px 0 8px -4px rgb(var(--color-rgb-shadow) / 20%);
+  --table-box-shadow-inverted: -4px 0 8px -4px
+    rgb(var(--color-rgb-shadow) / 20%);
 
   text-align: left;
 }

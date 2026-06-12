@@ -95,10 +95,7 @@ Defines the root tag.
 Sets the minimum number of checkboxes, that can be selected
 
 ```vue
-<q-checkbox-group
-  v-model="checkedCities"
-  :min="2"
->
+<q-checkbox-group v-model="checkedCities" :min="2">
   <q-checkbox
     v-for="city in cities"
     :key="city"
@@ -117,10 +114,7 @@ Sets the minimum number of checkboxes, that can be selected
 Sets the maximum number of checkboxes, that can be selected
 
 ```vue
-<q-checkbox-group
-  v-model="checkedCities"
-  :max="3"
->
+<q-checkbox-group v-model="checkedCities" :max="3">
   <q-checkbox
     v-for="city in cities"
     :key="city"
@@ -139,10 +133,7 @@ Sets the maximum number of checkboxes, that can be selected
 Allows to disable all inner QCheckboxes
 
 ```vue
-<q-checkbox-group
-  v-model="checkedCities"
-  disabled
->
+<q-checkbox-group v-model="checkedCities" disabled>
   <q-checkbox
     v-for="city in cities"
     :key="city"
@@ -161,10 +152,7 @@ Allows to disable all inner QCheckboxes
 Defines the direction of list: `vertical` or `horizontal`
 
 ```vue
-<q-checkbox-group
-  v-model="checkedCities"
-  direction="vertical"
->
+<q-checkbox-group v-model="checkedCities" direction="vertical">
   <q-checkbox
     v-for="city in cities"
     :key="city"
@@ -188,10 +176,7 @@ Alias for [update:modelValue](#update-modelvalue)
 In template:
 
 ```vue {1, 8}
-<q-checkbox-group
-  v-model="checkedCities"
-  @change="changeHandler"
->
+<q-checkbox-group v-model="checkedCities" @change="changeHandler">
   <q-checkbox
     v-for="city in cities"
     :key="city"

@@ -5,8 +5,7 @@ import type { Nullable, UnwrappedInstance } from '#/helpers';
 import type { QDrawerAction } from './constants';
 import type { QDrawerContainerInstance } from './QDrawerContainer';
 
-export interface ComponentInternalInstanceWithProvides
-  extends ComponentInternalInstance {
+export interface ComponentInternalInstanceWithProvides extends ComponentInternalInstance {
   provides: Record<symbol | string, unknown>;
 }
 

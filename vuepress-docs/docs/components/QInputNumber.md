@@ -41,10 +41,7 @@ Binding value
 Number of digits after decimal separator
 
 ```vue
-<q-input-number
-  v-model="value"
-  :precision="2"
-/>
+<q-input-number v-model="value" :precision="2" />
 ```
 
 Result:
@@ -59,10 +56,7 @@ Result:
 Sets disabled input state
 
 ```vue
-<q-input-number
-  v-model="value"
-  :disabled="true"
-/>
+<q-input-number v-model="value" :disabled="true" />
 ```
 
 Result:
@@ -77,10 +71,7 @@ Result:
 Minimum allowed value. Must be less than maximum value.
 
 ```vue
-<q-input-number
-  v-model="value"
-  :min="0"
-/>
+<q-input-number v-model="value" :min="0" />
 ```
 
 Result:
@@ -102,10 +93,7 @@ Maximum allowed value. Must be higher than minimum value.
 If input not in focus, the prefix will be displayed before main value.
 
 ```vue {3}
-<q-input-number
-  v-model="value"
-  prefix="Distance:"
-/>
+<q-input-number v-model="value" prefix="Distance:" />
 ```
 
 <iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QInputNumber/prefix.html"></iframe>
@@ -118,10 +106,7 @@ If input not in focus, the prefix will be displayed before main value.
 If input not in focus, the suffix will be displayed after main value.
 
 ```vue {3}
-<q-input-number
-  v-model="value"
-  suffix="hours"
-/>
+<q-input-number v-model="value" suffix="hours" />
 ```
 
 <iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QInputNumber/suffix.html"></iframe>
@@ -134,10 +119,7 @@ If input not in focus, the suffix will be displayed after main value.
 If input is wrapped in `QFormItem`, prop `validateEvent` defines if bound events will be validated immediately
 
 ```vue
-<q-form
-  :model="model"
-  :rules="rules"
->
+<q-form :model="model" :rules="rules">
   <q-form-item prop="value">
     <q-input-number 
       v-model="model.value" 

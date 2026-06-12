@@ -11,7 +11,8 @@
   &_multiple {
     width: var(--q-upload-size);
     height: var(--q-upload-size);
-    transition: width var(--transition-spline-base) 0.5s,
+    transition:
+      width var(--transition-spline-base) 0.5s,
       height var(--transition-spline-base) 0.5s;
 
     &_open {
@@ -27,10 +28,7 @@
 
   &__input {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     z-index: -1;
     margin: 0;
     outline: none;

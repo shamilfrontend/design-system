@@ -150,8 +150,8 @@ export default defineComponent({
     const isErrorSlotShown = computed<boolean>(() =>
       Boolean(
         (errorMessage.value || ctx.slots.error) &&
-          props.showErrorMessage &&
-          qForm?.showErrorMessage.value
+        props.showErrorMessage &&
+        qForm?.showErrorMessage.value
       )
     );
 
@@ -160,7 +160,7 @@ export default defineComponent({
     const propRules = computed<FilteredRuleItem[]>(() => {
       const rules =
         props.rules ??
-        (props.prop ? get(qForm?.rules.value, props.prop) ?? [] : []);
+        (props.prop ? (get(qForm?.rules.value, props.prop) ?? []) : []);
 
       return Array.isArray(rules) ? rules : [rules];
     });

@@ -65,7 +65,6 @@ import { getConfig } from '@/qComponents/config';
 import { isServer } from '@/qComponents/constants/isServer';
 import { QScrollbar } from '@/qComponents/QScrollbar';
 
-
 import type { Nullable, Nillable } from '#/helpers';
 
 import { QMessageBoxAction } from '../constants';
