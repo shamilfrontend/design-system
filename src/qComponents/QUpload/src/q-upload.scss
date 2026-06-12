@@ -1,0 +1,49 @@
+@import './QUploadDropZone/q-upload-drop-zone';
+@import './QUploadFileSingle/q-upload-file-single';
+@import './QUploadFileMultiple/q-upload-file-multiple';
+
+.q-upload {
+  --q-upload-size: 264px;
+
+  position: relative;
+  display: inline-block;
+
+  &_multiple {
+    width: var(--q-upload-size);
+    height: var(--q-upload-size);
+    transition: width var(--transition-spline-base) 0.5s,
+      height var(--transition-spline-base) 0.5s;
+
+    &_open {
+      &-right {
+        width: 544px;
+      }
+
+      &-bottom {
+        height: 544px;
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: 0;
+    outline: none;
+    opacity: 0;
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

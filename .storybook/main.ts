@@ -1,19 +1,25 @@
-import type { StorybookConfig } from "@storybook/vue3-vite";
+const path = require('path');
 
-const config: StorybookConfig = {
-  stories: ["./stories/**/*.stories.@(ts|mdx)"],
+module.exports = {
+  stories: ['../stories/**/**/*.stories.@(ts|js|mdx)'],
   addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-a11y",
-    "@storybook/addon-interactions",
+    {
+      name: '@storybook/addon-essentials',
+      options: { actions: false }
+    },
+    '@storybook/addon-links',
+    '@storybook/addon-storysource',
+    '@storybook/preset-scss'
   ],
-  framework: {
-    name: "@storybook/vue3-vite",
-    options: {},
+  core: {
+    builder: 'webpack5'
   },
-  docs: {
-    autodocs: "tag",
-  },
-};
+  webpackFinal: (config: any) => {
+    if (!config.resolve?.alias) return config;
 
-export default config;
+    config.resolve.alias['@'] = path.resolve(__dirname, '../src');
+    config.module.rules.push({ test: /\.scss$/, sideEffects: true });
+
+    return config;
+  }
+};

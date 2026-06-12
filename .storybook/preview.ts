@@ -1,18 +1,29 @@
-import type { Preview } from "@storybook/vue3";
-import "../src/styles/index.scss";
+import { app } from '@storybook/vue3';
 
-const preview: Preview = {
-  parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-    a11y: {
-      test: "todo",
-    },
+import Qui from '../src/qComponents';
+// custom localization
+import messages from './locales';
+// default localization
+import { localeEn, localeRu } from '../src/qComponents';
+
+app.use(Qui, {
+  localization: {
+    locale: 'en',
+    messages: {
+      en: { ...localeEn, ...messages.en },
+      ru: { ...localeRu, ...messages.ru }
+    }
+  }
+});
+
+export const parameters = {
+  layout: 'centered',
+  controls: { expanded: true },
+  docs: {
+    inlineStories: true,
+    source: {
+      state: 'open'
+    }
   },
+  actions: { argTypesRegex: '^on[A-Z].*' }
 };
-
-export default preview;
