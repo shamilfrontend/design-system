@@ -72,7 +72,7 @@
     "release-it": "^15.0.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-sass": "^1.2.12",
+    "rollup-plugin-sass": "^1.15.3",
     "rollup-plugin-typescript2": "^0.31.2",
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.101.0",
