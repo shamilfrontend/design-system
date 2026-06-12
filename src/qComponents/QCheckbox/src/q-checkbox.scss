@@ -1,14 +1,14 @@
 .q-checkbox {
-  --checkbox-color-base: rgb(var(--color-base-regular-rgb) / 96%);
-  --checkbox-color-disabled: rgb(var(--color-rgb-gray) / 64%);
-  --checkbox-background-color-base: var(--color-tertiary-gray-ultra-light);
-  --checkbox-background-color-hover: var(--color-tertiary-gray);
-  --checkbox-background-color-disabled: var(--color-tertiary-gray);
-  --checkbox-mark-color-base: var(--color-accent-secondary-main);
-  --checkbox-mark-color-disabled: rgb(var(--color-rgb-gray) / 64%);
-  --checkbox-box-shadow-base: 1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
-  --checkbox-box-shadow-focus: 1px 1px 3px rgb(var(--color-rgb-blue) / 40%),
-    inset 0 0 0 1px var(--color-accent-secondary-main);
+  --checkbox-color-base: var(--color-text-regular);
+  --checkbox-color-disabled: var(--color-text-muted);
+  --checkbox-background-color-base: var(--color-tertiary-white);
+  --checkbox-background-color-hover: var(--color-tertiary-white);
+  --checkbox-background-color-disabled: var(--color-tertiary-gray-light);
+  --checkbox-mark-color-base: #fff;
+  --checkbox-mark-color-disabled: var(--color-text-muted);
+  --checkbox-box-shadow-base: inset 0 0 0 1px var(--color-tertiary-gray-dark);
+  --checkbox-box-shadow-focus: var(--box-shadow-focus),
+    inset 0 0 0 1px var(--color-primary);
 
   position: relative;
   display: inline-flex;
@@ -90,6 +90,9 @@
 
     .q-checkbox_checked &,
     .q-checkbox__input_indeterminate & {
+      background-color: var(--color-primary);
+      box-shadow: inset 0 0 0 1px var(--color-primary);
+
       &::after {
         opacity: 1;
       }

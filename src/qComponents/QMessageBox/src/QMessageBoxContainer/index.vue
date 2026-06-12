@@ -60,11 +60,11 @@ import {
 } from 'vue';
 import type { PropType } from 'vue';
 
+import type { QDrawerContainerProvider } from '@/qComponents';
 import { getConfig } from '@/qComponents/config';
 import { isServer } from '@/qComponents/constants/isServer';
 import { QScrollbar } from '@/qComponents/QScrollbar';
 
-import type { QDrawerContainerProvider } from '@/qComponents';
 
 import type { Nullable, Nillable } from '#/helpers';
 

@@ -149,7 +149,7 @@ export default defineComponent({
     const drawer = ref<Nullable<HTMLElement>>(null);
     const isShown = ref<boolean>(false);
     const zIndex = getConfig('nextZIndex');
-    let isFocusTrapEnabled: boolean = false;
+    let isFocusTrapEnabled = false;
 
     const drawerStyle = computed<Record<string, Nullable<string | number>>>(
       () => ({

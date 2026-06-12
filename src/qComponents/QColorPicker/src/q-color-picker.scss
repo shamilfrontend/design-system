@@ -16,24 +16,17 @@
       padding: 0;
       font-size: 24px;
       cursor: inherit;
-      border: none;
+      border: var(--border-base);
       border-radius: var(--border-radius-base);
-      box-shadow: -1px -1px 3px rgb(var(--color-rgb-white) / 25%),
-        1px 1px 3px rgb(var(--color-rgb-blue) / 40%),
-        4px 4px 8px rgb(var(--color-rgb-blue) / 40%),
-        -4px -4px 12px var(--color-tertiary-white);
+      box-shadow: var(--box-shadow-secondary);
 
       &:hover {
-        box-shadow: -1px -1px 4px rgb(var(--color-rgb-white) / 25%),
-          1px 1px 4px rgb(var(--color-rgb-blue) / 40%),
-          4px 4px 8px rgb(var(--color-rgb-blue) / 40%),
-          -4px -4px 8px rgb(var(--color-rgb-white) / 80%);
+        box-shadow: var(--box-shadow-hover);
       }
 
       &:focus {
         outline: none;
-        box-shadow: -1px -1px 3px rgb(var(--color-rgb-white) / 25%),
-          1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
+        box-shadow: var(--box-shadow-focus);
       }
 
       &::before {
@@ -72,8 +65,7 @@
       .q-color-picker-trigger_is-disabled & {
         cursor: not-allowed;
         background-color: var(--color-tertiary-gray);
-        box-shadow: -1px -1px 3px rgb(var(--color-rgb-white) / 25%),
-          1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
+        box-shadow: none;
 
         &::before {
           display: none;

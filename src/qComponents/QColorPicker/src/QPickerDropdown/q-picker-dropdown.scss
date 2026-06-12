@@ -1,10 +1,9 @@
 .q-picker-dropdown {
   padding: 16px;
-  background-color: var(--color-tertiary-gray-ultra-light);
+  background-color: var(--color-tertiary-white);
   border-radius: var(--border-radius-base);
   outline: none;
-  box-shadow: -1px -1px 3px rgb(var(--color-rgb-white) / 25%),
-    1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
+  box-shadow: var(--box-shadow-dropdown);
 
   &__base {
     display: flex;

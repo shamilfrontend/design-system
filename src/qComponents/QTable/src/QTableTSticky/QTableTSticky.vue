@@ -175,7 +175,7 @@ export default defineComponent({
     watch(
       [qScrollbar.moveXInPx, qScrollbar.sizeWidth, offsetsList],
       ([value]) => {
-        nextTick(() => checkSticky(value - WRAPPER_PADDING_LEFT ?? 0));
+        nextTick(() => checkSticky(value - WRAPPER_PADDING_LEFT));
       }
     );
 

@@ -8,10 +8,8 @@
   width: 40px;
   overflow: hidden;
   cursor: pointer;
-  background: var(--color-tertiary-gray-ultra-light);
+  background: var(--color-tertiary-gray);
   border-radius: 12px;
-  box-shadow: 4px 4px 8px rgb(174 174 192 / 40%),
-    1px 1px 3px rgb(174 174 192 / 40%);
 
   &__checkbox {
     position: absolute;
@@ -56,7 +54,6 @@
     --switch-main-color: var(--color-tertiary-gray-ultra-darker);
 
     cursor: not-allowed;
-    box-shadow: var(--box-shadow-pressed);
   }
 
   &_active {

@@ -1,7 +1,7 @@
 .q-select-dropdown {
   --dropdown-max-height: 204px;
-  --dropdown-box-shadow-base: var(--box-shadow-primary);
-  --dropdown-background-color-base: var(--color-tertiary-gray-light);
+  --dropdown-box-shadow-base: var(--box-shadow-dropdown);
+  --dropdown-background-color-base: var(--color-tertiary-white);
 
   position: absolute;
   z-index: 1001;

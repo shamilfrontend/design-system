@@ -1,14 +1,14 @@
 .q-radio {
-  --radio-color-base: rgb(var(--color-base-regular-rgb) / 96%);
-  --radio-color-disabled: rgb(var(--color-rgb-gray) / 64%);
-  --radio-background-color-base: var(--color-tertiary-gray-ultra-light);
-  --radio-background-color-hover: var(--color-tertiary-gray);
-  --radio-background-color-disabled: var(--color-tertiary-gray);
-  --radio-dot-color-base: var(--color-accent-secondary-main);
-  --radio-dot-color-disabled: rgb(var(--color-rgb-gray) / 64%);
-  --radio-box-shadow-base: 1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
-  --radio-box-shadow-focus: 1px 1px 3px rgb(var(--color-rgb-blue) / 40%),
-    inset 0 0 0 1px var(--color-accent-secondary-main);
+  --radio-color-base: var(--color-text-regular);
+  --radio-color-disabled: var(--color-text-muted);
+  --radio-background-color-base: var(--color-tertiary-white);
+  --radio-background-color-hover: var(--color-tertiary-white);
+  --radio-background-color-disabled: var(--color-tertiary-gray-light);
+  --radio-dot-color-base: var(--color-primary);
+  --radio-dot-color-disabled: var(--color-text-muted);
+  --radio-box-shadow-base: inset 0 0 0 1px var(--color-tertiary-gray-dark);
+  --radio-box-shadow-focus: var(--box-shadow-focus),
+    inset 0 0 0 1px var(--color-primary);
 
   position: relative;
   display: inline-flex;
@@ -97,6 +97,8 @@
     }
 
     .q-radio_checked & {
+      box-shadow: inset 0 0 0 1px var(--color-primary);
+
       &::after {
         transform: translate(-50%, -50%) scale(1);
       }

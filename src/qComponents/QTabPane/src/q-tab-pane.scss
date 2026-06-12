@@ -1,8 +1,7 @@
 .q-tab-pane {
   --tab-pane-width: auto;
-  --shadow-default: 4px 4px 8px rgb(var(--color-rgb-blue) / 40%),
-    1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
-  --shadow-pressed: 1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
+  --shadow-default: none;
+  --shadow-pressed: none;
 
   display: flex;
 
@@ -21,7 +20,7 @@
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-base);
     line-height: 18px;
-    color: var(--color-primary-blue);
+    color: var(--color-text-regular);
     text-align: center;
     letter-spacing: var(--letter-spacing-base);
     cursor: pointer;
@@ -31,15 +30,15 @@
     box-shadow: var(--shadow-default);
 
     &:hover {
-      color: var(--color-primary-black);
-      background-color: var(--color-tertiary-gray);
+      color: var(--color-primary);
+      background-color: var(--color-primary-lighter);
       box-shadow: var(--shadow-default);
     }
 
     &.focus-visible {
-      color: var(--color-primary-blue);
+      color: var(--color-primary);
       background-color: var(--color-tertiary-gray-light);
-      border-color: var(--color-primary-blue);
+      border-color: var(--color-primary);
       box-shadow: var(--shadow-default);
     }
 
@@ -49,8 +48,8 @@
       &,
       &:hover,
       &.focus-visible {
-        color: rgb(var(--color-rgb-gray) / 64%);
-        background-color: var(--color-tertiary-gray);
+        color: var(--color-text-muted);
+        background-color: var(--color-tertiary-gray-light);
         box-shadow: var(--shadow-pressed);
       }
     }
@@ -61,9 +60,9 @@
       &,
       &:hover,
       &.focus-visible {
-        color: var(--color-primary-black);
-        background-color: var(--color-tertiary-gray-ultra-light);
-        box-shadow: var(--shadow-pressed);
+        color: #fff;
+        background-color: var(--color-primary);
+        box-shadow: var(--box-shadow-primary-button);
       }
     }
 

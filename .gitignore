@@ -1,6 +1,7 @@
 # compiled output
 /dist
 /dist-ssr
+/storybook-static
 /node_modules
 
 # Logs

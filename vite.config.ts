@@ -50,6 +50,7 @@ export default defineConfig({
       output: [
         {
           format: 'umd',
+          name: 'QuiMax',
           // Provide global variables to use in the UMD build
           // for externalized deps
           exports: 'named',

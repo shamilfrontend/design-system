@@ -10,9 +10,8 @@
 @import './QTableTBody/QTableTBodyRow/q-table-t-body-row';
 
 .q-table {
-  --table-box-shadow-base: var(--box-shadow-pressed);
-  --table-box-shadow-inverted: 1px -1px 3px rgb(var(--color-rgb-white) / 25%),
-    -1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
+  --table-box-shadow-base: 4px 0 8px -4px rgb(var(--color-rgb-shadow) / 20%);
+  --table-box-shadow-inverted: -4px 0 8px -4px rgb(var(--color-rgb-shadow) / 20%);
 
   text-align: left;
 }

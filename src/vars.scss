@@ -1,65 +1,90 @@
 :root {
-  --color-primary: #de4b7a;
-  --color-primary-purple: #d048b4;
-  --color-primary-blue: #4162f0;
-  --color-primary-blue-light: #74aff8;
-  --color-primary-blue-aqua: #5ecae7;
-  --color-primary-darker: #b83e65;
-  --color-primary-black: #1d1c1a;
-  --color-secondary-orange: #f95e2d;
-  --color-secondary-green: #40ba3e;
-  --color-secondary-yellow: #f2d22b;
-  --color-accent-secondary-main: #4262f0;
+  // === Vuexy palette ===
+  // accents
+  --color-primary: #7367f0;
+  --color-primary-light: #9e95f5;
+  --color-primary-lighter: rgb(115 103 240 / 12%);
+  --color-primary-darker: #5e50ee;
+  --color-primary-purple: #9e95f5;
+  --color-primary-blue: #7367f0;
+  --color-primary-blue-light: #9e95f5;
+  --color-primary-blue-aqua: #00cfe8;
+  --color-primary-black: #4b4b4b;
+
+  // semantic
+  --color-secondary: #82868b;
+  --color-secondary-light: rgb(130 134 139 / 12%);
+  --color-success: #28c76f;
+  --color-success-light: rgb(40 199 111 / 12%);
+  --color-danger: #ea5455;
+  --color-danger-light: rgb(234 84 85 / 12%);
+  --color-warning: #ff9f43;
+  --color-warning-light: rgb(255 159 67 / 12%);
+  --color-info: #00cfe8;
+  --color-info-light: rgb(0 207 232 / 12%);
+
+  // legacy aliases mapped to Vuexy semantic colors
+  --color-secondary-orange: #ea5455;
+  --color-secondary-green: #28c76f;
+  --color-secondary-yellow: #ff9f43;
+  --color-accent-secondary-main: #00cfe8;
+
+  // surfaces & neutrals
   --color-tertiary-white: #fff;
   --color-tertiary-gray-ultra-light: #fafafa;
-  --color-tertiary-gray-lighter: #f4f4f6;
-  --color-tertiary-gray-light: #f0f0f3;
-  --color-tertiary-gray: #eaeaea;
-  --color-tertiary-gray-dark: #e2e2e2;
-  --color-tertiary-gray-darker: #dadada;
-  --color-tertiary-gray-ultra-dark: #c4c4c4;
-  --color-tertiary-gray-ultra-darker: #adacae;
-  --color-tertiary-gray-ultra-darker-rgb: 173 172 174;
-  --color-base-regular-rgb: 29 29 27;
+  --color-tertiary-gray-lighter: #f8f7fa;
+  --color-tertiary-gray-light: #f3f2f7;
+  --color-tertiary-gray: #ebe9f1;
+  --color-tertiary-gray-dark: #d8d6de;
+  --color-tertiary-gray-darker: #b9b9c3;
+  --color-tertiary-gray-ultra-dark: #b9b9c3;
+  --color-tertiary-gray-ultra-darker: #6e6b7b;
+  --color-tertiary-gray-ultra-darker-rgb: 110 107 123;
+
+  // text
+  --color-text-heading: #5e5873;
+  --color-text-regular: #6e6b7b;
+  --color-text-muted: #b9b9c3;
+  --color-border: #ebe9f1;
+
+  // rgb helpers
+  --color-base-regular-rgb: 94 88 115;
   --color-rgb-white: 255 255 255;
-  --color-rgb-blue: 174 174 192;
-  --color-rgb-gray: 29 28 26;
-  --color-rgb-primary: 222 75 122;
+  --color-rgb-blue: 34 41 47;
+  --color-rgb-gray: 110 107 123;
+  --color-rgb-primary: 115 103 240;
+  --color-rgb-shadow: 34 41 47;
   --gradient-primary: linear-gradient(
-    101.12deg,
-    var(--color-primary) 0.76%,
-    var(--color-primary-purple) 100%
+    118deg,
+    var(--color-primary),
+    rgb(115 103 240 / 70%)
   );
   --gradient-secondary: linear-gradient(
-    180deg,
-    var(--color-primary) -27.44%,
-    var(--color-primary-blue) 100.54%
+    118deg,
+    var(--color-primary-light),
+    var(--color-primary)
   );
-  --box-shadow-primary: -1px -1px 3px rgb(var(--color-rgb-white) / 25%),
-    1px 1px 3px rgb(var(--color-rgb-blue) / 40%),
-    4px 4px 8px rgb(var(--color-rgb-blue) / 40%),
-    -4px -4px 12px var(--color-tertiary-white);
-  --box-shadow-secondary: -4px -4px 12px var(--color-tertiary-white),
-    4px 4px 8px rgb(var(--color-rgb-blue) / 40%),
-    1px 1px 3px rgb(var(--color-rgb-blue) / 40%),
-    -1px -1px 3px rgb(var(--color-rgb-white) / 25%);
-  --box-shadow-hover: -1px -1px 4px rgb(var(--color-rgb-white) / 25%),
-    1px 1px 4px rgb(var(--color-rgb-blue) / 40%),
-    4px 4px 8px rgb(var(--color-rgb-blue) / 40%),
-    -4px -4px 8px rgb(var(--color-rgb-white) / 80%);
-  --box-shadow-pressed: -1px -1px 3px rgb(var(--color-rgb-white) / 25%),
-    1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
-  --box-shadow-focus: inset 2px 2px 3px rgb(var(--color-rgb-blue) / 20%),
-    inset -2px -2px 3px rgb(var(--color-rgb-white) / 70%);
-  --border-error: 1px solid var(--color-secondary-orange);
-  --border-radius-base: 4px;
+
+  // === Vuexy elevation shadows (flat, soft) ===
+  --box-shadow-primary: 0 4px 24px 0 rgb(var(--color-rgb-shadow) / 10%);
+  --box-shadow-secondary: 0 2px 8px 0 rgb(var(--color-rgb-shadow) / 10%);
+  --box-shadow-hover: 0 4px 25px 0 rgb(var(--color-rgb-shadow) / 15%);
+  --box-shadow-pressed: 0 2px 6px 0 rgb(var(--color-rgb-shadow) / 10%);
+  --box-shadow-focus: 0 0 0 0.2rem rgb(var(--color-rgb-primary) / 25%);
+  --box-shadow-dropdown: 0 5px 25px 0 rgb(var(--color-rgb-shadow) / 10%);
+  --box-shadow-primary-button: 0 8px 25px -8px var(--color-primary);
+  --border-error: 1px solid var(--color-danger);
+  --border-base: 1px solid var(--color-border);
+  --border-radius-base: 6px;
+  --border-radius-lg: 8px;
 
   // font
   --line-height-base: 22px;
   --font-size-base: 14px;
-  --font-weight-base: 500;
+  --font-weight-base: 400;
+  --font-weight-medium: 500;
   --font-weight-bold: 600;
-  --letter-spacing-base: 0.03em;
+  --letter-spacing-base: normal;
 
   // layout
   --layout-gutter: 32px;
@@ -69,4 +94,31 @@
 
   // animations
   --transition-spline-base: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+[data-theme='dark'] {
+  --color-primary-black: #d0d2d6;
+  --color-tertiary-white: #283046;
+  --color-tertiary-gray-ultra-light: #242b3d;
+  --color-tertiary-gray-lighter: #161d31;
+  --color-tertiary-gray-light: #242b3d;
+  --color-tertiary-gray: #3b4253;
+  --color-tertiary-gray-dark: #404656;
+  --color-tertiary-gray-darker: #676d7d;
+  --color-tertiary-gray-ultra-dark: #676d7d;
+  --color-tertiary-gray-ultra-darker: #b4b7bd;
+  --color-tertiary-gray-ultra-darker-rgb: 180 183 189;
+  --color-text-heading: #d0d2d6;
+  --color-text-regular: #b4b7bd;
+  --color-text-muted: #676d7d;
+  --color-border: #3b4253;
+  --color-base-regular-rgb: 208 210 214;
+  --color-rgb-white: 40 48 70;
+  --color-rgb-gray: 180 183 189;
+  --color-rgb-shadow: 0 0 0;
+  --box-shadow-primary: 0 4px 24px 0 rgb(0 0 0 / 24%);
+  --box-shadow-secondary: 0 2px 8px 0 rgb(0 0 0 / 24%);
+  --box-shadow-hover: 0 4px 25px 0 rgb(0 0 0 / 36%);
+  --box-shadow-pressed: 0 2px 6px 0 rgb(0 0 0 / 24%);
+  --box-shadow-dropdown: 0 5px 25px 0 rgb(0 0 0 / 30%);
 }

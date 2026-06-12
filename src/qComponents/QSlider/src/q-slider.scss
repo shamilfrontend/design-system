@@ -2,8 +2,7 @@
 @import './components/QSliderCaptions/q-slider-captions';
 
 .q-slider {
-  --box-shadow-line: inset 1px 1px 2px rgb(var(--color-rgb-blue) / 20%),
-    inset -1px -1px 1px rgb(var(--color-rgb-white) / 70%);
+  --box-shadow-line: none;
 
   position: relative;
   width: 100%;
@@ -24,7 +23,7 @@
     left: 0;
     z-index: 1;
     height: 8px;
-    background-color: rgb(var(--color-rgb-primary) / 32%);
+    background-color: var(--color-primary);
     border-radius: 3px;
   }
 
@@ -42,9 +41,7 @@
   &__step {
     width: 4px;
     height: 8px;
-    background-color: var(--color-tertiary-gray-light);
-    box-shadow: 1px 0 1px rgb(var(--color-rgb-blue) / 20%),
-      -1px 0 1px rgb(var(--color-rgb-white) / 70%);
+    background-color: var(--color-tertiary-white);
 
     &:first-child,
     &:last-child {

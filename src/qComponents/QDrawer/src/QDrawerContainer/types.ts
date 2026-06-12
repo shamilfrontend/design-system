@@ -3,7 +3,6 @@ import type { Ref, ComputedRef } from 'vue';
 import type { Nullable } from '#/helpers';
 
 import type { QDrawerAction } from '../constants';
-
 import type { QDrawerComponent, QDrawerContent, QDrawerEvent } from '../types';
 
 export type QDrawerContainerPropContent = QDrawerContent;

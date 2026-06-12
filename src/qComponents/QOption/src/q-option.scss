@@ -1,13 +1,13 @@
 .q-option {
-  --option-background-color-base: var(--color-tertiary-gray-light);
-  --option-background-color-hover: var(--color-tertiary-gray);
-  --option-background-color-focus: var(--color-tertiary-gray);
-  --option-background-color-selected: var(--color-tertiary-gray-ultra-light);
-  --option-background-color-disabled: var(--color-tertiary-gray-light);
-  --option-color-base: var(--color-primary-blue);
-  --option-color-hover: var(--color-primary-black);
-  --option-color-selected: var(--color-primary-black);
-  --option-color-disabled: rgb(var(--color-rgb-gray) / 64%);
+  --option-background-color-base: var(--color-tertiary-white);
+  --option-background-color-hover: var(--color-primary-lighter);
+  --option-background-color-focus: var(--color-primary-lighter);
+  --option-background-color-selected: var(--color-primary-lighter);
+  --option-background-color-disabled: var(--color-tertiary-white);
+  --option-color-base: var(--color-text-regular);
+  --option-color-hover: var(--color-primary);
+  --option-color-selected: var(--color-primary);
+  --option-color-disabled: var(--color-text-muted);
 
   position: relative;
   display: flex;
@@ -18,8 +18,6 @@
   user-select: none;
   background-color: var(--option-background-color-base);
   outline: none;
-  box-shadow: -1px -1px 3px rgb(var(--color-rgb-white) / 25%),
-    1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
 
   &:focus {
     outline: none;

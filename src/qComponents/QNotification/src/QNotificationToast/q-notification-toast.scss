@@ -8,9 +8,9 @@
   padding-bottom: 24px;
   margin-top: 16px;
   overflow: hidden;
-  background-color: var(--color-tertiary-gray-ultra-light);
+  background-color: var(--color-tertiary-white);
   border-radius: var(--border-radius-base);
-  box-shadow: var(--box-shadow-pressed);
+  box-shadow: var(--box-shadow-primary);
   transition: opacity 0.3s, transform 0.3s;
 
   &__icon {

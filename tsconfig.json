@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -10,14 +10,14 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "strictNullChecks": true,
+    "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
     "types": ["vite/client", "node"],
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
       "#/*": ["types/*"]
-    },
-    "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }]
+    }
   },
   "exclude": ["node_modules"],
   "include": [

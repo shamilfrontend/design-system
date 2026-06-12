@@ -9,22 +9,19 @@
 }
 
 .q-button {
-  --box-shadow-default: 4px 4px 8px rgb(var(--color-rgb-blue) / 40%),
-    1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
-  --box-shadow-pressed: 1px 1px 3px rgb(var(--color-rgb-blue) / 40%);
-  --color-rgb-gray: 29 29 27;
+  --box-shadow-default: none;
+  --box-shadow-pressed: none;
   --button-main-bg: transparent;
   --icon-size: 24px;
   --border-width: 1px;
 
   display: inline-block;
   flex-shrink: 0;
-  padding: calc(12.5px - var(--border-width)) 40px;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 15px;
+  padding: calc(11px - var(--border-width)) 21px;
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 16px;
   text-align: center;
-  text-transform: uppercase;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
@@ -54,14 +51,15 @@
 
   &_theme {
     &_primary {
-      --button-active-color: rgb(var(--color-rgb-white) / 64%);
-      --button-hover-active-bg: var(--color-primary);
-      --button-main-bg: var(--gradient-primary);
-      --button-hover-color: var(--color-tertiary-white);
+      --button-active-color: #fff;
+      --button-hover-active-bg: var(--color-primary-darker);
+      --button-main-bg: var(--color-primary);
+      --button-hover-color: #fff;
       /* stylelint-disable length-zero-no-unit */
       --border-width: 0px;
 
-      color: var(--color-tertiary-white);
+      color: #fff;
+      box-shadow: var(--box-shadow-primary-button);
 
       &.focus-visible {
         background: var(--color-primary-darker);
@@ -70,9 +68,9 @@
 
     &_secondary {
       --button-active-color: var(--color-primary-darker);
-      --button-hover-active-bg: var(--color-tertiary-gray);
-      --button-main-bg: var(--color-tertiary-gray-light);
-      --button-hover-color: var(--color-primary);
+      --button-hover-active-bg: var(--color-primary-lighter);
+      --button-main-bg: var(--color-primary-lighter);
+      --button-hover-color: var(--color-primary-darker);
 
       color: var(--color-primary);
 

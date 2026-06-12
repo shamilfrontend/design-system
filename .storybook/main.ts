@@ -1,25 +1,40 @@
-const path = require('path');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-module.exports = {
-  stories: ['../stories/**/**/*.stories.@(ts|js|mdx)'],
-  addons: [
-    {
-      name: '@storybook/addon-essentials',
-      options: { actions: false }
-    },
-    '@storybook/addon-links',
-    '@storybook/addon-storysource',
-    '@storybook/preset-scss'
-  ],
-  core: {
-    builder: 'webpack5'
+import type { StorybookConfig } from '@storybook/vue3-vite';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const config: StorybookConfig = {
+  stories: ['../stories/**/*.stories.@(ts|js)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-docs'],
+  framework: {
+    name: '@storybook/vue3-vite',
+    options: {}
   },
-  webpackFinal: (config: any) => {
-    if (!config.resolve?.alias) return config;
+  async viteFinal(viteConfig) {
+    viteConfig.plugins = viteConfig.plugins?.filter(
+      plugin =>
+        plugin &&
+        typeof plugin === 'object' &&
+        'name' in plugin &&
+        plugin.name !== 'vite-plugin-dts'
+    );
 
-    config.resolve.alias['@'] = path.resolve(__dirname, '../src');
-    config.module.rules.push({ test: /\.scss$/, sideEffects: true });
+    viteConfig.resolve = viteConfig.resolve ?? {};
+    viteConfig.resolve.alias = [
+      { find: '@', replacement: path.resolve(dirname, '../src') },
+      { find: '#', replacement: path.resolve(dirname, '../types') }
+    ];
 
-    return config;
+    viteConfig.build = {
+      ...viteConfig.build,
+      lib: undefined,
+      rollupOptions: undefined
+    };
+
+    return viteConfig;
   }
 };
+
+export default config;
