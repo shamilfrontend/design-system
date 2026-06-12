@@ -1,4 +1,4 @@
-import type { Ref, ComputedRef } from 'vue';
+import type { Ref, ComputedRef, StyleValue } from 'vue';
 
 import type { Nullable } from '#/helpers';
 
@@ -35,7 +35,7 @@ export interface QDrawerContainerInstance {
   drawer: Ref<Nullable<HTMLElement>>;
   zIndex: number;
   isShown: Ref<boolean>;
-  drawerStyle: ComputedRef<Record<string, Nullable<string | number>>>;
+  drawerStyle: ComputedRef<StyleValue>;
   drawerClass: ComputedRef<string>;
   preparedContent: ComputedRef<QDrawerComponent>;
   afterLeave: () => void;

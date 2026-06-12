@@ -1,4 +1,4 @@
-import type { Story, Meta } from '@storybook/vue3';
+import type { StoryFn, Meta } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
 import { QMessageBoxContent, useMessageBox } from '@/qComponents';
@@ -12,7 +12,7 @@ const storyMetadata: Meta = {
   component: QMessageBoxContent
 };
 
-const QMessageBoxStory: Story<QMessageBoxContentProps> = args =>
+const QMessageBoxStory: StoryFn<QMessageBoxContentProps> = args =>
   defineComponent({
     setup() {
       const messageBox = useMessageBox();

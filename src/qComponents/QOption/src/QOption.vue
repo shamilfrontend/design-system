@@ -89,8 +89,8 @@ export default defineComponent({
         return isEqual(get(modelValue.value, valueKey), key.value);
       }
 
-      const prepareValue = (val: QOptionPropValue): string =>
-        isPlainObject(val) ? get(val, valueKey) : val;
+      const prepareValue = (val: QOptionPropValue): string | number =>
+        isPlainObject(val) ? get(val, valueKey) : (val as string | number);
 
       if (Array.isArray(modelValue.value)) {
         return modelValue.value.some(val => prepareValue(val) === key.value);

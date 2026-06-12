@@ -96,6 +96,12 @@ export default defineComponent({
 
     const scrollTo = ref<Nullable<HTMLElement>>(null);
 
+    const handleScrollbarKeydown = (event: KeyboardEvent): void => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+      }
+    };
+
     const handleArrowUpDownKeyUp = (e: KeyboardEvent): void => {
       const distance = e.key === 'ArrowUp' ? -1 : 1;
       const target = e.target as HTMLElement;
@@ -141,6 +147,7 @@ export default defineComponent({
       checkExpanded,
       handleRowExpand,
       handleRowCheck,
+      handleScrollbarKeydown,
       handleArrowUpDownKeyUp,
       handleArrowLeftKeyUp
     };
@@ -156,8 +163,7 @@ export default defineComponent({
     <q-scrollbar
       wrap-class="q-cascader-column__scrollbar"
       :scroll-to="scrollTo"
-      @keydown.arrow-down.prevent
-      @keydown.arrow-up.prevent
+      @keydown="handleScrollbarKeydown"
       @keyup.arrow-left="handleArrowLeftKeyUp"
     >
       <q-cascader-row
@@ -169,8 +175,7 @@ export default defineComponent({
         :expanded="checkExpanded(rowIndex)"
         @expand="handleRowExpand"
         @check="handleRowCheck"
-        @keyup.arrow-up="handleArrowUpDownKeyUp"
-        @keyup.arrow-down="handleArrowUpDownKeyUp"
+        @keyup="handleArrowUpDownKeyUp"
       />
     </q-scrollbar>
   </div>

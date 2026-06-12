@@ -163,8 +163,8 @@ export default defineComponent({
       :key="`head-cell-${column.group.key}-${column.key}`"
       :column="column"
       :column-index="index"
-      :sort-by="sortBy"
-      :dragged-column="draggedColumn"
+      :sort-by="sortBy ?? undefined"
+      :dragged-column="draggedColumn ?? undefined"
       @drag="handleColumnDrag"
       @drop="handleColumnDrop"
     />

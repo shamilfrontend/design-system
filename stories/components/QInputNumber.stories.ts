@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QInputNumber } from '@/qComponents/QInputNumber';
@@ -8,7 +8,7 @@ const storyMetadata: Meta = {
   title: 'Components/QInputNumber',
   component: QInputNumber,
   argTypes: {
-    modelValue: { control: { type: 'none' } },
+    modelValue: { control: false },
     placeholder: { control: { type: 'text' } },
     min: { control: { type: 'number' } },
     max: { control: { type: 'number' } },
@@ -18,7 +18,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const Template: Story<QInputNumberProps> = args =>
+const Template: StoryFn<QInputNumberProps> = args =>
   defineComponent({
     setup() {
       const numberValue = ref<number>(1234567.89);

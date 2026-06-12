@@ -17,5 +17,5 @@ export interface QTableTStickyInstance {
     columnsRightNew: Record<string, Nullable<number>>;
   };
   columnList: ComputedRef<ExtendedColumn[]>;
-  setColRef: (el: HTMLElement, key: number | string) => void;
+  setColRef: (el: unknown, key: number | string) => void;
 }

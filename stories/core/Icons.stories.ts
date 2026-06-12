@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref, watch } from 'vue';
 
 import type { Nullable } from '#/helpers';
@@ -13,7 +13,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const IconsStory: Story = args =>
+const IconsStory: StoryFn = args =>
   defineComponent({
     setup() {
       const visibleTooltip = ref<Nullable<string>>(null);

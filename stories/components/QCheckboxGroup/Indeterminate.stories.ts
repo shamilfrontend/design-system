@@ -1,4 +1,4 @@
-import type { Story, Meta } from '@storybook/vue3';
+import type { StoryFn, Meta } from '@storybook/vue3';
 import { defineComponent, ref, watch } from 'vue';
 
 import { QCheckbox } from '@/qComponents/QCheckbox';
@@ -16,7 +16,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QCheckboxGroupIndeterminateStory: Story<QCheckboxGroupProps> = args =>
+const QCheckboxGroupIndeterminateStory: StoryFn<QCheckboxGroupProps> = args =>
   defineComponent({
     components: { QCheckboxGroup, QCheckbox },
     setup() {

@@ -39,5 +39,8 @@ export default {
     replaceFile: '替换文件',
     loading: '加载中',
     uploadedFiles: '已上传文件'
+  },
+  QBreadcrumbs: {
+    ariaLabel: '面包屑导航'
   }
 };

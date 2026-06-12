@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QTextarea } from '@/qComponents/QTextarea';
@@ -15,7 +15,7 @@ const storyMetadata: Meta = {
       control: { type: 'select' }
     },
     autocomplete: { options: ['on', 'off'], control: { type: 'radio' } },
-    modelValue: { control: { type: 'none' } },
+    modelValue: { control: false },
     autosize: {
       options: [true, false, 'restrictions'],
       mapping: {
@@ -41,7 +41,7 @@ type StoryArgs = QTextareaProps & {
   autocomplete: 'on' | 'off';
 };
 
-const QTextareaStory: Story<StoryArgs> = args =>
+const QTextareaStory: StoryFn<StoryArgs> = args =>
   defineComponent({
     setup() {
       const model = ref<string>('');

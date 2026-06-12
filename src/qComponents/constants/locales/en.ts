@@ -39,5 +39,8 @@ export default {
     replaceFile: 'replace file',
     loading: 'loading',
     uploadedFiles: 'Uploaded files'
+  },
+  QBreadcrumbs: {
+    ariaLabel: 'Breadcrumb'
   }
 };

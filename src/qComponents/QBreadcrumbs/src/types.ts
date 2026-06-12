@@ -16,6 +16,7 @@ export interface QBreadcrumbsProps {
   linkComponent: Nullable<string>;
   last: Nullable<string>;
   route: QBreadcrumbsPropRoute;
+  ariaLabel: Nullable<string>;
 }
 
 export interface QBreadcrumbsInstance {

@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineAsyncComponent, defineComponent, ref } from 'vue';
 
 import { QCollapse, type QCollapseProps } from '@/qComponents/QCollapse';
@@ -16,12 +16,12 @@ const storyMetadata: Meta = {
       description:
         'Control display of the custom icon (demonstration purpose only)'
     },
-    openIcon: { control: { type: 'none' } },
-    closeIcon: { control: { type: 'none' } }
+    openIcon: { control: false },
+    closeIcon: { control: false }
   }
 };
 
-const QCollapseStory: Story<QCollapseStoryWithExtraControl> = args =>
+const QCollapseStory: StoryFn<QCollapseStoryWithExtraControl> = args =>
   defineComponent({
     components: { QCollapse, QCollapseItem },
     setup() {

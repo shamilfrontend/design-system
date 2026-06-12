@@ -24,8 +24,13 @@ export default defineComponent({
     cols: {
       type: [String, Number],
       default: null,
-      validator: (value: Nullable<string | number>): boolean =>
-        value === null || value === 'auto' || (value > 0 && value <= 12)
+      validator: (value: Nullable<string | number>): boolean => {
+        if (value === null || value === 'auto') return true;
+
+        const num = Number(value);
+
+        return !Number.isNaN(num) && num > 0 && num <= 12;
+      }
     },
     /**
      * number of spacing on the left side of the grid.
@@ -34,8 +39,13 @@ export default defineComponent({
     offset: {
       type: [String, Number],
       default: null,
-      validator: (value: Nullable<string | number>): boolean =>
-        value === null || (value >= 0 && value <= 11)
+      validator: (value: Nullable<string | number>): boolean => {
+        if (value === null) return true;
+
+        const num = Number(value);
+
+        return !Number.isNaN(num) && num >= 0 && num <= 11;
+      }
     }
   },
 

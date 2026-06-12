@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, computed } from 'vue';
 
 import { QCol } from '@/qComponents/QCol';
@@ -16,7 +16,7 @@ const storyMetadata: Meta = {
       description: 'grid spacing (in CSS units)',
       table: {
         type: {
-          summary: ['string']
+          summary: 'string'
         }
       }
     }
@@ -27,7 +27,7 @@ interface StoryArgs {
   gutter: string;
 }
 
-const LayoutStory: Story<StoryArgs> = args =>
+const LayoutStory: StoryFn<StoryArgs> = args =>
   defineComponent({
     components: { QRow, QCol },
     setup() {

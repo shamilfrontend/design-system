@@ -1,4 +1,4 @@
-import type { Story } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { t } from '@/qComponents/locale';
@@ -9,7 +9,7 @@ import type {
 
 type ModelValue = QSliderPropModelValue<'easy' | 'normal' | 'hard'>;
 
-const QSliderStory: Story = args =>
+const QSliderStory: StoryFn = args =>
   defineComponent({
     setup() {
       const value = ref<ModelValue>('normal');

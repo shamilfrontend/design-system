@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QRadio } from '@/qComponents/QRadio';
@@ -8,8 +8,8 @@ const storyMetadata: Meta = {
   title: 'Components/QRadio',
   component: QRadio,
   argTypes: {
-    checked: { control: { type: 'none' } },
-    value: { control: { type: 'none' } },
+    checked: { control: false },
+    value: { control: false },
     label: { control: 'text' },
     labelSize: {
       options: ['regular', 'small'],
@@ -19,7 +19,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QRadioStory: Story<QRadioProps> = args =>
+const QRadioStory: StoryFn<QRadioProps> = args =>
   defineComponent({
     components: { QRadio },
     setup() {

@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
 import { useNotify, NotifyType } from '@/qComponents/QNotification';
@@ -20,7 +20,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QNotificationStory: Story<QNotificationToastProps> = args =>
+const QNotificationStory: StoryFn<QNotificationToastProps> = args =>
   defineComponent({
     setup() {
       const notify = useNotify();

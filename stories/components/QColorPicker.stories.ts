@@ -1,5 +1,5 @@
 import { placements } from '@popperjs/core/lib/enums';
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QColorPicker } from '@/qComponents/QColorPicker';
@@ -9,13 +9,13 @@ const storyMetadata: Meta = {
   title: 'Components/QColorPicker',
   component: QColorPicker,
   argTypes: {
-    modelValue: { control: { type: 'none' } },
+    modelValue: { control: false },
     placement: { options: placements, control: { type: 'select' } },
     colorFormat: { options: ['hex', 'rgb'], control: { type: 'select' } }
   }
 };
 
-const QColorPickerStory: Story<QColorPickerProps> = args =>
+const QColorPickerStory: StoryFn<QColorPickerProps> = args =>
   defineComponent({
     setup() {
       const color = ref<string>('#f25');

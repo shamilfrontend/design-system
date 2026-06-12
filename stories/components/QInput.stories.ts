@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QInput } from '@/qComponents/QInput';
@@ -12,7 +12,7 @@ const storyMetadata: Meta = {
   argTypes: {
     placeholder: { control: { type: 'text' } },
     maxlength: { control: { type: 'number' } },
-    modelValue: { control: { type: 'none' } },
+    modelValue: { control: false },
     type: {
       options: ['text', 'password', 'number', 'email', 'hidden', 'tel', 'url'],
       control: { type: 'select' }
@@ -32,7 +32,7 @@ type StoryArgs = QInputProps & {
   type: string;
 };
 
-const QInputStory: Story<StoryArgs> = args =>
+const QInputStory: StoryFn<StoryArgs> = args =>
   defineComponent({
     setup() {
       const data = ref<string>('');

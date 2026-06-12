@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QTabPane } from '@/qComponents/QTabPane';
@@ -14,7 +14,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QTabPaneStory: Story<QTabPaneProps> = args =>
+const QTabPaneStory: StoryFn<QTabPaneProps> = args =>
   defineComponent({
     components: { QTabs, QTabPane },
     setup() {

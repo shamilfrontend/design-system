@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
 import { QCol } from '@/qComponents/QCol';
@@ -22,7 +22,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QColStory: Story<QColProps> = args =>
+const QColStory: StoryFn<QColProps> = args =>
   defineComponent({
     components: { QRow, QCol },
     setup() {

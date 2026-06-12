@@ -40,4 +40,6 @@ export interface QUploadInstance {
   handleClearAll: () => void;
   handleClear: (fileId: string) => void;
   handleAbort: (fileId: string) => void;
+  multipleValue: ComputedRef<QUploadFile[]>;
+  singleValue: ComputedRef<{ name?: string; loading?: number } | null>;
 }

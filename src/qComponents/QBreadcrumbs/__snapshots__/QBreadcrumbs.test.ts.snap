@@ -1,13 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`QBreadcrumbs > element should match snapshot 1`] = `
-<div
+<nav
+  aria-label=""
   class="q-breadcrumbs"
 >
-  
-  
-  <div
-    class="q-breadcrumbs__crumb q-breadcrumbs__crumb_last"
-  />
-</div>
+  <ol
+    class="q-breadcrumbs__list"
+  >
+    
+    
+    <li
+      class="q-breadcrumbs__item"
+    >
+      <span
+        aria-current="page"
+        class="q-breadcrumbs__crumb q-breadcrumbs__crumb_last"
+      />
+    </li>
+  </ol>
+</nav>
 `;

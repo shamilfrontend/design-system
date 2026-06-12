@@ -79,7 +79,7 @@ export default defineComponent({
       default: false
     },
     /**
-     * as native attrs bind to native input, via rootСlass you can set class for q-input root
+     * as native attrs bind to native input, via rootClass you can set class for q-input root
      */
     rootClass: {
       type: [String, Array, Object] as PropType<QInputPropRootClass>,

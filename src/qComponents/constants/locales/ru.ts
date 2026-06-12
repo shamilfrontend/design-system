@@ -39,5 +39,8 @@ export default {
     replaceFile: 'заменить файл',
     loading: 'загрузка',
     uploadedFiles: 'Загруженные файлы'
+  },
+  QBreadcrumbs: {
+    ariaLabel: 'Навигационная цепочка'
   }
 };

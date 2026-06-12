@@ -51,7 +51,7 @@ export default defineComponent({
 
   <component
     :is="panelComponent"
-    :model-value="transformedToDate"
+    :model-value="transformedToDate as any"
     class="q-dialog-mobile-panel__dialog-view"
     @pick="handlePick"
   />

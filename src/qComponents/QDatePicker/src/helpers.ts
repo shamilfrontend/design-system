@@ -6,6 +6,7 @@ import {
   isAfter,
   isBefore
 } from 'date-fns';
+import type { Locale } from 'date-fns';
 import { ru, enGB as en, zhHK as zh } from 'date-fns/locale';
 import { isString } from 'lodash-es';
 

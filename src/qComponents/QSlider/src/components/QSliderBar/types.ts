@@ -15,5 +15,5 @@ export interface BarStyle {
 }
 
 export interface QSliderBarInstance {
-  barStyle: ComputedRef<BarStyle>;
+  barStyle: ComputedRef<CSSProperties>;
 }

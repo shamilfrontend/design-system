@@ -12,6 +12,7 @@ import QUploadDropZone from './QUploadDropZone';
 import QUploadFileMultiple from './QUploadFileMultiple';
 import QUploadFileSingle from './QUploadFileSingle';
 import type {
+  QUploadFile,
   QUploadProps,
   QUploadPropValue,
   QUploadPropDirection,
@@ -242,6 +243,16 @@ export default defineComponent({
       processFile(fileList);
     };
 
+    const multipleValue = computed<QUploadFile[]>(() =>
+      props.multiple && Array.isArray(props.value) ? props.value : []
+    );
+
+    const singleValue = computed(() =>
+      !props.multiple && props.value && !Array.isArray(props.value)
+        ? { name: props.value.name, loading: props.value.loading ?? undefined }
+        : null
+    );
+
     return {
       isDisabled,
       isLoading,
@@ -254,7 +265,9 @@ export default defineComponent({
       handleFileChange,
       handleClearAll,
       handleClear,
-      handleAbort
+      handleAbort,
+      multipleValue,
+      singleValue
     };
   }
 });
@@ -287,7 +300,7 @@ export default defineComponent({
 
     <q-upload-file-multiple
       v-if="multiple"
-      :value="value"
+      :value="multipleValue"
       :is-disabled="isDisabled"
       :is-clearable="clearable"
       :text-uploaded-files="textUploadedFiles"
@@ -297,8 +310,8 @@ export default defineComponent({
     />
     <template v-else>
       <q-upload-file-single
-        v-if="value"
-        :value="value"
+        v-if="singleValue"
+        :value="singleValue"
         :is-loading="isLoading"
         :is-disabled="isDisabled"
         :is-clearable="clearable"

@@ -94,6 +94,7 @@ export interface QSelectInstance {
   emitValueUpdate: (value: QSelectPropModelValue) => void;
   toggleMenu: (event: MouseEvent | KeyboardEvent) => void;
   handleEnterKeyUp: (event: KeyboardEvent) => void;
+  handleInputKeyUp: (event: KeyboardEvent) => void;
   onInputChange: () => void;
   deleteTag: (tag: QOptionModel) => void;
   afterLeave: () => void;

@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, computed } from 'vue';
 
 import { t } from '@/qComponents/locale';
@@ -12,11 +12,11 @@ const storyMetadata: Meta = {
   title: 'Components/QBreadcrumbs',
   component: QBreadcrumbs,
   argTypes: {
-    linkComponent: { control: { type: 'none' } }
+    linkComponent: { control: false }
   }
 };
 
-const Template: Story<QBreadcrumbsProps> = args =>
+const Template: StoryFn<QBreadcrumbsProps> = args =>
   defineComponent({
     setup() {
       const route = computed<QBreadcrumbsPropRoute>(() => {

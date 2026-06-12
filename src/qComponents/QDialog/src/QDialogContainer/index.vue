@@ -9,7 +9,7 @@ import {
   onMounted,
   onBeforeUnmount
 } from 'vue';
-import type { PropType } from 'vue';
+import type { PropType, StyleValue } from 'vue';
 
 import { getConfig } from '@/qComponents/config';
 import { isServer } from '@/qComponents/constants/isServer';
@@ -95,14 +95,12 @@ export default defineComponent({
     const isShown = ref<boolean>(false);
     const zIndex = getConfig('nextZIndex');
 
-    const dialogStyle = computed<Record<string, Nullable<number | string>>>(
-      () => ({
-        zIndex,
-        top: Number(props.offsetTop)
-          ? `${Number(props.offsetTop)}px`
-          : props.offsetTop
-      })
-    );
+    const dialogStyle = computed<StyleValue>(() => ({
+      zIndex,
+      top: Number(props.offsetTop)
+        ? `${Number(props.offsetTop)}px`
+        : (props.offsetTop ?? undefined)
+    }));
 
     const preparedContent = computed<QDialogComponent>(() => {
       if (isExternalComponent(props.content)) {

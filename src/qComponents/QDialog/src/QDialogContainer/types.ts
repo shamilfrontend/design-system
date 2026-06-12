@@ -1,4 +1,4 @@
-import type { ComputedRef, Ref } from 'vue';
+import type { ComputedRef, Ref, StyleValue } from 'vue';
 
 import type { Nullable } from '#/helpers';
 
@@ -32,7 +32,7 @@ export interface QDialogContainerInstance {
   dialog: Ref<Nullable<HTMLElement>>;
   zIndex: number;
   isShown: Ref<boolean>;
-  dialogStyle: ComputedRef<Record<string, Nullable<string | number>>>;
+  dialogStyle: ComputedRef<StyleValue>;
   preparedContent: ComputedRef<QDialogComponent>;
   afterLeave: () => void;
   emitCloseEvent: () => void;

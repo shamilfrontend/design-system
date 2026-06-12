@@ -34,9 +34,9 @@ export interface TooltipStyles {
 
 export interface QSliderButtonInstance {
   btnClasses: ComputedRef<BtnClasses>;
-  btnStyles: ComputedRef<BtnStyles>;
+  btnStyles: ComputedRef<CSSProperties>;
   isTooltipHidden: ComputedRef<boolean>;
   tooltipClasses: ComputedRef<ClassValue>;
-  tooltipStyles: ComputedRef<TooltipStyles>;
+  tooltipStyles: ComputedRef<CSSProperties>;
   handleBtnDown: (event: MouseEvent) => void;
 }

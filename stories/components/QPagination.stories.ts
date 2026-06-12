@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QPagination } from '@/qComponents/QPagination';
@@ -9,7 +9,7 @@ const storyMetadata: Meta = {
   component: QPagination
 };
 
-const QPaginationStory: Story<QPaginationProps> = args =>
+const QPaginationStory: StoryFn<QPaginationProps> = args =>
   defineComponent({
     components: { QPagination },
     setup() {

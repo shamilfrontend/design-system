@@ -20,7 +20,7 @@ export const createNotification = (
   config?: QNotificationOptions,
   mountContainer = true
 ): QNotify => {
-  if (config?.list) notifyList.value = config.list;
+  if (config?.list) notifyList.value = config.list.value;
 
   const closeNotify = (id: QNotifyId): void => {
     if (!id) return;

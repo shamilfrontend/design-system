@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QCascader } from '@/qComponents/QCascader';
@@ -8,11 +8,11 @@ const storyMetadata: Meta = {
   title: 'Components/QCascader',
   component: QCascader,
   argTypes: {
-    modelValue: { control: { type: 'none' } }
+    modelValue: { control: false }
   }
 };
 
-const Template: Story<QCascaderProps> = args =>
+const Template: StoryFn<QCascaderProps> = args =>
   defineComponent({
     setup() {
       const modelValue = ref(null);

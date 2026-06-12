@@ -1,4 +1,4 @@
-import type { Story } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import type {
@@ -15,7 +15,7 @@ import {
   loadingRowCount
 } from './args';
 
-const QTableStory: Story<QTableProps> = args =>
+const QTableStory: StoryFn<QTableProps> = args =>
   defineComponent({
     setup() {
       const checkedRows = ref<QTablePropCheckedRows>(args.checkedRows ?? null);

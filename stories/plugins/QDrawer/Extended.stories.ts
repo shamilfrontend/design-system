@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineAsyncComponent, defineComponent } from 'vue';
 
 import { useDrawer } from '@/qComponents';
@@ -9,8 +9,8 @@ const storyMetadata: Meta = {
   title: 'Plugins/QDrawer/Extended',
   component: QDrawerContainer,
   argTypes: {
-    content: { control: { type: 'none' } },
-    teleportTo: { control: { type: 'none' } },
+    content: { control: false },
+    teleportTo: { control: false },
     position: {
       options: ['left', 'right'],
       control: { type: 'inline-radio' }
@@ -18,7 +18,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QDrawerStoryComponent: Story<QDrawerOptions> = args =>
+const QDrawerStoryComponent: StoryFn<QDrawerOptions> = args =>
   defineComponent({
     setup() {
       const drawer = useDrawer();

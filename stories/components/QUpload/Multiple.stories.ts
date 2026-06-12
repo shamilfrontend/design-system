@@ -1,4 +1,4 @@
-import type { Story, Meta } from '@storybook/vue3';
+import type { StoryFn, Meta } from '@storybook/vue3';
 import { defineComponent, reactive } from 'vue';
 
 import { QUpload } from '@/qComponents/QUpload';
@@ -16,7 +16,7 @@ const storyMetadata: Meta = {
   title: 'Components/QUpload/Multiple',
   component: QUpload,
   argTypes: {
-    multiple: { control: { type: 'none' } },
+    multiple: { control: false },
     direction: {
       options: ['right', 'bottom'],
       control: { type: 'select' }
@@ -24,7 +24,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QUploadStoryMultiple: Story<QUploadProps> = args =>
+const QUploadStoryMultiple: StoryFn<QUploadProps> = args =>
   defineComponent({
     setup() {
       const formModel = reactive<FormModel>({ files: [] });

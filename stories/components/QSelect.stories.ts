@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, watch, reactive } from 'vue';
 
 import { QOption } from '@/qComponents/QOption';
@@ -10,8 +10,8 @@ const storyMetadata: Meta = {
   component: QSelect,
   subcomponents: { QOption },
   argTypes: {
-    modelValue: { control: { type: 'none' } },
-    loading: { control: { type: 'none' } }
+    modelValue: { control: false },
+    loading: { control: false }
   }
 };
 
@@ -45,7 +45,7 @@ const options = [
   }
 ];
 
-const Template: Story<QSelectProps> = args =>
+const Template: StoryFn<QSelectProps> = args =>
   defineComponent({
     setup() {
       const state = reactive({
@@ -134,7 +134,7 @@ const Template: Story<QSelectProps> = args =>
     `
   });
 
-export const Default: Story<QSelectProps> = Template.bind({});
+export const Default: StoryFn<QSelectProps> = Template.bind({});
 Default.args = {
   ...Default.args,
   filterable: true,
@@ -142,7 +142,7 @@ Default.args = {
   placeholder: 'Pick an option'
 };
 
-export const Multiple: Story<QSelectProps> = Template.bind({});
+export const Multiple: StoryFn<QSelectProps> = Template.bind({});
 Multiple.args = {
   ...Multiple.args,
   multiple: true,

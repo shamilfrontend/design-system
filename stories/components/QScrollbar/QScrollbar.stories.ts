@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
 import { QScrollbar } from '@/qComponents/QScrollbar';
@@ -17,7 +17,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QScrollbarStory: Story<QScrollbarProps> = args =>
+const QScrollbarStory: StoryFn<QScrollbarProps> = args =>
   defineComponent({
     components: { QScrollbar },
 

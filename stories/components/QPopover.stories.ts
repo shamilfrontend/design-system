@@ -1,5 +1,5 @@
 import { placements } from '@popperjs/core/lib/enums';
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
 import { QPopover } from '@/qComponents/QPopover';
@@ -17,7 +17,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QPopoverStory: Story<QPopoverProps> = args =>
+const QPopoverStory: StoryFn<QPopoverProps> = args =>
   defineComponent({
     components: { QPopover },
     setup() {

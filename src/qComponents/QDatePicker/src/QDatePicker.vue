@@ -820,7 +820,7 @@ export default defineComponent({
           :is="panelComponent"
           v-show="state.pickerVisible"
           ref="panel"
-          :model-value="transformedToDate"
+          :model-value="transformedToDate as any"
           @pick="handlePickClick"
         />
       </transition>

@@ -1,9 +1,8 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import type { PropType } from 'vue';
+import type { CSSProperties, PropType } from 'vue';
 
 import type {
-  BarStyle,
   QSliderBarPropSize,
   QSliderBarProps,
   QSliderBarInstance
@@ -20,7 +19,7 @@ export default defineComponent({
   },
 
   setup(props: QSliderBarProps): QSliderBarInstance {
-    const barStyle = computed<BarStyle>(() => ({
+    const barStyle = computed<CSSProperties>(() => ({
       width: props.size ?? undefined
     }));
 

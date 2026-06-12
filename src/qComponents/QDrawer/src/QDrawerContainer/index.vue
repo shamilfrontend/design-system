@@ -9,7 +9,7 @@ import {
   onMounted,
   onBeforeUnmount
 } from 'vue';
-import type { PropType } from 'vue';
+import type { PropType, StyleValue } from 'vue';
 
 import { getConfig } from '@/qComponents/config';
 import { isServer } from '@/qComponents/constants/isServer';
@@ -113,11 +113,11 @@ export default defineComponent({
     const zIndex = getConfig('nextZIndex');
     let isFocusTrapEnabled = false;
 
-    const drawerStyle = computed<Record<string, Nullable<string | number>>>(
-      () => ({
-        width: Number(props.width) ? `${Number(props.width)}px` : props.width
-      })
-    );
+    const drawerStyle = computed<StyleValue>(() => ({
+      width: Number(props.width)
+        ? `${Number(props.width)}px`
+        : (props.width ?? undefined)
+    }));
 
     const drawerClass = computed<string>(
       () => `q-drawer-container__wrapper_${props.position}`

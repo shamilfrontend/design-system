@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QTag } from '@/qComponents/QTag';
@@ -9,7 +9,7 @@ const storyMetadata: Meta = {
   component: QTag
 };
 
-const QTagStory: Story<QTagProps> = args =>
+const QTagStory: StoryFn<QTagProps> = args =>
   defineComponent({
     components: { QTag },
     setup() {

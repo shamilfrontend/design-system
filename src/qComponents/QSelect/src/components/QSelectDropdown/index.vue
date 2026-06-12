@@ -159,7 +159,9 @@ export default defineComponent({
             .map(({ key }) => key) ?? [];
 
         const getKey = (value: QOptionPropValue): string | number => {
-          return isPlainObject(value) ? get(value, valueKey) : value;
+          if (isPlainObject(value)) return get(value, valueKey);
+
+          return value as string | number;
         };
 
         ctx.emit(

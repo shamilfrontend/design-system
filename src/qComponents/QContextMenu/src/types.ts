@@ -1,4 +1,4 @@
-import type { Ref } from 'vue';
+import type { Ref, VNodeRef } from 'vue';
 
 import type { Nullable } from '#/helpers';
 
@@ -25,6 +25,6 @@ export interface QContextMenuInstance {
   isContextMenuShown: Ref<boolean>;
   handleTriggerClick: (e: MouseEvent) => void;
   handleItemClick: (actionName: string) => void;
-  setItemRef: (el: HTMLElement) => void;
+  setItemRef: VNodeRef;
   afterLeave: () => void;
 }

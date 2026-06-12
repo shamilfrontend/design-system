@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
 import { QButton } from '@/qComponents/QButton';
@@ -37,7 +37,7 @@ const storyMetadata: Meta = {
 
 type StoryArgs = QButtonProps & Record<'label', string>;
 
-const Template: Story<StoryArgs> = args =>
+const Template: StoryFn<StoryArgs> = args =>
   defineComponent({
     setup() {
       const handleClick = (event: MouseEvent): void => {

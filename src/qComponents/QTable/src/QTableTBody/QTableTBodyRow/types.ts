@@ -3,6 +3,7 @@ import type { ComputedRef, StyleValue } from 'vue';
 import type { Nullable, ClassValue } from '#/helpers';
 
 import type { ExtendedColumn } from '../../QTableContainer/types';
+import type { QTableTBodyCellPropValue } from '../QTableTBodyCell/types';
 
 export type QTableTBodyRowPropRow = Record<string, unknown>;
 
@@ -18,7 +19,7 @@ export interface QTableTBodyRowInstance {
   rootStyles: ComputedRef<StyleValue>;
   randId: (prefix: string) => string;
   columnList: ComputedRef<ExtendedColumn[]>;
-  getRowValue: (key: string) => Nullable<unknown>;
+  getRowValue: (key: string) => QTableTBodyCellPropValue;
   handleRowClick: () => void;
   handleCheckboxChange: () => void;
 }

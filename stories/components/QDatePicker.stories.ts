@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { addMonths, startOfYesterday, subMonths, subWeeks } from 'date-fns';
 import { defineComponent, reactive, watch } from 'vue';
 
@@ -14,7 +14,7 @@ const storyMetadata: Meta = {
   title: 'Components/QDatePicker',
   component: QDatePicker,
   argTypes: {
-    'v-model': { control: { type: 'none' } },
+    'v-model': { control: false },
     disabledValues: {
       options: [
         null,
@@ -56,7 +56,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const Template: Story<QDatePickerProps> = args =>
+const Template: StoryFn<QDatePickerProps> = args =>
   defineComponent({
     setup() {
       const state = reactive({

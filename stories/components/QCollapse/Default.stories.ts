@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QCollapse } from '@/qComponents/QCollapse';
@@ -10,13 +10,13 @@ const storyMetadata: Meta = {
   component: QCollapse,
   subcomponents: { QCollapseItem },
   argTypes: {
-    modelValue: { control: { type: 'none' } },
-    openIcon: { control: { type: 'none' } },
-    closeIcon: { control: { type: 'none' } }
+    modelValue: { control: false },
+    openIcon: { control: false },
+    closeIcon: { control: false }
   }
 };
 
-const QCollapseStory: Story<QCollapseProps> = args =>
+const QCollapseStory: StoryFn<QCollapseProps> = args =>
   defineComponent({
     setup() {
       const activeNames = ref<string[]>(['1']);

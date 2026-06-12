@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QCheckbox } from '@/qComponents/QCheckbox';
@@ -24,7 +24,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const Template: Story<QCheckboxProps> = args =>
+const Template: StoryFn<QCheckboxProps> = args =>
   defineComponent({
     setup() {
       const isChecked = ref<boolean>(!!args.modelValue);

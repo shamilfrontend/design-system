@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
 import { QContextMenu } from '@/qComponents/QContextMenu';
@@ -12,7 +12,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QContextMenuStory: Story<QContextMenuProps> = args =>
+const QContextMenuStory: StoryFn<QContextMenuProps> = args =>
   defineComponent({
     setup() {
       const handleAction = (action: string): void => {

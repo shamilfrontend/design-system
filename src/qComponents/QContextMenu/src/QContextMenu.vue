@@ -14,6 +14,7 @@ import {
   onUnmounted,
   onBeforeUpdate
 } from 'vue';
+import type { VNodeRef } from 'vue';
 
 import { getConfig } from '@/qComponents/config';
 import { isServer } from '@/qComponents/constants/isServer';
@@ -78,8 +79,8 @@ export default defineComponent({
 
     let menuItemElements: HTMLElement[] = [];
 
-    const setItemRef = (el: HTMLElement): void => {
-      if (el) menuItemElements.push(el);
+    const setItemRef: VNodeRef = el => {
+      if (el instanceof HTMLElement) menuItemElements.push(el);
     };
 
     const createPopper = (): void => {

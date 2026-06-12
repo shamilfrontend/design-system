@@ -1,4 +1,4 @@
-import type { Story, Meta } from '@storybook/vue3';
+import type { StoryFn, Meta } from '@storybook/vue3';
 import { defineComponent, defineAsyncComponent } from 'vue';
 
 import { useMessageBox } from '@/qComponents';
@@ -9,12 +9,12 @@ const storyMetadata: Meta = {
   title: 'Plugins/QMessageBox/Extended',
   component: QMessageBoxContainer,
   argTypes: {
-    content: { control: { type: 'none' } },
-    teleportTo: { control: { type: 'none' } }
+    content: { control: false },
+    teleportTo: { control: false }
   }
 };
 
-const QMessageBoxExtendedStory: Story<QMessageBoxOptions> = args =>
+const QMessageBoxExtendedStory: StoryFn<QMessageBoxOptions> = args =>
   defineComponent({
     setup() {
       const messageBox = useMessageBox();

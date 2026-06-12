@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QSwitch } from '@/qComponents';
@@ -9,14 +9,14 @@ const storyMetadata: Meta = {
   component: QSwitch,
 
   argTypes: {
-    modelValue: { control: { type: 'none' } },
-    validateEvent: { control: { type: 'none' } },
+    modelValue: { control: false },
+    validateEvent: { control: false },
     activeValue: { control: { type: 'text' } },
     inactiveValue: { control: { type: 'text' } }
   }
 };
 
-const QSwitchStory: Story<QSwitchProps> = args =>
+const QSwitchStory: StoryFn<QSwitchProps> = args =>
   defineComponent({
     setup() {
       const isOn = ref(true);

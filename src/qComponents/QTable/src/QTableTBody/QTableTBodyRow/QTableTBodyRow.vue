@@ -5,7 +5,7 @@ import type { PropType, StyleValue } from 'vue';
 
 import { randId } from '@/qComponents/helpers';
 
-import type { Nullable, ClassValue } from '#/helpers';
+import type { ClassValue } from '#/helpers';
 
 import QTableCellCheckbox from '../../QTableCellCheckbox/QTableCellCheckbox.vue';
 import type {
@@ -14,6 +14,7 @@ import type {
 } from '../../QTableContainer/types';
 import type { QTableProvider } from '../../types';
 import QTableTBodyCell from '../QTableTBodyCell/QTableTBodyCell.vue';
+import type { QTableTBodyCellPropValue } from '../QTableTBodyCell/types';
 
 import type {
   QTableTBodyRowProps,
@@ -93,8 +94,22 @@ export default defineComponent({
       () => qTableContainer?.columnList.value ?? []
     );
 
-    const getRowValue = (key: string): Nullable<unknown> =>
-      get(props.row, key, null);
+    const getRowValue = (key: string): QTableTBodyCellPropValue => {
+      const value = get(props.row, key, null);
+
+      if (value === null) return null;
+      if (
+        typeof value === 'string' ||
+        typeof value === 'number' ||
+        typeof value === 'boolean'
+      ) {
+        return value;
+      }
+      if (Array.isArray(value)) return value;
+      if (typeof value === 'object') return value as Record<string, unknown>;
+
+      return null;
+    };
 
     const handleCheckboxChange = (): void => {
       if (!qTable) return;

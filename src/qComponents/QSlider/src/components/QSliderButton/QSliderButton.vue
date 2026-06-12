@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, computed, onBeforeUnmount } from 'vue';
-import type { PropType } from 'vue';
+import type { CSSProperties, PropType } from 'vue';
 
 import type { ClassValue } from '#/helpers';
 
@@ -15,8 +15,6 @@ import type {
   QSliderButtonPropPathWidth,
   QSliderButtonProps,
   BtnClasses,
-  BtnStyles,
-  TooltipStyles,
   QSliderButtonInstance
 } from './types';
 
@@ -67,7 +65,7 @@ export default defineComponent({
         props.tooltipMode === 'always'
     }));
 
-    const btnStyles = computed<BtnStyles>(() => ({
+    const btnStyles = computed<CSSProperties>(() => ({
       left: props.position ?? undefined
     }));
 
@@ -78,7 +76,7 @@ export default defineComponent({
         props.currentValue === null
     );
 
-    const tooltipStyles = computed<TooltipStyles>(() => ({
+    const tooltipStyles = computed<CSSProperties>(() => ({
       left: props.position ?? undefined
     }));
 

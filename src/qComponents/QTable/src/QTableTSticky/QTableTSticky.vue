@@ -47,8 +47,8 @@ export default defineComponent({
       {}
     );
 
-    const setColRef = (el: HTMLElement, key: number | string): void => {
-      if (el) colRefs.value[String(key)] = el;
+    const setColRef = (el: unknown, key: number | string): void => {
+      if (el instanceof HTMLElement) colRefs.value[String(key)] = el;
     };
 
     const getSizes = (): void => {

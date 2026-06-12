@@ -8,7 +8,8 @@ import {
   startOfWeek,
   endOfWeek,
   isToday,
-  Locale
+  Locale,
+  Day
 } from 'date-fns';
 import { ru, enGB as en, zhHK as zh } from 'date-fns/locale';
 import { throttle } from 'lodash-es';
@@ -97,7 +98,9 @@ export default defineComponent({
 
     const days = computed<string[]>(() => {
       const DAYS_OF_WEEK = [...Array(DAYS_IN_WEEK).keys()].map(i =>
-        locales[getConfig('locale')]?.localize?.day(i, { width: 'short' })
+        locales[getConfig('locale')]?.localize?.day(i as Day, {
+          width: 'short'
+        })
       );
 
       const day = picker.firstDayOfWeek.value;

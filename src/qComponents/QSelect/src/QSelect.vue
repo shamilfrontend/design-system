@@ -405,8 +405,10 @@ export default defineComponent({
       );
     });
 
-    const getKey = (value: QSelectPropModelValue): string => {
-      return isPlainObject(value) ? get(value, props.valueKey ?? '') : value;
+    const getKey = (value: QSelectPropModelValue): string | number => {
+      if (isPlainObject(value)) return get(value, props.valueKey ?? '');
+
+      return value as string | number;
     };
 
     const getOption = (
@@ -637,7 +639,7 @@ export default defineComponent({
             }
           }
 
-          nextTick(dropdown.value?.scrollbar?.update);
+          nextTick(() => dropdown.value?.scrollbar?.update());
         }
 
         ctx.emit('visible-change', val);
@@ -803,6 +805,20 @@ export default defineComponent({
       }
     };
 
+    const handleInputKeyUp = (event: KeyboardEvent): void => {
+      onInputChange();
+
+      if (event.key === 'Enter') {
+        handleEnterKeyUp(event);
+      }
+
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        event.preventDefault();
+        state.isDropdownShown = false;
+      }
+    };
+
     const addOption = (optionInstance: QOptionModel): void => {
       state.options.push(optionInstance);
     };
@@ -880,6 +896,7 @@ export default defineComponent({
       emitValueUpdate,
       toggleMenu,
       handleEnterKeyUp,
+      handleInputKeyUp,
       onInputChange,
       deleteTag,
       afterLeave,
@@ -912,9 +929,7 @@ export default defineComponent({
         :tabindex="multiple && filterable ? '-1' : null"
         @focus="handleFocus"
         @blur="handleBlur"
-        @keyup="onInputChange"
-        @keyup.enter="handleEnterKeyUp"
-        @keyup.esc.stop.prevent="state.isDropdownShown = false"
+        @keyup="handleInputKeyUp"
         @keydown.tab="state.isDropdownShown = false"
         @paste="onInputChange"
       >

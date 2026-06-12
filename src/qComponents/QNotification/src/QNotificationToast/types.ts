@@ -3,14 +3,14 @@ import type { ComputedRef } from 'vue';
 import type { Nullable } from '#/helpers';
 
 import type { NotifyType } from '../constants';
-import type { QNotifyContent } from '../types';
+import type { QNotifyContent, QNotifyId } from '../types';
 
 export type QNotificationToastPropType = NotifyType;
-export type QNotificationToastPropOnClose = Nullable<(id: string) => void>;
+export type QNotificationToastPropOnClose = Nullable<(id: QNotifyId) => void>;
 export type QNotificationToastPropContent = QNotifyContent;
 
 export interface QNotificationToastProps {
-  uniqId: string;
+  uniqId: QNotifyId;
   content: QNotificationToastPropContent;
   type: QNotificationToastPropType;
   icon: Nullable<string>;

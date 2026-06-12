@@ -63,12 +63,12 @@ export default defineComponent({
       const currentSlot = qSlider?.slots.caption;
 
       if (currentSlot) {
-        return props.data.map(({ value, style, label, slotData }) => ({
-          value,
-          style,
+        return props.data.map(item => ({
+          value: item.value,
+          style: item.style,
           slot: currentSlot({
-            data: slotData ?? {},
-            label
+            data: 'slotData' in item ? (item.slotData ?? {}) : {},
+            label: item.label
           })
         }));
       }

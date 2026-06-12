@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
 import { QRadio } from '@/qComponents/QRadio';
@@ -10,7 +10,7 @@ const storyMetadata: Meta = {
   component: QRadioGroup,
   subcomponents: { QRadio },
   argTypes: {
-    modelValue: { control: { type: 'none' } },
+    modelValue: { control: false },
     direction: {
       options: ['vertical', 'horizontal'],
       control: { type: 'inline-radio' }
@@ -18,7 +18,7 @@ const storyMetadata: Meta = {
   }
 };
 
-const QRadioGroupStory: Story<QRadioGroupProps> = args =>
+const QRadioGroupStory: StoryFn<QRadioGroupProps> = args =>
   defineComponent({
     components: { QRadio, QRadioGroup },
     setup() {

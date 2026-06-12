@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/vue3';
+import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, reactive, ref } from 'vue';
 
 import { QForm } from '@/qComponents/QForm';
@@ -18,7 +18,7 @@ const storyMetadata: Meta = {
   subcomponents: { QFormItem },
   argTypes: {
     rules: { control: { type: 'object' } },
-    model: { control: { type: 'none' } }
+    model: { control: false }
   }
 };
 
@@ -39,7 +39,7 @@ const INITIAL_RULES: QFormPropRules = {
   }
 };
 
-const QFormStory: Story<QFormProps> = args =>
+const QFormStory: StoryFn<QFormProps> = args =>
   defineComponent({
     setup() {
       const form = ref<UnwrappedInstance<QFormInstance>>(null);
