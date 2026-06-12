@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import { addMonths, subMonths, isSameMonth } from 'date-fns';
 import { isNil } from 'lodash-es';
 import type { PropType } from 'vue';
@@ -9,8 +9,10 @@ import {
   watch,
   ref,
   onMounted,
-  defineComponent
+  useSlots
 } from 'vue';
+
+import { t } from '@/qComponents/locale';
 
 import type { Nullable, ClassValue } from '#/helpers';
 
@@ -36,347 +38,293 @@ import {
 
 import type {
   DatePanelRangePropModelValue,
-  DateRangePanelInstance,
-  DateRangePanelProps,
   DateRangePanelState
 } from './types';
 
-export default defineComponent({
-  name: 'QDatePickerPanelDateRange',
+defineOptions({
+  name: 'QDatePickerPanelDateRange'
+});
 
-  components: {
-    DateTable
+const props = defineProps({
+  modelValue: {
+    type: Array as PropType<DatePanelRangePropModelValue>,
+    default: null
+  }
+});
+
+const emit = defineEmits(['pick']);
+
+const slots = useSlots();
+
+const state = reactive<DateRangePanelState>({
+  minDate: null,
+  maxDate: null,
+  leftDate: new Date(),
+  rightDate: addMonths(new Date(), 1),
+  rangeState: {
+    hoveredDate: null,
+    pickedDate: null,
+    selecting: false
   },
+  panelInFocus: null,
+  dateCells: null,
+  monthCells: null,
+  yearCells: null,
+  lastFocusedCellIndex: 0
+});
 
-  props: {
-    modelValue: {
-      type: Array as PropType<DatePanelRangePropModelValue>,
-      default: null
+const picker = inject<QDatePickerProvider>(
+  'qDatePicker',
+  {} as QDatePickerProvider
+);
+const root = ref<Nullable<HTMLElement>>(null);
+const leftPanel = ref<Nullable<HTMLElement>>(null);
+const rightPanel = ref<Nullable<HTMLElement>>(null);
+
+const shortcuts = picker.shortcuts;
+const isMobileView = picker.isMobileView;
+
+const leftLabel = computed<string>(() =>
+  getLabelFromDate(state.leftDate, picker.type.value)
+);
+const rightLabel = computed<string>(() =>
+  getLabelFromDate(state.rightDate, picker.type.value)
+);
+const leftYear = computed<number>(() => leftYearComposable(state.leftDate));
+
+const leftMonth = computed<number>(() => getActualMonth(state.leftDate));
+const rightMonth = computed<number>(() => getActualMonth(state.rightDate, 1));
+
+const rightPanelClasses = computed<ClassValue>(() => ({
+  'q-picker-panel__content': true,
+  'q-picker-panel__content_no-left-borders': true,
+  'q-picker-panel__content_focused': state.panelInFocus === 'right'
+}));
+
+const leftPanelClasses = computed<ClassValue>(() => ({
+  'q-picker-panel__content': true,
+  'q-picker-panel__content_no-left-borders': Boolean(
+    slots.sidebar || picker.shortcuts.value?.length
+  ),
+  'q-picker-panel__content_no-right-borders': true,
+  'q-picker-panel__content_focused': state.panelInFocus === 'left'
+}));
+
+const rightYear = computed<number>(() => state.rightDate.getFullYear());
+const enableMonthArrow = computed<boolean>(() => {
+  if (picker.isMobileView.value) return true;
+  const nextMonth = (leftMonth.value + 1) % 12;
+  const yearOffset = leftMonth.value + 1 >= 12 ? 1 : 0;
+  return (
+    new Date(leftYear.value + yearOffset, nextMonth) <
+    new Date(rightYear.value, rightMonth.value)
+  );
+});
+
+const enableYearArrow = computed<boolean>(() => {
+  if (picker.isMobileView.value) return true;
+  return Boolean(
+    rightYear.value * MONTHS_COUNT +
+      rightMonth.value -
+      (leftYear.value * MONTHS_COUNT + leftMonth.value + 1) >=
+    MONTHS_COUNT
+  );
+});
+
+function handleRangeSelecting(value: RangeState): void {
+  state.rangeState = value;
+}
+
+function handleRangePick(val: RangePickValue, close = true): void {
+  const { maxDate, minDate, rangeState } = getRangeChangedState(
+    val,
+    state.rangeState,
+    'daterange'
+  );
+  state.maxDate = maxDate;
+  state.minDate = minDate;
+  state.rangeState = rangeState;
+
+  picker.emit('intermediateChange', [minDate, maxDate]);
+
+  if (!close) return;
+
+  if (isValidValue([minDate, maxDate]) && state.minDate && state.maxDate) {
+    emit('pick', [state.minDate, state.maxDate]);
+  }
+}
+
+function handleClear(): void {
+  state.minDate = null;
+  state.maxDate = null;
+  state.leftDate = new Date();
+  state.rightDate = addMonths(new Date(), 1);
+  state.rangeState = {
+    hoveredDate: null,
+    pickedDate: null,
+    selecting: false
+  };
+}
+
+function handleLeftPrevMonthClick(): void {
+  state.leftDate = subMonths(state.leftDate, 1);
+}
+
+function handleRightNextMonthClick(): void {
+  state.rightDate = addMonths(state.rightDate, 1);
+}
+
+function handleLeftPrevYearClick(): void {
+  state.leftDate = useLeftPrevYearClick(state.leftDate);
+}
+
+function handleLeftNextYearClick(): void {
+  state.leftDate = useLeftNextYearClick(state.leftDate);
+}
+
+function handleRightNextYearClick(): void {
+  state.rightDate = useRightNextYearClick(state.rightDate);
+}
+
+function handleRightPrevYearClick(): void {
+  state.rightDate = useRightPrevYearClick(state.rightDate);
+}
+
+function handleLeftNextMonthClick(): void {
+  state.leftDate = addMonths(state.leftDate, 1);
+}
+
+function handleRightPrevMonthClick(): void {
+  state.rightDate = subMonths(state.rightDate, 1);
+}
+
+function setPanelFocus(): void {
+  if (leftPanel.value?.contains(document.activeElement)) {
+    state.panelInFocus = 'left';
+  } else if (rightPanel.value?.contains(document.activeElement)) {
+    state.panelInFocus = 'right';
+  }
+}
+
+function moveWithinDates(e: KeyboardEvent): void {
+  let currentNodeIndex;
+  let nextNodeIndex;
+  if (!state.dateCells?.length) return;
+  Array.from(state.dateCells).some((element, index) => {
+    const isItActiveElement = document.activeElement === element;
+    if (isItActiveElement) currentNodeIndex = index;
+    return isItActiveElement;
+  });
+
+  if (isNil(currentNodeIndex)) return;
+
+  switch (e.key) {
+    case 'ArrowUp':
+      nextNodeIndex = currentNodeIndex - DATE_CELLS_IN_ROW_COUNT;
+      break;
+
+    case 'ArrowRight':
+      if (
+        state.panelInFocus === 'left' &&
+        (currentNodeIndex + 1) % DATE_CELLS_IN_ROW_COUNT === 0
+      ) {
+        nextNodeIndex = DATE_CELLS_COUNT;
+        setPanelFocus();
+        break;
+      }
+      nextNodeIndex = currentNodeIndex + 1;
+      break;
+
+    case 'ArrowLeft':
+      if (
+        state.panelInFocus === 'right' &&
+        (currentNodeIndex - DATE_CELLS_IN_ROW_COUNT) %
+          DATE_CELLS_IN_ROW_COUNT ===
+          0
+      ) {
+        nextNodeIndex = DATE_CELLS_IN_ROW_COUNT - 1;
+        setPanelFocus();
+      } else {
+        nextNodeIndex = currentNodeIndex - 1;
+      }
+
+      break;
+
+    case 'ArrowDown':
+      nextNodeIndex = currentNodeIndex + DATE_CELLS_IN_ROW_COUNT;
+      break;
+    default:
+      break;
+  }
+
+  if (isNil(nextNodeIndex)) return;
+
+  const node = state.dateCells[nextNodeIndex];
+  const newIndex = nextNodeIndex % DATE_CELLS_IN_ROW_COUNT;
+  if (node) {
+    node.focus();
+    state.lastFocusedCellIndex = nextNodeIndex;
+  } else if (!isNil(state.lastFocusedCellIndex)) {
+    if (nextNodeIndex > state.lastFocusedCellIndex) {
+      handleRightNextMonthClick();
+      handleLeftNextMonthClick();
+      state.dateCells[newIndex]?.focus();
+    } else if (nextNodeIndex < state.lastFocusedCellIndex) {
+      handleLeftPrevMonthClick();
+      handleRightPrevMonthClick();
+      state.dateCells?.[DATE_CELLS_COUNT + newIndex]?.focus();
     }
-  },
+  }
+}
 
-  emits: ['pick'],
+function navigateDropdown(e: KeyboardEvent): void {
+  if (e.key !== 'Tab') {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains('cell_date')) {
+      moveWithinDates(e);
+    } else {
+      state.dateCells?.[0]?.focus();
+    }
+  }
 
-  setup(props: DateRangePanelProps, ctx): DateRangePanelInstance {
-    const state = reactive<DateRangePanelState>({
-      minDate: null,
-      maxDate: null,
-      leftDate: new Date(),
-      rightDate: addMonths(new Date(), 1),
-      rangeState: {
-        hoveredDate: null,
-        pickedDate: null,
-        selecting: false
-      },
-      panelInFocus: null,
-      dateCells: null,
-      monthCells: null,
-      yearCells: null,
-      lastFocusedCellIndex: 0
-    });
+  setPanelFocus();
+}
 
-    const picker = inject<QDatePickerProvider>(
-      'qDatePicker',
-      {} as QDatePickerProvider
-    );
-    const root = ref<Nullable<HTMLElement>>(null);
-    const leftPanel = ref<Nullable<HTMLElement>>(null);
-    const rightPanel = ref<Nullable<HTMLElement>>(null);
+function handleShortcutClick(shortcut: Date): void {
+  picker.emitChange(shortcut, false);
+}
 
-    const transformedValue = computed<Date[]>(() =>
-      Array.isArray(props.modelValue) ? props.modelValue : []
-    );
-
-    const btnDisabled = computed<boolean>(() => {
-      return !(
+watch(
+  () => props.modelValue,
+  newVal => {
+    if (!newVal || !newVal.length) {
+      handleClear();
+    } else {
+      state.minDate = newVal[0];
+      state.maxDate = newVal[1];
+      if (
         state.minDate &&
         state.maxDate &&
-        !state.rangeState.selecting &&
-        isValidValue([state.minDate, state.maxDate])
-      );
-    });
-
-    const leftLabel = computed<string>(() =>
-      getLabelFromDate(state.leftDate, picker.type.value)
-    );
-    const rightLabel = computed<string>(() =>
-      getLabelFromDate(state.rightDate, picker.type.value)
-    );
-    const leftYear = computed<number>(() => leftYearComposable(state.leftDate));
-
-    const leftMonth = computed<number>(() => getActualMonth(state.leftDate));
-    const rightMonth = computed<number>(() =>
-      getActualMonth(state.rightDate, 1)
-    );
-
-    const isLeftTimeDisabled = computed<boolean>(
-      () => !transformedValue.value[0]
-    );
-
-    const rightPanelClasses = computed<ClassValue>(() => ({
-      'q-picker-panel__content': true,
-      'q-picker-panel__content_no-left-borders': true,
-      'q-picker-panel__content_focused': state.panelInFocus === 'right'
-    }));
-
-    const leftPanelClasses = computed<ClassValue>(() => ({
-      'q-picker-panel__content': true,
-      'q-picker-panel__content_no-left-borders': Boolean(
-        ctx.slots.sidebar || picker.shortcuts.value?.length
-      ),
-      'q-picker-panel__content_no-right-borders': true,
-      'q-picker-panel__content_focused': state.panelInFocus === 'left'
-    }));
-
-    const rightYear = computed<number>(() => state.rightDate.getFullYear());
-    const enableMonthArrow = computed<boolean>(() => {
-      if (picker.isMobileView.value) return true;
-      const nextMonth = (leftMonth.value + 1) % 12;
-      const yearOffset = leftMonth.value + 1 >= 12 ? 1 : 0;
-      return (
-        new Date(leftYear.value + yearOffset, nextMonth) <
-        new Date(rightYear.value, rightMonth.value)
-      );
-    });
-
-    const enableYearArrow = computed<boolean>(() => {
-      if (picker.isMobileView.value) return true;
-      return Boolean(
-        rightYear.value * MONTHS_COUNT +
-          rightMonth.value -
-          (leftYear.value * MONTHS_COUNT + leftMonth.value + 1) >=
-        MONTHS_COUNT
-      );
-    });
-
-    const handleRangeSelecting = (value: RangeState): void => {
-      state.rangeState = value;
-    };
-
-    const handleRangePick = (val: RangePickValue, close = true): void => {
-      const { maxDate, minDate, rangeState } = getRangeChangedState(
-        val,
-        state.rangeState,
-        'daterange'
-      );
-      state.maxDate = maxDate;
-      state.minDate = minDate;
-      state.rangeState = rangeState;
-
-      // emit QDatepicker intermediate value
-      picker.emit('intermediateChange', [minDate, maxDate]);
-
-      if (!close) return;
-
-      if (isValidValue([minDate, maxDate])) {
-        ctx.emit('pick', [state.minDate, state.maxDate]);
+        isSameMonth(state.minDate, state.maxDate)
+      ) {
+        state.leftDate = state.minDate;
+        state.rightDate = addMonths(state.minDate, 1);
+      } else {
+        state.leftDate = state.minDate;
+        state.rightDate = state.maxDate;
       }
-    };
+    }
+  },
+  { immediate: true }
+);
 
-    const handleClear = (): void => {
-      state.minDate = null;
-      state.maxDate = null;
-      state.leftDate = new Date();
-      state.rightDate = addMonths(new Date(), 1);
-      state.rangeState = {
-        hoveredDate: null,
-        pickedDate: null,
-        selecting: false
-      };
-    };
+onMounted(() => {
+  if (!root.value) return;
+  state.dateCells = root.value.querySelectorAll('.q-date-table .cell');
+});
 
-    const handleLeftPrevMonthClick = (): void => {
-      state.leftDate = subMonths(state.leftDate, 1);
-    };
-
-    const handleRightNextMonthClick = (): void => {
-      state.rightDate = addMonths(state.rightDate, 1);
-    };
-
-    const handleLeftPrevYearClick = (): void => {
-      state.leftDate = useLeftPrevYearClick(state.leftDate);
-    };
-
-    const handleLeftNextYearClick = (): void => {
-      state.leftDate = useLeftNextYearClick(state.leftDate);
-    };
-
-    const handleRightNextYearClick = (): void => {
-      state.rightDate = useRightNextYearClick(state.rightDate);
-    };
-
-    const handleRightPrevYearClick = (): void => {
-      state.rightDate = useRightPrevYearClick(state.rightDate);
-    };
-
-    const handleLeftNextMonthClick = (): void => {
-      state.leftDate = addMonths(state.leftDate, 1);
-    };
-
-    const handleRightPrevMonthClick = (): void => {
-      state.rightDate = subMonths(state.rightDate, 1);
-    };
-
-    const setPanelFocus = (): void => {
-      if (leftPanel.value?.contains(document.activeElement)) {
-        state.panelInFocus = 'left';
-      } else if (rightPanel.value?.contains(document.activeElement)) {
-        state.panelInFocus = 'right';
-      }
-    };
-
-    const moveWithinDates = (e: KeyboardEvent): void => {
-      let currentNodeIndex;
-      let nextNodeIndex;
-      if (!state.dateCells?.length) return;
-      Array.from(state.dateCells).some((element, index) => {
-        const isItActiveElement = document.activeElement === element;
-        if (isItActiveElement) currentNodeIndex = index;
-        return isItActiveElement;
-      });
-
-      if (isNil(currentNodeIndex)) return;
-
-      switch (e.key) {
-        case 'ArrowUp':
-          nextNodeIndex = currentNodeIndex - DATE_CELLS_IN_ROW_COUNT;
-          break;
-
-        case 'ArrowRight':
-          if (
-            state.panelInFocus === 'left' &&
-            (currentNodeIndex + 1) % DATE_CELLS_IN_ROW_COUNT === 0
-          ) {
-            nextNodeIndex = DATE_CELLS_COUNT;
-            setPanelFocus();
-            break;
-          }
-          nextNodeIndex = currentNodeIndex + 1;
-          break;
-
-        case 'ArrowLeft':
-          if (
-            state.panelInFocus === 'right' &&
-            (currentNodeIndex - DATE_CELLS_IN_ROW_COUNT) %
-              DATE_CELLS_IN_ROW_COUNT ===
-              0
-          ) {
-            nextNodeIndex = DATE_CELLS_IN_ROW_COUNT - 1;
-            setPanelFocus();
-          } else {
-            nextNodeIndex = currentNodeIndex - 1;
-          }
-
-          break;
-
-        case 'ArrowDown':
-          nextNodeIndex = currentNodeIndex + DATE_CELLS_IN_ROW_COUNT;
-          break;
-        default:
-          break;
-      }
-
-      if (isNil(nextNodeIndex)) return;
-
-      const node = state.dateCells[nextNodeIndex];
-      const newIndex = nextNodeIndex % DATE_CELLS_IN_ROW_COUNT;
-      if (node) {
-        node.focus();
-        state.lastFocusedCellIndex = nextNodeIndex;
-      } else if (!isNil(state.lastFocusedCellIndex)) {
-        if (nextNodeIndex > state.lastFocusedCellIndex) {
-          handleRightNextMonthClick();
-          handleLeftNextMonthClick();
-          state.dateCells[newIndex]?.focus();
-        } else if (nextNodeIndex < state.lastFocusedCellIndex) {
-          handleLeftPrevMonthClick();
-          handleRightPrevMonthClick();
-          state.dateCells?.[DATE_CELLS_COUNT + newIndex]?.focus();
-        }
-      }
-    };
-
-    const navigateDropdown = (e: KeyboardEvent): void => {
-      if (e.key !== 'Tab') {
-        const target = e.target as HTMLElement;
-        if (target.classList.contains('cell_date')) {
-          moveWithinDates(e);
-        } else {
-          state.dateCells?.[0]?.focus();
-        }
-      }
-
-      setPanelFocus();
-    };
-
-    const handleShortcutClick = (shortcut: Date): void => {
-      picker.emitChange(shortcut, false);
-    };
-
-    watch(
-      () => props.modelValue,
-      newVal => {
-        if (!newVal || !newVal.length) {
-          handleClear();
-        } else {
-          state.minDate = newVal[0];
-          state.maxDate = newVal[1];
-          if (
-            state.minDate &&
-            state.maxDate &&
-            isSameMonth(state.minDate, state.maxDate)
-          ) {
-            state.leftDate = state.minDate;
-            state.rightDate = addMonths(state.minDate, 1);
-          } else {
-            state.leftDate = state.minDate;
-            state.rightDate = state.maxDate;
-          }
-        }
-      },
-      { immediate: true }
-    );
-
-    onMounted(() => {
-      if (!root.value) return;
-      state.dateCells = root.value.querySelectorAll('.q-date-table .cell');
-    });
-
-    return {
-      state,
-      root,
-      leftPanel,
-      rightPanel,
-      transformedValue,
-      btnDisabled,
-      enableMonthArrow,
-      isLeftTimeDisabled,
-      enableYearArrow,
-      rightPanelClasses,
-      leftPanelClasses,
-      rightYear,
-      leftYear,
-      leftLabel,
-      rightLabel,
-      leftMonth,
-      rightMonth,
-      handleRangePick,
-      handleClear,
-      handleShortcutClick,
-      handleLeftNextYearClick,
-      handleLeftPrevYearClick,
-      handleRightNextYearClick,
-      handleRightPrevYearClick,
-      handleLeftPrevMonthClick,
-      handleLeftNextMonthClick,
-      handleRightNextMonthClick,
-      handleRightPrevMonthClick,
-      handleRangeSelecting,
-      navigateDropdown,
-      shortcuts: picker.shortcuts,
-      isMobileView: picker.isMobileView
-    };
-  }
+defineExpose({
+  navigateDropdown
 });
 </script>
 
@@ -409,11 +357,15 @@ export default defineComponent({
           <div class="q-picker-panel__header">
             <button
               type="button"
+              :title="t('QDatePicker.prevYear')"
+              :aria-label="t('QDatePicker.prevYear')"
               class="q-picker-panel__icon-btn q-icon-double-triangle-left"
               @click="handleLeftPrevYearClick"
             />
             <button
               type="button"
+              :title="t('QDatePicker.prevMonth')"
+              :aria-label="t('QDatePicker.prevMonth')"
               class="q-picker-panel__icon-btn q-icon-triangle-left"
               @click="handleLeftPrevMonthClick"
             />
@@ -421,12 +373,16 @@ export default defineComponent({
             <button
               type="button"
               :disabled="!enableMonthArrow"
+              :title="t('QDatePicker.nextMonth')"
+              :aria-label="t('QDatePicker.nextMonth')"
               class="q-picker-panel__icon-btn q-icon-triangle-right"
               @click="handleLeftNextMonthClick"
             />
             <button
               type="button"
               :disabled="!enableYearArrow"
+              :title="t('QDatePicker.nextYear')"
+              :aria-label="t('QDatePicker.nextYear')"
               class="q-picker-panel__icon-btn q-icon-double-triangle-right"
               @click="handleLeftNextYearClick"
             />
@@ -451,6 +407,8 @@ export default defineComponent({
             <button
               type="button"
               :disabled="!enableYearArrow"
+              :title="t('QDatePicker.prevYear')"
+              :aria-label="t('QDatePicker.prevYear')"
               :class="{ 'q-picker-panel__icon-btn_disabled': !enableYearArrow }"
               class="q-picker-panel__icon-btn q-icon-double-triangle-left"
               @click="handleRightPrevYearClick"
@@ -458,6 +416,8 @@ export default defineComponent({
             <button
               type="button"
               :disabled="!enableMonthArrow"
+              :title="t('QDatePicker.prevMonth')"
+              :aria-label="t('QDatePicker.prevMonth')"
               :class="{
                 'q-picker-panel__icon-btn_disabled': !enableMonthArrow
               }"
@@ -469,11 +429,15 @@ export default defineComponent({
             </div>
             <button
               type="button"
+              :title="t('QDatePicker.nextMonth')"
+              :aria-label="t('QDatePicker.nextMonth')"
               class="q-picker-panel__icon-btn q-icon-triangle-right"
               @click="handleRightNextMonthClick"
             />
             <button
               type="button"
+              :title="t('QDatePicker.nextYear')"
+              :aria-label="t('QDatePicker.nextYear')"
               class="q-picker-panel__icon-btn q-icon-double-triangle-right"
               @click="handleRightNextYearClick"
             />

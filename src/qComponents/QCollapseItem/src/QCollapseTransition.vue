@@ -1,7 +1,7 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-import type { QCollapseTransitionInstance } from './types';
+<script setup lang="ts">
+defineOptions({
+  name: 'QCollapseTransition'
+});
 
 const on = {
   beforeEnter(el: HTMLElement): void {
@@ -62,14 +62,6 @@ const on = {
     el.style.paddingBottom = el.dataset.oldPaddingBottom ?? '';
   }
 };
-
-export default defineComponent({
-  name: 'QCollapseTransition',
-
-  setup(): QCollapseTransitionInstance {
-    return { on };
-  }
-});
 </script>
 
 <template>

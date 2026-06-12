@@ -11,6 +11,7 @@ export interface QCheckboxGroupProps {
   max: Nullable<number>;
   tag: Nullable<string>;
   direction: QCheckboxGroupPropDirection;
+  ariaLabel: Nullable<string>;
 }
 
 export interface QCheckboxGroupProvider {

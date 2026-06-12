@@ -26,6 +26,7 @@ export interface QButtonProps {
   autofocus: QButtonPropAutofocus;
   circle: QButtonPropCircle;
   fullWidth: QButtonPropFullWidth;
+  ariaLabel: Nullable<string>;
 }
 
 export interface QButtonInstance {

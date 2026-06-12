@@ -1,6 +1,5 @@
-<script lang="ts">
+<script setup lang="ts">
 import {
-  defineComponent,
   getCurrentInstance,
   ref,
   computed,
@@ -9,7 +8,7 @@ import {
   onMounted,
   onBeforeUnmount
 } from 'vue';
-import type { PropType, StyleValue } from 'vue';
+import type { PropType, Ref, StyleValue } from 'vue';
 
 import { getConfig } from '@/qComponents/config';
 import { isServer } from '@/qComponents/constants/isServer';
@@ -23,170 +22,162 @@ import type {
   QDialogContainerPropContent,
   QDialogContainerPropBeforeClose,
   QDialogContainerPropTeleportTo,
-  QDialogContainerProps,
-  QDialogContainerInstance,
   QDialogContainerProvider
 } from './types';
 import { isExternalComponent } from './utils';
 
-export default defineComponent({
+defineOptions({
   name: 'QDialogContainer',
-  componentName: 'QDialogContainer',
+  componentName: 'QDialogContainer'
+});
 
-  props: {
-    content: {
-      type: [Object, Function] as PropType<QDialogContainerPropContent>,
-      required: true
-    },
-    /**
-     * offset from top border of parent relative element
-     */
-    offsetTop: {
-      type: [String, Number],
-      default: null
-    },
-    /**
-     * whether to distinguish canceling and closing the QDialog
-     */
-    distinguishCancelAndClose: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * cancel focus on document.activeElement after QDialog was closed
-     */
-    preventFocusAfterClosing: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Extra class names for QDialog's wrapper
-     */
-    customClass: {
-      type: String,
-      default: null
-    },
-    /**
-     * callback before QDialog closes, and it will prevent QDialog from closing
-     */
-    beforeClose: {
-      type: Function as unknown as PropType<QDialogContainerPropBeforeClose>,
-      default: null
-    },
-    /**
-     * Specifies a target element where QDialog will be moved.
-     * (has to be a valid query selector, or an HTMLElement)
-     */
-    teleportTo: {
-      type: [
-        String,
-        isServer ? Object : HTMLElement
-      ] as PropType<QDialogContainerPropTeleportTo>,
-      default: null
-    }
+const props = defineProps({
+  content: {
+    type: [Object, Function] as PropType<QDialogContainerPropContent>,
+    required: true
   },
-
-  emits: ['done', 'remove'],
-
-  setup(props: QDialogContainerProps, ctx): QDialogContainerInstance {
-    const instance = getCurrentInstance();
-
-    const dialog = ref<Nullable<HTMLElement>>(null);
-    const isShown = ref<boolean>(false);
-    const zIndex = getConfig('nextZIndex');
-
-    const dialogStyle = computed<StyleValue>(() => ({
-      zIndex,
-      top: Number(props.offsetTop)
-        ? `${Number(props.offsetTop)}px`
-        : (props.offsetTop ?? undefined)
-    }));
-
-    const preparedContent = computed<QDialogComponent>(() => {
-      if (isExternalComponent(props.content)) {
-        return { props: {}, listeners: {}, ...props.content };
-      }
-
-      return { component: props.content, props: {}, listeners: {} };
-    });
-
-    const elementToFocusAfterClosing: Nullable<HTMLElement> =
-      document.activeElement as Nullable<HTMLElement>;
-
-    const handleDocumentFocus = (event: FocusEvent): void => {
-      const dialogValue = dialog.value;
-      if (dialogValue && !dialogValue.contains(event.target as HTMLElement)) {
-        dialogValue.focus();
-      }
-    };
-
-    const afterLeave = (): void => {
-      ctx.emit('remove');
-    };
-
-    const commitBeforeClose = async (
-      action: QDialogAction
-    ): Promise<boolean> => {
-      let isReadyToClose = true;
-
-      if (typeof props.beforeClose === 'function') {
-        isReadyToClose = await props.beforeClose(action);
-      }
-
-      return isReadyToClose;
-    };
-
-    const emitDoneEvent = async ({
-      action,
-      payload = null
-    }: QDialogEvent): Promise<void> => {
-      const isDone = await commitBeforeClose(action);
-
-      if (isDone) ctx.emit('done', { action, payload });
-
-      isShown.value = false;
-    };
-
-    const emitCloseEvent = (): void => {
-      emitDoneEvent({
-        action: props.distinguishCancelAndClose
-          ? QDialogAction.close
-          : QDialogAction.cancel
-      });
-    };
-
-    onMounted(async () => {
-      document.body.appendChild(instance?.vnode.el as Node);
-      document.body.style.overflow = 'hidden';
-      document.addEventListener('focus', handleDocumentFocus, true);
-
-      await nextTick();
-      isShown.value = true;
-      await nextTick();
-      dialog.value?.focus();
-    });
-
-    onBeforeUnmount(() => {
-      document.body.style.overflow = '';
-      document.removeEventListener('focus', handleDocumentFocus, true);
-      if (!props.preventFocusAfterClosing) elementToFocusAfterClosing?.focus();
-    });
-
-    provide<QDialogContainerProvider>('qDialogContainer', {
-      emitDoneEvent,
-      emitCloseEvent
-    });
-
-    return {
-      dialog,
-      zIndex,
-      isShown,
-      dialogStyle,
-      preparedContent,
-      afterLeave,
-      emitCloseEvent
-    };
+  /**
+   * offset from top border of parent relative element
+   */
+  offsetTop: {
+    type: [String, Number],
+    default: null
+  },
+  /**
+   * whether to distinguish canceling and closing the QDialog
+   */
+  distinguishCancelAndClose: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * cancel focus on document.activeElement after QDialog was closed
+   */
+  preventFocusAfterClosing: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * Extra class names for QDialog's wrapper
+   */
+  customClass: {
+    type: String,
+    default: null
+  },
+  /**
+   * callback before QDialog closes, and it will prevent QDialog from closing
+   */
+  beforeClose: {
+    type: Function as unknown as PropType<QDialogContainerPropBeforeClose>,
+    default: null
+  },
+  /**
+   * Specifies a target element where QDialog will be moved.
+   * (has to be a valid query selector, or an HTMLElement)
+   */
+  teleportTo: {
+    type: [
+      String,
+      isServer ? Object : HTMLElement
+    ] as PropType<QDialogContainerPropTeleportTo>,
+    default: null
   }
+});
+
+const emit = defineEmits<{
+  done: [event: QDialogEvent];
+  remove: [];
+}>();
+
+const instance = getCurrentInstance();
+
+const dialog = ref<Nullable<HTMLElement>>(null);
+const isShown = ref<boolean>(false);
+const zIndex = getConfig('nextZIndex');
+const dialogTitleId = ref<string | undefined>();
+
+const dialogStyle = computed<StyleValue>(() => ({
+  zIndex,
+  top: Number(props.offsetTop)
+    ? `${Number(props.offsetTop)}px`
+    : (props.offsetTop ?? undefined)
+}));
+
+const preparedContent = computed<QDialogComponent>(() => {
+  if (isExternalComponent(props.content)) {
+    return { props: {}, listeners: {}, ...props.content };
+  }
+
+  return { component: props.content, props: {}, listeners: {} };
+});
+
+const elementToFocusAfterClosing: Nullable<HTMLElement> =
+  document.activeElement as Nullable<HTMLElement>;
+
+const handleDocumentFocus = (event: FocusEvent): void => {
+  const dialogValue = dialog.value;
+  if (dialogValue && !dialogValue.contains(event.target as HTMLElement)) {
+    dialogValue.focus();
+  }
+};
+
+const afterLeave = (): void => {
+  emit('remove');
+};
+
+const commitBeforeClose = async (action: QDialogAction): Promise<boolean> => {
+  let isReadyToClose = true;
+
+  if (typeof props.beforeClose === 'function') {
+    isReadyToClose = await props.beforeClose(action);
+  }
+
+  return isReadyToClose;
+};
+
+const emitDoneEvent = async ({
+  action,
+  payload = null
+}: QDialogEvent): Promise<void> => {
+  const isDone = await commitBeforeClose(action);
+
+  if (isDone) emit('done', { action, payload });
+
+  isShown.value = false;
+};
+
+const emitCloseEvent = (): void => {
+  emitDoneEvent({
+    action: props.distinguishCancelAndClose
+      ? QDialogAction.close
+      : QDialogAction.cancel
+  });
+};
+
+onMounted(async () => {
+  document.body.appendChild(instance?.vnode.el as Node);
+  document.body.style.overflow = 'hidden';
+  document.addEventListener('focus', handleDocumentFocus, true);
+
+  await nextTick();
+  isShown.value = true;
+  await nextTick();
+  dialog.value?.focus();
+});
+
+onBeforeUnmount(() => {
+  document.body.style.overflow = '';
+  document.removeEventListener('focus', handleDocumentFocus, true);
+  if (!props.preventFocusAfterClosing) elementToFocusAfterClosing?.focus();
+});
+
+provide<QDialogContainerProvider>('qDialogContainer', {
+  emitDoneEvent,
+  emitCloseEvent
+});
+
+provide<{ dialogTitleId: Ref<string | undefined> }>('qDialogA11y', {
+  dialogTitleId
 });
 </script>
 
@@ -203,6 +194,9 @@ export default defineComponent({
       >
         <div
           ref="dialog"
+          role="dialog"
+          aria-modal="true"
+          :aria-labelledby="dialogTitleId"
           tabindex="-1"
           class="q-dialog-container__wrapper"
           :class="customClass"

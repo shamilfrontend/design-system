@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent, ref, computed, onUnmounted, inject } from 'vue';
+<script setup lang="ts">
+import { ref, computed, onUnmounted, inject } from 'vue';
 import type { PropType, CSSProperties } from 'vue';
 
 import { validateArray } from '@/qComponents/helpers';
@@ -9,177 +9,147 @@ import type { Nullable, ClassValue } from '#/helpers';
 import type { QScrollbarProvider } from '../../types';
 
 import { BAR_MAP } from './constants';
-import type {
-  QBarProps,
-  QBarPropType,
-  QBarPropTheme,
-  QBarPropSize,
-  QBarPropMove,
-  BarMapItem,
-  QBarInstance
-} from './types';
+import type { QBarPropType, QBarPropTheme, BarMapItem } from './types';
 import { renderThumbStyle } from './util';
 
-export default defineComponent({
+defineOptions({
   name: 'QBar',
+  componentName: 'QBar'
+});
 
-  componentName: 'QBar',
-
-  props: {
-    type: {
-      type: String as PropType<QBarPropType>,
-      default: 'horizontal',
-      validator: validateArray<QBarPropType>(['horizontal', 'vertical'])
-    },
-
-    theme: {
-      type: String as PropType<QBarPropTheme>,
-      default: null
-    },
-
-    size: {
-      type: String as PropType<QBarPropSize>,
-      default: '0'
-    },
-
-    move: {
-      type: Number as PropType<QBarPropMove>,
-      default: null
-    }
+const props = defineProps({
+  type: {
+    type: String as PropType<QBarPropType>,
+    default: 'horizontal',
+    validator: validateArray<QBarPropType>(['horizontal', 'vertical'])
   },
 
-  setup(props: QBarProps): QBarInstance {
-    const qScrollbar = inject<QScrollbarProvider>('qScrollbar');
+  theme: {
+    type: String as PropType<QBarPropTheme>,
+    default: null
+  },
 
-    const root = ref<Nullable<HTMLElement>>(null);
-    const thumb = ref<Nullable<HTMLElement>>(null);
-    const cursorDown = ref<boolean>(false);
+  size: {
+    type: String,
+    default: '0'
+  },
 
-    let axis = 0;
-
-    const bar = computed<BarMapItem>(() => {
-      if (!props.type) return BAR_MAP.horizontal;
-
-      return BAR_MAP[props.type];
-    });
-
-    const thumbStyles = computed<CSSProperties>(() =>
-      renderThumbStyle(props.move ?? 0, props.size ?? '0', bar.value)
-    );
-
-    const thumbClasses = computed<ClassValue>(() => ({
-      'q-scrollbar__thumb': true,
-      'q-scrollbar__thumb_secondary': props?.theme === 'secondary'
-    }));
-
-    const rootClasses = computed<ClassValue>(() => ({
-      [`q-scrollbar__bar_${bar.value.key}`]: true,
-      'q-scrollbar__bar_secondary': props?.theme === 'secondary'
-    }));
-
-    const wrap = computed<Nullable<HTMLElement>>(
-      () => qScrollbar?.wrap.value ?? null
-    );
-
-    const scrollToPx = (px: number): void => {
-      const wrapValue = wrap?.value;
-      if (wrapValue) wrapValue[bar.value.scroll] = px;
-    };
-
-    const handleTrackerClick = (e: MouseEvent): void => {
-      if (!thumb.value || !root.value || !wrap?.value) return;
-
-      const target = e.target as HTMLElement;
-      const offset = Math.abs(
-        target.getBoundingClientRect()[bar.value.direction] -
-          e[bar.value.client]
-      );
-      const thumbHalf = thumb.value[bar.value.offset] / 2;
-      const thumbPositionPercentage =
-        ((offset - thumbHalf) * 100) / (root.value[bar.value.offset] ?? 0);
-
-      scrollToPx(
-        (thumbPositionPercentage * wrap.value[bar.value.scrollSize]) / 100
-      );
-    };
-
-    const mouseMoveDocumentHandler = (e: MouseEvent): void => {
-      if (!cursorDown.value || !root.value || !thumb.value || !wrap?.value)
-        return;
-      const prevPage = axis;
-
-      if (!prevPage) return;
-
-      const offset =
-        (root.value.getBoundingClientRect()[bar.value.direction] -
-          e[bar.value.client]) *
-        -1;
-
-      const thumbClickPosition = thumb.value[bar.value.offset] - prevPage;
-      const thumbPositionPercentage =
-        ((offset - thumbClickPosition) * 100) /
-        (root.value?.[bar.value.offset] ?? 1);
-
-      scrollToPx(
-        (thumbPositionPercentage * wrap.value[bar.value.scrollSize]) / 100
-      );
-    };
-
-    const mouseUpDocumentHandler = (): void => {
-      cursorDown.value = false;
-      axis = 0;
-
-      document.removeEventListener(
-        'mousemove',
-        mouseMoveDocumentHandler,
-        false
-      );
-      document.onselectstart = null;
-    };
-
-    const startDrag = (e: MouseEvent): void => {
-      e.stopImmediatePropagation();
-      cursorDown.value = true;
-
-      document.addEventListener('mousemove', mouseMoveDocumentHandler, false);
-      document.addEventListener('mouseup', mouseUpDocumentHandler, false);
-      document.onselectstart = (): boolean => false;
-    };
-
-    const handleThumbClick = (e: MouseEvent): void => {
-      // prevent click event of right button
-      if (e.ctrlKey || e.button === 2) return;
-
-      startDrag(e);
-
-      const target = e.currentTarget as HTMLElement;
-      axis =
-        target[bar.value.offset] -
-        (e[bar.value.client] -
-          target.getBoundingClientRect()[bar.value.direction]);
-    };
-
-    onUnmounted(() => {
-      document.removeEventListener('mouseup', mouseUpDocumentHandler, false);
-      document.removeEventListener(
-        'mousemove',
-        mouseMoveDocumentHandler,
-        false
-      );
-    });
-
-    return {
-      root,
-      thumb,
-      bar,
-      thumbStyles,
-      thumbClasses,
-      rootClasses,
-      handleThumbClick,
-      handleTrackerClick,
-      scrollToPx
-    };
+  move: {
+    type: Number,
+    default: null
   }
+});
+
+const qScrollbar = inject<QScrollbarProvider>('qScrollbar');
+
+const root = ref<Nullable<HTMLElement>>(null);
+const thumb = ref<Nullable<HTMLElement>>(null);
+const cursorDown = ref<boolean>(false);
+
+let axis = 0;
+
+const bar = computed<BarMapItem>(() => {
+  if (!props.type) return BAR_MAP.horizontal;
+
+  return BAR_MAP[props.type];
+});
+
+const thumbStyles = computed<CSSProperties>(() =>
+  renderThumbStyle(props.move ?? 0, props.size ?? '0', bar.value)
+);
+
+const thumbClasses = computed<ClassValue>(() => ({
+  'q-scrollbar__thumb': true,
+  'q-scrollbar__thumb_secondary': props?.theme === 'secondary'
+}));
+
+const rootClasses = computed<ClassValue>(() => ({
+  [`q-scrollbar__bar_${bar.value.key}`]: true,
+  'q-scrollbar__bar_secondary': props?.theme === 'secondary'
+}));
+
+const wrap = computed<Nullable<HTMLElement>>(
+  () => qScrollbar?.wrap.value ?? null
+);
+
+function scrollToPx(px: number): void {
+  const wrapValue = wrap?.value;
+  if (wrapValue) wrapValue[bar.value.scroll] = px;
+}
+
+function handleTrackerClick(e: MouseEvent): void {
+  if (!thumb.value || !root.value || !wrap?.value) return;
+
+  const target = e.target as HTMLElement;
+  const offset = Math.abs(
+    target.getBoundingClientRect()[bar.value.direction] - e[bar.value.client]
+  );
+  const thumbHalf = thumb.value[bar.value.offset] / 2;
+  const thumbPositionPercentage =
+    ((offset - thumbHalf) * 100) / (root.value[bar.value.offset] ?? 0);
+
+  scrollToPx(
+    (thumbPositionPercentage * wrap.value[bar.value.scrollSize]) / 100
+  );
+}
+
+function mouseMoveDocumentHandler(e: MouseEvent): void {
+  if (!cursorDown.value || !root.value || !thumb.value || !wrap?.value) return;
+  const prevPage = axis;
+
+  if (!prevPage) return;
+
+  const offset =
+    (root.value.getBoundingClientRect()[bar.value.direction] -
+      e[bar.value.client]) *
+    -1;
+
+  const thumbClickPosition = thumb.value[bar.value.offset] - prevPage;
+  const thumbPositionPercentage =
+    ((offset - thumbClickPosition) * 100) /
+    (root.value?.[bar.value.offset] ?? 1);
+
+  scrollToPx(
+    (thumbPositionPercentage * wrap.value[bar.value.scrollSize]) / 100
+  );
+}
+
+function mouseUpDocumentHandler(): void {
+  cursorDown.value = false;
+  axis = 0;
+
+  document.removeEventListener('mousemove', mouseMoveDocumentHandler, false);
+  document.onselectstart = null;
+}
+
+function startDrag(e: MouseEvent): void {
+  e.stopImmediatePropagation();
+  cursorDown.value = true;
+
+  document.addEventListener('mousemove', mouseMoveDocumentHandler, false);
+  document.addEventListener('mouseup', mouseUpDocumentHandler, false);
+  document.onselectstart = (): boolean => false;
+}
+
+function handleThumbClick(e: MouseEvent): void {
+  // prevent click event of right button
+  if (e.ctrlKey || e.button === 2) return;
+
+  startDrag(e);
+
+  const target = e.currentTarget as HTMLElement;
+  axis =
+    target[bar.value.offset] -
+    (e[bar.value.client] - target.getBoundingClientRect()[bar.value.direction]);
+}
+
+onUnmounted(() => {
+  document.removeEventListener('mouseup', mouseUpDocumentHandler, false);
+  document.removeEventListener('mousemove', mouseMoveDocumentHandler, false);
+});
+
+defineExpose({
+  scrollToPx
 });
 </script>
 
@@ -188,12 +158,14 @@ export default defineComponent({
     ref="root"
     class="q-scrollbar__bar"
     :class="rootClasses"
+    aria-hidden="true"
     @mousedown="handleTrackerClick"
   >
     <div
       ref="thumb"
       :class="thumbClasses"
       :style="thumbStyles"
+      aria-hidden="true"
       @mousedown="handleThumbClick"
     />
   </div>

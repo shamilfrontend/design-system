@@ -42,5 +42,24 @@ export default {
   },
   QBreadcrumbs: {
     ariaLabel: '面包屑导航'
+  },
+  QTag: {
+    close: '关闭'
+  },
+  QPagination: {
+    ariaLabel: '分页',
+    prevPage: '上一页',
+    nextPage: '下一页',
+    prevPages: '前几页',
+    nextPages: '后几页'
+  },
+  QContextMenu: {
+    ariaLabel: '打开菜单'
+  },
+  QNotification: {
+    close: '关闭通知'
+  },
+  QScrollbar: {
+    ariaLabel: '可滚动内容'
   }
 };

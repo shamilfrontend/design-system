@@ -1,6 +1,5 @@
-<script lang="ts">
+<script setup lang="ts">
 import {
-  defineComponent,
   getCurrentInstance,
   ref,
   computed,
@@ -10,7 +9,7 @@ import {
   inject,
   onBeforeUnmount
 } from 'vue';
-import type { PropType } from 'vue';
+import type { PropType, Ref } from 'vue';
 
 import type { QDrawerContainerProvider } from '@/qComponents';
 import { getConfig } from '@/qComponents/config';
@@ -30,201 +29,189 @@ import type {
   QMessageBoxContainerPropWrapStyle,
   QMessageBoxContainerPropBeforeClose,
   QMessageBoxContainerPropTeleportTo,
-  QMessageBoxContainerProps,
-  QMessageBoxContainerProvider,
-  QMessageBoxContainerInstance
+  QMessageBoxContainerProvider
 } from './types';
 import { isExternalComponent, isInternalComponent } from './utils';
 
-export default defineComponent({
+defineOptions({
   name: 'QMessageBoxContainer',
-  componentName: 'QMessageBoxContainer',
+  componentName: 'QMessageBoxContainer'
+});
 
-  components: {
-    QScrollbar
+const props = defineProps({
+  content: {
+    type: [Object, Function] as PropType<QMessageBoxContainerPropContent>,
+    required: true
   },
-
-  props: {
-    content: {
-      type: [Object, Function] as PropType<QMessageBoxContainerPropContent>,
-      required: true
-    },
-    /**
-     * whether QMessageBox can be closed by clicking the mask
-     */
-    closeOnClickShadow: {
-      type: Boolean,
-      default: true
-    },
-    /**
-     * whether to distinguish canceling and closing the QMessageBox
-     */
-    distinguishCancelAndClose: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * cancel focus on document.activeElement after QDrawer was closed
-     */
-    preventFocusAfterClosing: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * class list of the QMessageBox
-     */
-    wrapClass: {
-      type: [
-        String,
-        Object,
-        Array
-      ] as PropType<QMessageBoxContainerPropWrapClass>,
-      default: null
-    },
-    /**
-     * style list of the QMessageBox
-     */
-    wrapStyle: {
-      type: [
-        String,
-        Object,
-        Array
-      ] as PropType<QMessageBoxContainerPropWrapStyle>,
-      default: null
-    },
-    /**
-     * callback before QMessageBox closes, and it will prevent QMessageBox from closing
-     */
-    beforeClose: {
-      type: Function as unknown as PropType<QMessageBoxContainerPropBeforeClose>,
-      default: null
-    },
-    /**
-     * Specifies a target element where QMessageBox will be moved.
-     * (has to be a valid query selector, or an HTMLElement)
-     */
-    teleportTo: {
-      type: [
-        String,
-        isServer ? Object : HTMLElement
-      ] as PropType<QMessageBoxContainerPropTeleportTo>,
-      default: null
-    }
+  /**
+   * whether QMessageBox can be closed by clicking the mask
+   */
+  closeOnClickShadow: {
+    type: Boolean,
+    default: true
   },
+  /**
+   * whether to distinguish canceling and closing the QMessageBox
+   */
+  distinguishCancelAndClose: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * cancel focus on document.activeElement after QDrawer was closed
+   */
+  preventFocusAfterClosing: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * class list of the QMessageBox
+   */
+  wrapClass: {
+    type: [
+      String,
+      Object,
+      Array
+    ] as PropType<QMessageBoxContainerPropWrapClass>,
+    default: null
+  },
+  /**
+   * style list of the QMessageBox
+   */
+  wrapStyle: {
+    type: [
+      String,
+      Object,
+      Array
+    ] as PropType<QMessageBoxContainerPropWrapStyle>,
+    default: null
+  },
+  /**
+   * callback before QMessageBox closes, and it will prevent QMessageBox from closing
+   */
+  beforeClose: {
+    type: Function as unknown as PropType<QMessageBoxContainerPropBeforeClose>,
+    default: null
+  },
+  /**
+   * Specifies a target element where QMessageBox will be moved.
+   * (has to be a valid query selector, or an HTMLElement)
+   */
+  teleportTo: {
+    type: [
+      String,
+      isServer ? Object : HTMLElement
+    ] as PropType<QMessageBoxContainerPropTeleportTo>,
+    default: null
+  }
+});
 
-  emits: ['done', 'remove'],
+const emit = defineEmits<{
+  done: [event: QMessageBoxEvent];
+  remove: [];
+}>();
 
-  setup(props: QMessageBoxContainerProps, ctx): QMessageBoxContainerInstance {
-    const instance = getCurrentInstance();
+const instance = getCurrentInstance();
 
-    const qDrawerContainer = inject<Nillable<QDrawerContainerProvider>>(
-      'qDrawerContainer',
-      null
-    );
+const qDrawerContainer = inject<Nillable<QDrawerContainerProvider>>(
+  'qDrawerContainer',
+  null
+);
 
-    const messageBox = ref<Nullable<HTMLElement>>(null);
-    const isShown = ref<boolean>(false);
-    const zIndex = getConfig('nextZIndex');
+const messageBox = ref<Nullable<HTMLElement>>(null);
+const isShown = ref<boolean>(false);
+const zIndex = getConfig('nextZIndex');
+const dialogTitleId = ref<string | undefined>();
 
-    const preparedContent = computed<QMessageBoxComponent>(() => {
-      if (isExternalComponent(props.content)) {
-        return { props: {}, listeners: {}, ...props.content };
-      }
+const preparedContent = computed<QMessageBoxComponent>(() => {
+  if (isExternalComponent(props.content)) {
+    return { props: {}, listeners: {}, ...props.content };
+  }
 
-      if (isInternalComponent(props.content)) {
-        return {
-          component: QMessageBoxContent,
-          props: props.content,
-          listeners: {}
-        };
-      }
-
-      return { component: props.content, props: {}, listeners: {} };
-    });
-
-    const elementToFocusAfterClosing: Nullable<HTMLElement> =
-      document.activeElement as Nullable<HTMLElement>;
-
-    const handleDocumentFocus = (e: FocusEvent): void => {
-      const messageBoxValue = messageBox.value;
-      if (
-        messageBoxValue &&
-        !messageBoxValue.contains(e.target as HTMLElement)
-      ) {
-        messageBoxValue.focus();
-      }
-    };
-
-    const afterLeave = (): void => {
-      ctx.emit('remove');
-    };
-
-    const commitBeforeClose = async (
-      action: QMessageBoxAction
-    ): Promise<boolean> => {
-      let isReadyToClose = true;
-
-      if (typeof props.beforeClose === 'function') {
-        isReadyToClose = await props.beforeClose(action);
-      }
-
-      return isReadyToClose;
-    };
-
-    const emitDoneEvent = async ({
-      action,
-      payload = null
-    }: QMessageBoxEvent): Promise<void> => {
-      const isDone = await commitBeforeClose(action);
-
-      if (isDone) ctx.emit('done', { action, payload });
-
-      isShown.value = false;
-    };
-
-    const emitCloseEvent = (): void => {
-      emitDoneEvent({
-        action: props.distinguishCancelAndClose
-          ? QMessageBoxAction.close
-          : QMessageBoxAction.cancel
-      });
-    };
-
-    onMounted(async () => {
-      qDrawerContainer?.disableFocusTrap();
-
-      document.body.appendChild(instance?.vnode.el as Node);
-      document.documentElement.style.overflow = 'hidden';
-      document.addEventListener('focus', handleDocumentFocus, true);
-
-      await nextTick();
-      isShown.value = true;
-      await nextTick();
-      messageBox.value?.focus();
-    });
-
-    onBeforeUnmount(() => {
-      document.documentElement.style.overflow = '';
-      document.removeEventListener('focus', handleDocumentFocus, true);
-      if (!props.preventFocusAfterClosing) elementToFocusAfterClosing?.focus();
-
-      qDrawerContainer?.enableFocusTrap();
-    });
-
-    provide<QMessageBoxContainerProvider>('qMessageBoxContainer', {
-      emitDoneEvent,
-      emitCloseEvent
-    });
-
+  if (isInternalComponent(props.content)) {
     return {
-      messageBox,
-      zIndex,
-      isShown,
-      preparedContent,
-      afterLeave,
-      emitCloseEvent
+      component: QMessageBoxContent,
+      props: props.content,
+      listeners: {}
     };
   }
+
+  return { component: props.content, props: {}, listeners: {} };
+});
+
+const elementToFocusAfterClosing: Nullable<HTMLElement> =
+  document.activeElement as Nullable<HTMLElement>;
+
+const handleDocumentFocus = (e: FocusEvent): void => {
+  const messageBoxValue = messageBox.value;
+  if (messageBoxValue && !messageBoxValue.contains(e.target as HTMLElement)) {
+    messageBoxValue.focus();
+  }
+};
+
+const afterLeave = (): void => {
+  emit('remove');
+};
+
+const commitBeforeClose = async (
+  action: QMessageBoxAction
+): Promise<boolean> => {
+  let isReadyToClose = true;
+
+  if (typeof props.beforeClose === 'function') {
+    isReadyToClose = await props.beforeClose(action);
+  }
+
+  return isReadyToClose;
+};
+
+const emitDoneEvent = async ({
+  action,
+  payload = null
+}: QMessageBoxEvent): Promise<void> => {
+  const isDone = await commitBeforeClose(action);
+
+  if (isDone) emit('done', { action, payload });
+
+  isShown.value = false;
+};
+
+const emitCloseEvent = (): void => {
+  emitDoneEvent({
+    action: props.distinguishCancelAndClose
+      ? QMessageBoxAction.close
+      : QMessageBoxAction.cancel
+  });
+};
+
+onMounted(async () => {
+  qDrawerContainer?.disableFocusTrap();
+
+  document.body.appendChild(instance?.vnode.el as Node);
+  document.documentElement.style.overflow = 'hidden';
+  document.addEventListener('focus', handleDocumentFocus, true);
+
+  await nextTick();
+  isShown.value = true;
+  await nextTick();
+  messageBox.value?.focus();
+});
+
+onBeforeUnmount(() => {
+  document.documentElement.style.overflow = '';
+  document.removeEventListener('focus', handleDocumentFocus, true);
+  if (!props.preventFocusAfterClosing) elementToFocusAfterClosing?.focus();
+
+  qDrawerContainer?.enableFocusTrap();
+});
+
+provide<QMessageBoxContainerProvider>('qMessageBoxContainer', {
+  emitDoneEvent,
+  emitCloseEvent
+});
+
+provide<{ dialogTitleId: Ref<string | undefined> }>('qMessageBoxA11y', {
+  dialogTitleId
 });
 </script>
 
@@ -237,6 +224,9 @@ export default defineComponent({
       <div
         v-show="isShown"
         ref="messageBox"
+        role="dialog"
+        aria-modal="true"
+        :aria-labelledby="dialogTitleId"
         class="q-message-box-container"
         :class="wrapClass"
         :style="[wrapStyle, { zIndex }]"

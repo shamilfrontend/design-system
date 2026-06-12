@@ -1,13 +1,6 @@
-<script lang="ts">
-import {
-  defineComponent,
-  inject,
-  ref,
-  computed,
-  PropType,
-  onMounted,
-  watch
-} from 'vue';
+<script setup lang="ts">
+import { inject, ref, computed, onMounted, watch } from 'vue';
+import type { PropType } from 'vue';
 
 import { QScrollbar } from '@/qComponents/QScrollbar';
 
@@ -19,140 +12,116 @@ import QCascaderRow from '../QCascaderRow/QCascaderRow.vue';
 import type { Option, QCascaderProvider } from '../types';
 
 import { getSibling } from './helpers';
-import type {
-  QCascaderColumnPropColumn,
-  QCascaderColumnProps,
-  QCascaderColumnInstance
-} from './types';
+import type { QCascaderColumnPropColumn } from './types';
 
-const EXPAND_EVENT = 'expand';
-
-export default defineComponent({
+defineOptions({
   name: 'QCascaderColumn',
-  componentName: 'QCascaderColumn',
+  componentName: 'QCascaderColumn'
+});
 
-  components: {
-    QCascaderRow,
-    QScrollbar
+const props = defineProps({
+  columnIndex: {
+    type: Number,
+    required: true
   },
-
-  props: {
-    columnIndex: {
-      type: Number,
-      required: true
-    },
-    column: {
-      type: Array as PropType<QCascaderColumnPropColumn>,
-      required: true
-    }
-  },
-
-  setup(props: QCascaderColumnProps, ctx): QCascaderColumnInstance {
-    const qCascader = inject<QCascaderProvider>(
-      'qCascader',
-      {} as QCascaderProvider
-    );
-    const qCascaderDropdown = inject<QCascaderDropdownProvider>(
-      'qCascaderDropdown',
-      {} as QCascaderDropdownProvider
-    );
-    const root = ref<Nullable<HTMLElement>>(null);
-
-    const rootClasses = computed<Record<string, boolean>>(() => {
-      const columnList = qCascaderDropdown.columnList.value;
-
-      const prevRowsCount = columnList[props.columnIndex - 1]?.length ?? 0;
-      const currentRowsCount = props.column.length;
-      const nextRowsCount = columnList[props.columnIndex + 1]?.length ?? 0;
-
-      return {
-        'q-cascader-column': true,
-        'q-cascader-column_left-bottom-border':
-          currentRowsCount > prevRowsCount,
-        'q-cascader-column_right-bottom-border':
-          currentRowsCount > nextRowsCount
-      };
-    });
-
-    const checkExpanded = (rowIndex: number): boolean =>
-      qCascaderDropdown.expandedRows.value[props.columnIndex] === rowIndex;
-
-    const expandedRowIndex = ref<number>(0);
-
-    const handleRowExpand = (rowIndex: number, hasChildren: boolean): void => {
-      expandedRowIndex.value = rowIndex;
-      ctx.emit(EXPAND_EVENT, rowIndex, props.columnIndex, hasChildren);
-    };
-
-    const handleRowCheck = (row: Option, isExist: boolean): void => {
-      if (!qCascader.multiple.value || qCascader.checkStrictly.value) {
-        qCascader.updateValue(row.value, isExist);
-        return;
-      }
-
-      const leaves = findAllLeaves(row);
-      qCascader.updateValue(leaves, isExist);
-    };
-
-    const scrollTo = ref<Nullable<HTMLElement>>(null);
-
-    const handleScrollbarKeydown = (event: KeyboardEvent): void => {
-      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-        event.preventDefault();
-      }
-    };
-
-    const handleArrowUpDownKeyUp = (e: KeyboardEvent): void => {
-      const distance = e.key === 'ArrowUp' ? -1 : 1;
-      const target = e.target as HTMLElement;
-      const sibling = getSibling(target, distance);
-
-      if (!sibling) return;
-      sibling.focus();
-      scrollTo.value = sibling;
-    };
-
-    const focusRow = (index: Nullable<number> = null): void => {
-      const rowList = root.value?.querySelectorAll<HTMLElement>(
-        '.q-cascader-row[tabindex="-1"]'
-      );
-
-      rowList?.[index ?? 0]?.focus();
-    };
-
-    const handleArrowLeftKeyUp = (): void => {
-      const rowIndex =
-        qCascaderDropdown.expandedRows.value[props.columnIndex - 1];
-
-      ctx.emit(EXPAND_EVENT, rowIndex, props.columnIndex - 1, false);
-    };
-
-    const isLastColumn = computed<boolean>(
-      () => !qCascaderDropdown.columnList.value[props.columnIndex + 1]?.length
-    );
-
-    watch(isLastColumn, value => {
-      if (value) focusRow(expandedRowIndex.value);
-    });
-
-    onMounted(() => {
-      focusRow();
-    });
-
-    return {
-      root,
-      rootClasses,
-      scrollTo,
-      uniqueId: qCascader.uniqueId,
-      checkExpanded,
-      handleRowExpand,
-      handleRowCheck,
-      handleScrollbarKeydown,
-      handleArrowUpDownKeyUp,
-      handleArrowLeftKeyUp
-    };
+  column: {
+    type: Array as PropType<QCascaderColumnPropColumn>,
+    required: true
   }
 });
+
+const emit = defineEmits(['expand']);
+
+const qCascader = inject<QCascaderProvider>(
+  'qCascader',
+  {} as QCascaderProvider
+);
+const qCascaderDropdown = inject<QCascaderDropdownProvider>(
+  'qCascaderDropdown',
+  {} as QCascaderDropdownProvider
+);
+const root = ref<Nullable<HTMLElement>>(null);
+
+const rootClasses = computed<Record<string, boolean>>(() => {
+  const columnList = qCascaderDropdown.columnList.value;
+
+  const prevRowsCount = columnList[props.columnIndex - 1]?.length ?? 0;
+  const currentRowsCount = props.column.length;
+  const nextRowsCount = columnList[props.columnIndex + 1]?.length ?? 0;
+
+  return {
+    'q-cascader-column': true,
+    'q-cascader-column_left-bottom-border': currentRowsCount > prevRowsCount,
+    'q-cascader-column_right-bottom-border': currentRowsCount > nextRowsCount
+  };
+});
+
+function checkExpanded(rowIndex: number): boolean {
+  return qCascaderDropdown.expandedRows.value[props.columnIndex] === rowIndex;
+}
+
+const expandedRowIndex = ref<number>(0);
+
+function handleRowExpand(rowIndex: number, hasChildren: boolean): void {
+  expandedRowIndex.value = rowIndex;
+  emit('expand', rowIndex, props.columnIndex, hasChildren);
+}
+
+function handleRowCheck(row: Option, isExist: boolean): void {
+  if (!qCascader.multiple.value || qCascader.checkStrictly.value) {
+    qCascader.updateValue(row.value, isExist);
+    return;
+  }
+
+  const leaves = findAllLeaves(row);
+  qCascader.updateValue(leaves, isExist);
+}
+
+const scrollTo = ref<Nullable<HTMLElement>>(null);
+
+function handleScrollbarKeydown(event: KeyboardEvent): void {
+  if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+    event.preventDefault();
+  }
+}
+
+function handleArrowUpDownKeyUp(e: KeyboardEvent): void {
+  const distance = e.key === 'ArrowUp' ? -1 : 1;
+  const target = e.target as HTMLElement;
+  const sibling = getSibling(target, distance);
+
+  if (!sibling) return;
+  sibling.focus();
+  scrollTo.value = sibling;
+}
+
+function focusRow(index: Nullable<number> = null): void {
+  const rowList = root.value?.querySelectorAll<HTMLElement>(
+    '.q-cascader-row[tabindex="-1"]'
+  );
+
+  rowList?.[index ?? 0]?.focus();
+}
+
+function handleArrowLeftKeyUp(): void {
+  const rowIndex = qCascaderDropdown.expandedRows.value[props.columnIndex - 1];
+
+  emit('expand', rowIndex, props.columnIndex - 1, false);
+}
+
+const isLastColumn = computed<boolean>(
+  () => !qCascaderDropdown.columnList.value[props.columnIndex + 1]?.length
+);
+
+watch(isLastColumn, value => {
+  if (value) focusRow(expandedRowIndex.value);
+});
+
+onMounted(() => {
+  focusRow();
+});
+
+const uniqueId = qCascader.uniqueId;
 </script>
 
 <template>

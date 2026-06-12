@@ -42,5 +42,24 @@ export default {
   },
   QBreadcrumbs: {
     ariaLabel: 'Навигационная цепочка'
+  },
+  QTag: {
+    close: 'Закрыть'
+  },
+  QPagination: {
+    ariaLabel: 'Пагинация',
+    prevPage: 'Предыдущая страница',
+    nextPage: 'Следующая страница',
+    prevPages: 'Предыдущие страницы',
+    nextPages: 'Следующие страницы'
+  },
+  QContextMenu: {
+    ariaLabel: 'Открыть меню'
+  },
+  QNotification: {
+    close: 'Закрыть уведомление'
+  },
+  QScrollbar: {
+    ariaLabel: 'Прокручиваемая область'
   }
 };

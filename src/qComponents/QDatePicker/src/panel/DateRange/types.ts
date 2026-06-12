@@ -29,10 +29,7 @@ interface DateRangePanelInstance {
   root: Ref<Nullable<HTMLElement>>;
   leftPanel: Ref<Nullable<HTMLElement>>;
   rightPanel: Ref<Nullable<HTMLElement>>;
-  transformedValue: ComputedRef<Date[]>;
-  btnDisabled: ComputedRef<boolean>;
   enableMonthArrow: ComputedRef<boolean>;
-  isLeftTimeDisabled: ComputedRef<boolean>;
   enableYearArrow: ComputedRef<boolean>;
   rightPanelClasses: ComputedRef<ClassValue>;
   leftPanelClasses: ComputedRef<ClassValue>;

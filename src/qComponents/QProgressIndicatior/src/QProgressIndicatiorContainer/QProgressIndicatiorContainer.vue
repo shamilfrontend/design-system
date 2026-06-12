@@ -1,71 +1,62 @@
-<script lang="ts">
-import {
-  h,
-  defineComponent,
-  computed,
-  getCurrentInstance,
-  onMounted,
-  PropType
-} from 'vue';
-import type { VNode } from 'vue';
+<script setup lang="ts">
+import { computed, getCurrentInstance, onMounted } from 'vue';
+import type { PropType, Ref } from 'vue';
 
-import type {
-  QProgressIndicatiorContainerPropIsShown,
-  QProgressIndicatiorContainerPropIsStarted,
-  QProgressIndicatiorContainerPropProgress,
-  QProgressIndicatiorContainerProps,
-  QProgressIndicatiorContainerInstance
-} from './types';
-
-export default defineComponent({
+defineOptions({
   name: 'QProgressIndicatiorContainer',
-  componentName: 'QProgressIndicatiorContainer',
+  componentName: 'QProgressIndicatiorContainer'
+});
 
-  props: {
-    isShown: {
-      type: Object as PropType<QProgressIndicatiorContainerPropIsShown>,
-      required: true
-    },
-    isStarted: {
-      type: Object as PropType<QProgressIndicatiorContainerPropIsStarted>,
-      required: true
-    },
-    progress: {
-      type: Object as PropType<QProgressIndicatiorContainerPropProgress>,
-      required: true
-    }
+const props = defineProps({
+  isShown: {
+    type: Object as PropType<Ref<boolean>>,
+    required: true
   },
-
-  setup(
-    props: QProgressIndicatiorContainerProps
-  ): QProgressIndicatiorContainerInstance {
-    const instance = getCurrentInstance();
-
-    const classes = computed<Record<string, boolean>>(() => ({
-      'q-progress-indicatior': true,
-      'q-progress-indicatior_shown': props.isShown.value
-    }));
-
-    const styles = computed<Record<string, string>>(() => ({
-      transform: `translateX(${-100 + props.progress.value}%)`
-    }));
-
-    const mountInstance = (): void => {
-      if (!instance?.vnode?.el) return;
-
-      instance.vnode.el.remove();
-      document.body.appendChild(instance.vnode.el as Node);
-    };
-
-    onMounted(() => {
-      mountInstance();
-    });
-
-    return (): VNode =>
-      h('div', {
-        class: classes.value,
-        style: styles.value
-      });
+  isStarted: {
+    type: Object as PropType<Ref<boolean>>,
+    required: true
+  },
+  progress: {
+    type: Object as PropType<Ref<number>>,
+    required: true
   }
 });
+
+const instance = getCurrentInstance();
+
+const isShownValue = computed<boolean>(() => props.isShown.value);
+const isStartedValue = computed<boolean>(() => props.isStarted.value);
+const progressValue = computed<number>(() => props.progress.value);
+
+const classes = computed<Record<string, boolean>>(() => ({
+  'q-progress-indicatior': true,
+  'q-progress-indicatior_shown': isShownValue.value
+}));
+
+const styles = computed<Record<string, string>>(() => ({
+  transform: `translateX(${-100 + progressValue.value}%)`
+}));
+
+function mountInstance(): void {
+  if (!instance?.vnode?.el) return;
+
+  instance.vnode.el.remove();
+  document.body.appendChild(instance.vnode.el as Node);
+}
+
+onMounted(() => {
+  mountInstance();
+});
 </script>
+
+<template>
+  <div
+    :class="classes"
+    :style="styles"
+    role="progressbar"
+    :aria-busy="isStartedValue || undefined"
+    :aria-valuenow="progressValue"
+    aria-valuemin="0"
+    aria-valuemax="100"
+  />
+</template>

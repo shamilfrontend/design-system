@@ -1,8 +1,7 @@
-<script lang="ts">
+<script setup lang="ts">
 import { isPlainObject, isEqual, get, isNil } from 'lodash-es';
 import {
   computed,
-  defineComponent,
   inject,
   onBeforeUnmount,
   ref,
@@ -22,149 +21,127 @@ import type {
   QOptionPropLabel,
   QOptionPropCreated,
   QOptionPropDisabled,
-  QOptionProps,
-  QOptionModel,
-  QOptionInstance
+  QOptionModel
 } from './types';
 
-export default defineComponent({
+defineOptions({
   name: 'QOption',
-  componentName: 'QOption',
+  componentName: 'QOption'
+});
 
-  components: { QCheckbox },
-
-  props: {
-    value: {
-      type: [Object, String, Number] as PropType<QOptionPropValue>,
-      required: true
-    },
-    label: {
-      type: [String, Number] as PropType<QOptionPropLabel>,
-      default: null
-    },
-    created: {
-      type: Boolean as PropType<QOptionPropCreated>,
-      default: false
-    },
-    disabled: {
-      type: Boolean as PropType<QOptionPropDisabled>,
-      default: false
-    }
+const props = defineProps({
+  value: {
+    type: [Object, String, Number] as PropType<QOptionPropValue>,
+    required: true
   },
-
-  setup(props: QOptionProps): QOptionInstance {
-    const qSelect = inject<Nullable<QSelectProvider>>('qSelect', null);
-    const root = ref<Nullable<HTMLElement>>(null);
-    const qSelectState = qSelect?.state;
-    const multiple = qSelect?.multiple.value ?? false;
-    const multipleLimit = qSelect?.multipleLimit.value ?? 0;
-    const modelValue = qSelect?.modelValue;
-    const valueKey = qSelect?.valueKey.value ?? '';
-
-    const key = computed<string | number>(() =>
-      isPlainObject(props.value) && qSelect
-        ? get(props.value, valueKey)
-        : props.value
-    );
-
-    const preparedLabel = computed<string>(() =>
-      String(props.label ?? key.value)
-    );
-
-    const isVisible = computed<boolean>(() => {
-      if (qSelect?.remote.value || !qSelectState?.query) return true;
-      const qSelectQuery = String(qSelectState?.query).toLowerCase();
-
-      return Boolean(
-        preparedLabel.value.toLowerCase().includes(qSelectQuery) ||
-        props.created
-      );
-    });
-
-    const isSelected = computed<boolean>(() => {
-      if (!qSelect || !modelValue || isNil(modelValue.value)) return false;
-      if (!multiple) {
-        if (!isPlainObject(props.value)) return modelValue.value === key.value;
-
-        return isEqual(get(modelValue.value, valueKey), key.value);
-      }
-
-      const prepareValue = (val: QOptionPropValue): string | number =>
-        isPlainObject(val) ? get(val, valueKey) : (val as string | number);
-
-      if (Array.isArray(modelValue.value)) {
-        return modelValue.value.some(val => prepareValue(val) === key.value);
-      }
-
-      return false;
-    });
-
-    const isLimitReached = computed<boolean>(() => {
-      if (!qSelect) return false;
-
-      return (
-        !isSelected.value &&
-        Array.isArray(qSelect.modelValue.value) &&
-        multipleLimit > 0 &&
-        qSelect.modelValue.value.length >= multipleLimit
-      );
-    });
-
-    const isDisabled = computed<boolean>(
-      () => props.disabled || isLimitReached.value
-    );
-
-    const self: QOptionModel = reactive({
-      ...toRefs(props),
-      key,
-      preparedLabel,
-      isVisible,
-      isSelected,
-      isLimitReached,
-      isDisabled,
-      root
-    });
-
-    const handleOptionClick = (): void => {
-      if (isDisabled.value || !qSelect) return;
-      qSelect.toggleOptionSelection(self);
-    };
-
-    const handleMouseEnter = (): void => {
-      if (isDisabled.value || !qSelect) return;
-      const index = qSelectState?.options?.indexOf(self);
-      if (index) {
-        qSelect?.updateHoverIndex(index);
-      }
-    };
-
-    const qOptionClasses = computed<ClassValue>(() => ({
-      'q-option_selected': isSelected.value,
-      'q-option_disabled': isDisabled.value,
-      'q-option_with-checkbox': multiple
-    }));
-
-    onBeforeUnmount(() => {
-      qSelect?.removeOption(self);
-    });
-
-    onMounted(() => {
-      qSelect?.addOption(self);
-    });
-
-    return {
-      preparedLabel,
-      isVisible,
-      isSelected,
-      isLimitReached,
-      isDisabled,
-      handleMouseEnter,
-      handleOptionClick,
-      multiple,
-      root,
-      qOptionClasses
-    };
+  label: {
+    type: [String, Number] as PropType<QOptionPropLabel>,
+    default: null
+  },
+  created: {
+    type: Boolean as PropType<QOptionPropCreated>,
+    default: false
+  },
+  disabled: {
+    type: Boolean as PropType<QOptionPropDisabled>,
+    default: false
   }
+});
+
+const qSelect = inject<Nullable<QSelectProvider>>('qSelect', null);
+const root = ref<Nullable<HTMLElement>>(null);
+const qSelectState = qSelect?.state;
+const multiple = qSelect?.multiple.value ?? false;
+const multipleLimit = qSelect?.multipleLimit.value ?? 0;
+const modelValue = qSelect?.modelValue;
+const valueKey = qSelect?.valueKey.value ?? '';
+
+const key = computed<string | number>(() =>
+  isPlainObject(props.value) && qSelect
+    ? get(props.value, valueKey)
+    : props.value
+);
+
+const preparedLabel = computed<string>(() => String(props.label ?? key.value));
+
+const isVisible = computed<boolean>(() => {
+  if (qSelect?.remote.value || !qSelectState?.query) return true;
+  const qSelectQuery = String(qSelectState?.query).toLowerCase();
+
+  return Boolean(
+    preparedLabel.value.toLowerCase().includes(qSelectQuery) || props.created
+  );
+});
+
+const isSelected = computed<boolean>(() => {
+  if (!qSelect || !modelValue || isNil(modelValue.value)) return false;
+  if (!multiple) {
+    if (!isPlainObject(props.value)) return modelValue.value === key.value;
+
+    return isEqual(get(modelValue.value, valueKey), key.value);
+  }
+
+  const prepareValue = (val: QOptionPropValue): string | number =>
+    isPlainObject(val) ? get(val, valueKey) : (val as string | number);
+
+  if (Array.isArray(modelValue.value)) {
+    return modelValue.value.some(val => prepareValue(val) === key.value);
+  }
+
+  return false;
+});
+
+const isLimitReached = computed<boolean>(() => {
+  if (!qSelect) return false;
+
+  return (
+    !isSelected.value &&
+    Array.isArray(qSelect.modelValue.value) &&
+    multipleLimit > 0 &&
+    qSelect.modelValue.value.length >= multipleLimit
+  );
+});
+
+const isDisabled = computed<boolean>(
+  () => props.disabled || isLimitReached.value
+);
+
+const self: QOptionModel = reactive({
+  ...toRefs(props),
+  key,
+  preparedLabel,
+  isVisible,
+  isSelected,
+  isLimitReached,
+  isDisabled,
+  root
+});
+
+const qOptionClasses = computed<ClassValue>(() => ({
+  'q-option_selected': isSelected.value,
+  'q-option_disabled': isDisabled.value,
+  'q-option_with-checkbox': multiple
+}));
+
+function handleOptionClick(): void {
+  if (isDisabled.value || !qSelect) return;
+  qSelect.toggleOptionSelection(self);
+}
+
+function handleMouseEnter(): void {
+  if (isDisabled.value || !qSelect) return;
+  const index = qSelectState?.options?.indexOf(self);
+  if (index) {
+    qSelect?.updateHoverIndex(index);
+  }
+}
+
+onBeforeUnmount(() => {
+  qSelect?.removeOption(self);
+});
+
+onMounted(() => {
+  qSelect?.addOption(self);
 });
 </script>
 

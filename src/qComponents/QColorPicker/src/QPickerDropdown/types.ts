@@ -41,6 +41,6 @@ export interface QPickerDropdownInstance {
   handleClearBtnClick: () => void;
   handleConfirmBtnClick: () => void;
   handleChange: (newModel: QPickerHSVAModel) => void;
-  handleInput: (event: InputEvent) => void;
+  handleInput: (event: Event) => void;
   closeDropdown: (event: KeyboardEvent | MouseEvent) => void;
 }

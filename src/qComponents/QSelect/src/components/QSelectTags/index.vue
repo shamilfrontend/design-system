@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent, inject, ref, toRefs } from 'vue';
+<script setup lang="ts">
+import { inject, ref, toRefs } from 'vue';
 
 import type { QOptionModel } from '@/qComponents/QOption';
 import type { QSelectProvider } from '@/qComponents/QSelect';
@@ -8,56 +8,49 @@ import type { Nullable } from '#/helpers';
 
 import type { NewOption } from '../../types';
 
-import type { QSelectTagsInstance } from './types';
-
-export default defineComponent({
+defineOptions({
   name: 'QSelectTags',
-
-  componentName: 'QSelectTags',
-
-  emits: ['remove-tag', 'exit', 'update:query', 'focus', 'keyup-enter'],
-
-  setup(props, ctx): QSelectTagsInstance {
-    const input = ref<Nullable<HTMLInputElement>>(null);
-    const qSelect = inject<Nullable<QSelectProvider>>('qSelect', null);
-    const { selected = ref<QOptionModel[]>([]), query = ref('') } = toRefs(
-      qSelect?.state ?? {}
-    );
-
-    const handleBackspaceKeyDown = (): void => {
-      if (!qSelect?.state?.query && Array.isArray(qSelect?.state?.selected)) {
-        ctx.emit(
-          'remove-tag',
-          qSelect?.state?.selected[qSelect.state.selected.length - 1]
-        );
-      }
-    };
-
-    const handleTagClose = (
-      option: Nullable<QOptionModel | NewOption>
-    ): void => {
-      ctx.emit('remove-tag', option);
-    };
-
-    const handleInput = (event: Event): void => {
-      const target = event.target as HTMLInputElement;
-      ctx.emit('update:query', target.value);
-    };
-
-    return {
-      input,
-      handleBackspaceKeyDown,
-      handleTagClose,
-      handleInput,
-      filterable: qSelect?.filterable ?? ref(false),
-      collapseTags: qSelect?.collapseTags ?? ref(false),
-      isDisabled: qSelect?.isDisabled ?? ref(false),
-      autocomplete: qSelect?.autocomplete ?? ref('off'),
-      selected,
-      query
-    };
-  }
+  componentName: 'QSelectTags'
 });
+
+const emit = defineEmits([
+  'remove-tag',
+  'exit',
+  'update:query',
+  'focus',
+  'keyup-enter'
+]);
+
+const input = ref<Nullable<HTMLInputElement>>(null);
+const qSelect = inject<Nullable<QSelectProvider>>('qSelect', null);
+const { selected = ref<QOptionModel[]>([]), query = ref('') } = toRefs(
+  qSelect?.state ?? {}
+);
+
+const filterable = qSelect?.filterable ?? ref(false);
+const collapseTags = qSelect?.collapseTags ?? ref(false);
+const isDisabled = qSelect?.isDisabled ?? ref(false);
+const autocomplete = qSelect?.autocomplete ?? ref('off');
+
+const handleBackspaceKeyDown = (): void => {
+  if (!qSelect?.state?.query && Array.isArray(qSelect?.state?.selected)) {
+    emit(
+      'remove-tag',
+      qSelect?.state?.selected[qSelect.state.selected.length - 1]
+    );
+  }
+};
+
+const handleTagClose = (option: Nullable<QOptionModel | NewOption>): void => {
+  emit('remove-tag', option);
+};
+
+const handleInput = (event: Event): void => {
+  const target = event.target as HTMLInputElement;
+  emit('update:query', target.value);
+};
+
+defineExpose({ input });
 </script>
 
 <template>
@@ -102,9 +95,9 @@ export default defineComponent({
       type="text"
       class="q-select-tags__input"
       :autocomplete="autocomplete ?? 'off'"
-      @focus="$emit('focus')"
-      @keyup.esc="$emit('exit')"
-      @keyup.enter="$emit('keyup-enter')"
+      @focus="emit('focus')"
+      @keyup.esc="emit('exit')"
+      @keyup.enter="emit('keyup-enter')"
       @keydown.backspace.capture="handleBackspaceKeyDown"
       @input="handleInput"
     />

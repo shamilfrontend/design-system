@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent, computed, inject } from 'vue';
+<script setup lang="ts">
+import { computed, inject } from 'vue';
 
 import { TOTAL_CHECKED_INDEX } from '../config';
 import QTableCellCheckbox from '../QTableCellCheckbox/QTableCellCheckbox.vue';
@@ -10,59 +10,45 @@ import type {
 import type { QTableProvider } from '../types';
 
 import QTableTTotalCell from './QTableTTotalCell/QTableTTotalCell.vue';
-import type { QTableTTotalInstance } from './types';
 
-export default defineComponent({
+defineOptions({
   name: 'QTableTTotal',
-  componentName: ' QTableTTotal',
-
-  components: {
-    QTableTTotalCell,
-    QTableCellCheckbox
-  },
-
-  setup(): QTableTTotalInstance {
-    const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);
-    const qTableContainer = inject<QTableContainerProvider>(
-      'qTableContainer',
-      {} as QTableContainerProvider
-    );
-
-    const isCheckable = computed<boolean>(() =>
-      Boolean(qTable.selectionColumn.value?.selectTotalShown)
-    );
-
-    const isChecked = computed<boolean>(
-      () => qTable.checkedRows.value?.includes(TOTAL_CHECKED_INDEX) ?? false
-    );
-
-    const columnList = computed<ExtendedColumn[]>(
-      () => qTableContainer.columnList.value ?? []
-    );
-
-    const handleCheckboxChange = (): void => {
-      if (!qTable) return;
-
-      const checkedRowsSet = new Set(qTable.checkedRows.value);
-
-      if (isChecked.value) {
-        checkedRowsSet.delete(TOTAL_CHECKED_INDEX);
-      } else {
-        checkedRowsSet.add(TOTAL_CHECKED_INDEX);
-      }
-
-      qTable.updateCheckedRows(Array.from(checkedRowsSet));
-    };
-
-    return {
-      isSelectable: qTableContainer.isSelectable,
-      isCheckable,
-      isChecked,
-      columnList,
-      handleCheckboxChange
-    };
-  }
+  componentName: 'QTableTTotal'
 });
+
+const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);
+const qTableContainer = inject<QTableContainerProvider>(
+  'qTableContainer',
+  {} as QTableContainerProvider
+);
+
+const isCheckable = computed<boolean>(() =>
+  Boolean(qTable.selectionColumn.value?.selectTotalShown)
+);
+
+const isChecked = computed<boolean>(
+  () => qTable.checkedRows.value?.includes(TOTAL_CHECKED_INDEX) ?? false
+);
+
+const columnList = computed<ExtendedColumn[]>(
+  () => qTableContainer.columnList.value ?? []
+);
+
+const isSelectable = qTableContainer.isSelectable;
+
+function handleCheckboxChange(): void {
+  if (!qTable) return;
+
+  const checkedRowsSet = new Set(qTable.checkedRows.value);
+
+  if (isChecked.value) {
+    checkedRowsSet.delete(TOTAL_CHECKED_INDEX);
+  } else {
+    checkedRowsSet.add(TOTAL_CHECKED_INDEX);
+  }
+
+  qTable.updateCheckedRows(Array.from(checkedRowsSet));
+}
 </script>
 
 <template>

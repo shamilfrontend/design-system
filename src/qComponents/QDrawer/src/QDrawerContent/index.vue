@@ -1,5 +1,6 @@
-<script lang="ts">
-import { defineComponent, inject } from 'vue';
+<script setup lang="ts">
+import { computed, inject, useId, useSlots, watchEffect } from 'vue';
+import type { Ref } from 'vue';
 
 import { QScrollbar } from '@/qComponents/QScrollbar';
 
@@ -7,53 +8,58 @@ import type { Nullable } from '#/helpers';
 
 import type { QDrawerContainerProvider } from '../QDrawerContainer';
 
-import type { QDrawerContentInstance, QDrawerContentProps } from './types';
-
-export default defineComponent({
+defineOptions({
   name: 'QDrawerContent',
-  componentName: 'QDrawerContent',
+  componentName: 'QDrawerContent'
+});
 
-  components: { QScrollbar },
-
-  props: {
-    /**
-     * title of the QDrawer
-     */
-    title: {
-      type: String,
-      default: null
-    },
-    /**
-     * whether to hide close button
-     */
-    hideCloseButton: {
-      type: Boolean,
-      default: false
-    }
+const props = defineProps({
+  /**
+   * title of the QDrawer
+   */
+  title: {
+    type: String,
+    default: null
   },
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  setup(props: QDrawerContentProps): QDrawerContentInstance {
-    const qDrawerContainer = inject<Nullable<QDrawerContainerProvider>>(
-      'qDrawerContainer',
-      null
-    );
-
-    const handleCloseBtnClick = (): void => {
-      qDrawerContainer?.emitCloseEvent();
-    };
-
-    return {
-      handleCloseBtnClick
-    };
+  /**
+   * whether to hide close button
+   */
+  hideCloseButton: {
+    type: Boolean,
+    default: false
   }
 });
+
+const slots = useSlots();
+const titleId = useId();
+
+const hasTitle = computed<boolean>(() => Boolean(props.title || slots.title));
+
+const a11yContext = inject<
+  Nullable<{ dialogTitleId: Ref<string | undefined> }>
+>('qDrawerA11y', null);
+
+watchEffect(() => {
+  if (a11yContext && hasTitle.value) {
+    a11yContext.dialogTitleId.value = titleId;
+  }
+});
+
+const qDrawerContainer = inject<Nullable<QDrawerContainerProvider>>(
+  'qDrawerContainer',
+  null
+);
+
+const handleCloseBtnClick = (): void => {
+  qDrawerContainer?.emitCloseEvent();
+};
 </script>
 
 <template>
   <div class="q-drawer-content">
     <div
-      v-if="title || $slots.title"
+      v-if="hasTitle"
+      :id="titleId"
       class="q-drawer-content__title"
     >
       <slot name="title">{{ title }}</slot>

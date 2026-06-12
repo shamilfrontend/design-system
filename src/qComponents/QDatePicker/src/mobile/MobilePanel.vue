@@ -1,42 +1,32 @@
-<script lang="ts">
-import { defineComponent, inject } from 'vue';
+<script setup lang="ts">
+import { inject } from 'vue';
 
 import { QButton } from '@/qComponents/QButton';
-import { QDialogContent, QDialogAction } from '@/qComponents/QDialog';
+import { QDialogAction } from '@/qComponents/QDialog';
 import type { QDialogContainerProvider } from '@/qComponents/QDialog';
 
 import type { QDatePickerPropModelValue, QDatePickerProvider } from '../types';
 
-import type { MobilePanelInstance } from './types';
-
-export default defineComponent({
-  name: 'MobilePanel',
-
-  components: { QDialogContent, QButton },
-
-  setup(): MobilePanelInstance {
-    const picker = inject<QDatePickerProvider>(
-      'qDatePicker',
-      {} as QDatePickerProvider
-    );
-
-    const dialog = inject<QDialogContainerProvider>(
-      'qDialogContainer',
-      {} as QDialogContainerProvider
-    );
-
-    const handlePick = (payload: QDatePickerPropModelValue): void => {
-      dialog.emitDoneEvent({ action: QDialogAction.confirm, payload });
-    };
-
-    return {
-      handleCloseBtnClick: dialog.emitCloseEvent,
-      panelComponent: picker.panelComponent,
-      transformedToDate: picker.transformedToDate,
-      handlePick
-    };
-  }
+defineOptions({
+  name: 'MobilePanel'
 });
+
+const picker = inject<QDatePickerProvider>(
+  'qDatePicker',
+  {} as QDatePickerProvider
+);
+
+const dialog = inject<QDialogContainerProvider>(
+  'qDialogContainer',
+  {} as QDialogContainerProvider
+);
+
+const panelComponent = picker.panelComponent;
+const transformedToDate = picker.transformedToDate;
+
+function handlePick(payload: QDatePickerPropModelValue): void {
+  dialog.emitDoneEvent({ action: QDialogAction.confirm, payload });
+}
 </script>
 
 <template>
@@ -46,7 +36,7 @@ export default defineComponent({
     theme="secondary"
     type="icon"
     icon="q-icon-close"
-    @click="handleCloseBtnClick"
+    @click="dialog.emitCloseEvent"
   />
 
   <component

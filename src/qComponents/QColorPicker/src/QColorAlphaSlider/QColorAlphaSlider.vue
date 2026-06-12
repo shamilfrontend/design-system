@@ -1,119 +1,110 @@
-<script lang="ts">
+<script setup lang="ts">
 import { colord } from 'colord';
-import {
-  defineComponent,
-  ref,
-  computed,
-  onMounted,
-  watch,
-  inject,
-  nextTick
-} from 'vue';
+import { ref, computed, onMounted, watch, inject, nextTick } from 'vue';
 
 import type { Nullable } from '#/helpers';
 
 import type { QPickerDropdownProvider } from '../QPickerDropdown';
+import type { QPickerHSVAModel } from '../QPickerDropdown/types';
 import draggable from '../utils/draggable';
 
-import type { QColorAlphaSliderInstance } from './types';
-
-export default defineComponent({
+defineOptions({
   name: 'QColorAlphaSlider',
-  componentName: 'QColorAlphaSlider',
+  componentName: 'QColorAlphaSlider'
+});
 
-  emits: ['change'],
+const emit = defineEmits<{
+  change: [newModel: QPickerHSVAModel];
+}>();
 
-  setup(_, ctx): QColorAlphaSliderInstance {
-    const qPickerDropdown = inject<QPickerDropdownProvider>(
-      'qPickerDropdown',
-      {} as QPickerDropdownProvider
-    );
+const qPickerDropdown = inject<QPickerDropdownProvider>(
+  'qPickerDropdown',
+  {} as QPickerDropdownProvider
+);
 
-    const thumbLeft = ref<number>(0);
+const thumbLeft = ref<number>(0);
 
-    const barStyles = computed<Record<string, string>>(() => {
-      const color = colord({
-        h: qPickerDropdown.hsvaModel.hue,
-        s: qPickerDropdown.hsvaModel.saturation,
-        v: qPickerDropdown.hsvaModel.value
-      }).toRgbString();
+const barStyles = computed<Record<string, string>>(() => {
+  const color = colord({
+    h: qPickerDropdown.hsvaModel.hue,
+    s: qPickerDropdown.hsvaModel.saturation,
+    v: qPickerDropdown.hsvaModel.value
+  }).toRgbString();
 
-      return {
-        backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, ${color})`
-      };
-    });
+  return {
+    backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, ${color})`
+  };
+});
 
-    const thumbStyles = computed<Record<string, string>>(() => ({
-      left: `${thumbLeft.value}px`
-    }));
+const thumbStyles = computed<Record<string, string>>(() => ({
+  left: `${thumbLeft.value}px`
+}));
 
-    const root = ref<Nullable<HTMLElement>>(null);
-    const thumb = ref<Nullable<HTMLElement>>(null);
-    const bar = ref<Nullable<HTMLElement>>(null);
+const root = ref<Nullable<HTMLElement>>(null);
+const thumb = ref<Nullable<HTMLElement>>(null);
+const bar = ref<Nullable<HTMLElement>>(null);
 
-    const handleDrag = (event: MouseEvent): void => {
-      const thumbElement = thumb.value;
-      if (!root.value || !thumbElement) return;
+const handleDrag = (event: MouseEvent): void => {
+  const thumbElement = thumb.value;
+  if (!root.value || !thumbElement) return;
 
-      const rect = root.value.getBoundingClientRect();
+  const rect = root.value.getBoundingClientRect();
 
-      let left = event.clientX - rect.left;
-      left = Math.max(thumbElement.offsetWidth / 2, left);
-      left = Math.min(left, rect.width - thumbElement.offsetWidth / 2);
-      const alpha = Math.round(
-        ((left - thumbElement.offsetWidth / 2) /
-          (rect.width - thumbElement.offsetWidth)) *
-          100
-      );
+  let left = event.clientX - rect.left;
+  left = Math.max(thumbElement.offsetWidth / 2, left);
+  left = Math.min(left, rect.width - thumbElement.offsetWidth / 2);
+  const alpha = Math.round(
+    ((left - thumbElement.offsetWidth / 2) /
+      (rect.width - thumbElement.offsetWidth)) *
+      100
+  );
 
-      ctx.emit('change', { ...qPickerDropdown.hsvaModel, alpha });
-    };
+  emit('change', { ...qPickerDropdown.hsvaModel, alpha });
+};
 
-    const handleBarClick = (event: MouseEvent): void => {
-      if (event.target !== thumb.value) handleDrag(event);
-    };
+const handleBarClick = (event: MouseEvent): void => {
+  if (event.target !== thumb.value) handleDrag(event);
+};
 
-    const getThumbLeft = (): number => {
-      const rootElement = root.value;
-      const thumbElement = thumb.value;
-      if (!rootElement || !thumbElement) return 0;
+const getThumbLeft = (): number => {
+  const rootElement = root.value;
+  const thumbElement = thumb.value;
+  if (!rootElement || !thumbElement) return 0;
 
-      return Math.round(
-        (qPickerDropdown.hsvaModel.alpha *
-          (rootElement.offsetWidth - thumbElement.offsetWidth * 1.5)) /
-          100
-      );
-    };
+  return Math.round(
+    (qPickerDropdown.hsvaModel.alpha *
+      (rootElement.offsetWidth - thumbElement.offsetWidth * 1.5)) /
+      100
+  );
+};
 
-    const update = (): void => {
-      thumbLeft.value = getThumbLeft();
-    };
+const update = (): void => {
+  thumbLeft.value = getThumbLeft();
+};
 
-    watch(
-      () => qPickerDropdown.hsvaModel.alpha,
-      async () => {
-        await nextTick();
-        update();
-      },
-      { immediate: true }
-    );
+watch(
+  () => qPickerDropdown.hsvaModel.alpha,
+  async () => {
+    await nextTick();
+    update();
+  },
+  { immediate: true }
+);
 
-    onMounted(() => {
-      if (bar.value) {
-        draggable(bar.value, { drag: handleDrag, end: handleDrag });
-      }
-    });
-
-    return {
-      root,
-      thumb,
-      bar,
-      barStyles,
-      thumbStyles,
-      handleBarClick,
-      update
-    };
+onMounted(() => {
+  if (bar.value) {
+    draggable(bar.value, { drag: handleDrag, end: handleDrag });
   }
+});
+
+defineExpose({
+  root,
+  thumb,
+  bar,
+  barStyles,
+  thumbStyles,
+  handleBarClick,
+  update
 });
 </script>
 
@@ -121,16 +112,22 @@ export default defineComponent({
   <div
     ref="root"
     class="q-color-alpha-slider"
+    role="slider"
+    :aria-valuemin="0"
+    :aria-valuemax="100"
+    :aria-valuenow="qPickerDropdown.hsvaModel.alpha"
   >
     <div
       ref="bar"
       class="q-color-alpha-slider__bar"
+      aria-hidden="true"
       :style="barStyles"
       @click="handleBarClick"
     />
     <div
       ref="thumb"
       class="q-color-alpha-slider__thumb"
+      aria-label="Alpha"
       :style="thumbStyles"
     />
   </div>

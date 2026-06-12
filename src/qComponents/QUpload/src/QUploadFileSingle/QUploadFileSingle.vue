@@ -1,70 +1,59 @@
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 
 import { CLEAR_EVENT, ABORT_EVENT } from '@/qComponents/constants/events';
 
-import type {
-  QUploadFileSingleProps,
-  QUploadFileSingleInstance
-} from './types';
-
-export default defineComponent({
+defineOptions({
   name: 'QUploadFileSingle',
-  componentName: 'QUploadFileSingle',
+  componentName: 'QUploadFileSingle'
+});
 
-  props: {
-    value: {
-      type: Object,
-      required: true
-    },
-    isLoading: {
-      type: Boolean,
-      default: false
-    },
-    isDisabled: {
-      type: Boolean,
-      default: false
-    },
-    isClearable: {
-      type: Boolean,
-      default: true
-    }
+const props = defineProps({
+  value: {
+    type: Object,
+    required: true
   },
-
-  emits: [CLEAR_EVENT, ABORT_EVENT],
-
-  setup(props: QUploadFileSingleProps, ctx): QUploadFileSingleInstance {
-    const fileName = computed<string>(() => props.value?.name ?? '');
-
-    const barStyle = computed<{ width?: string }>(() => {
-      let loading = props.value?.loading ?? null;
-
-      if (loading === null) return {};
-
-      if (loading < 0) loading = 0;
-      if (loading > 100) loading = 100;
-
-      return {
-        width: `${loading}%`
-      };
-    });
-
-    const handleRemoveFileBtnClick = (): void => {
-      ctx.emit(CLEAR_EVENT);
-    };
-
-    const handleAbortUploadingBtnClick = (): void => {
-      ctx.emit(ABORT_EVENT);
-    };
-
-    return {
-      barStyle,
-      fileName,
-      handleRemoveFileBtnClick,
-      handleAbortUploadingBtnClick
-    };
+  isLoading: {
+    type: Boolean,
+    default: false
+  },
+  isDisabled: {
+    type: Boolean,
+    default: false
+  },
+  isClearable: {
+    type: Boolean,
+    default: true
   }
 });
+
+const emit = defineEmits<{
+  clear: [];
+  abort: [];
+}>();
+
+const fileName = computed<string>(() => props.value?.name ?? '');
+
+const barStyle = computed<{ width?: string }>(() => {
+  let loading = props.value?.loading ?? null;
+
+  if (loading === null) return {};
+
+  if (loading < 0) loading = 0;
+  if (loading > 100) loading = 100;
+
+  return {
+    width: `${loading}%`
+  };
+});
+
+const handleRemoveFileBtnClick = (): void => {
+  emit(CLEAR_EVENT);
+};
+
+const handleAbortUploadingBtnClick = (): void => {
+  emit(ABORT_EVENT);
+};
 </script>
 
 <template>

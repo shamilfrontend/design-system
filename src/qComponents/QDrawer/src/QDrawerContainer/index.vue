@@ -1,6 +1,5 @@
-<script lang="ts">
+<script setup lang="ts">
 import {
-  defineComponent,
   getCurrentInstance,
   ref,
   computed,
@@ -9,7 +8,7 @@ import {
   onMounted,
   onBeforeUnmount
 } from 'vue';
-import type { PropType, StyleValue } from 'vue';
+import type { PropType, Ref, StyleValue } from 'vue';
 
 import { getConfig } from '@/qComponents/config';
 import { isServer } from '@/qComponents/constants/isServer';
@@ -25,206 +24,197 @@ import type {
   QDrawerContainerPropPosition,
   QDrawerContainerPropBeforeClose,
   QDrawerContainerPropTeleportTo,
-  QDrawerContainerProps,
-  QDrawerContainerInstance,
   QDrawerContainerProvider
 } from './types';
 import { isExternalComponent } from './utils';
 
-export default defineComponent({
+defineOptions({
   name: 'QDrawerContainer',
-  componentName: 'QDrawerContainer',
+  componentName: 'QDrawerContainer'
+});
 
-  props: {
-    content: {
-      type: [Object, Function] as PropType<QDrawerContainerPropContent>,
-      required: true
-    },
-    /**
-     * width of QDrawer
-     */
-    width: {
-      type: [String, Number],
-      default: null
-    },
-    /**
-     * closes QDrawer by click on shadow layer
-     */
-    closeOnClickShadow: {
-      type: Boolean,
-      default: true
-    },
-    /**
-     * whether to distinguish canceling and closing the QDrawer
-     */
-    distinguishCancelAndClose: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * cancel focus on document.activeElement after QDrawer was closed
-     */
-    preventFocusAfterClosing: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Drawer's position
-     */
-    position: {
-      type: String as PropType<QDrawerContainerPropPosition>,
-      default: 'right',
-      validator: validateArray<QDrawerContainerPropPosition>(['left', 'right'])
-    },
-    /**
-     * Extra class names for Drawer's wrapper
-     */
-    customClass: {
-      type: String,
-      default: null
-    },
-    /**
-     * callback before QDrawer closes, and it will prevent QDrawer from closing
-     */
-    beforeClose: {
-      type: Function as unknown as PropType<QDrawerContainerPropBeforeClose>,
-      default: null
-    },
-    /**
-     * Specifies a target element where QDrawer will be moved.
-     * (has to be a valid query selector, or an HTMLElement)
-     */
-    teleportTo: {
-      type: [
-        String,
-        isServer ? Object : HTMLElement
-      ] as PropType<QDrawerContainerPropTeleportTo>,
-      default: null
-    }
+const props = defineProps({
+  content: {
+    type: [Object, Function] as PropType<QDrawerContainerPropContent>,
+    required: true
   },
-
-  emits: ['done', 'remove'],
-
-  setup(props: QDrawerContainerProps, ctx): QDrawerContainerInstance {
-    const instance = getCurrentInstance();
-
-    const drawer = ref<Nullable<HTMLElement>>(null);
-    const isShown = ref<boolean>(false);
-    const zIndex = getConfig('nextZIndex');
-    let isFocusTrapEnabled = false;
-
-    const drawerStyle = computed<StyleValue>(() => ({
-      width: Number(props.width)
-        ? `${Number(props.width)}px`
-        : (props.width ?? undefined)
-    }));
-
-    const drawerClass = computed<string>(
-      () => `q-drawer-container__wrapper_${props.position}`
-    );
-
-    const preparedContent = computed<QDrawerComponent>(() => {
-      if (isExternalComponent(props.content)) {
-        return { props: {}, listeners: {}, ...props.content };
-      }
-
-      return { component: props.content, props: {}, listeners: {} };
-    });
-
-    const elementToFocusAfterClosing: Nullable<HTMLElement> =
-      document.activeElement as Nullable<HTMLElement>;
-
-    const handleDocumentFocus = (event: FocusEvent): void => {
-      const drawerValue = drawer.value;
-      if (drawerValue && !drawerValue.contains(event.target as HTMLElement)) {
-        drawerValue.focus();
-      }
-    };
-
-    const afterLeave = (): void => {
-      ctx.emit('remove');
-    };
-
-    const commitBeforeClose = async (
-      action: QDrawerAction
-    ): Promise<boolean> => {
-      let isReadyToClose = true;
-
-      if (typeof props.beforeClose === 'function') {
-        isReadyToClose = await props.beforeClose(action);
-      }
-
-      return isReadyToClose;
-    };
-
-    const emitDoneEvent = async ({
-      action,
-      payload = null
-    }: QDrawerEvent): Promise<void> => {
-      const isDone = await commitBeforeClose(action);
-
-      if (isDone) ctx.emit('done', { action, payload });
-
-      isShown.value = false;
-    };
-
-    const emitCloseEvent = (): void => {
-      emitDoneEvent({
-        action: props.distinguishCancelAndClose
-          ? QDrawerAction.close
-          : QDrawerAction.cancel
-      });
-    };
-
-    const enableFocusTrap = (): void => {
-      if (isFocusTrapEnabled) return;
-
-      document.addEventListener('focus', handleDocumentFocus, true);
-      isFocusTrapEnabled = true;
-    };
-
-    const disableFocusTrap = (): void => {
-      if (!isFocusTrapEnabled) return;
-
-      document.removeEventListener('focus', handleDocumentFocus, true);
-      isFocusTrapEnabled = false;
-    };
-
-    onMounted(async () => {
-      document.body.appendChild(instance?.vnode.el as Node);
-      document.documentElement.style.overflow = 'hidden';
-      enableFocusTrap();
-
-      await nextTick();
-      isShown.value = true;
-      await nextTick();
-      drawer.value?.focus();
-    });
-
-    onBeforeUnmount(() => {
-      document.documentElement.style.overflow = '';
-      disableFocusTrap();
-      if (!props.preventFocusAfterClosing) elementToFocusAfterClosing?.focus();
-    });
-
-    provide<QDrawerContainerProvider>('qDrawerContainer', {
-      emitDoneEvent,
-      emitCloseEvent,
-      enableFocusTrap,
-      disableFocusTrap
-    });
-
-    return {
-      drawer,
-      zIndex,
-      isShown,
-      preparedContent,
-      drawerStyle,
-      drawerClass,
-      afterLeave,
-      emitCloseEvent
-    };
+  /**
+   * width of QDrawer
+   */
+  width: {
+    type: [String, Number],
+    default: null
+  },
+  /**
+   * closes QDrawer by click on shadow layer
+   */
+  closeOnClickShadow: {
+    type: Boolean,
+    default: true
+  },
+  /**
+   * whether to distinguish canceling and closing the QDrawer
+   */
+  distinguishCancelAndClose: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * cancel focus on document.activeElement after QDrawer was closed
+   */
+  preventFocusAfterClosing: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * Drawer's position
+   */
+  position: {
+    type: String as PropType<QDrawerContainerPropPosition>,
+    default: 'right',
+    validator: validateArray<QDrawerContainerPropPosition>(['left', 'right'])
+  },
+  /**
+   * Extra class names for Drawer's wrapper
+   */
+  customClass: {
+    type: String,
+    default: null
+  },
+  /**
+   * callback before QDrawer closes, and it will prevent QDrawer from closing
+   */
+  beforeClose: {
+    type: Function as unknown as PropType<QDrawerContainerPropBeforeClose>,
+    default: null
+  },
+  /**
+   * Specifies a target element where QDrawer will be moved.
+   * (has to be a valid query selector, or an HTMLElement)
+   */
+  teleportTo: {
+    type: [
+      String,
+      isServer ? Object : HTMLElement
+    ] as PropType<QDrawerContainerPropTeleportTo>,
+    default: null
   }
+});
+
+const emit = defineEmits<{
+  done: [event: QDrawerEvent];
+  remove: [];
+}>();
+
+const instance = getCurrentInstance();
+
+const drawer = ref<Nullable<HTMLElement>>(null);
+const isShown = ref<boolean>(false);
+const zIndex = getConfig('nextZIndex');
+const dialogTitleId = ref<string | undefined>();
+let isFocusTrapEnabled = false;
+
+const drawerStyle = computed<StyleValue>(() => ({
+  width: Number(props.width)
+    ? `${Number(props.width)}px`
+    : (props.width ?? undefined)
+}));
+
+const drawerClass = computed<string>(
+  () => `q-drawer-container__wrapper_${props.position}`
+);
+
+const preparedContent = computed<QDrawerComponent>(() => {
+  if (isExternalComponent(props.content)) {
+    return { props: {}, listeners: {}, ...props.content };
+  }
+
+  return { component: props.content, props: {}, listeners: {} };
+});
+
+const elementToFocusAfterClosing: Nullable<HTMLElement> =
+  document.activeElement as Nullable<HTMLElement>;
+
+const handleDocumentFocus = (event: FocusEvent): void => {
+  const drawerValue = drawer.value;
+  if (drawerValue && !drawerValue.contains(event.target as HTMLElement)) {
+    drawerValue.focus();
+  }
+};
+
+const afterLeave = (): void => {
+  emit('remove');
+};
+
+const commitBeforeClose = async (action: QDrawerAction): Promise<boolean> => {
+  let isReadyToClose = true;
+
+  if (typeof props.beforeClose === 'function') {
+    isReadyToClose = await props.beforeClose(action);
+  }
+
+  return isReadyToClose;
+};
+
+const emitDoneEvent = async ({
+  action,
+  payload = null
+}: QDrawerEvent): Promise<void> => {
+  const isDone = await commitBeforeClose(action);
+
+  if (isDone) emit('done', { action, payload });
+
+  isShown.value = false;
+};
+
+const emitCloseEvent = (): void => {
+  emitDoneEvent({
+    action: props.distinguishCancelAndClose
+      ? QDrawerAction.close
+      : QDrawerAction.cancel
+  });
+};
+
+const enableFocusTrap = (): void => {
+  if (isFocusTrapEnabled) return;
+
+  document.addEventListener('focus', handleDocumentFocus, true);
+  isFocusTrapEnabled = true;
+};
+
+const disableFocusTrap = (): void => {
+  if (!isFocusTrapEnabled) return;
+
+  document.removeEventListener('focus', handleDocumentFocus, true);
+  isFocusTrapEnabled = false;
+};
+
+onMounted(async () => {
+  document.body.appendChild(instance?.vnode.el as Node);
+  document.documentElement.style.overflow = 'hidden';
+  enableFocusTrap();
+
+  await nextTick();
+  isShown.value = true;
+  await nextTick();
+  drawer.value?.focus();
+});
+
+onBeforeUnmount(() => {
+  document.documentElement.style.overflow = '';
+  disableFocusTrap();
+  if (!props.preventFocusAfterClosing) elementToFocusAfterClosing?.focus();
+});
+
+provide<QDrawerContainerProvider>('qDrawerContainer', {
+  emitDoneEvent,
+  emitCloseEvent,
+  enableFocusTrap,
+  disableFocusTrap
+});
+
+provide<{ dialogTitleId: Ref<string | undefined> }>('qDrawerA11y', {
+  dialogTitleId
 });
 </script>
 
@@ -247,6 +237,9 @@ export default defineComponent({
 
         <div
           ref="drawer"
+          role="dialog"
+          aria-modal="true"
+          :aria-labelledby="dialogTitleId"
           tabindex="-1"
           class="q-drawer-container__wrapper"
           :style="drawerStyle"

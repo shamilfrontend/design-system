@@ -1,61 +1,54 @@
-<script lang="ts">
-import { defineComponent, inject, computed } from 'vue';
+<script setup lang="ts">
+import { inject, computed } from 'vue';
 
 import { QTag } from '@/qComponents/QTag';
 
 import findFullPath from '../helpers/findFullPath';
 import type { QCascaderProvider } from '../types';
 
-import type { TagItem, QCascaderTagsInstance } from './types';
+import type { TagItem } from './types';
 
-export default defineComponent({
+defineOptions({
   name: 'QCascaderTags',
-  components: { QTag },
-  componentName: 'QCascaderTags',
+  componentName: 'QCascaderTags'
+});
 
-  setup(): QCascaderTagsInstance {
-    const qCascader = inject<QCascaderProvider>(
-      'qCascader',
-      {} as QCascaderProvider
-    );
+const qCascader = inject<QCascaderProvider>(
+  'qCascader',
+  {} as QCascaderProvider
+);
 
-    const rootClasses = computed<Record<string, boolean>>(() => ({
-      'q-cascader-tags': true,
-      'q-cascader-tags_collapse-tags': Boolean(qCascader.collapseTags.value)
-    }));
+const rootClasses = computed<Record<string, boolean>>(() => ({
+  'q-cascader-tags': true,
+  'q-cascader-tags_collapse-tags': Boolean(qCascader.collapseTags.value)
+}));
 
-    const separator = qCascader.separator.value ?? ' ';
-    const tagList = computed<TagItem[]>(() => {
-      const modelValue = qCascader.modelValue.value;
+const separator = qCascader.separator.value ?? ' ';
 
-      if (!Array.isArray(modelValue)) return [];
+const tagList = computed<TagItem[]>(() => {
+  const modelValue = qCascader.modelValue.value;
 
-      return modelValue.map(value => {
-        const fullPath = findFullPath(qCascader.options.value, value);
-        const label = qCascader.allLevelsShown.value
-          ? fullPath?.join(separator)
-          : fullPath?.[fullPath.length - 1];
+  if (!Array.isArray(modelValue)) return [];
 
-        return {
-          value,
-          label: label ?? ''
-        };
-      });
-    });
-
-    const handleTagClose = (value: string | number): void => {
-      qCascader.updateValue(value, true);
-    };
+  return modelValue.map(value => {
+    const fullPath = findFullPath(qCascader.options.value, value);
+    const label = qCascader.allLevelsShown.value
+      ? fullPath?.join(separator)
+      : fullPath?.[fullPath.length - 1];
 
     return {
-      rootClasses,
-      tagList,
-      collapseTags: qCascader.collapseTags,
-      isDisabled: qCascader.disabled,
-      handleTagClose
+      value,
+      label: label ?? ''
     };
-  }
+  });
 });
+
+const collapseTags = qCascader.collapseTags;
+const isDisabled = qCascader.disabled;
+
+function handleTagClose(value: string | number): void {
+  qCascader.updateValue(value, true);
+}
 </script>
 
 <template>

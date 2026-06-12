@@ -1,6 +1,6 @@
-<script lang="ts">
+<script setup lang="ts">
 import { isEmpty } from 'lodash-es';
-import { defineComponent, inject, ref, computed, provide, watch } from 'vue';
+import { inject, ref, computed, provide, watch } from 'vue';
 
 import { useResizeListener } from '@/qComponents/hooks';
 
@@ -17,73 +17,52 @@ import type {
 import QTableTTotal from '../QTableTTotal/QTableTTotal.vue';
 import type { QTableProvider } from '../types';
 
-import type { QTableTProvider, QTableTInstance } from './types';
+import type { QTableTProvider } from './types';
 
-const CHANGE_WIDTH_EVENT = 'change-width';
-
-export default defineComponent({
+defineOptions({
   name: 'QTableT',
-  componentName: ' QTableT',
+  componentName: 'QTableT'
+});
 
-  components: {
-    QTableTBody,
-    QTableTColgroup,
-    QTableTHead,
-    QTableTSticky,
-    QTableTTotal
-  },
+const emit = defineEmits(['change-width']);
 
-  emits: [CHANGE_WIDTH_EVENT],
+const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);
 
-  setup(_, ctx): QTableTInstance {
-    const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);
+const isColgroupShown = computed<boolean>(() =>
+  Boolean(qTable.fixedLayout.value)
+);
+const isTotalShown = computed<boolean>(() => !isEmpty(qTable.total.value));
 
-    const isColgroupShown = computed<boolean>(() =>
-      Boolean(qTable.fixedLayout.value)
-    );
-    const isTotalShown = computed<boolean>(() => !isEmpty(qTable.total.value));
+const root = ref<Nullable<HTMLElement>>(null);
+const thead = ref<Nullable<HTMLElement>>(null);
+const sticky = ref<UnwrappedInstance<QTableTStickyInstance>>(null);
 
-    const root = ref<Nullable<HTMLElement>>(null);
-    const thead = ref<Nullable<HTMLElement>>(null);
-    const sticky = ref<UnwrappedInstance<QTableTStickyInstance>>(null);
+const rootResize = useResizeListener(root);
 
-    const rootResize = useResizeListener(root);
+const rootClasses = computed<ClassValue>(() => ({
+  'q-table-t': true,
+  'q-table-t_fixed': isColgroupShown.value,
+  'q-table-t_grided': Boolean(qTable.grided.value)
+}));
 
-    const rootClasses = computed<ClassValue>(() => ({
-      'q-table-t': true,
-      'q-table-t_fixed': isColgroupShown.value,
-      'q-table-t_grided': Boolean(qTable.grided.value)
-    }));
+const stickyGlobalConfig = computed<StickyGlobalConfig>(
+  () =>
+    sticky.value?.stickyConfig ?? {
+      columnsLeftNew: {},
+      columnsRightNew: {}
+    }
+);
 
-    const stickyGlobalConfig = computed<StickyGlobalConfig>(
-      () =>
-        sticky.value?.stickyConfig ?? {
-          columnsLeftNew: {},
-          columnsRightNew: {}
-        }
-    );
+const tableHeight = ref<Nullable<number>>(null);
 
-    const tableHeight = ref<Nullable<number>>(null);
+provide<QTableTProvider>('qTableT', {
+  stickyGlobalConfig,
+  tableHeight
+});
 
-    provide<QTableTProvider>('qTableT', {
-      stickyGlobalConfig,
-      tableHeight
-    });
-
-    watch(rootResize.observedEntry, value => {
-      tableHeight.value = value?.contentRect?.height ?? null;
-      ctx.emit(CHANGE_WIDTH_EVENT, value?.contentRect.width ?? null);
-    });
-
-    return {
-      root,
-      thead,
-      sticky,
-      isColgroupShown,
-      isTotalShown,
-      rootClasses
-    };
-  }
+watch(rootResize.observedEntry, value => {
+  tableHeight.value = value?.contentRect?.height ?? null;
+  emit('change-width', value?.contentRect.width ?? null);
 });
 </script>
 

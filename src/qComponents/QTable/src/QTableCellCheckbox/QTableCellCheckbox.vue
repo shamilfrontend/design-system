@@ -1,17 +1,11 @@
-<script lang="ts">
-import {
-  h,
-  defineComponent,
-  resolveComponent,
-  computed,
-  inject,
-  VNode
-} from 'vue';
+<script setup lang="ts">
+import { computed, inject } from 'vue';
 import type { PropType, StyleValue } from 'vue';
 
 import { CHANGE_EVENT } from '@/qComponents/constants/events';
+import { QCheckbox } from '@/qComponents/QCheckbox';
 
-import type { Nullable, ClassValue } from '#/helpers';
+import type { ClassValue } from '#/helpers';
 
 import { useSticky } from '../hooks/sticky';
 import type { StickyConfig } from '../hooks/sticky';
@@ -20,99 +14,91 @@ import type { QTableProvider } from '../types';
 
 import type {
   QTableCellCheckboxIndeterminate,
-  QTableCellCheckboxIsCheckable,
-  QTableCellCheckboxProps,
-  QTableCellCheckboxInstance
+  QTableCellCheckboxIsCheckable
 } from './types';
 
-export default defineComponent({
+defineOptions({
   name: 'QTableCellCheckbox',
-  componentName: ' QTableCellCheckbox',
+  componentName: 'QTableCellCheckbox'
+});
 
-  props: {
-    baseTag: {
-      type: String,
-      required: true
-    },
-
-    baseClass: {
-      type: String,
-      required: true
-    },
-
-    checked: {
-      type: Boolean,
-      required: true
-    },
-
-    indeterminate: {
-      type: Boolean as PropType<QTableCellCheckboxIndeterminate>,
-      default: null
-    },
-
-    isCheckable: {
-      type: Boolean as PropType<QTableCellCheckboxIsCheckable>,
-      default: true
-    }
+const props = defineProps({
+  baseTag: {
+    type: String,
+    required: true
   },
 
-  emits: [CHANGE_EVENT],
+  baseClass: {
+    type: String,
+    required: true
+  },
 
-  setup(props: QTableCellCheckboxProps, ctx): QTableCellCheckboxInstance {
-    const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);
-    const qTableT = inject<QTableTProvider>('qTableT', {} as QTableTProvider);
+  checked: {
+    type: Boolean,
+    required: true
+  },
 
-    const stickyConfig = computed<StickyConfig>(() =>
-      useSticky('left', -1, qTableT.stickyGlobalConfig.value)
-    );
+  indeterminate: {
+    type: Boolean as PropType<QTableCellCheckboxIndeterminate>,
+    default: null
+  },
 
-    const rootClasses = computed<ClassValue>(() => ({
-      [props.baseClass]: true,
-      [`${props.baseClass}_sticked`]: stickyConfig.value.isSticked,
-      [`${props.baseClass}_sticked_first`]: stickyConfig.value.isSticked,
-      [`${props.baseClass}_sticked_last`]: stickyConfig.value.isLastSticked,
-      [`${props.baseClass}_sticked_left`]: stickyConfig.value.isSticked
-    }));
-
-    const rootStyles = computed<StyleValue>(() => ({
-      left: stickyConfig.value.isSticked ? '0' : undefined,
-      zIndex: stickyConfig.value.isSticked
-        ? stickyConfig.value.zIndex
-        : undefined
-    }));
-
-    const handleCheckboxChange = (value: boolean): void => {
-      ctx.emit(CHANGE_EVENT, value);
-    };
-
-    const QCheckbox = resolveComponent('q-checkbox');
-    const content = computed<Nullable<VNode>>(() => {
-      if (qTable.isLoading.value && props.isCheckable)
-        return h('div', { class: 'q-table-t__skeleton' });
-
-      if (!props.isCheckable) return null;
-
-      return h(QCheckbox, {
-        modelValue: props.checked,
-        indeterminate: props.indeterminate,
-        validateEvent: false,
-        onChange: handleCheckboxChange,
-        onClick: (event: Event) => event.stopPropagation()
-      });
-    });
-
-    return (): VNode =>
-      h(props.baseTag, { class: rootClasses.value, style: rootStyles.value }, [
-        h('div', { class: `${props.baseClass}__container` }, [
-          h(
-            'div',
-            {
-              class: `${props.baseClass}__content ${props.baseClass}__content_checkbox`
-            },
-            [content.value]
-          )
-        ])
-      ]);
+  isCheckable: {
+    type: Boolean as PropType<QTableCellCheckboxIsCheckable>,
+    default: true
   }
 });
+
+const emit = defineEmits<{
+  change: [value: boolean];
+}>();
+
+const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);
+const qTableT = inject<QTableTProvider>('qTableT', {} as QTableTProvider);
+
+const stickyConfig = computed<StickyConfig>(() =>
+  useSticky('left', -1, qTableT.stickyGlobalConfig.value)
+);
+
+const rootClasses = computed<ClassValue>(() => ({
+  [props.baseClass]: true,
+  [`${props.baseClass}_sticked`]: stickyConfig.value.isSticked,
+  [`${props.baseClass}_sticked_first`]: stickyConfig.value.isSticked,
+  [`${props.baseClass}_sticked_last`]: stickyConfig.value.isLastSticked,
+  [`${props.baseClass}_sticked_left`]: stickyConfig.value.isSticked
+}));
+
+const rootStyles = computed<StyleValue>(() => ({
+  left: stickyConfig.value.isSticked ? '0' : undefined,
+  zIndex: stickyConfig.value.isSticked ? stickyConfig.value.zIndex : undefined
+}));
+
+const handleCheckboxChange = (value: boolean): void => {
+  emit(CHANGE_EVENT, value);
+};
 </script>
+
+<template>
+  <component
+    :is="baseTag"
+    :class="rootClasses"
+    :style="rootStyles"
+  >
+    <div :class="`${baseClass}__container`">
+      <div :class="`${baseClass}__content ${baseClass}__content_checkbox`">
+        <div
+          v-if="qTable.isLoading && isCheckable"
+          class="q-table-t__skeleton"
+        />
+        <q-checkbox
+          v-else-if="isCheckable"
+          :model-value="checked"
+          :indeterminate="indeterminate"
+          :validate-event="false"
+          @change="handleCheckboxChange"
+          @click.stop
+        />
+      </div>
+    </div>
+  </component>
+</template>

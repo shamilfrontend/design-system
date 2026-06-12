@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent, inject, computed, type Component } from 'vue';
+<script setup lang="ts">
+import { inject, computed, type Component } from 'vue';
 
 import { randId } from '@/qComponents/helpers';
 import type { QCollapseProvider } from '@/qComponents/QCollapse';
@@ -7,69 +7,55 @@ import type { QCollapseProvider } from '@/qComponents/QCollapse';
 import type { ClassValue } from '#/helpers';
 
 import QCollapseTransition from './QCollapseTransition.vue';
-import type { QCollapseItemProps, QCollapseItemInstance } from './types';
 
-export default defineComponent({
+defineOptions({
   name: 'QCollapseItem',
-  componentName: 'QCollapseItem',
+  componentName: 'QCollapseItem'
+});
 
-  components: { QCollapseTransition },
-
-  props: {
-    title: {
-      type: String,
-      default: null
-    },
-    name: {
-      type: [String, Number],
-      default: null
-    }
+const props = defineProps({
+  title: {
+    type: String,
+    default: null
   },
-
-  setup(props: QCollapseItemProps): QCollapseItemInstance {
-    const qCollapse = inject<QCollapseProvider>('qCollapse');
-
-    const preparedName = computed<string | number>(
-      () =>
-        props.name ?? qCollapse?.uniqueId('default-collapse-name-') ?? randId()
-    );
-
-    const isActive = computed<boolean>(
-      () =>
-        qCollapse?.activeNames?.value.includes(preparedName.value ?? '') ??
-        false
-    );
-
-    const customIcon = computed<Component | string>(() => {
-      if (!qCollapse?.openIcon || !qCollapse?.closeIcon) return 'div';
-
-      return isActive.value ? qCollapse.closeIcon : qCollapse.openIcon;
-    });
-
-    const isCustomIcon = computed<boolean>(() => customIcon.value !== 'div');
-
-    const icon = computed<'q-icon-minus' | 'q-icon-plus'>(() =>
-      isActive.value ? 'q-icon-minus' : 'q-icon-plus'
-    );
-
-    const collapseIconClass = computed<ClassValue>(() => ({
-      'q-collapse-item__icon': !isCustomIcon.value,
-      'q-collapse-item__icon-custom': isCustomIcon.value,
-      [icon.value]: !isCustomIcon.value
-    }));
-
-    const handleHeaderClick = (): void => {
-      if (preparedName.value) qCollapse?.updateValue(preparedName.value);
-    };
-
-    return {
-      isActive,
-      customIcon,
-      collapseIconClass,
-      handleHeaderClick
-    };
+  name: {
+    type: [String, Number],
+    default: null
   }
 });
+
+const qCollapse = inject<QCollapseProvider>('qCollapse');
+
+const preparedName = computed<string | number>(
+  () => props.name ?? qCollapse?.uniqueId('default-collapse-name-') ?? randId()
+);
+
+const isActive = computed<boolean>(
+  () =>
+    qCollapse?.activeNames?.value.includes(preparedName.value ?? '') ?? false
+);
+
+const customIcon = computed<Component | string>(() => {
+  if (!qCollapse?.openIcon || !qCollapse?.closeIcon) return 'div';
+
+  return isActive.value ? qCollapse.closeIcon : qCollapse.openIcon;
+});
+
+const isCustomIcon = computed<boolean>(() => customIcon.value !== 'div');
+
+const icon = computed<'q-icon-minus' | 'q-icon-plus'>(() =>
+  isActive.value ? 'q-icon-minus' : 'q-icon-plus'
+);
+
+const collapseIconClass = computed<ClassValue>(() => ({
+  'q-collapse-item__icon': !isCustomIcon.value,
+  'q-collapse-item__icon-custom': isCustomIcon.value,
+  [icon.value]: !isCustomIcon.value
+}));
+
+function handleHeaderClick(): void {
+  if (preparedName.value) qCollapse?.updateValue(preparedName.value);
+}
 </script>
 
 <template>
@@ -82,6 +68,7 @@ export default defineComponent({
     <button
       type="button"
       class="q-collapse-item__header"
+      :aria-expanded="isActive"
       @click="handleHeaderClick"
     >
       <slot name="title">
@@ -90,6 +77,7 @@ export default defineComponent({
       <component
         :is="customIcon"
         :class="collapseIconClass"
+        aria-hidden="true"
       />
     </button>
 

@@ -1,81 +1,69 @@
-<script lang="ts">
-import { defineComponent, ref, provide, watch, toRef } from 'vue';
+<script setup lang="ts">
+import { ref, provide, watch, toRef } from 'vue';
 
-import type {
-  QTabPropModelValue,
-  QTabsProps,
-  QTabsProvider,
-  QTabsInstance
-} from './types';
+import type { QTabPropModelValue, QTabsProvider } from './types';
 
-export default defineComponent({
+defineOptions({
   name: 'QTabs',
-  componentName: 'QTabs',
+  componentName: 'QTabs'
+});
 
-  props: {
-    modelValue: {
-      type: String,
-      default: null
-    },
-    /**
-     * width of QTabPanes
-     */
-    tabWidth: {
-      type: [String, Number],
-      default: null
-    },
-    /**
-     * whether QTabs is disabled
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    }
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: null
   },
-
-  emits: [
-    /**
-     * triggers when model updates
-     */
-    'update:modelValue',
-    /**
-     * alias for update:modelValue
-     */
-    'change'
-  ],
-
-  setup(props: QTabsProps, { emit }): QTabsInstance {
-    const currentName = ref<QTabPropModelValue>(props.modelValue);
-
-    const updateValue = (name: string): void => {
-      emit('update:modelValue', name);
-      /**
-       * triggers when the tab changes
-       */
-      emit('change', name);
-      currentName.value = name;
-    };
-
-    watch(
-      () => props.modelValue,
-      name => {
-        if (name) updateValue(name);
-      },
-      { immediate: true }
-    );
-
-    provide<QTabsProvider>('qTabs', {
-      currentName,
-      tabWidth: toRef(props, 'tabWidth'),
-      disabled: toRef(props, 'disabled'),
-      updateValue
-    });
+  /**
+   * width of QTabPanes
+   */
+  tabWidth: {
+    type: [String, Number],
+    default: null
+  },
+  /**
+   * whether QTabs is disabled
+   */
+  disabled: {
+    type: Boolean,
+    default: false
   }
+});
+
+const emit = defineEmits<{
+  'update:modelValue': [name: string];
+  change: [name: string];
+}>();
+
+const currentName = ref<QTabPropModelValue>(props.modelValue);
+
+function updateValue(name: string): void {
+  emit('update:modelValue', name);
+  emit('change', name);
+  currentName.value = name;
+}
+
+watch(
+  () => props.modelValue,
+  name => {
+    if (name) updateValue(name);
+  },
+  { immediate: true }
+);
+
+provide<QTabsProvider>('qTabs', {
+  currentName,
+  tabWidth: toRef(props, 'tabWidth'),
+  disabled: toRef(props, 'disabled'),
+  updateValue
 });
 </script>
 
 <template>
-  <div class="q-tabs">
+  <div
+    class="q-tabs"
+    role="tablist"
+    aria-orientation="horizontal"
+  >
     <slot />
   </div>
 </template>

@@ -42,5 +42,24 @@ export default {
   },
   QBreadcrumbs: {
     ariaLabel: 'Breadcrumb'
+  },
+  QTag: {
+    close: 'Close'
+  },
+  QPagination: {
+    ariaLabel: 'Pagination',
+    prevPage: 'Previous page',
+    nextPage: 'Next page',
+    prevPages: 'Previous pages',
+    nextPages: 'Next pages'
+  },
+  QContextMenu: {
+    ariaLabel: 'Open menu'
+  },
+  QNotification: {
+    close: 'Close notification'
+  },
+  QScrollbar: {
+    ariaLabel: 'Scrollable content'
   }
 };

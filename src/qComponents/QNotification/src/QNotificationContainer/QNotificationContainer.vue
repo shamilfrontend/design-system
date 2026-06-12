@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent, getCurrentInstance, onMounted, computed } from 'vue';
+<script setup lang="ts">
+import { getCurrentInstance, onMounted, computed } from 'vue';
 import type { PropType, Ref } from 'vue';
 
 import { REMOVE_EVENT } from '@/qComponents/constants/events';
@@ -8,76 +8,65 @@ import { DEFAULT_DURATION } from '../constants';
 import QNotificationToast from '../QNotificationToast';
 import type { QNotifyItem, QNotifyId } from '../types';
 
-import type {
-  QNotificationContainerProps,
-  QNotificationContainerInstance
-} from './types';
-
-export default defineComponent({
+defineOptions({
   name: 'QNotificationContainer',
-  componentName: 'QNotificationContainer',
+  componentName: 'QNotificationContainer'
+});
 
-  components: { QNotificationToast },
-
-  props: {
-    /**
-     * icon class
-     */
-    list: {
-      type: Object as PropType<Ref<QNotifyItem[]>>,
-      required: true
-    },
-    /**
-     * icon class
-     */
-    icon: {
-      type: String,
-      default: null
-    },
-    /**
-     * duration before close
-     */
-    duration: {
-      type: Number,
-      default: DEFAULT_DURATION
-    }
+const props = defineProps({
+  /**
+   * icon class
+   */
+  list: {
+    type: Object as PropType<Ref<QNotifyItem[]>>,
+    required: true
   },
-
-  emits: [REMOVE_EVENT],
-
-  setup(
-    props: QNotificationContainerProps,
-    ctx
-  ): QNotificationContainerInstance {
-    const instance = getCurrentInstance();
-
-    const notifyList = computed<QNotifyItem[]>(() => props.list.value);
-
-    const handleRemove = (id: QNotifyId): void => {
-      ctx.emit(REMOVE_EVENT, id);
-    };
-
-    const mountInstance = (): void => {
-      if (!instance?.vnode?.el) return;
-
-      instance.vnode.el.remove();
-      document.body.appendChild(instance.vnode.el as Node);
-    };
-
-    onMounted(() => {
-      mountInstance();
-    });
-
-    return {
-      notifyList,
-      handleRemove
-    };
+  /**
+   * icon class
+   */
+  icon: {
+    type: String,
+    default: null
+  },
+  /**
+   * duration before close
+   */
+  duration: {
+    type: Number,
+    default: DEFAULT_DURATION
   }
+});
+
+const emit = defineEmits<{
+  remove: [id: QNotifyId];
+}>();
+
+const instance = getCurrentInstance();
+
+const notifyList = computed<QNotifyItem[]>(() => props.list.value);
+
+function handleRemove(id: QNotifyId): void {
+  emit(REMOVE_EVENT, id);
+}
+
+function mountInstance(): void {
+  if (!instance?.vnode?.el) return;
+
+  instance.vnode.el.remove();
+  document.body.appendChild(instance.vnode.el as Node);
+}
+
+onMounted(() => {
+  mountInstance();
 });
 </script>
 
 <template>
-  <div class="q-notification-container">
+  <div
+    class="q-notification-container"
+    aria-live="polite"
+    aria-atomic="false"
+  >
     <transition-group name="q-notification-container">
       <q-notification-toast
         v-for="toast in notifyList"

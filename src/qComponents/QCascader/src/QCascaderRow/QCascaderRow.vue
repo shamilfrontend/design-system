@@ -1,157 +1,133 @@
-<script lang="ts">
-import { defineComponent, inject, computed, PropType } from 'vue';
+<script setup lang="ts">
+import { inject, computed } from 'vue';
+import type { PropType } from 'vue';
 
 import { QCheckbox } from '@/qComponents/QCheckbox';
 
 import getChildStatuses from '../helpers/getChildStatuses';
 import type { QCascaderProvider } from '../types';
 
-import type {
-  QCascaderRowPropRow,
-  QCascaderRowProps,
-  QCascaderRowInstance
-} from './types';
+import type { QCascaderRowPropRow } from './types';
 
-export default defineComponent({
+defineOptions({
   name: 'QCascaderRow',
-  components: { QCheckbox },
-  componentName: 'QCascaderRow',
+  componentName: 'QCascaderRow'
+});
 
-  props: {
-    uniqueId: {
-      type: String,
-      required: true
-    },
-    row: {
-      type: [Object] as PropType<QCascaderRowPropRow>,
-      required: true
-    },
-    rowIndex: {
-      type: Number,
-      required: true
-    },
-    expanded: {
-      type: Boolean,
-      default: false
-    }
+const props = defineProps({
+  uniqueId: {
+    type: String,
+    required: true
   },
-
-  emits: ['expand', 'check'],
-
-  setup(props: QCascaderRowProps, ctx): QCascaderRowInstance {
-    const qCascader = inject<QCascaderProvider>(
-      'qCascader',
-      {} as QCascaderProvider
-    );
-
-    const isMultiple = computed<boolean>(
-      () => qCascader.multiple.value ?? false
-    );
-
-    const isCheckStrictly = computed<boolean>(
-      () => qCascader.checkStrictly.value ?? false
-    );
-
-    const childStatuses = computed<boolean[]>(() => {
-      if (!qCascader.multiple.value || qCascader.checkStrictly.value) return [];
-      return getChildStatuses(props.row, qCascader.modelValue.value);
-    });
-
-    const isChecked = computed<boolean>(() => {
-      const modelValue = qCascader.modelValue.value;
-      if (!isMultiple.value) return modelValue === props.row.value;
-
-      if (!qCascader.checkStrictly.value)
-        return (
-          Boolean(childStatuses.value.length) &&
-          childStatuses.value.every(Boolean)
-        );
-
-      return Array.isArray(modelValue)
-        ? modelValue.includes(props.row.value)
-        : false;
-    });
-
-    const isIndeterminate = computed<boolean>(() => {
-      if (
-        !qCascader.multiple.value ||
-        qCascader.checkStrictly.value ||
-        isChecked.value
-      )
-        return false;
-
-      if (childStatuses.value.every(Boolean)) return false;
-      return childStatuses.value.some(Boolean);
-    });
-
-    const rootClasses = computed<Record<string, boolean>>(() => ({
-      'q-cascader-row': true,
-      'q-cascader-row_disabled': Boolean(props.row.disabled),
-      'q-cascader-row_expanded': Boolean(props.expanded),
-      'q-cascader-row_checked': isChecked.value
-    }));
-
-    const hasChildren = computed<boolean>(() =>
-      Boolean(props.row.children?.length)
-    );
-
-    const isIconShown = computed<boolean>(
-      () => props.row.disabled || hasChildren.value
-    );
-
-    const iconClasses = computed<Record<string, boolean>>(() => {
-      const isArrowShown = !props.row.disabled && hasChildren.value;
-
-      return {
-        'q-cascader-row__icon': true,
-        'q-icon-lock': Boolean(props.row.disabled),
-        'q-icon-triangle-right': isArrowShown,
-        'q-cascader-row__icon_reverse': isArrowShown && Boolean(props.expanded)
-      };
-    });
-
-    const handleClick = (): void => {
-      if (props.row.disabled) return;
-
-      if (!isMultiple.value && !props.row.children && !isCheckStrictly.value) {
-        ctx.emit('check', props.row, isChecked.value);
-      }
-
-      ctx.emit('expand', props.rowIndex, hasChildren.value);
-    };
-
-    const handleRightKeyUp = (): void => {
-      if (props.row.disabled) return;
-
-      ctx.emit('expand', props.rowIndex, hasChildren.value);
-    };
-
-    const handleEnterKeyUp = (): void => {
-      if (props.row.disabled || (!isMultiple.value && hasChildren.value))
-        return;
-
-      ctx.emit('check', props.row, isChecked.value);
-    };
-
-    const handleCheckboxChange = (): void => {
-      ctx.emit('check', props.row, isChecked.value);
-    };
-
-    return {
-      rootClasses,
-      isMultiple,
-      isCheckStrictly,
-      isChecked,
-      isIndeterminate,
-      isIconShown,
-      iconClasses,
-      handleClick,
-      handleRightKeyUp,
-      handleEnterKeyUp,
-      handleCheckboxChange
-    };
+  row: {
+    type: [Object] as PropType<QCascaderRowPropRow>,
+    required: true
+  },
+  rowIndex: {
+    type: Number,
+    required: true
+  },
+  expanded: {
+    type: Boolean,
+    default: false
   }
 });
+
+const emit = defineEmits(['expand', 'check']);
+
+const qCascader = inject<QCascaderProvider>(
+  'qCascader',
+  {} as QCascaderProvider
+);
+
+const isMultiple = computed<boolean>(() => qCascader.multiple.value ?? false);
+
+const isCheckStrictly = computed<boolean>(
+  () => qCascader.checkStrictly.value ?? false
+);
+
+const childStatuses = computed<boolean[]>(() => {
+  if (!qCascader.multiple.value || qCascader.checkStrictly.value) return [];
+  return getChildStatuses(props.row, qCascader.modelValue.value);
+});
+
+const isChecked = computed<boolean>(() => {
+  const modelValue = qCascader.modelValue.value;
+  if (!isMultiple.value) return modelValue === props.row.value;
+
+  if (!qCascader.checkStrictly.value)
+    return (
+      Boolean(childStatuses.value.length) && childStatuses.value.every(Boolean)
+    );
+
+  return Array.isArray(modelValue)
+    ? modelValue.includes(props.row.value)
+    : false;
+});
+
+const isIndeterminate = computed<boolean>(() => {
+  if (
+    !qCascader.multiple.value ||
+    qCascader.checkStrictly.value ||
+    isChecked.value
+  )
+    return false;
+
+  if (childStatuses.value.every(Boolean)) return false;
+  return childStatuses.value.some(Boolean);
+});
+
+const rootClasses = computed<Record<string, boolean>>(() => ({
+  'q-cascader-row': true,
+  'q-cascader-row_disabled': Boolean(props.row.disabled),
+  'q-cascader-row_expanded': Boolean(props.expanded),
+  'q-cascader-row_checked': isChecked.value
+}));
+
+const hasChildren = computed<boolean>(() =>
+  Boolean(props.row.children?.length)
+);
+
+const isIconShown = computed<boolean>(
+  () => props.row.disabled || hasChildren.value
+);
+
+const iconClasses = computed<Record<string, boolean>>(() => {
+  const isArrowShown = !props.row.disabled && hasChildren.value;
+
+  return {
+    'q-cascader-row__icon': true,
+    'q-icon-lock': Boolean(props.row.disabled),
+    'q-icon-triangle-right': isArrowShown,
+    'q-cascader-row__icon_reverse': isArrowShown && Boolean(props.expanded)
+  };
+});
+
+function handleClick(): void {
+  if (props.row.disabled) return;
+
+  if (!isMultiple.value && !props.row.children && !isCheckStrictly.value) {
+    emit('check', props.row, isChecked.value);
+  }
+
+  emit('expand', props.rowIndex, hasChildren.value);
+}
+
+function handleRightKeyUp(): void {
+  if (props.row.disabled) return;
+
+  emit('expand', props.rowIndex, hasChildren.value);
+}
+
+function handleEnterKeyUp(): void {
+  if (props.row.disabled || (!isMultiple.value && hasChildren.value)) return;
+
+  emit('check', props.row, isChecked.value);
+}
+
+function handleCheckboxChange(): void {
+  emit('check', props.row, isChecked.value);
+}
 </script>
 
 <template>

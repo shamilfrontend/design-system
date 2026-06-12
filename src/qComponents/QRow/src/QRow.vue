@@ -1,72 +1,64 @@
-<script lang="ts">
-import { defineComponent, PropType, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
+import type { PropType } from 'vue';
 
 import { validateArray } from '@/qComponents/helpers';
 
 import type { Nullable } from '#/helpers';
 
-import type {
-  QRowProps,
-  QRowPropAlignV,
-  QRowPropAlignH,
-  QRowInstance
-} from './types';
+import type { QRowPropAlignV, QRowPropAlignH } from './types';
 
-export default defineComponent({
+defineOptions({
   name: 'QRow',
-  componentName: 'QRow',
+  componentName: 'QRow'
+});
 
-  props: {
-    /**
-     * custom element tag
-     */
-    tag: {
-      type: String,
-      default: 'div'
-    },
-    /**
-     * vertical alignment of flex layout.
-     * `['start', 'end', 'center', 'baseline', 'stretch']`
-     */
-    alignV: {
-      type: String as PropType<QRowPropAlignV>,
-      default: null,
-      validator: validateArray<Nullable<QRowPropAlignV>>([
-        null,
-        'start',
-        'end',
-        'center',
-        'baseline',
-        'stretch'
-      ])
-    },
-    /**
-     * horizontal alignment of flex layout.
-     * `['start', 'end', 'center', 'between', 'around']`
-     */
-    alignH: {
-      type: String as PropType<QRowPropAlignH>,
-      default: null,
-      validator: validateArray<Nullable<QRowPropAlignH>>([
-        null,
-        'start',
-        'end',
-        'center',
-        'between',
-        'around'
-      ])
-    }
+const props = defineProps({
+  /**
+   * custom element tag
+   */
+  tag: {
+    type: String,
+    default: 'div'
   },
-
-  setup(props: QRowProps): QRowInstance {
-    const classes = computed<Record<string, boolean>>(() => ({
-      [`q-row_align-h_${props.alignH}`]: Boolean(props.alignH),
-      [`q-row_align-v_${props.alignV}`]: Boolean(props.alignV)
-    }));
-
-    return { classes };
+  /**
+   * vertical alignment of flex layout.
+   * `['start', 'end', 'center', 'baseline', 'stretch']`
+   */
+  alignV: {
+    type: String as PropType<QRowPropAlignV>,
+    default: null,
+    validator: validateArray<Nullable<QRowPropAlignV>>([
+      null,
+      'start',
+      'end',
+      'center',
+      'baseline',
+      'stretch'
+    ])
+  },
+  /**
+   * horizontal alignment of flex layout.
+   * `['start', 'end', 'center', 'between', 'around']`
+   */
+  alignH: {
+    type: String as PropType<QRowPropAlignH>,
+    default: null,
+    validator: validateArray<Nullable<QRowPropAlignH>>([
+      null,
+      'start',
+      'end',
+      'center',
+      'between',
+      'around'
+    ])
   }
 });
+
+const classes = computed<Record<string, boolean>>(() => ({
+  [`q-row_align-h_${props.alignH}`]: Boolean(props.alignH),
+  [`q-row_align-v_${props.alignV}`]: Boolean(props.alignV)
+}));
 </script>
 
 <template>

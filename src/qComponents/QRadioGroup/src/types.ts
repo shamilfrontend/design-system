@@ -11,6 +11,7 @@ export interface QRadioGroupProps {
   disabled: QRadioGroupPropDisabled;
   tag: Nullable<string>;
   direction: QRadioGroupPropDirection;
+  ariaLabel: Nullable<string>;
 }
 
 export interface QRadioGroupProvider {

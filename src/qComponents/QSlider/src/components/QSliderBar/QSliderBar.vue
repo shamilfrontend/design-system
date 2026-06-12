@@ -1,38 +1,29 @@
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import type { CSSProperties, PropType } from 'vue';
 
-import type {
-  QSliderBarPropSize,
-  QSliderBarProps,
-  QSliderBarInstance
-} from './types';
+import type { QSliderBarPropSize } from './types';
 
-export default defineComponent({
-  name: 'QSliderBar',
+defineOptions({
+  name: 'QSliderBar'
+});
 
-  props: {
-    size: {
-      type: String as PropType<QSliderBarPropSize>,
-      default: null
-    }
-  },
-
-  setup(props: QSliderBarProps): QSliderBarInstance {
-    const barStyle = computed<CSSProperties>(() => ({
-      width: props.size ?? undefined
-    }));
-
-    return {
-      barStyle
-    };
+const props = defineProps({
+  size: {
+    type: String as PropType<QSliderBarPropSize>,
+    default: null
   }
 });
+
+const barStyle = computed<CSSProperties>(() => ({
+  width: props.size ?? undefined
+}));
 </script>
 
 <template>
   <div
     class="q-slider__bar"
     :style="barStyle"
+    aria-hidden="true"
   />
 </template>

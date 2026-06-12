@@ -1,37 +1,42 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 
-import type { QTagProps, QTagInstance } from './types';
+import { t } from '@/qComponents/locale';
 
-export default defineComponent({
+defineOptions({
   name: 'QTag',
-  componentName: 'QTag',
+  componentName: 'QTag'
+});
 
-  props: {
-    /**
-     * whether is close button shown
-     */
-    closable: {
-      type: Boolean,
-      default: false
-    }
+const props = defineProps({
+  /**
+   * whether is close button shown
+   */
+  closable: {
+    type: Boolean,
+    default: false
   },
-
-  emits: [
-    /**
-     * triggers when the close button is clicked
-     */
-    'close'
-  ],
-
-  setup(_: QTagProps, { emit }): QTagInstance {
-    const handleClose = (event: MouseEvent): void => {
-      emit('close', event);
-    };
-
-    return { handleClose };
+  /**
+   * accessible label for close button
+   */
+  ariaLabel: {
+    type: String,
+    default: null
   }
 });
+
+const emit = defineEmits([
+  /**
+   * triggers when the close button is clicked
+   */
+  'close'
+]);
+
+const closeLabel = computed<string>(() => props.ariaLabel ?? t('QTag.close'));
+
+function handleClose(event: MouseEvent): void {
+  emit('close', event);
+}
 </script>
 
 <template>
@@ -49,6 +54,7 @@ export default defineComponent({
       v-if="closable"
       type="button"
       class="q-tag__close q-icon-close"
+      :aria-label="closeLabel"
       @click.stop="handleClose"
     />
   </div>
