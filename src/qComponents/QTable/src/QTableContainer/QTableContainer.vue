@@ -1,19 +1,3 @@
-<template>
-  <div class="q-table-container">
-    <q-scrollbar
-      ref="scrollbar"
-      theme="secondary"
-    >
-      <div
-        class="q-table-container__wrapper"
-        :style="wrapperStyles"
-      >
-        <q-table-t @change-width="handleWidthChange" />
-      </div>
-    </q-scrollbar>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed, ref, provide, inject } from 'vue';
 import type { StyleValue } from 'vue';
@@ -78,3 +62,19 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-table-container">
+    <q-scrollbar
+      ref="scrollbar"
+      theme="secondary"
+    >
+      <div
+        class="q-table-container__wrapper"
+        :style="wrapperStyles"
+      >
+        <q-table-t @change-width="handleWidthChange" />
+      </div>
+    </q-scrollbar>
+  </div>
+</template>

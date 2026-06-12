@@ -1,28 +1,3 @@
-<template>
-  <div class="q-breadcrumbs">
-    <template
-      v-for="crumb in breadcrumbs"
-      :key="crumb.name || crumb.path"
-    >
-      <component
-        :is="linkComponent || 'RouterLink'"
-        :to="pushTo(crumb)"
-        active-class="q-breadcrumbs__crumb_active"
-        exact-active-class="q-breadcrumbs__crumb_exact-active"
-        class="q-breadcrumbs__crumb"
-      >
-        {{ crumb.meta.breadcrumb }}
-      </component>
-
-      <span class="q-breadcrumbs__divider q-icon-arrow-right" />
-    </template>
-
-    <div class="q-breadcrumbs__crumb q-breadcrumbs__crumb_last">
-      {{ lastCrumb }}
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed, PropType } from 'vue';
 
@@ -99,3 +74,28 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-breadcrumbs">
+    <template
+      v-for="crumb in breadcrumbs"
+      :key="crumb.name || crumb.path"
+    >
+      <component
+        :is="linkComponent || 'RouterLink'"
+        :to="pushTo(crumb)"
+        active-class="q-breadcrumbs__crumb_active"
+        exact-active-class="q-breadcrumbs__crumb_exact-active"
+        class="q-breadcrumbs__crumb"
+      >
+        {{ crumb.meta.breadcrumb }}
+      </component>
+
+      <span class="q-breadcrumbs__divider q-icon-arrow-right" />
+    </template>
+
+    <div class="q-breadcrumbs__crumb q-breadcrumbs__crumb_last">
+      {{ lastCrumb }}
+    </div>
+  </div>
+</template>

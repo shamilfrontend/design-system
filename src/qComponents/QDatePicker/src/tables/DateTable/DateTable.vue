@@ -1,46 +1,3 @@
-<template>
-  <table
-    cellspacing="10"
-    cellpadding="2"
-    class="q-date-table"
-  >
-    <thead>
-      <tr>
-        <th
-          v-for="day in days"
-          :key="day"
-          class="q-date-table__days"
-        >
-          {{ day }}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        v-for="(row, key) in rows"
-        :key="key"
-        class="q-date-table__row"
-      >
-        <td
-          v-for="(cell, index) in row"
-          :key="index"
-          class="q-date-table__cell-wrapper"
-        >
-          <button
-            :class="getCellClasses(cell)"
-            type="button"
-            tabindex="-1"
-            @click="handleClick(cell)"
-            @mouseenter="handleMouseMove(cell)"
-          >
-            {{ cell.text }}
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</template>
-
 <script lang="ts">
 import {
   getDaysInMonth,
@@ -346,3 +303,46 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <table
+    cellspacing="10"
+    cellpadding="2"
+    class="q-date-table"
+  >
+    <thead>
+      <tr>
+        <th
+          v-for="day in days"
+          :key="day"
+          class="q-date-table__days"
+        >
+          {{ day }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        v-for="(row, key) in rows"
+        :key="key"
+        class="q-date-table__row"
+      >
+        <td
+          v-for="(cell, index) in row"
+          :key="index"
+          class="q-date-table__cell-wrapper"
+        >
+          <button
+            :class="getCellClasses(cell)"
+            type="button"
+            tabindex="-1"
+            @click="handleClick(cell)"
+            @mouseenter="handleMouseMove(cell)"
+          >
+            {{ cell.text }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>

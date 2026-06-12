@@ -1,0 +1,29 @@
+$landing-bp-sm: 480px;
+$landing-bp-md: 768px;
+$landing-bp-lg: 900px;
+$landing-bp-xl: 1024px;
+
+@mixin landing-breakpoint($name) {
+  @if $name == sm {
+    @media (max-width: $landing-bp-sm) {
+      @content;
+    }
+  } @else if $name == md {
+    @media (max-width: $landing-bp-md) {
+      @content;
+    }
+  } @else if $name == lg {
+    @media (max-width: $landing-bp-lg) {
+      @content;
+    }
+  } @else if $name == xl {
+    @media (max-width: $landing-bp-xl) {
+      @content;
+    }
+  }
+}
+
+@mixin landing-focus-ring {
+  outline: 2px solid var(--landing-primary-light);
+  outline-offset: 2px;
+}

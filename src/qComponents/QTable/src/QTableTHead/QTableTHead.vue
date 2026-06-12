@@ -1,28 +1,3 @@
-<template>
-  <tr class="q-table-t-head">
-    <q-table-cell-checkbox
-      v-if="isSelectable"
-      base-tag="th"
-      base-class="q-table-t-head-cell"
-      :checked="isChecked"
-      :indeterminate="isIndeterminate"
-      :is-checkable="isCheckable"
-      @change="handleCheckboxChange"
-    />
-
-    <q-table-t-head-cell
-      v-for="(column, index) in columnList"
-      :key="`head-cell-${column.group.key}-${column.key}`"
-      :column="column"
-      :column-index="index"
-      :sort-by="sortBy"
-      :dragged-column="draggedColumn"
-      @drag="handleColumnDrag"
-      @drop="handleColumnDrop"
-    />
-  </tr>
-</template>
-
 <script lang="ts">
 import { isEmpty, cloneDeep } from 'lodash-es';
 import { defineComponent, ref, computed, inject } from 'vue';
@@ -170,3 +145,28 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <tr class="q-table-t-head">
+    <q-table-cell-checkbox
+      v-if="isSelectable"
+      base-tag="th"
+      base-class="q-table-t-head-cell"
+      :checked="isChecked"
+      :indeterminate="isIndeterminate"
+      :is-checkable="isCheckable"
+      @change="handleCheckboxChange"
+    />
+
+    <q-table-t-head-cell
+      v-for="(column, index) in columnList"
+      :key="`head-cell-${column.group.key}-${column.key}`"
+      :column="column"
+      :column-index="index"
+      :sort-by="sortBy"
+      :dragged-column="draggedColumn"
+      @drag="handleColumnDrag"
+      @drop="handleColumnDrop"
+    />
+  </tr>
+</template>

@@ -1,19 +1,53 @@
-import type { ViteBundlerOptions } from '@vuepress/bundler-vite';
-import { defineUserConfig } from '@vuepress/cli';
-import type { DefaultThemeOptions } from '@vuepress/theme-default';
+import { viteBundler } from '@vuepress/bundler-vite';
+import { defaultTheme } from '@vuepress/theme-default';
+import { defineUserConfig } from 'vuepress';
+import { path } from '@vuepress/utils';
+import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
-  // The base URL the site will be deployed at:
+const configDir = path.resolve(process.cwd(), 'docs/.vuepress');
+const isAnalyze = process.env.ANALYZE === 'true';
+
+export default defineUserConfig({
   base: '/',
-  lang: 'en-US',
+  lang: 'ru-RU',
   title: 'Qui Max',
-  description: 'Neumorphic design system for Web',
+  description:
+    'Vue 3 дизайн-система с TypeScript, Composition API и 30+ компонентов',
   head: [['link', { rel: 'icon', href: '/qui-logo.svg' }]],
 
-  themeConfig: {
+  bundler: viteBundler({
+    viteOptions: {
+      build: {
+        cssMinify: 'esbuild',
+        rollupOptions: {
+          plugins: isAnalyze
+            ? [
+                visualizer({
+                  filename: path.resolve(
+                    configDir,
+                    'dist/stats.html'
+                  ),
+                  gzipSize: true,
+                  open: false
+                })
+              ]
+            : []
+        }
+      }
+    }
+  }),
+
+  alias: {
+    '@theme/Home.vue': path.resolve(configDir, 'components/CustomHome.vue')
+  },
+
+  theme: defaultTheme({
     logo: './qui-logo.svg',
     navbar: [
-      // NavbarItem
+      {
+        text: 'Гайд',
+        link: '/guide/getting-started.html'
+      },
       {
         text: 'Components',
         link: '/components/',
@@ -44,7 +78,6 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
           '/components/QUpload.md'
         ]
       },
-      // NavbarGroup
       {
         text: 'Storybook',
         link: 'https://qui-max.netlify.app/'
@@ -93,5 +126,5 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
         }
       ]
     }
-  }
+  })
 });

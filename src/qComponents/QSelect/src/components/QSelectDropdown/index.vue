@@ -1,67 +1,3 @@
-<template>
-  <div
-    v-show="shown"
-    ref="root"
-    class="q-select-dropdown"
-    :class="{
-      'q-select-dropdown_multiple': multiple
-    }"
-    :style="styles"
-  >
-    <div class="q-select-dropdown__wrapper">
-      <q-scrollbar
-        ref="scrollbar"
-        wrap-class="q-select-dropdown__wrap"
-      >
-        <div
-          v-if="selectAllShown && isVisibleOptionExist && multiple"
-          tabindex="-1"
-          class="q-option q-option_with-checkbox q-option_all"
-          @click.stop="handleSelectAllClick"
-        >
-          <q-checkbox
-            v-model="areAllSelected"
-            root-tag="div"
-            input-tab-index="-1"
-            :indeterminate="isIndeterminate"
-          />
-
-          <div class="q-option__label">{{ selectAllText }}</div>
-        </div>
-
-        <q-option
-          v-if="isNewOptionShown"
-          :value="qSelectState?.query"
-          :label="qSelectState?.query"
-          created
-        />
-
-        <slot />
-      </q-scrollbar>
-
-      <template v-if="showEmptyContent">
-        <slot
-          v-if="$slots.empty"
-          name="empty"
-        />
-        <div
-          v-else
-          class="q-select-dropdown__empty"
-        >
-          {{ emptyText }}
-        </div>
-      </template>
-
-      <div
-        v-else-if="isCanLoadMoreShown"
-        class="q-select-dropdown__empty"
-      >
-        {{ loadMoreText }}
-      </div>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { get, isPlainObject } from 'lodash-es';
 import { defineComponent, computed, inject, ref, watch } from 'vue';
@@ -267,3 +203,67 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    v-show="shown"
+    ref="root"
+    class="q-select-dropdown"
+    :class="{
+      'q-select-dropdown_multiple': multiple
+    }"
+    :style="styles"
+  >
+    <div class="q-select-dropdown__wrapper">
+      <q-scrollbar
+        ref="scrollbar"
+        wrap-class="q-select-dropdown__wrap"
+      >
+        <div
+          v-if="selectAllShown && isVisibleOptionExist && multiple"
+          tabindex="-1"
+          class="q-option q-option_with-checkbox q-option_all"
+          @click.stop="handleSelectAllClick"
+        >
+          <q-checkbox
+            v-model="areAllSelected"
+            root-tag="div"
+            input-tab-index="-1"
+            :indeterminate="isIndeterminate"
+          />
+
+          <div class="q-option__label">{{ selectAllText }}</div>
+        </div>
+
+        <q-option
+          v-if="isNewOptionShown"
+          :value="qSelectState?.query"
+          :label="qSelectState?.query"
+          created
+        />
+
+        <slot />
+      </q-scrollbar>
+
+      <template v-if="showEmptyContent">
+        <slot
+          v-if="$slots.empty"
+          name="empty"
+        />
+        <div
+          v-else
+          class="q-select-dropdown__empty"
+        >
+          {{ emptyText }}
+        </div>
+      </template>
+
+      <div
+        v-else-if="isCanLoadMoreShown"
+        class="q-select-dropdown__empty"
+      >
+        {{ loadMoreText }}
+      </div>
+    </div>
+  </div>
+</template>

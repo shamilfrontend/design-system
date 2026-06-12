@@ -1,30 +1,3 @@
-<template>
-  <div :class="classes">
-    <div
-      v-if="isSymbolLimitShown"
-      class="q-textarea__count"
-    >
-      {{ t('QTextarea.charNumber') }}: {{ textLength }}/{{ $attrs.maxlength }}
-    </div>
-    <div
-      v-if="isDisabled"
-      class="q-textarea__disabled-icon q-icon-lock"
-    />
-    <textarea
-      v-bind="$attrs"
-      ref="textarea"
-      class="q-textarea__inner"
-      :disabled="isDisabled"
-      :style="textareaStyle"
-      :value="modelValue"
-      @input="handleInput"
-      @change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import {
   computed,
@@ -242,3 +215,30 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div :class="classes">
+    <div
+      v-if="isSymbolLimitShown"
+      class="q-textarea__count"
+    >
+      {{ t('QTextarea.charNumber') }}: {{ textLength }}/{{ $attrs.maxlength }}
+    </div>
+    <div
+      v-if="isDisabled"
+      class="q-textarea__disabled-icon q-icon-lock"
+    />
+    <textarea
+      v-bind="$attrs"
+      ref="textarea"
+      class="q-textarea__inner"
+      :disabled="isDisabled"
+      :style="textareaStyle"
+      :value="modelValue"
+      @input="handleInput"
+      @change="handleChange"
+      @focus="handleFocus"
+      @blur="handleBlur"
+    />
+  </div>
+</template>

@@ -1,96 +1,3 @@
-<template>
-  <div
-    ref="root"
-    class="q-picker-panel"
-  >
-    <div class="q-picker-panel__body">
-      <div
-        v-if="shortcuts?.length"
-        class="q-picker-panel__sidebar"
-      >
-        <button
-          v-for="(shortcut, key) in shortcuts"
-          :key="key"
-          type="button"
-          class="q-picker-panel__shortcut"
-          @click="handleShortcutClick(shortcut.value)"
-        >
-          {{ shortcut.text }}
-        </button>
-      </div>
-
-      <div
-        ref="datePanel"
-        :class="panelContentClasses"
-      >
-        <div class="q-picker-panel__header">
-          <button
-            type="button"
-            :title="t('QDatePicker.prevYear')"
-            class="q-picker-panel__icon-btn q-icon-double-triangle-left"
-            @click="handlePrevYearClick"
-          />
-          <button
-            v-show="state.currentView === 'date'"
-            type="button"
-            :title="t('QDatePicker.prevMonth')"
-            class="q-picker-panel__icon-btn q-icon-triangle-left"
-            @click="handlePrevMonthClick"
-          />
-          <div class="q-picker-panel__header-sign">
-            <button
-              v-show="state.currentView === 'date'"
-              class="q-picker-panel__header-label"
-              @click="showMonthPicker"
-            >
-              {{ currentMonth }}
-            </button>
-            <button
-              class="q-picker-panel__header-label"
-              :class="{
-                'q-picker-panel__header-label_hoverless':
-                  state.currentView === 'year'
-              }"
-              @click="showYearPicker"
-            >
-              {{ yearLabel }}
-            </button>
-          </div>
-          <button
-            v-show="state.currentView === 'date'"
-            type="button"
-            :title="t('QDatePicker.nextMonth')"
-            class="q-picker-panel__icon-btn q-icon-triangle-right"
-            @click="handleNextMonthClick"
-          />
-          <button
-            type="button"
-            :title="t('QDatePicker.nextYear')"
-            class="q-picker-panel__icon-btn q-icon-double-triangle-right"
-            @click="handleNextYearClick"
-          />
-        </div>
-
-        <date-table
-          v-show="state.currentView === 'date'"
-          :value="modelValue"
-          :year="state.year"
-          :month="state.month"
-          @pick="handleDatePick"
-        />
-        <period-table
-          v-if="isPeriodTableShown"
-          :type="state.currentView"
-          :value="modelValue"
-          :month="state.month"
-          :year="state.year"
-          @pick="handlePeriodPick"
-        />
-      </div>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { subMonths, addMonths, subYears, addYears } from 'date-fns';
 import { isNil } from 'lodash-es';
@@ -458,3 +365,96 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    class="q-picker-panel"
+  >
+    <div class="q-picker-panel__body">
+      <div
+        v-if="shortcuts?.length"
+        class="q-picker-panel__sidebar"
+      >
+        <button
+          v-for="(shortcut, key) in shortcuts"
+          :key="key"
+          type="button"
+          class="q-picker-panel__shortcut"
+          @click="handleShortcutClick(shortcut.value)"
+        >
+          {{ shortcut.text }}
+        </button>
+      </div>
+
+      <div
+        ref="datePanel"
+        :class="panelContentClasses"
+      >
+        <div class="q-picker-panel__header">
+          <button
+            type="button"
+            :title="t('QDatePicker.prevYear')"
+            class="q-picker-panel__icon-btn q-icon-double-triangle-left"
+            @click="handlePrevYearClick"
+          />
+          <button
+            v-show="state.currentView === 'date'"
+            type="button"
+            :title="t('QDatePicker.prevMonth')"
+            class="q-picker-panel__icon-btn q-icon-triangle-left"
+            @click="handlePrevMonthClick"
+          />
+          <div class="q-picker-panel__header-sign">
+            <button
+              v-show="state.currentView === 'date'"
+              class="q-picker-panel__header-label"
+              @click="showMonthPicker"
+            >
+              {{ currentMonth }}
+            </button>
+            <button
+              class="q-picker-panel__header-label"
+              :class="{
+                'q-picker-panel__header-label_hoverless':
+                  state.currentView === 'year'
+              }"
+              @click="showYearPicker"
+            >
+              {{ yearLabel }}
+            </button>
+          </div>
+          <button
+            v-show="state.currentView === 'date'"
+            type="button"
+            :title="t('QDatePicker.nextMonth')"
+            class="q-picker-panel__icon-btn q-icon-triangle-right"
+            @click="handleNextMonthClick"
+          />
+          <button
+            type="button"
+            :title="t('QDatePicker.nextYear')"
+            class="q-picker-panel__icon-btn q-icon-double-triangle-right"
+            @click="handleNextYearClick"
+          />
+        </div>
+
+        <date-table
+          v-show="state.currentView === 'date'"
+          :value="modelValue"
+          :year="state.year"
+          :month="state.month"
+          @pick="handleDatePick"
+        />
+        <period-table
+          v-if="isPeriodTableShown"
+          :type="state.currentView"
+          :value="modelValue"
+          :month="state.month"
+          :year="state.year"
+          @pick="handlePeriodPick"
+        />
+      </div>
+    </div>
+  </div>
+</template>

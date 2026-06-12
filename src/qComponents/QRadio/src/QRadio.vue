@@ -1,37 +1,3 @@
-<template>
-  <label
-    class="q-radio"
-    :class="wrapClass"
-    role="radio"
-    :aria-checked="isChecked"
-    :aria-disabled="isDisabled"
-    :tabindex="tabIndex"
-    @keyup.space="handleSpaceKeyUp"
-  >
-    <span class="q-radio__input">
-      <span class="q-radio__inner" />
-      <input
-        v-bind="$attrs"
-        class="q-radio__original"
-        type="radio"
-        aria-hidden="true"
-        tabindex="-1"
-        :value="value"
-        :checked="isChecked"
-        :disabled="isDisabled"
-        @change="handleChange"
-      />
-    </span>
-    <span
-      class="q-radio__label"
-      :class="labelClass"
-      @keydown.stop
-    >
-      <slot>{{ label }}</slot>
-    </span>
-  </label>
-</template>
-
 <script lang="ts">
 import { defineComponent, inject, computed } from 'vue';
 import type { PropType } from 'vue';
@@ -168,3 +134,37 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <label
+    class="q-radio"
+    :class="wrapClass"
+    role="radio"
+    :aria-checked="isChecked"
+    :aria-disabled="isDisabled"
+    :tabindex="tabIndex"
+    @keyup.space="handleSpaceKeyUp"
+  >
+    <span class="q-radio__input">
+      <span class="q-radio__inner" />
+      <input
+        v-bind="$attrs"
+        class="q-radio__original"
+        type="radio"
+        aria-hidden="true"
+        tabindex="-1"
+        :value="value"
+        :checked="isChecked"
+        :disabled="isDisabled"
+        @change="handleChange"
+      />
+    </span>
+    <span
+      class="q-radio__label"
+      :class="labelClass"
+      @keydown.stop
+    >
+      <slot>{{ label }}</slot>
+    </span>
+  </label>
+</template>

@@ -1,55 +1,3 @@
-<template>
-  <div
-    v-if="isShown"
-    ref="dropdown"
-    class="q-picker-dropdown"
-    tabindex="-1"
-    @mousedown="handleMouseDown"
-  >
-    <div class="q-picker-dropdown__base">
-      <q-color-svpanel
-        ref="refSv"
-        @change="handleChange"
-      />
-
-      <q-color-hue-slider
-        ref="refHue"
-        @change="handleChange"
-      />
-    </div>
-
-    <q-color-alpha-slider
-      v-if="alphaShown"
-      ref="refAlpha"
-      @change="handleChange"
-    />
-
-    <div class="q-picker-dropdown__footer">
-      <div class="q-picker-dropdown__input">
-        <q-input
-          :model-value="tempColor"
-          :validate-event="false"
-          @input="handleInput"
-          @keyup.enter="formatColor"
-          @blur="formatColor"
-        />
-      </div>
-
-      <q-button
-        v-if="isClearBtnShown"
-        theme="link"
-        @click="handleClearBtnClick"
-      >
-        {{ t('QColorPicker.clear') }}
-      </q-button>
-
-      <q-button @click="handleConfirmBtnClick">
-        {{ t('QColorPicker.confirm') }}
-      </q-button>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { colord } from 'colord';
 import type { HsvaColor } from 'colord';
@@ -308,3 +256,55 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    v-if="isShown"
+    ref="dropdown"
+    class="q-picker-dropdown"
+    tabindex="-1"
+    @mousedown="handleMouseDown"
+  >
+    <div class="q-picker-dropdown__base">
+      <q-color-svpanel
+        ref="refSv"
+        @change="handleChange"
+      />
+
+      <q-color-hue-slider
+        ref="refHue"
+        @change="handleChange"
+      />
+    </div>
+
+    <q-color-alpha-slider
+      v-if="alphaShown"
+      ref="refAlpha"
+      @change="handleChange"
+    />
+
+    <div class="q-picker-dropdown__footer">
+      <div class="q-picker-dropdown__input">
+        <q-input
+          :model-value="tempColor"
+          :validate-event="false"
+          @input="handleInput"
+          @keyup.enter="formatColor"
+          @blur="formatColor"
+        />
+      </div>
+
+      <q-button
+        v-if="isClearBtnShown"
+        theme="link"
+        @click="handleClearBtnClick"
+      >
+        {{ t('QColorPicker.clear') }}
+      </q-button>
+
+      <q-button @click="handleConfirmBtnClick">
+        {{ t('QColorPicker.confirm') }}
+      </q-button>
+    </div>
+  </div>
+</template>

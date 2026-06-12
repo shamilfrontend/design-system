@@ -1,34 +1,3 @@
-<template>
-  <teleport :to="teleportTo || 'body'">
-    <transition
-      name="q-fade-up"
-      @after-leave="afterLeave"
-    >
-      <div
-        v-show="isShown"
-        class="q-dialog-container"
-        :style="dialogStyle"
-      >
-        <div
-          ref="dialog"
-          tabindex="-1"
-          class="q-dialog-container__wrapper"
-          :class="customClass"
-          @keyup.esc="emitCloseEvent"
-        >
-          <div class="q-dialog-container__content">
-            <component
-              :is="preparedContent.component"
-              v-bind="preparedContent.props"
-              v-on="preparedContent.listeners"
-            />
-          </div>
-        </div>
-      </div>
-    </transition>
-  </teleport>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -222,3 +191,34 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <teleport :to="teleportTo || 'body'">
+    <transition
+      name="q-fade-up"
+      @after-leave="afterLeave"
+    >
+      <div
+        v-show="isShown"
+        class="q-dialog-container"
+        :style="dialogStyle"
+      >
+        <div
+          ref="dialog"
+          tabindex="-1"
+          class="q-dialog-container__wrapper"
+          :class="customClass"
+          @keyup.esc="emitCloseEvent"
+        >
+          <div class="q-dialog-container__content">
+            <component
+              :is="preparedContent.component"
+              v-bind="preparedContent.props"
+              v-on="preparedContent.listeners"
+            />
+          </div>
+        </div>
+      </div>
+    </transition>
+  </teleport>
+</template>

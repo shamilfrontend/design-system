@@ -1,9 +1,3 @@
-<template>
-  <form class="q-form">
-    <slot />
-  </form>
-</template>
-
 <script lang="ts">
 import type { ValidateFieldsError } from 'async-validator';
 import { concat } from 'lodash-es';
@@ -186,3 +180,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <form class="q-form">
+    <slot />
+  </form>
+</template>

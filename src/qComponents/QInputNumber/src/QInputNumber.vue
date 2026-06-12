@@ -1,34 +1,3 @@
-<template>
-  <div class="q-input-number">
-    <input
-      v-bind="$attrs"
-      ref="inputRef"
-      :disabled="isDisabled"
-      type="text"
-      inputMode="numeric"
-      class="q-input-number__inner"
-      @input="handleInput"
-      @change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    />
-
-    <div
-      v-if="isPostfixVisible"
-      class="q-input-number__postfix"
-    >
-      <span
-        v-if="isDisabled"
-        class="q-input-number__icon q-icon-lock"
-      />
-      <slot
-        v-else
-        name="postfix"
-      />
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { isNil } from 'lodash-es';
 import { computed, defineComponent, inject, nextTick, ref, watch } from 'vue';
@@ -286,3 +255,34 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-input-number">
+    <input
+      v-bind="$attrs"
+      ref="inputRef"
+      :disabled="isDisabled"
+      type="text"
+      inputMode="numeric"
+      class="q-input-number__inner"
+      @input="handleInput"
+      @change="handleChange"
+      @focus="handleFocus"
+      @blur="handleBlur"
+    />
+
+    <div
+      v-if="isPostfixVisible"
+      class="q-input-number__postfix"
+    >
+      <span
+        v-if="isDisabled"
+        class="q-input-number__icon q-icon-lock"
+      />
+      <slot
+        v-else
+        name="postfix"
+      />
+    </div>
+  </div>
+</template>

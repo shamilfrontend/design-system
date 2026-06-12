@@ -1,54 +1,3 @@
-<template>
-  <div
-    ref="reference"
-    class="q-popover-trigger"
-  >
-    <slot name="reference" />
-  </div>
-
-  <teleport
-    :to="teleportTo || 'body'"
-    :disabled="!teleportTo"
-  >
-    <transition
-      :name="transition"
-      @after-leave="destroyPopper"
-    >
-      <div
-        v-show="isPopoverShown"
-        ref="popover"
-        class="q-popover"
-        :class="popoverClasses"
-        :style="popoverStyles"
-      >
-        <div
-          v-if="icon"
-          class="q-popover__icon"
-          :class="icon"
-          :style="popoverIconStyles"
-        />
-        <q-scrollbar
-          wrap-class="q-popover__inner"
-          view-class="scrollbar__list"
-        >
-          <div
-            v-if="title"
-            class="q-popover__title"
-          >
-            {{ title }}
-          </div>
-          <div
-            v-if="$slots.default"
-            class="q-popover__content"
-          >
-            <slot />
-          </div>
-        </q-scrollbar>
-      </div>
-    </transition>
-  </teleport>
-</template>
-
 <script lang="ts">
 import { createPopper as createPopperJs, Instance } from '@popperjs/core';
 import { placements } from '@popperjs/core/lib/enums';
@@ -350,3 +299,54 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="reference"
+    class="q-popover-trigger"
+  >
+    <slot name="reference" />
+  </div>
+
+  <teleport
+    :to="teleportTo || 'body'"
+    :disabled="!teleportTo"
+  >
+    <transition
+      :name="transition"
+      @after-leave="destroyPopper"
+    >
+      <div
+        v-show="isPopoverShown"
+        ref="popover"
+        class="q-popover"
+        :class="popoverClasses"
+        :style="popoverStyles"
+      >
+        <div
+          v-if="icon"
+          class="q-popover__icon"
+          :class="icon"
+          :style="popoverIconStyles"
+        />
+        <q-scrollbar
+          wrap-class="q-popover__inner"
+          view-class="scrollbar__list"
+        >
+          <div
+            v-if="title"
+            class="q-popover__title"
+          >
+            {{ title }}
+          </div>
+          <div
+            v-if="$slots.default"
+            class="q-popover__content"
+          >
+            <slot />
+          </div>
+        </q-scrollbar>
+      </div>
+    </transition>
+  </teleport>
+</template>

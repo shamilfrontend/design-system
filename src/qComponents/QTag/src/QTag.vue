@@ -1,23 +1,3 @@
-<template>
-  <div
-    class="q-tag"
-    :class="{
-      'q-tag_closable': closable
-    }"
-  >
-    <div class="q-tag__text">
-      <!-- @slot text of QTag -->
-      <slot />
-    </div>
-    <button
-      v-if="closable"
-      type="button"
-      class="q-tag__close q-icon-close"
-      @click.stop="handleClose"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -53,3 +33,23 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-tag"
+    :class="{
+      'q-tag_closable': closable
+    }"
+  >
+    <div class="q-tag__text">
+      <!-- @slot text of QTag -->
+      <slot />
+    </div>
+    <button
+      v-if="closable"
+      type="button"
+      class="q-tag__close q-icon-close"
+      @click.stop="handleClose"
+    />
+  </div>
+</template>

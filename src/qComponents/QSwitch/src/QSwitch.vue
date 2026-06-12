@@ -1,30 +1,3 @@
-<template>
-  <label
-    class="q-switch"
-    :class="classes"
-    :tabindex="tabIndex"
-    :aria-disabled="isDisabled"
-    @keyup.enter="handleSwitcherChange"
-    @keyup.space.prevent="handleSwitcherChange"
-    @click.prevent="handleSwitcherChange"
-  >
-    <input
-      class="q-switch__checkbox"
-      type="checkbox"
-      :checked="isChecked"
-      tabindex="-1"
-    />
-    <div class="q-switch__wrapper">
-      <div class="q-switch__handle">
-        <div
-          v-if="loading"
-          class="q-icon-reverse"
-        />
-      </div>
-    </div>
-  </label>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed, inject, watch } from 'vue';
 
@@ -151,3 +124,30 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <label
+    class="q-switch"
+    :class="classes"
+    :tabindex="tabIndex"
+    :aria-disabled="isDisabled"
+    @keyup.enter="handleSwitcherChange"
+    @keyup.space.prevent="handleSwitcherChange"
+    @click.prevent="handleSwitcherChange"
+  >
+    <input
+      class="q-switch__checkbox"
+      type="checkbox"
+      :checked="isChecked"
+      tabindex="-1"
+    />
+    <div class="q-switch__wrapper">
+      <div class="q-switch__handle">
+        <div
+          v-if="loading"
+          class="q-icon-reverse"
+        />
+      </div>
+    </div>
+  </label>
+</template>

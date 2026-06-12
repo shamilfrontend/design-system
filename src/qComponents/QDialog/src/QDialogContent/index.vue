@@ -1,33 +1,3 @@
-<template>
-  <div class="q-dialog-content">
-    <div
-      v-if="title || $slots.title"
-      class="q-dialog-content__title"
-    >
-      <slot name="title">{{ title }}</slot>
-    </div>
-
-    <q-button
-      v-if="!hideCloseButton"
-      class="q-dialog-content__close"
-      circle
-      theme="secondary"
-      type="icon"
-      icon="q-icon-close"
-      @click="handleCloseBtnClick"
-    />
-
-    <q-scrollbar
-      theme="secondary"
-      view-class="q-dialog-content__view"
-    >
-      <div class="q-dialog-content__body">
-        <slot />
-      </div>
-    </q-scrollbar>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, inject } from 'vue';
 
@@ -80,3 +50,33 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-dialog-content">
+    <div
+      v-if="title || $slots.title"
+      class="q-dialog-content__title"
+    >
+      <slot name="title">{{ title }}</slot>
+    </div>
+
+    <q-button
+      v-if="!hideCloseButton"
+      class="q-dialog-content__close"
+      circle
+      theme="secondary"
+      type="icon"
+      icon="q-icon-close"
+      @click="handleCloseBtnClick"
+    />
+
+    <q-scrollbar
+      theme="secondary"
+      view-class="q-dialog-content__view"
+    >
+      <div class="q-dialog-content__body">
+        <slot />
+      </div>
+    </q-scrollbar>
+  </div>
+</template>

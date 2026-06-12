@@ -1,19 +1,3 @@
-<template>
-  <div
-    ref="root"
-    :class="rootClasses"
-  >
-    <q-table-empty
-      v-if="isTableEmpty"
-      :empty-text="emptyText"
-    >
-      <slot name="empty" />
-    </q-table-empty>
-
-    <q-table-container v-else />
-  </div>
-</template>
-
 <script lang="ts">
 import { isEmpty, isFunction } from 'lodash-es';
 import { defineComponent, computed, provide, toRef } from 'vue';
@@ -257,3 +241,19 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    :class="rootClasses"
+  >
+    <q-table-empty
+      v-if="isTableEmpty"
+      :empty-text="emptyText"
+    >
+      <slot name="empty" />
+    </q-table-empty>
+
+    <q-table-container v-else />
+  </div>
+</template>

@@ -1,19 +1,3 @@
-<template>
-  <div
-    ref="root"
-    class="q-scrollbar__bar"
-    :class="rootClasses"
-    @mousedown="handleTrackerClick"
-  >
-    <div
-      ref="thumb"
-      :class="thumbClasses"
-      :style="thumbStyles"
-      @mousedown="handleThumbClick"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, computed, onUnmounted, inject } from 'vue';
 import type { PropType, CSSProperties } from 'vue';
@@ -198,3 +182,19 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    class="q-scrollbar__bar"
+    :class="rootClasses"
+    @mousedown="handleTrackerClick"
+  >
+    <div
+      ref="thumb"
+      :class="thumbClasses"
+      :style="thumbStyles"
+      @mousedown="handleThumbClick"
+    />
+  </div>
+</template>

@@ -1,31 +1,3 @@
-<template>
-  <div
-    ref="root"
-    :class="rootClasses"
-  >
-    <q-scrollbar
-      wrap-class="q-cascader-column__scrollbar"
-      :scroll-to="scrollTo"
-      @keydown.arrow-down.prevent
-      @keydown.arrow-up.prevent
-      @keyup.arrow-left="handleArrowLeftKeyUp"
-    >
-      <q-cascader-row
-        v-for="(row, rowIndex) in column"
-        :key="`${uniqueId}-${columnIndex}-${rowIndex}`"
-        :unique-id="`${uniqueId}-col-${columnIndex}-row-${rowIndex}`"
-        :row="row"
-        :row-index="rowIndex"
-        :expanded="checkExpanded(rowIndex)"
-        @expand="handleRowExpand"
-        @check="handleRowCheck"
-        @keyup.arrow-up="handleArrowUpDownKeyUp"
-        @keyup.arrow-down="handleArrowUpDownKeyUp"
-      />
-    </q-scrollbar>
-  </div>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -175,3 +147,31 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    :class="rootClasses"
+  >
+    <q-scrollbar
+      wrap-class="q-cascader-column__scrollbar"
+      :scroll-to="scrollTo"
+      @keydown.arrow-down.prevent
+      @keydown.arrow-up.prevent
+      @keyup.arrow-left="handleArrowLeftKeyUp"
+    >
+      <q-cascader-row
+        v-for="(row, rowIndex) in column"
+        :key="`${uniqueId}-${columnIndex}-${rowIndex}`"
+        :unique-id="`${uniqueId}-col-${columnIndex}-row-${rowIndex}`"
+        :row="row"
+        :row-index="rowIndex"
+        :expanded="checkExpanded(rowIndex)"
+        @expand="handleRowExpand"
+        @check="handleRowCheck"
+        @keyup.arrow-up="handleArrowUpDownKeyUp"
+        @keyup.arrow-down="handleArrowUpDownKeyUp"
+      />
+    </q-scrollbar>
+  </div>
+</template>

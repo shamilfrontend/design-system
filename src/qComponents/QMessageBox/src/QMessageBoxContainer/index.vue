@@ -1,51 +1,3 @@
-<template>
-  <teleport :to="teleportTo || 'body'">
-    <transition
-      name="q-fade-up"
-      @after-leave="afterLeave"
-    >
-      <div
-        v-show="isShown"
-        ref="messageBox"
-        class="q-message-box-container"
-        :class="wrapClass"
-        :style="[wrapStyle, { zIndex }]"
-        tabindex="-1"
-        @keyup.esc="emitCloseEvent"
-      >
-        <div class="q-message-box-container__shadow" />
-
-        <q-scrollbar
-          theme="secondary"
-          class="q-message-box-container__scrollbar"
-          view-class="q-message-box-container__view"
-          visible
-        >
-          <div
-            v-if="closeOnClickShadow"
-            class="q-message-box-container__clickable-shadow"
-            @click="emitCloseEvent"
-          />
-
-          <div class="q-message-box-container__container">
-            <button
-              type="button"
-              class="q-message-box-container__close q-icon-close"
-              @click="emitCloseEvent"
-            />
-
-            <component
-              :is="preparedContent.component"
-              v-bind="preparedContent.props"
-              v-on="preparedContent.listeners"
-            />
-          </div>
-        </q-scrollbar>
-      </div>
-    </transition>
-  </teleport>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -275,3 +227,51 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <teleport :to="teleportTo || 'body'">
+    <transition
+      name="q-fade-up"
+      @after-leave="afterLeave"
+    >
+      <div
+        v-show="isShown"
+        ref="messageBox"
+        class="q-message-box-container"
+        :class="wrapClass"
+        :style="[wrapStyle, { zIndex }]"
+        tabindex="-1"
+        @keyup.esc="emitCloseEvent"
+      >
+        <div class="q-message-box-container__shadow" />
+
+        <q-scrollbar
+          theme="secondary"
+          class="q-message-box-container__scrollbar"
+          view-class="q-message-box-container__view"
+          visible
+        >
+          <div
+            v-if="closeOnClickShadow"
+            class="q-message-box-container__clickable-shadow"
+            @click="emitCloseEvent"
+          />
+
+          <div class="q-message-box-container__container">
+            <button
+              type="button"
+              class="q-message-box-container__close q-icon-close"
+              @click="emitCloseEvent"
+            />
+
+            <component
+              :is="preparedContent.component"
+              v-bind="preparedContent.props"
+              v-on="preparedContent.listeners"
+            />
+          </div>
+        </q-scrollbar>
+      </div>
+    </transition>
+  </teleport>
+</template>

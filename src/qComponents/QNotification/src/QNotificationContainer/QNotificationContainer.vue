@@ -1,21 +1,3 @@
-<template>
-  <div class="q-notification-container">
-    <transition-group name="q-notification-container">
-      <q-notification-toast
-        v-for="toast in notifyList"
-        :key="toast.id"
-        :uniq-id="toast.id"
-        :content="toast.content"
-        :type="toast.type"
-        :icon="toast.icon ?? icon"
-        :duration="toast.duration ?? duration"
-        :on-close="toast.onClose"
-        @remove="handleRemove"
-      />
-    </transition-group>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, getCurrentInstance, onMounted, computed } from 'vue';
 import type { PropType, Ref } from 'vue';
@@ -93,3 +75,21 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-notification-container">
+    <transition-group name="q-notification-container">
+      <q-notification-toast
+        v-for="toast in notifyList"
+        :key="toast.id"
+        :uniq-id="toast.id"
+        :content="toast.content"
+        :type="toast.type"
+        :icon="toast.icon ?? icon"
+        :duration="toast.duration ?? duration"
+        :on-close="toast.onClose"
+        @remove="handleRemove"
+      />
+    </transition-group>
+  </div>
+</template>

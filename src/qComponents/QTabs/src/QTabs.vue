@@ -1,9 +1,3 @@
-<template>
-  <div class="q-tabs">
-    <slot />
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, provide, watch, toRef } from 'vue';
 
@@ -79,3 +73,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-tabs">
+    <slot />
+  </div>
+</template>

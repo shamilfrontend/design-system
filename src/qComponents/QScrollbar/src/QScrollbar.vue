@@ -1,43 +1,3 @@
-<template>
-  <div
-    ref="root"
-    :class="rootClasses"
-  >
-    <div
-      ref="wrap"
-      class="q-scrollbar__wrap"
-      :class="wrapClasses"
-      @scroll="handleScroll"
-    >
-      <component
-        :is="viewTag ?? 'div'"
-        ref="view"
-        class="q-scrollbar__view"
-        :class="viewClass"
-        :style="viewStyle"
-      >
-        <slot />
-      </component>
-    </div>
-    <q-bar
-      v-show="isXBarShown"
-      ref="xbar"
-      type="horizontal"
-      :theme="themeValue"
-      :move="moveX"
-      :size="sizeWidth"
-    />
-    <q-bar
-      v-show="isYBarShown"
-      ref="ybar"
-      type="vertical"
-      :theme="themeValue"
-      :move="moveY"
-      :size="sizeHeight"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -272,3 +232,43 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    :class="rootClasses"
+  >
+    <div
+      ref="wrap"
+      class="q-scrollbar__wrap"
+      :class="wrapClasses"
+      @scroll="handleScroll"
+    >
+      <component
+        :is="viewTag ?? 'div'"
+        ref="view"
+        class="q-scrollbar__view"
+        :class="viewClass"
+        :style="viewStyle"
+      >
+        <slot />
+      </component>
+    </div>
+    <q-bar
+      v-show="isXBarShown"
+      ref="xbar"
+      type="horizontal"
+      :theme="themeValue"
+      :move="moveX"
+      :size="sizeWidth"
+    />
+    <q-bar
+      v-show="isYBarShown"
+      ref="ybar"
+      type="vertical"
+      :theme="themeValue"
+      :move="moveY"
+      :size="sizeHeight"
+    />
+  </div>
+</template>

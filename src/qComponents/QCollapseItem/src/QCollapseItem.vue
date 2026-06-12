@@ -1,37 +1,3 @@
-<template>
-  <div
-    class="q-collapse-item"
-    :class="{
-      'q-collapse-item_active': isActive
-    }"
-  >
-    <button
-      type="button"
-      class="q-collapse-item__header"
-      @click="handleHeaderClick"
-    >
-      <slot name="title">
-        <div class="q-collapse-item__title">{{ title }}</div>
-      </slot>
-      <component
-        :is="customIcon"
-        :class="collapseIconClass"
-      />
-    </button>
-
-    <q-collapse-transition>
-      <div
-        v-show="isActive"
-        class="q-collapse-item__body"
-      >
-        <div class="q-collapse-item__content">
-          <slot />
-        </div>
-      </div>
-    </q-collapse-transition>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, inject, computed, type Component } from 'vue';
 
@@ -105,3 +71,37 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-collapse-item"
+    :class="{
+      'q-collapse-item_active': isActive
+    }"
+  >
+    <button
+      type="button"
+      class="q-collapse-item__header"
+      @click="handleHeaderClick"
+    >
+      <slot name="title">
+        <div class="q-collapse-item__title">{{ title }}</div>
+      </slot>
+      <component
+        :is="customIcon"
+        :class="collapseIconClass"
+      />
+    </button>
+
+    <q-collapse-transition>
+      <div
+        v-show="isActive"
+        class="q-collapse-item__body"
+      >
+        <div class="q-collapse-item__content">
+          <slot />
+        </div>
+      </div>
+    </q-collapse-transition>
+  </div>
+</template>

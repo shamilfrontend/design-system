@@ -1,35 +1,3 @@
-<template>
-  <div
-    class="q-upload-file-single"
-    :title="fileName"
-  >
-    <div class="q-upload-file-single__icon q-icon-file" />
-    <div class="q-upload-file-single__name">{{ fileName }}</div>
-
-    <button
-      v-if="isClearable && !isDisabled && !isLoading"
-      type="button"
-      class="q-upload-file-single__btn q-icon-trash-bin"
-      @click="handleRemoveFileBtnClick"
-    />
-
-    <template v-if="isLoading">
-      <button
-        type="button"
-        class="q-upload-file-single__btn q-icon-close"
-        @click="handleAbortUploadingBtnClick"
-      />
-
-      <div class="q-upload-file-single__loader">
-        <div
-          class="q-upload-file-single__bar"
-          :style="barStyle"
-        ></div>
-      </div>
-    </template>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 
@@ -98,3 +66,35 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-upload-file-single"
+    :title="fileName"
+  >
+    <div class="q-upload-file-single__icon q-icon-file" />
+    <div class="q-upload-file-single__name">{{ fileName }}</div>
+
+    <button
+      v-if="isClearable && !isDisabled && !isLoading"
+      type="button"
+      class="q-upload-file-single__btn q-icon-trash-bin"
+      @click="handleRemoveFileBtnClick"
+    />
+
+    <template v-if="isLoading">
+      <button
+        type="button"
+        class="q-upload-file-single__btn q-icon-close"
+        @click="handleAbortUploadingBtnClick"
+      />
+
+      <div class="q-upload-file-single__loader">
+        <div
+          class="q-upload-file-single__bar"
+          :style="barStyle"
+        ></div>
+      </div>
+    </template>
+  </div>
+</template>

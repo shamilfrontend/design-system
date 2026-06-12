@@ -1,28 +1,3 @@
-<template>
-  <table
-    ref="root"
-    :class="rootClasses"
-    cellspacing="0"
-    cellpadding="0"
-  >
-    <q-table-t-colgroup v-if="isColgroupShown" />
-
-    <thead
-      ref="thead"
-      class="q-table-t__thead"
-    >
-      <q-table-t-sticky ref="sticky" />
-      <q-table-t-head class="q-table-t__head" />
-      <q-table-t-total
-        v-if="isTotalShown"
-        class="q-table-t__total"
-      />
-    </thead>
-
-    <q-table-t-body class="q-table-t__tbody" />
-  </table>
-</template>
-
 <script lang="ts">
 import { isEmpty } from 'lodash-es';
 import { defineComponent, inject, ref, computed, provide, watch } from 'vue';
@@ -111,3 +86,28 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <table
+    ref="root"
+    :class="rootClasses"
+    cellspacing="0"
+    cellpadding="0"
+  >
+    <q-table-t-colgroup v-if="isColgroupShown" />
+
+    <thead
+      ref="thead"
+      class="q-table-t__thead"
+    >
+      <q-table-t-sticky ref="sticky" />
+      <q-table-t-head class="q-table-t__head" />
+      <q-table-t-total
+        v-if="isTotalShown"
+        class="q-table-t__total"
+      />
+    </thead>
+
+    <q-table-t-body class="q-table-t__tbody" />
+  </table>
+</template>

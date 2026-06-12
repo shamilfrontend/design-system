@@ -1,10 +1,3 @@
-<template>
-  <div
-    class="q-slider__bar"
-    :style="barStyle"
-  />
-</template>
-
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import type { PropType } from 'vue';
@@ -37,3 +30,10 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-slider__bar"
+    :style="barStyle"
+  />
+</template>

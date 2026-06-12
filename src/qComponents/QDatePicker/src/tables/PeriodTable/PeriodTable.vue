@@ -1,33 +1,3 @@
-<template>
-  <table
-    cellspacing="4"
-    cellpadding="5"
-    class="q-period-table"
-  >
-    <tr
-      v-for="(row, index) in rows"
-      :key="index"
-    >
-      <td
-        v-for="(cell, key) in row"
-        :key="key"
-        class="q-period-table__cell-wrapper"
-      >
-        <button
-          :class="getCellClasses(cell)"
-          :disabled="cell.disabled"
-          type="button"
-          tabindex="-1"
-          @click="handleTableClick(cell)"
-          @mousemove="handleMouseMove(cell)"
-        >
-          {{ getCellContent(cell) }}
-        </button>
-      </td>
-    </tr>
-  </table>
-</template>
-
 <script lang="ts">
 import {
   addYears,
@@ -277,3 +247,33 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <table
+    cellspacing="4"
+    cellpadding="5"
+    class="q-period-table"
+  >
+    <tr
+      v-for="(row, index) in rows"
+      :key="index"
+    >
+      <td
+        v-for="(cell, key) in row"
+        :key="key"
+        class="q-period-table__cell-wrapper"
+      >
+        <button
+          :class="getCellClasses(cell)"
+          :disabled="cell.disabled"
+          type="button"
+          tabindex="-1"
+          @click="handleTableClick(cell)"
+          @mousemove="handleMouseMove(cell)"
+        >
+          {{ getCellContent(cell) }}
+        </button>
+      </td>
+    </tr>
+  </table>
+</template>

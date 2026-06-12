@@ -1,102 +1,3 @@
-<template>
-  <div
-    ref="root"
-    class="q-date-picker"
-    :class="{ 'q-date-picker_ranged': isRanged }"
-  >
-    <div
-      v-if="isRanged"
-      ref="rangedReference"
-      :class="rangeClasses"
-      tabindex="0"
-      @click="handleRangeClick"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="state.showCloseIcon = false"
-      @keyup="handleKeyUp"
-      @keyup.tab="handleFocus"
-    >
-      <input
-        autocomplete="off"
-        class="q-date-picker__input"
-        :placeholder="startPlaceholder || t('QDatePicker.startPlaceholder')"
-        :value="rangeDisplayValue[0]"
-        :disabled="isPickerDisabled"
-        readonly
-        tabindex="-1"
-      />
-      <slot name="range-separator">
-        <span class="q-date-picker__range-separator">{{ rangeSeparator }}</span>
-      </slot>
-      <input
-        autocomplete="off"
-        :placeholder="endPlaceholder || t('QDatePicker.endPlaceholder')"
-        :value="rangeDisplayValue[1]"
-        :disabled="isPickerDisabled"
-        class="q-date-picker__input"
-        readonly
-        tabindex="-1"
-      />
-      <span
-        :class="iconClass"
-        class="q-date-picker__suffix"
-        @click="handleIconClick"
-      />
-    </div>
-
-    <div
-      v-else
-      class="q-date-picker__wrapper"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="state.showCloseIcon = false"
-    >
-      <q-input
-        ref="reference"
-        class="q-date-picker__input"
-        :model-value="displayValue"
-        :root-class="{ 'q-input_focused': state.pickerVisible }"
-        :readonly="!editable"
-        :disabled="isPickerDisabled"
-        :name="name"
-        :placeholder="placeholder ?? t('QDatePicker.placeholder')"
-        :maxlength="10"
-        @focus="handleFocus"
-        @keyup="handleKeyUp"
-        @input="handleInput"
-        @change="handleInputDateChange"
-        @keydown="handleKeyDown"
-      >
-        <template #suffix>
-          <span
-            class="q-input__icon"
-            :class="iconClass"
-            @click="handleIconClick"
-          />
-        </template>
-      </q-input>
-    </div>
-
-    <teleport
-      :to="teleportTo || 'body'"
-      :disabled="!teleportTo"
-    >
-      <transition
-        v-if="!isMobileView"
-        name="q-picker-panel-animation"
-        @after-leave="destroyPopper"
-        @before-enter="popperInit"
-      >
-        <component
-          :is="panelComponent"
-          v-show="state.pickerVisible"
-          ref="panel"
-          :model-value="transformedToDate"
-          @pick="handlePickClick"
-        />
-      </transition>
-    </teleport>
-  </div>
-</template>
-
 <script lang="ts">
 import { createPopper } from '@popperjs/core';
 import {
@@ -827,3 +728,102 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    class="q-date-picker"
+    :class="{ 'q-date-picker_ranged': isRanged }"
+  >
+    <div
+      v-if="isRanged"
+      ref="rangedReference"
+      :class="rangeClasses"
+      tabindex="0"
+      @click="handleRangeClick"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="state.showCloseIcon = false"
+      @keyup="handleKeyUp"
+      @keyup.tab="handleFocus"
+    >
+      <input
+        autocomplete="off"
+        class="q-date-picker__input"
+        :placeholder="startPlaceholder || t('QDatePicker.startPlaceholder')"
+        :value="rangeDisplayValue[0]"
+        :disabled="isPickerDisabled"
+        readonly
+        tabindex="-1"
+      />
+      <slot name="range-separator">
+        <span class="q-date-picker__range-separator">{{ rangeSeparator }}</span>
+      </slot>
+      <input
+        autocomplete="off"
+        :placeholder="endPlaceholder || t('QDatePicker.endPlaceholder')"
+        :value="rangeDisplayValue[1]"
+        :disabled="isPickerDisabled"
+        class="q-date-picker__input"
+        readonly
+        tabindex="-1"
+      />
+      <span
+        :class="iconClass"
+        class="q-date-picker__suffix"
+        @click="handleIconClick"
+      />
+    </div>
+
+    <div
+      v-else
+      class="q-date-picker__wrapper"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="state.showCloseIcon = false"
+    >
+      <q-input
+        ref="reference"
+        class="q-date-picker__input"
+        :model-value="displayValue"
+        :root-class="{ 'q-input_focused': state.pickerVisible }"
+        :readonly="!editable"
+        :disabled="isPickerDisabled"
+        :name="name"
+        :placeholder="placeholder ?? t('QDatePicker.placeholder')"
+        :maxlength="10"
+        @focus="handleFocus"
+        @keyup="handleKeyUp"
+        @input="handleInput"
+        @change="handleInputDateChange"
+        @keydown="handleKeyDown"
+      >
+        <template #suffix>
+          <span
+            class="q-input__icon"
+            :class="iconClass"
+            @click="handleIconClick"
+          />
+        </template>
+      </q-input>
+    </div>
+
+    <teleport
+      :to="teleportTo || 'body'"
+      :disabled="!teleportTo"
+    >
+      <transition
+        v-if="!isMobileView"
+        name="q-picker-panel-animation"
+        @after-leave="destroyPopper"
+        @before-enter="popperInit"
+      >
+        <component
+          :is="panelComponent"
+          v-show="state.pickerVisible"
+          ref="panel"
+          :model-value="transformedToDate"
+          @pick="handlePickClick"
+        />
+      </transition>
+    </teleport>
+  </div>
+</template>

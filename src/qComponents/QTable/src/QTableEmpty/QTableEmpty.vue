@@ -1,21 +1,3 @@
-<template>
-  <div class="q-table-empty">
-    <slot>
-      <div class="q-table-empty__image">
-        <img
-          :src="image"
-          class="q-table-empty__img"
-          :alt="noDataText ?? ''"
-        />
-      </div>
-
-      <div class="q-table-empty__text">
-        {{ noDataText }}
-      </div>
-    </slot>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import type { PropType } from 'vue';
@@ -53,3 +35,21 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-table-empty">
+    <slot>
+      <div class="q-table-empty__image">
+        <img
+          :src="image"
+          class="q-table-empty__img"
+          :alt="noDataText ?? ''"
+        />
+      </div>
+
+      <div class="q-table-empty__text">
+        {{ noDataText }}
+      </div>
+    </slot>
+  </div>
+</template>

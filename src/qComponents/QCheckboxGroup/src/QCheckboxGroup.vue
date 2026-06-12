@@ -1,14 +1,3 @@
-<template>
-  <component
-    :is="tag || 'div'"
-    :class="['q-checkbox-group', `q-checkbox-group_${direction}`]"
-    role="group"
-    aria-label="checkbox-group"
-  >
-    <slot />
-  </component>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -118,3 +107,14 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <component
+    :is="tag || 'div'"
+    :class="['q-checkbox-group', `q-checkbox-group_${direction}`]"
+    role="group"
+    aria-label="checkbox-group"
+  >
+    <slot />
+  </component>
+</template>

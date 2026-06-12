@@ -1,27 +1,3 @@
-<template>
-  <div
-    class="q-notification-toast"
-    :class="notificationClasses"
-    @mouseenter="clearTimer"
-    @mouseleave="startTimer"
-  >
-    <div
-      class="q-notification-toast__icon"
-      :class="iconClass"
-    />
-
-    <div class="q-notification-toast__content">
-      {{ content }}
-    </div>
-
-    <button
-      type="button"
-      class="q-notification-toast__close q-icon-close"
-      @click="close"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -157,3 +133,27 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-notification-toast"
+    :class="notificationClasses"
+    @mouseenter="clearTimer"
+    @mouseleave="startTimer"
+  >
+    <div
+      class="q-notification-toast__icon"
+      :class="iconClass"
+    />
+
+    <div class="q-notification-toast__content">
+      {{ content }}
+    </div>
+
+    <button
+      type="button"
+      class="q-notification-toast__close q-icon-close"
+      @click="close"
+    />
+  </div>
+</template>

@@ -1,55 +1,3 @@
-<template>
-  <div class="q-context-wrapper">
-    <div
-      ref="reference"
-      class="q-context-trigger"
-      @click="handleTriggerClick"
-    >
-      <slot v-if="$slots.default" />
-      <button
-        v-else
-        type="button"
-        class="q-context-trigger__button q-icon-dots-3-horizontal"
-      />
-    </div>
-
-    <teleport
-      :to="teleportTo || 'body'"
-      :disabled="!teleportTo"
-    >
-      <transition
-        name="q-fade"
-        @after-leave="afterLeave"
-      >
-        <div
-          v-show="isContextMenuShown"
-          ref="contextMenu"
-          class="q-context-menu"
-          :style="{ zIndex }"
-        >
-          <button
-            v-for="(item, index) in menuItems"
-            :key="index"
-            :ref="setItemRef"
-            type="button"
-            tabindex="-1"
-            class="q-context-menu__item"
-            :class="{ 'q-context-menu__item_with-icon': item.icon }"
-            @click="handleItemClick(item.action)"
-          >
-            <span
-              v-if="item.icon"
-              class="q-context-menu__icon"
-              :class="item.icon"
-            />
-            {{ item.name }}
-          </button>
-        </div>
-      </transition>
-    </teleport>
-  </div>
-</template>
-
 <script lang="ts">
 import {
   createPopper as createPopperJs,
@@ -272,3 +220,55 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-context-wrapper">
+    <div
+      ref="reference"
+      class="q-context-trigger"
+      @click="handleTriggerClick"
+    >
+      <slot v-if="$slots.default" />
+      <button
+        v-else
+        type="button"
+        class="q-context-trigger__button q-icon-dots-3-horizontal"
+      />
+    </div>
+
+    <teleport
+      :to="teleportTo || 'body'"
+      :disabled="!teleportTo"
+    >
+      <transition
+        name="q-fade"
+        @after-leave="afterLeave"
+      >
+        <div
+          v-show="isContextMenuShown"
+          ref="contextMenu"
+          class="q-context-menu"
+          :style="{ zIndex }"
+        >
+          <button
+            v-for="(item, index) in menuItems"
+            :key="index"
+            :ref="setItemRef"
+            type="button"
+            tabindex="-1"
+            class="q-context-menu__item"
+            :class="{ 'q-context-menu__item_with-icon': item.icon }"
+            @click="handleItemClick(item.action)"
+          >
+            <span
+              v-if="item.icon"
+              class="q-context-menu__icon"
+              :class="item.icon"
+            />
+            {{ item.name }}
+          </button>
+        </div>
+      </transition>
+    </teleport>
+  </div>
+</template>

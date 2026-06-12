@@ -5,13 +5,13 @@ import vue from '@vitejs/plugin-vue';
 import copy from 'rollup-plugin-copy';
 import sassPlugin from 'rollup-plugin-sass';
 import sass from 'sass';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 interface StyleSheetIdAndContent {
   id?: string;
   content?: string;
 }
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
 
 // https://vitejs.dev/config/
 export default defineConfig({

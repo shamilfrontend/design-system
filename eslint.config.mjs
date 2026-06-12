@@ -71,6 +71,10 @@ export default tseslint.config(
           alphabetize: { order: 'asc', caseInsensitive: true }
         }
       ],
+      'vue/block-order': [
+        'error',
+        { order: ['script', 'template', 'style'] }
+      ],
       'vue/component-name-in-template-casing': ['error', 'kebab-case'],
       'vue/max-attributes-per-line': 'warn',
       'vue/html-closing-bracket-newline': 'warn',

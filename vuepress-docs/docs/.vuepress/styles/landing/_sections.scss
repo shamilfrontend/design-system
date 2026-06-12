@@ -1,0 +1,65 @@
+@use 'mixins' as *;
+
+.landing-page {
+  background: var(--landing-bg);
+  color: var(--landing-text);
+  overflow-x: hidden;
+}
+
+.landing-section {
+  padding: 0 24px;
+  margin-bottom: var(--landing-section-gap);
+
+  @include landing-breakpoint(md) {
+    margin-bottom: var(--landing-section-gap-mobile);
+  }
+
+  &__inner {
+    max-width: var(--landing-max-width);
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--landing-text);
+  }
+
+  &__subtitle {
+    margin: 0 0 48px;
+    max-width: 640px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--landing-text-muted);
+  }
+}
+
+.home-page {
+  --c-bg: var(--landing-bg);
+  --c-bg-navbar: rgb(18 18 20 / 85%);
+  --c-text: var(--landing-text);
+  --c-text-lighter: var(--landing-text-muted);
+
+  --homepage-width: 100%;
+
+  .navbar {
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--landing-border);
+  }
+
+  .navbar .navbar-items a,
+  .navbar .navbar-brand-title {
+    color: var(--landing-text);
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .theme-default-content {
+    padding: 0;
+    max-width: none;
+  }
+}

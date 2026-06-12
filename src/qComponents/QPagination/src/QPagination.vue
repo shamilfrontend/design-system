@@ -1,87 +1,3 @@
-<template>
-  <div
-    class="q-pagination"
-    :class="{
-      'q-pagination_disabled': disabled
-    }"
-  >
-    <button
-      type="button"
-      class="q-pagination__btn q-pagination__btn_icon q-icon-arrow-left"
-      :class="{
-        'q-pagination__btn_disabled': isPrevBtnDisabled
-      }"
-      :disabled="isPrevBtnDisabled"
-      @click="handlePrevBtnClick"
-    />
-
-    <button
-      type="button"
-      class="q-pagination__btn"
-      :class="{
-        'q-pagination__btn_active': currentPage === 1
-      }"
-      :disabled="disabled"
-      @click="handlePageBtnClick(1)"
-    >
-      1
-    </button>
-
-    <button
-      v-if="isPrevQuickBtnShown"
-      type="button"
-      class="q-pagination__btn q-pagination__btn_quick q-icon-triangle-left"
-      :disabled="disabled"
-      @click="handlePrevQuickBtnClick"
-    />
-
-    <button
-      v-for="page in pagers"
-      :key="page"
-      type="button"
-      class="q-pagination__btn"
-      :class="{
-        'q-pagination__btn_active': page === currentPage
-      }"
-      :disabled="disabled"
-      @click="handlePageBtnClick(page)"
-    >
-      {{ page }}
-    </button>
-
-    <button
-      v-if="isNextQuickBtnShown"
-      type="button"
-      class="q-pagination__btn q-pagination__btn_quick q-icon-triangle-right"
-      :disabled="disabled"
-      @click="handleNextQuickBtnClick"
-    />
-
-    <button
-      v-if="preparedPageCount > 1"
-      type="button"
-      class="q-pagination__btn"
-      :class="{
-        'q-pagination__btn_active': preparedPageCount === currentPage
-      }"
-      :disabled="disabled"
-      @click="handlePageBtnClick(preparedPageCount)"
-    >
-      {{ preparedPageCount }}
-    </button>
-
-    <button
-      type="button"
-      class="q-pagination__btn q-pagination__btn_icon q-icon-arrow-right"
-      :class="{
-        'q-pagination__btn_disabled': isNextBtnDisabled
-      }"
-      :disabled="isNextBtnDisabled"
-      @click="handleNextBtnClick"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import { range } from 'lodash-es';
 import { defineComponent, computed } from 'vue';
@@ -255,3 +171,87 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-pagination"
+    :class="{
+      'q-pagination_disabled': disabled
+    }"
+  >
+    <button
+      type="button"
+      class="q-pagination__btn q-pagination__btn_icon q-icon-arrow-left"
+      :class="{
+        'q-pagination__btn_disabled': isPrevBtnDisabled
+      }"
+      :disabled="isPrevBtnDisabled"
+      @click="handlePrevBtnClick"
+    />
+
+    <button
+      type="button"
+      class="q-pagination__btn"
+      :class="{
+        'q-pagination__btn_active': currentPage === 1
+      }"
+      :disabled="disabled"
+      @click="handlePageBtnClick(1)"
+    >
+      1
+    </button>
+
+    <button
+      v-if="isPrevQuickBtnShown"
+      type="button"
+      class="q-pagination__btn q-pagination__btn_quick q-icon-triangle-left"
+      :disabled="disabled"
+      @click="handlePrevQuickBtnClick"
+    />
+
+    <button
+      v-for="page in pagers"
+      :key="page"
+      type="button"
+      class="q-pagination__btn"
+      :class="{
+        'q-pagination__btn_active': page === currentPage
+      }"
+      :disabled="disabled"
+      @click="handlePageBtnClick(page)"
+    >
+      {{ page }}
+    </button>
+
+    <button
+      v-if="isNextQuickBtnShown"
+      type="button"
+      class="q-pagination__btn q-pagination__btn_quick q-icon-triangle-right"
+      :disabled="disabled"
+      @click="handleNextQuickBtnClick"
+    />
+
+    <button
+      v-if="preparedPageCount > 1"
+      type="button"
+      class="q-pagination__btn"
+      :class="{
+        'q-pagination__btn_active': preparedPageCount === currentPage
+      }"
+      :disabled="disabled"
+      @click="handlePageBtnClick(preparedPageCount)"
+    >
+      {{ preparedPageCount }}
+    </button>
+
+    <button
+      type="button"
+      class="q-pagination__btn q-pagination__btn_icon q-icon-arrow-right"
+      :class="{
+        'q-pagination__btn_disabled': isNextBtnDisabled
+      }"
+      :disabled="isNextBtnDisabled"
+      @click="handleNextBtnClick"
+    />
+  </div>
+</template>

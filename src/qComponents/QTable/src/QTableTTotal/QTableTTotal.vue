@@ -1,23 +1,3 @@
-<template>
-  <tr class="q-table-t-total">
-    <q-table-cell-checkbox
-      v-if="isSelectable"
-      base-tag="th"
-      base-class="q-table-t-total-cell"
-      :checked="isChecked"
-      :is-checkable="isCheckable"
-      @change="handleCheckboxChange"
-    />
-
-    <q-table-t-total-cell
-      v-for="(column, index) in columnList"
-      :key="`total-cell-${column.group.key}-${column.key}`"
-      :column="column"
-      :column-index="index"
-    />
-  </tr>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed, inject } from 'vue';
 
@@ -84,3 +64,23 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <tr class="q-table-t-total">
+    <q-table-cell-checkbox
+      v-if="isSelectable"
+      base-tag="th"
+      base-class="q-table-t-total-cell"
+      :checked="isChecked"
+      :is-checkable="isCheckable"
+      @change="handleCheckboxChange"
+    />
+
+    <q-table-t-total-cell
+      v-for="(column, index) in columnList"
+      :key="`total-cell-${column.group.key}-${column.key}`"
+      :column="column"
+      :column-index="index"
+    />
+  </tr>
+</template>

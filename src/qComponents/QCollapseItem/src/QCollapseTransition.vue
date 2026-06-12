@@ -1,9 +1,3 @@
-<template>
-  <transition v-on="on">
-    <slot />
-  </transition>
-</template>
-
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -77,3 +71,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <transition v-on="on">
+    <slot />
+  </transition>
+</template>

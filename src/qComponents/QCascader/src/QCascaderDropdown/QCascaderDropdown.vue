@@ -1,29 +1,3 @@
-<template>
-  <div
-    ref="dropdown"
-    class="q-cascader-dropdown"
-    :style="{ zIndex }"
-  >
-    <transition-group
-      ref="dropdown"
-      class="q-cascader-dropdown__wrapper"
-      :style="{ zIndex }"
-      name="q-cascader-dropdown__wrapper_animation"
-      tag="div"
-    >
-      <q-cascader-column
-        v-for="(column, columnIndex) in columnList"
-        :key="`${uniqueId}-col-${columnIndex}`"
-        role="menu"
-        :aria-labelledby="uniqueId"
-        :column-index="columnIndex"
-        :column="column"
-        @expand="expandRow"
-      />
-    </transition-group>
-  </div>
-</template>
-
 <script lang="ts">
 import { createPopper } from '@popperjs/core';
 import {
@@ -149,3 +123,29 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="dropdown"
+    class="q-cascader-dropdown"
+    :style="{ zIndex }"
+  >
+    <transition-group
+      ref="dropdown"
+      class="q-cascader-dropdown__wrapper"
+      :style="{ zIndex }"
+      name="q-cascader-dropdown__wrapper_animation"
+      tag="div"
+    >
+      <q-cascader-column
+        v-for="(column, columnIndex) in columnList"
+        :key="`${uniqueId}-col-${columnIndex}`"
+        role="menu"
+        :aria-labelledby="uniqueId"
+        :column-index="columnIndex"
+        :column="column"
+        @expand="expandRow"
+      />
+    </transition-group>
+  </div>
+</template>

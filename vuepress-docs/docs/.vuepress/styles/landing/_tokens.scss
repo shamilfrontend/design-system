@@ -1,0 +1,20 @@
+:root {
+  --landing-bg: #121214;
+  --landing-surface: #1c1c22;
+  --landing-surface-elevated: #24242c;
+  --landing-primary: var(--c-brand, #7367f0);
+  --landing-primary-light: var(--c-brand-light, #9e95f5);
+  --landing-primary-glow: rgb(115 103 240 / 35%);
+  --landing-text: #fff;
+  --landing-text-muted: #b4b7bd;
+  --landing-border: rgb(255 255 255 / 10%);
+  --landing-radius: 12px;
+  --landing-radius-lg: 16px;
+  --landing-max-width: 1200px;
+  --landing-section-gap: 120px;
+  --landing-section-gap-mobile: 72px;
+  --landing-bp-sm: 480px;
+  --landing-bp-md: 768px;
+  --landing-bp-lg: 900px;
+  --landing-bp-xl: 1024px;
+}

@@ -1,56 +1,3 @@
-<template>
-  <div class="q-color-picker">
-    <div
-      ref="trigger"
-      class="q-color-picker-trigger"
-      :class="{
-        'q-color-picker-trigger_is-disabled': isDisabled,
-        'q-color-picker-trigger_is-opened': isPickerShown
-      }"
-      @click="handleTriggerClick"
-    >
-      <!-- @slot _Optional_. HTML element that triggers dropdown -->
-      <slot
-        v-if="$slots.trigger"
-        name="trigger"
-      />
-      <button
-        v-else
-        :disabled="isDisabled"
-        class="q-color-picker-trigger__default"
-      >
-        <div
-          class="q-color-picker-trigger__color"
-          :style="{
-            backgroundColor: modelValue
-          }"
-        />
-        <span :class="iconClasses" />
-      </button>
-    </div>
-
-    <teleport
-      :to="teleportTo || 'body'"
-      :disabled="!teleportTo"
-    >
-      <transition name="q-fade">
-        <q-picker-dropdown
-          ref="dropdown"
-          :is-shown="isPickerShown"
-          :is-clear-btn-shown="clearable"
-          :color="modelValue"
-          :color-format="colorFormat"
-          :alpha-shown="alphaShown"
-          :style="{ zIndex }"
-          @click.stop
-          @close="handleClose"
-          @pick="handlePick"
-        />
-      </transition>
-    </teleport>
-  </div>
-</template>
-
 <script lang="ts">
 import { createPopper, Instance, Options } from '@popperjs/core';
 import { placements } from '@popperjs/core/lib/enums';
@@ -257,3 +204,56 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-color-picker">
+    <div
+      ref="trigger"
+      class="q-color-picker-trigger"
+      :class="{
+        'q-color-picker-trigger_is-disabled': isDisabled,
+        'q-color-picker-trigger_is-opened': isPickerShown
+      }"
+      @click="handleTriggerClick"
+    >
+      <!-- @slot _Optional_. HTML element that triggers dropdown -->
+      <slot
+        v-if="$slots.trigger"
+        name="trigger"
+      />
+      <button
+        v-else
+        :disabled="isDisabled"
+        class="q-color-picker-trigger__default"
+      >
+        <div
+          class="q-color-picker-trigger__color"
+          :style="{
+            backgroundColor: modelValue
+          }"
+        />
+        <span :class="iconClasses" />
+      </button>
+    </div>
+
+    <teleport
+      :to="teleportTo || 'body'"
+      :disabled="!teleportTo"
+    >
+      <transition name="q-fade">
+        <q-picker-dropdown
+          ref="dropdown"
+          :is-shown="isPickerShown"
+          :is-clear-btn-shown="clearable"
+          :color="modelValue"
+          :color-format="colorFormat"
+          :alpha-shown="alphaShown"
+          :style="{ zIndex }"
+          @click.stop
+          @close="handleClose"
+          @pick="handlePick"
+        />
+      </transition>
+    </teleport>
+  </div>
+</template>

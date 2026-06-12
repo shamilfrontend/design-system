@@ -1,52 +1,3 @@
-<template>
-  <div :class="classes">
-    <q-upload-drop-zone
-      :has-value="hasValue"
-      :is-multiple="multiple"
-      :is-disabled="isDisabled"
-      :is-loading="isLoading"
-      :text-upload-file="textUploadFile"
-      :text-replace-file="textReplaceFile"
-      :text-loading-file="textLoadingFile"
-      @drop="handleFileDrop"
-      @click="handleUploadClick"
-      @keyup.enter="handleUploadClick"
-    />
-
-    <input
-      ref="fileInput"
-      class="q-upload__input"
-      type="file"
-      tabindex="-1"
-      :accept="accept?.toString()"
-      :multiple="multiple"
-      @change="handleFileChange"
-    />
-
-    <q-upload-file-multiple
-      v-if="multiple"
-      :value="value"
-      :is-disabled="isDisabled"
-      :is-clearable="clearable"
-      :text-uploaded-files="textUploadedFiles"
-      @clear-all="handleClearAll"
-      @clear="handleClear"
-      @abort="handleAbort"
-    />
-    <template v-else>
-      <q-upload-file-single
-        v-if="value"
-        :value="value"
-        :is-loading="isLoading"
-        :is-disabled="isDisabled"
-        :is-clearable="clearable"
-        @clear="handleClear"
-        @abort="handleAbort"
-      />
-    </template>
-  </div>
-</template>
-
 <script lang="ts">
 import { isNil } from 'lodash-es';
 import { defineComponent, inject, ref, computed } from 'vue';
@@ -308,3 +259,52 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div :class="classes">
+    <q-upload-drop-zone
+      :has-value="hasValue"
+      :is-multiple="multiple"
+      :is-disabled="isDisabled"
+      :is-loading="isLoading"
+      :text-upload-file="textUploadFile"
+      :text-replace-file="textReplaceFile"
+      :text-loading-file="textLoadingFile"
+      @drop="handleFileDrop"
+      @click="handleUploadClick"
+      @keyup.enter="handleUploadClick"
+    />
+
+    <input
+      ref="fileInput"
+      class="q-upload__input"
+      type="file"
+      tabindex="-1"
+      :accept="accept?.toString()"
+      :multiple="multiple"
+      @change="handleFileChange"
+    />
+
+    <q-upload-file-multiple
+      v-if="multiple"
+      :value="value"
+      :is-disabled="isDisabled"
+      :is-clearable="clearable"
+      :text-uploaded-files="textUploadedFiles"
+      @clear-all="handleClearAll"
+      @clear="handleClear"
+      @abort="handleAbort"
+    />
+    <template v-else>
+      <q-upload-file-single
+        v-if="value"
+        :value="value"
+        :is-loading="isLoading"
+        :is-disabled="isDisabled"
+        :is-clearable="clearable"
+        @clear="handleClear"
+        @abort="handleAbort"
+      />
+    </template>
+  </div>
+</template>

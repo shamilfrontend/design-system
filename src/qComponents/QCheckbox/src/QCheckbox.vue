@@ -1,45 +1,3 @@
-<template>
-  <component
-    :is="rootTag || 'label'"
-    class="q-checkbox"
-    :class="qCheckboxClasses"
-    @click.prevent="handleCheckboxClick"
-  >
-    <span
-      class="q-checkbox__input"
-      :class="qCheckboxInputClasses"
-      :tabindex="isIndeterminate ? 0 : undefined"
-      :role="isIndeterminate ? 'checkbox' : undefined"
-      :aria-checked="isIndeterminate ? 'mixed' : false"
-    >
-      <span class="q-checkbox__inner">
-        <span
-          class="q-checkbox__inner-icon"
-          :class="qCheckboxInnerIconClasses"
-        />
-      </span>
-      <input
-        v-bind="$attrs"
-        ref="checkboxInput"
-        :value="isChecked"
-        class="q-checkbox__original"
-        type="checkbox"
-        :aria-hidden="isIndeterminate ? 'true' : 'false'"
-        :disabled="isDisabled"
-        @focus="focus = true"
-        @blur="focus = false"
-      />
-    </span>
-    <span
-      v-if="$slots.default || label"
-      class="q-checkbox__label"
-      :class="labelClass"
-    >
-      <slot>{{ label }}</slot>
-    </span>
-  </component>
-</template>
-
 <script lang="ts">
 import { computed, defineComponent, inject, watch, ref } from 'vue';
 import type { PropType } from 'vue';
@@ -257,3 +215,45 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <component
+    :is="rootTag || 'label'"
+    class="q-checkbox"
+    :class="qCheckboxClasses"
+    @click.prevent="handleCheckboxClick"
+  >
+    <span
+      class="q-checkbox__input"
+      :class="qCheckboxInputClasses"
+      :tabindex="isIndeterminate ? 0 : undefined"
+      :role="isIndeterminate ? 'checkbox' : undefined"
+      :aria-checked="isIndeterminate ? 'mixed' : false"
+    >
+      <span class="q-checkbox__inner">
+        <span
+          class="q-checkbox__inner-icon"
+          :class="qCheckboxInnerIconClasses"
+        />
+      </span>
+      <input
+        v-bind="$attrs"
+        ref="checkboxInput"
+        :value="isChecked"
+        class="q-checkbox__original"
+        type="checkbox"
+        :aria-hidden="isIndeterminate ? 'true' : 'false'"
+        :disabled="isDisabled"
+        @focus="focus = true"
+        @blur="focus = false"
+      />
+    </span>
+    <span
+      v-if="$slots.default || label"
+      class="q-checkbox__label"
+      :class="labelClass"
+    >
+      <slot>{{ label }}</slot>
+    </span>
+  </component>
+</template>

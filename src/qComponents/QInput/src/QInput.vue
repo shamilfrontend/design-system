@@ -1,68 +1,3 @@
-<template>
-  <div
-    ref="root"
-    :class="classes"
-    @mouseenter="state.hovering = true"
-    @mouseleave="state.hovering = false"
-  >
-    <div
-      v-if="isSymbolLimitShown"
-      class="q-input__count"
-    >
-      <span class="q-input__count-inner">
-        {{ t('QInput.charNumber') }}: {{ textLength }}/{{ $attrs.maxlength }}
-      </span>
-    </div>
-
-    <input
-      v-bind="$attrs"
-      ref="input"
-      :value="modelValue"
-      class="q-input__inner"
-      :type="inputType"
-      :disabled="isDisabled"
-      @input="handleInput"
-      @change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    />
-
-    <span
-      v-if="isSuffixVisible"
-      class="q-input__suffix"
-    >
-      <span
-        v-if="isDisabled"
-        class="q-input__icon q-icon-lock"
-      />
-
-      <span
-        v-else-if="isPasswordSwitchShown"
-        class="q-input__icon"
-        :class="state.isPasswordVisible ? 'q-icon-eye' : 'q-icon-eye-close'"
-        @click="handlePasswordVisible"
-      />
-
-      <span
-        v-else-if="isClearButtonShown"
-        class="q-input__icon q-icon-close"
-        @click="handleClearClick"
-      />
-
-      <span
-        v-else-if="suffixIcon"
-        class="q-input__icon"
-        :class="suffixIcon"
-      />
-
-      <slot
-        v-else
-        name="suffix"
-      />
-    </span>
-  </div>
-</template>
-
 <script lang="ts">
 import { inject, computed, ref, reactive, watch, defineComponent } from 'vue';
 import type { PropType } from 'vue';
@@ -318,3 +253,68 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    :class="classes"
+    @mouseenter="state.hovering = true"
+    @mouseleave="state.hovering = false"
+  >
+    <div
+      v-if="isSymbolLimitShown"
+      class="q-input__count"
+    >
+      <span class="q-input__count-inner">
+        {{ t('QInput.charNumber') }}: {{ textLength }}/{{ $attrs.maxlength }}
+      </span>
+    </div>
+
+    <input
+      v-bind="$attrs"
+      ref="input"
+      :value="modelValue"
+      class="q-input__inner"
+      :type="inputType"
+      :disabled="isDisabled"
+      @input="handleInput"
+      @change="handleChange"
+      @focus="handleFocus"
+      @blur="handleBlur"
+    />
+
+    <span
+      v-if="isSuffixVisible"
+      class="q-input__suffix"
+    >
+      <span
+        v-if="isDisabled"
+        class="q-input__icon q-icon-lock"
+      />
+
+      <span
+        v-else-if="isPasswordSwitchShown"
+        class="q-input__icon"
+        :class="state.isPasswordVisible ? 'q-icon-eye' : 'q-icon-eye-close'"
+        @click="handlePasswordVisible"
+      />
+
+      <span
+        v-else-if="isClearButtonShown"
+        class="q-input__icon q-icon-close"
+        @click="handleClearClick"
+      />
+
+      <span
+        v-else-if="suffixIcon"
+        class="q-input__icon"
+        :class="suffixIcon"
+      />
+
+      <slot
+        v-else
+        name="suffix"
+      />
+    </span>
+  </div>
+</template>

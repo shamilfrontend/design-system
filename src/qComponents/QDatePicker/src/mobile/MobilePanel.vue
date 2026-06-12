@@ -1,21 +1,3 @@
-<template>
-  <q-button
-    class="q-dialog-mobile-panel__close"
-    circle
-    theme="secondary"
-    type="icon"
-    icon="q-icon-close"
-    @click="handleCloseBtnClick"
-  />
-
-  <component
-    :is="panelComponent"
-    :model-value="transformedToDate"
-    class="q-dialog-mobile-panel__dialog-view"
-    @pick="handlePick"
-  />
-</template>
-
 <script lang="ts">
 import { defineComponent, inject } from 'vue';
 
@@ -56,3 +38,21 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <q-button
+    class="q-dialog-mobile-panel__close"
+    circle
+    theme="secondary"
+    type="icon"
+    icon="q-icon-close"
+    @click="handleCloseBtnClick"
+  />
+
+  <component
+    :is="panelComponent"
+    :model-value="transformedToDate"
+    class="q-dialog-mobile-panel__dialog-view"
+    @pick="handlePick"
+  />
+</template>

@@ -1,117 +1,3 @@
-<template>
-  <div
-    ref="root"
-    class="q-picker-panel"
-  >
-    <div class="q-picker-panel__body-wrapper">
-      <div class="q-picker-panel__body">
-        <div
-          v-if="shortcuts?.length"
-          class="q-picker-panel__sidebar"
-        >
-          <button
-            v-for="(shortcut, key) in shortcuts"
-            :key="key"
-            type="button"
-            class="q-picker-panel__shortcut"
-            @click="handleShortcutClick(shortcut.value)"
-          >
-            {{ shortcut.text }}
-          </button>
-        </div>
-
-        <div
-          ref="leftPanel"
-          :class="leftPanelClasses"
-        >
-          <div class="q-picker-panel__header">
-            <button
-              type="button"
-              class="q-picker-panel__icon-btn q-icon-double-triangle-left"
-              @click="handleLeftPrevYearClick"
-            />
-            <button
-              type="button"
-              class="q-picker-panel__icon-btn q-icon-triangle-left"
-              @click="handleLeftPrevMonthClick"
-            />
-            <div class="q-picker-panel__header-sign">{{ leftLabel }}</div>
-            <button
-              type="button"
-              :disabled="!enableMonthArrow"
-              class="q-picker-panel__icon-btn q-icon-triangle-right"
-              @click="handleLeftNextMonthClick"
-            />
-            <button
-              type="button"
-              :disabled="!enableYearArrow"
-              class="q-picker-panel__icon-btn q-icon-double-triangle-right"
-              @click="handleLeftNextYearClick"
-            />
-          </div>
-          <date-table
-            selection-mode="range"
-            :min-date="state.minDate"
-            :max-date="state.maxDate"
-            :month="leftMonth"
-            :year="leftYear"
-            :range-state="state.rangeState"
-            @pick="handleRangePick"
-            @range-selecting="handleRangeSelecting"
-          />
-        </div>
-        <div
-          v-if="!isMobileView"
-          ref="rightPanel"
-          :class="rightPanelClasses"
-        >
-          <div class="q-picker-panel__header">
-            <button
-              type="button"
-              :disabled="!enableYearArrow"
-              :class="{ 'q-picker-panel__icon-btn_disabled': !enableYearArrow }"
-              class="q-picker-panel__icon-btn q-icon-double-triangle-left"
-              @click="handleRightPrevYearClick"
-            />
-            <button
-              type="button"
-              :disabled="!enableMonthArrow"
-              :class="{
-                'q-picker-panel__icon-btn_disabled': !enableMonthArrow
-              }"
-              class="q-picker-panel__icon-btn q-icon-triangle-left"
-              @click="handleRightPrevMonthClick"
-            />
-            <div class="q-picker-panel__header-sign">
-              {{ rightLabel }}
-            </div>
-            <button
-              type="button"
-              class="q-picker-panel__icon-btn q-icon-triangle-right"
-              @click="handleRightNextMonthClick"
-            />
-            <button
-              type="button"
-              class="q-picker-panel__icon-btn q-icon-double-triangle-right"
-              @click="handleRightNextYearClick"
-            />
-          </div>
-          <date-table
-            selection-mode="range"
-            :min-date="state.minDate"
-            :max-date="state.maxDate"
-            :month="rightMonth"
-            :year="rightYear"
-            :range-state="state.rangeState"
-            @pick="handleRangePick"
-            @range-selecting="handleRangeSelecting"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { addMonths, subMonths, isSameMonth } from 'date-fns';
 import { isNil } from 'lodash-es';
@@ -493,3 +379,117 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    class="q-picker-panel"
+  >
+    <div class="q-picker-panel__body-wrapper">
+      <div class="q-picker-panel__body">
+        <div
+          v-if="shortcuts?.length"
+          class="q-picker-panel__sidebar"
+        >
+          <button
+            v-for="(shortcut, key) in shortcuts"
+            :key="key"
+            type="button"
+            class="q-picker-panel__shortcut"
+            @click="handleShortcutClick(shortcut.value)"
+          >
+            {{ shortcut.text }}
+          </button>
+        </div>
+
+        <div
+          ref="leftPanel"
+          :class="leftPanelClasses"
+        >
+          <div class="q-picker-panel__header">
+            <button
+              type="button"
+              class="q-picker-panel__icon-btn q-icon-double-triangle-left"
+              @click="handleLeftPrevYearClick"
+            />
+            <button
+              type="button"
+              class="q-picker-panel__icon-btn q-icon-triangle-left"
+              @click="handleLeftPrevMonthClick"
+            />
+            <div class="q-picker-panel__header-sign">{{ leftLabel }}</div>
+            <button
+              type="button"
+              :disabled="!enableMonthArrow"
+              class="q-picker-panel__icon-btn q-icon-triangle-right"
+              @click="handleLeftNextMonthClick"
+            />
+            <button
+              type="button"
+              :disabled="!enableYearArrow"
+              class="q-picker-panel__icon-btn q-icon-double-triangle-right"
+              @click="handleLeftNextYearClick"
+            />
+          </div>
+          <date-table
+            selection-mode="range"
+            :min-date="state.minDate"
+            :max-date="state.maxDate"
+            :month="leftMonth"
+            :year="leftYear"
+            :range-state="state.rangeState"
+            @pick="handleRangePick"
+            @range-selecting="handleRangeSelecting"
+          />
+        </div>
+        <div
+          v-if="!isMobileView"
+          ref="rightPanel"
+          :class="rightPanelClasses"
+        >
+          <div class="q-picker-panel__header">
+            <button
+              type="button"
+              :disabled="!enableYearArrow"
+              :class="{ 'q-picker-panel__icon-btn_disabled': !enableYearArrow }"
+              class="q-picker-panel__icon-btn q-icon-double-triangle-left"
+              @click="handleRightPrevYearClick"
+            />
+            <button
+              type="button"
+              :disabled="!enableMonthArrow"
+              :class="{
+                'q-picker-panel__icon-btn_disabled': !enableMonthArrow
+              }"
+              class="q-picker-panel__icon-btn q-icon-triangle-left"
+              @click="handleRightPrevMonthClick"
+            />
+            <div class="q-picker-panel__header-sign">
+              {{ rightLabel }}
+            </div>
+            <button
+              type="button"
+              class="q-picker-panel__icon-btn q-icon-triangle-right"
+              @click="handleRightNextMonthClick"
+            />
+            <button
+              type="button"
+              class="q-picker-panel__icon-btn q-icon-double-triangle-right"
+              @click="handleRightNextYearClick"
+            />
+          </div>
+          <date-table
+            selection-mode="range"
+            :min-date="state.minDate"
+            :max-date="state.maxDate"
+            :month="rightMonth"
+            :year="rightYear"
+            :range-state="state.rangeState"
+            @pick="handleRangePick"
+            @range-selecting="handleRangeSelecting"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

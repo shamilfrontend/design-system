@@ -1,9 +1,3 @@
-<template>
-  <div class="q-collapse">
-    <slot />
-  </div>
-</template>
-
 <script lang="ts">
 import { uniqueId } from 'lodash-es';
 import { defineComponent, PropType, provide, watch, ref } from 'vue';
@@ -97,3 +91,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-collapse">
+    <slot />
+  </div>
+</template>

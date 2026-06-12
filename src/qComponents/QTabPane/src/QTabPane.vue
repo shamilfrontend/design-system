@@ -1,24 +1,3 @@
-<template>
-  <div
-    class="q-tab-pane"
-    :style="tabWidthStyle"
-  >
-    <div class="q-tab-pane__inner">
-      <button
-        type="button"
-        class="q-tab-pane__btn"
-        :class="tabBtnClasses"
-        :disabled="isDisabled"
-        @click="handleTabClick"
-      >
-        {{ title }}
-      </button>
-
-      <slot name="content" />
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, inject, computed } from 'vue';
 
@@ -104,3 +83,24 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-tab-pane"
+    :style="tabWidthStyle"
+  >
+    <div class="q-tab-pane__inner">
+      <button
+        type="button"
+        class="q-tab-pane__btn"
+        :class="tabBtnClasses"
+        :disabled="isDisabled"
+        @click="handleTabClick"
+      >
+        {{ title }}
+      </button>
+
+      <slot name="content" />
+    </div>
+  </div>
+</template>

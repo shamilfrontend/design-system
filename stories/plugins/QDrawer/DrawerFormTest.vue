@@ -1,40 +1,3 @@
-<template>
-  <q-drawer-content>
-    <template #title>
-      Morbi massa libero, vehicula nec consequat sed, porta a sem.
-    </template>
-
-    {{ someExternalProp }}
-
-    <q-form :model="formModel">
-      <q-form-item
-        prop="name"
-        label="Name"
-        required
-      >
-        <q-input
-          v-model="formModel.name"
-          @input="handleNameInput"
-        />
-      </q-form-item>
-    </q-form>
-
-    <q-button
-      :loading="isLoading"
-      @click="handleConfirmClick"
-    >
-      Confirm
-    </q-button>
-
-    <q-button
-      theme="secondary"
-      @click="handleCancelClick"
-    >
-      Cancel
-    </q-button>
-  </q-drawer-content>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, reactive, inject } from 'vue';
 
@@ -97,6 +60,43 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <q-drawer-content>
+    <template #title>
+      Morbi massa libero, vehicula nec consequat sed, porta a sem.
+    </template>
+
+    {{ someExternalProp }}
+
+    <q-form :model="formModel">
+      <q-form-item
+        prop="name"
+        label="Name"
+        required
+      >
+        <q-input
+          v-model="formModel.name"
+          @input="handleNameInput"
+        />
+      </q-form-item>
+    </q-form>
+
+    <q-button
+      :loading="isLoading"
+      @click="handleConfirmClick"
+    >
+      Confirm
+    </q-button>
+
+    <q-button
+      theme="secondary"
+      @click="handleCancelClick"
+    >
+      Cancel
+    </q-button>
+  </q-drawer-content>
+</template>
 
 <style lang="scss" scoped>
 .q-drawer-sample-content {

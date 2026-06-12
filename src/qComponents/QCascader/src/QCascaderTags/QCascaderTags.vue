@@ -1,33 +1,3 @@
-<template>
-  <div :class="rootClasses">
-    <template v-if="collapseTags && tagList.length">
-      <q-tag
-        :closable="!isDisabled"
-        @close="handleTagClose(tagList[0].value)"
-      >
-        {{ tagList[0].label }}
-      </q-tag>
-      <q-tag
-        v-if="tagList.length > 1"
-        :closable="false"
-      >
-        + {{ tagList.length - 1 }}
-      </q-tag>
-    </template>
-
-    <template v-if="!collapseTags">
-      <q-tag
-        v-for="tag in tagList"
-        :key="tag.value"
-        :closable="!isDisabled"
-        @close="handleTagClose(tag.value)"
-      >
-        {{ tag.label }}
-      </q-tag>
-    </template>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, inject, computed } from 'vue';
 
@@ -87,3 +57,33 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div :class="rootClasses">
+    <template v-if="collapseTags && tagList.length">
+      <q-tag
+        :closable="!isDisabled"
+        @close="handleTagClose(tagList[0].value)"
+      >
+        {{ tagList[0].label }}
+      </q-tag>
+      <q-tag
+        v-if="tagList.length > 1"
+        :closable="false"
+      >
+        + {{ tagList.length - 1 }}
+      </q-tag>
+    </template>
+
+    <template v-if="!collapseTags">
+      <q-tag
+        v-for="tag in tagList"
+        :key="tag.value"
+        :closable="!isDisabled"
+        @close="handleTagClose(tag.value)"
+      >
+        {{ tag.label }}
+      </q-tag>
+    </template>
+  </div>
+</template>

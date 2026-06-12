@@ -1,41 +1,3 @@
-<template>
-  <teleport :to="teleportTo || 'body'">
-    <transition
-      name="q-fade"
-      @after-leave="afterLeave"
-    >
-      <div
-        v-show="isShown"
-        class="q-drawer-container"
-        :style="{ zIndex }"
-      >
-        <div
-          v-if="closeOnClickShadow"
-          class="q-drawer-container__clickable-shadow"
-          @click="emitCloseEvent"
-        />
-
-        <div
-          ref="drawer"
-          tabindex="-1"
-          class="q-drawer-container__wrapper"
-          :style="drawerStyle"
-          :class="[drawerClass, customClass]"
-          @keyup.esc="emitCloseEvent"
-        >
-          <div class="q-drawer-container__content">
-            <component
-              :is="preparedContent.component"
-              v-bind="preparedContent.props"
-              v-on="preparedContent.listeners"
-            />
-          </div>
-        </div>
-      </div>
-    </transition>
-  </teleport>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -265,3 +227,41 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <teleport :to="teleportTo || 'body'">
+    <transition
+      name="q-fade"
+      @after-leave="afterLeave"
+    >
+      <div
+        v-show="isShown"
+        class="q-drawer-container"
+        :style="{ zIndex }"
+      >
+        <div
+          v-if="closeOnClickShadow"
+          class="q-drawer-container__clickable-shadow"
+          @click="emitCloseEvent"
+        />
+
+        <div
+          ref="drawer"
+          tabindex="-1"
+          class="q-drawer-container__wrapper"
+          :style="drawerStyle"
+          :class="[drawerClass, customClass]"
+          @keyup.esc="emitCloseEvent"
+        >
+          <div class="q-drawer-container__content">
+            <component
+              :is="preparedContent.component"
+              v-bind="preparedContent.props"
+              v-on="preparedContent.listeners"
+            />
+          </div>
+        </div>
+      </div>
+    </transition>
+  </teleport>
+</template>

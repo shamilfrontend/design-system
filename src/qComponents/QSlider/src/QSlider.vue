@@ -1,47 +1,3 @@
-<template>
-  <div
-    class="q-slider"
-    :class="rootClasses"
-  >
-    <div
-      ref="path"
-      class="q-slider__path"
-      @click="handlePathClick"
-    >
-      <q-slider-bar :size="state.btnPosition" />
-
-      <q-slider-button
-        v-model:position="state.btnPosition"
-        :current-value="modelValue"
-        :path-left="state.pathLeft"
-        :path-width="state.pathWidth"
-        :disabled="isDisabled"
-        :tooltip-mode="tooltipMode"
-        @drag-start="setupPathValues"
-        @update:position="handleBtnPositionUpdate"
-      />
-
-      <div
-        v-if="showSteps"
-        class="q-slider__steps"
-      >
-        <div
-          v-for="step in data.length"
-          :key="step"
-          class="q-slider__step"
-        />
-      </div>
-    </div>
-
-    <q-slider-captions
-      :model-value="modelValue"
-      :data="data"
-      :disabled="isDisabled"
-      @update:model-value="handleCaptionChange"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -234,3 +190,47 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-slider"
+    :class="rootClasses"
+  >
+    <div
+      ref="path"
+      class="q-slider__path"
+      @click="handlePathClick"
+    >
+      <q-slider-bar :size="state.btnPosition" />
+
+      <q-slider-button
+        v-model:position="state.btnPosition"
+        :current-value="modelValue"
+        :path-left="state.pathLeft"
+        :path-width="state.pathWidth"
+        :disabled="isDisabled"
+        :tooltip-mode="tooltipMode"
+        @drag-start="setupPathValues"
+        @update:position="handleBtnPositionUpdate"
+      />
+
+      <div
+        v-if="showSteps"
+        class="q-slider__steps"
+      >
+        <div
+          v-for="step in data.length"
+          :key="step"
+          class="q-slider__step"
+        />
+      </div>
+    </div>
+
+    <q-slider-captions
+      :model-value="modelValue"
+      :data="data"
+      :disabled="isDisabled"
+      @update:model-value="handleCaptionChange"
+    />
+  </div>
+</template>

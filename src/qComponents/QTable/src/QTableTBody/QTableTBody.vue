@@ -1,14 +1,3 @@
-<template>
-  <tbody class="q-table-t-body">
-    <q-table-t-body-row
-      v-for="(row, index) in rowsList"
-      :key="`body-row-${getHash(row)}-${index}`"
-      :row="row"
-      :row-index="index"
-    />
-  </tbody>
-</template>
-
 <script lang="ts">
 import getHash from 'object-hash';
 import { defineComponent, computed, inject } from 'vue';
@@ -47,3 +36,14 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <tbody class="q-table-t-body">
+    <q-table-t-body-row
+      v-for="(row, index) in rowsList"
+      :key="`body-row-${getHash(row)}-${index}`"
+      :row="row"
+      :row-index="index"
+    />
+  </tbody>
+</template>

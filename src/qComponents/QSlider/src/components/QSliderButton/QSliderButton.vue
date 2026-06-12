@@ -1,23 +1,3 @@
-<template>
-  <button
-    type="button"
-    class="q-slider-button"
-    :class="btnClasses"
-    :style="btnStyles"
-    @mousedown="handleBtnDown"
-  >
-    <div class="q-slider-button__target" />
-  </button>
-  <div
-    v-if="!isTooltipHidden"
-    class="q-slider-button__tooltip"
-    :class="tooltipClasses"
-    :style="tooltipStyles"
-  >
-    {{ currentValue }}
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, computed, onBeforeUnmount } from 'vue';
 import type { PropType } from 'vue';
@@ -149,3 +129,23 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <button
+    type="button"
+    class="q-slider-button"
+    :class="btnClasses"
+    :style="btnStyles"
+    @mousedown="handleBtnDown"
+  >
+    <div class="q-slider-button__target" />
+  </button>
+  <div
+    v-if="!isTooltipHidden"
+    class="q-slider-button__tooltip"
+    :class="tooltipClasses"
+    :style="tooltipStyles"
+  >
+    {{ currentValue }}
+  </div>
+</template>

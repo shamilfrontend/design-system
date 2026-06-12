@@ -1,54 +1,3 @@
-<template>
-  <div
-    class="q-select-tags"
-    :class="{
-      'q-select-tags_filterable': filterable,
-      'q-select-tags_collapse-tags': collapseTags
-    }"
-  >
-    <template v-if="Array.isArray(selected)">
-      <template v-if="collapseTags && selected.length">
-        <q-tag
-          :closable="!isDisabled"
-          @close="handleTagClose(selected[0])"
-        >
-          {{ selected[0].preparedLabel }}
-        </q-tag>
-        <q-tag
-          v-if="selected.length > 1"
-          :closable="false"
-        >
-          + {{ selected.length - 1 }}
-        </q-tag>
-      </template>
-
-      <template v-if="!collapseTags">
-        <q-tag
-          v-for="option in selected"
-          :key="option.key"
-          :closable="!isDisabled"
-          @close="handleTagClose(option)"
-        >
-          {{ option.preparedLabel }}
-        </q-tag>
-      </template>
-    </template>
-    <input
-      v-if="filterable && !isDisabled"
-      ref="input"
-      :value="query"
-      type="text"
-      class="q-select-tags__input"
-      :autocomplete="autocomplete ?? 'off'"
-      @focus="$emit('focus')"
-      @keyup.esc="$emit('exit')"
-      @keyup.enter="$emit('keyup-enter')"
-      @keydown.backspace.capture="handleBackspaceKeyDown"
-      @input="handleInput"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, inject, ref, toRefs } from 'vue';
 
@@ -110,3 +59,54 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-select-tags"
+    :class="{
+      'q-select-tags_filterable': filterable,
+      'q-select-tags_collapse-tags': collapseTags
+    }"
+  >
+    <template v-if="Array.isArray(selected)">
+      <template v-if="collapseTags && selected.length">
+        <q-tag
+          :closable="!isDisabled"
+          @close="handleTagClose(selected[0])"
+        >
+          {{ selected[0].preparedLabel }}
+        </q-tag>
+        <q-tag
+          v-if="selected.length > 1"
+          :closable="false"
+        >
+          + {{ selected.length - 1 }}
+        </q-tag>
+      </template>
+
+      <template v-if="!collapseTags">
+        <q-tag
+          v-for="option in selected"
+          :key="option.key"
+          :closable="!isDisabled"
+          @close="handleTagClose(option)"
+        >
+          {{ option.preparedLabel }}
+        </q-tag>
+      </template>
+    </template>
+    <input
+      v-if="filterable && !isDisabled"
+      ref="input"
+      :value="query"
+      type="text"
+      class="q-select-tags__input"
+      :autocomplete="autocomplete ?? 'off'"
+      @focus="$emit('focus')"
+      @keyup.esc="$emit('exit')"
+      @keyup.enter="$emit('keyup-enter')"
+      @keydown.backspace.capture="handleBackspaceKeyDown"
+      @input="handleInput"
+    />
+  </div>
+</template>

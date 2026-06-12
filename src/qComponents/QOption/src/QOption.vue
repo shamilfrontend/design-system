@@ -1,32 +1,3 @@
-<template>
-  <div
-    v-show="isVisible"
-    ref="root"
-    class="q-option"
-    :class="qOptionClasses"
-    :tabindex="isDisabled ? undefined : '-1'"
-    @mouseenter="handleMouseEnter"
-    @click.stop="handleOptionClick"
-  >
-    <q-checkbox
-      v-if="multiple"
-      :model-value="isSelected"
-      root-tag="div"
-      input-tab-index="-1"
-      :disabled="isDisabled"
-    />
-
-    <slot>
-      <div class="q-option__label">{{ preparedLabel }}</div>
-    </slot>
-
-    <span
-      v-if="isDisabled"
-      class="q-icon-lock q-option__lock"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import { isPlainObject, isEqual, get, isNil } from 'lodash-es';
 import {
@@ -196,3 +167,32 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    v-show="isVisible"
+    ref="root"
+    class="q-option"
+    :class="qOptionClasses"
+    :tabindex="isDisabled ? undefined : '-1'"
+    @mouseenter="handleMouseEnter"
+    @click.stop="handleOptionClick"
+  >
+    <q-checkbox
+      v-if="multiple"
+      :model-value="isSelected"
+      root-tag="div"
+      input-tab-index="-1"
+      :disabled="isDisabled"
+    />
+
+    <slot>
+      <div class="q-option__label">{{ preparedLabel }}</div>
+    </slot>
+
+    <span
+      v-if="isDisabled"
+      class="q-icon-lock q-option__lock"
+    />
+  </div>
+</template>

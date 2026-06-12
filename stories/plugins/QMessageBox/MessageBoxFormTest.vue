@@ -1,44 +1,3 @@
-<template>
-  <q-message-box-content>
-    <template #title>
-      Morbi massa libero, vehicula nec consequat sed, porta a sem.
-    </template>
-
-    <template #content>
-      {{ someExternalProp }}
-
-      <q-form :model="formModel">
-        <q-form-item
-          prop="name"
-          label="Name"
-          required
-        >
-          <q-input
-            v-model="formModel.name"
-            @input="handleNameInput"
-          />
-        </q-form-item>
-      </q-form>
-    </template>
-
-    <template #actions>
-      <q-button
-        :loading="isSending"
-        @click="handleSendClick"
-      >
-        Send
-      </q-button>
-
-      <q-button
-        theme="secondary"
-        @click="handleCancelClick"
-      >
-        Cancel
-      </q-button>
-    </template>
-  </q-message-box-content>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, reactive, inject } from 'vue';
 
@@ -107,3 +66,44 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <q-message-box-content>
+    <template #title>
+      Morbi massa libero, vehicula nec consequat sed, porta a sem.
+    </template>
+
+    <template #content>
+      {{ someExternalProp }}
+
+      <q-form :model="formModel">
+        <q-form-item
+          prop="name"
+          label="Name"
+          required
+        >
+          <q-input
+            v-model="formModel.name"
+            @input="handleNameInput"
+          />
+        </q-form-item>
+      </q-form>
+    </template>
+
+    <template #actions>
+      <q-button
+        :loading="isSending"
+        @click="handleSendClick"
+      >
+        Send
+      </q-button>
+
+      <q-button
+        theme="secondary"
+        @click="handleCancelClick"
+      >
+        Cancel
+      </q-button>
+    </template>
+  </q-message-box-content>
+</template>

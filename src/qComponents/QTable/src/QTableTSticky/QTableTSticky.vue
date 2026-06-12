@@ -1,17 +1,3 @@
-<template>
-  <tr ref="root">
-    <th
-      v-if="isSelectable"
-      :ref="el => setColRef(el, 'selectableColumn')"
-    />
-    <th
-      v-for="(column, index) in columnList"
-      :key="index"
-      :ref="el => setColRef(el, index)"
-    />
-  </tr>
-</template>
-
 <script lang="ts">
 import { isEmpty } from 'lodash-es';
 import {
@@ -189,3 +175,17 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <tr ref="root">
+    <th
+      v-if="isSelectable"
+      :ref="el => setColRef(el, 'selectableColumn')"
+    />
+    <th
+      v-for="(column, index) in columnList"
+      :key="index"
+      :ref="el => setColRef(el, index)"
+    />
+  </tr>
+</template>

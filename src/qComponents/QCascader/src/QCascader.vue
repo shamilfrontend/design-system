@@ -1,30 +1,3 @@
-<template>
-  <div :class="rootClasses">
-    <q-cascader-input
-      ref="reference"
-      @click="handleReferenceTrigger"
-      @keyup.enter="handleReferenceTrigger"
-    />
-
-    <q-cascader-tags />
-
-    <teleport
-      :to="teleportTo || 'body'"
-      :disabled="!teleportTo"
-    >
-      <transition
-        name="q-cascader__dropdown_animation"
-        @after-leave="afterLeave"
-      >
-        <q-cascader-dropdown
-          v-if="isDropdownShown"
-          @close="handleDropdownClose"
-        />
-      </transition>
-    </teleport>
-  </div>
-</template>
-
 <script lang="ts">
 import type { Instance } from '@popperjs/core';
 import {
@@ -306,3 +279,30 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div :class="rootClasses">
+    <q-cascader-input
+      ref="reference"
+      @click="handleReferenceTrigger"
+      @keyup.enter="handleReferenceTrigger"
+    />
+
+    <q-cascader-tags />
+
+    <teleport
+      :to="teleportTo || 'body'"
+      :disabled="!teleportTo"
+    >
+      <transition
+        name="q-cascader__dropdown_animation"
+        @after-leave="afterLeave"
+      >
+        <q-cascader-dropdown
+          v-if="isDropdownShown"
+          @close="handleDropdownClose"
+        />
+      </transition>
+    </teleport>
+  </div>
+</template>

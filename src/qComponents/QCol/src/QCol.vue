@@ -1,13 +1,3 @@
-<template>
-  <component
-    :is="tag"
-    class="q-col"
-    :class="classes"
-  >
-    <slot />
-  </component>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 
@@ -59,3 +49,13 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <component
+    :is="tag"
+    class="q-col"
+    :class="classes"
+  >
+    <slot />
+  </component>
+</template>

@@ -1,30 +1,3 @@
-<template>
-  <div class="q-cascader-input">
-    <q-input
-      ref="input"
-      :model-value="value"
-      type="text"
-      readonly
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :validate-event="false"
-      @keyup.backspace="clearValue"
-    >
-      <template #suffix>
-        <span
-          v-if="isClearBtnShown"
-          class="q-cascader-input__icon-close q-input__icon q-icon-close"
-          @click.stop="clearValue"
-        />
-        <span
-          class="q-cascader-input__icon-arrow q-input__icon q-icon-triangle-down"
-          :class="arrowIconClass"
-        />
-      </template>
-    </q-input>
-  </div>
-</template>
-
 <script lang="ts">
 import { isNumber, isEmpty } from 'lodash-es';
 import { defineComponent, inject, computed } from 'vue';
@@ -105,3 +78,30 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div class="q-cascader-input">
+    <q-input
+      ref="input"
+      :model-value="value"
+      type="text"
+      readonly
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :validate-event="false"
+      @keyup.backspace="clearValue"
+    >
+      <template #suffix>
+        <span
+          v-if="isClearBtnShown"
+          class="q-cascader-input__icon-close q-input__icon q-icon-close"
+          @click.stop="clearValue"
+        />
+        <span
+          class="q-cascader-input__icon-arrow q-input__icon q-icon-triangle-down"
+          :class="arrowIconClass"
+        />
+      </template>
+    </q-input>
+  </div>
+</template>

@@ -1,29 +1,3 @@
-<template>
-  <tr
-    :class="rootClasses"
-    :style="rootStyles"
-    @click="handleRowClick"
-  >
-    <q-table-cell-checkbox
-      v-if="isSelectable"
-      base-tag="td"
-      base-class="q-table-t-body-cell"
-      :checked="isChecked"
-      @change="handleCheckboxChange"
-    />
-
-    <q-table-t-body-cell
-      v-for="(column, colIndex) in columnList"
-      :key="randId(`body-row-${rowIndex}-cell-${colIndex}-`)"
-      :row="row"
-      :row-index="rowIndex"
-      :column="column"
-      :column-index="colIndex"
-      :value="getRowValue(column.key)"
-    />
-  </tr>
-</template>
-
 <script lang="ts">
 import { get } from 'lodash-es';
 import { defineComponent, computed, inject } from 'vue';
@@ -154,3 +128,29 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <tr
+    :class="rootClasses"
+    :style="rootStyles"
+    @click="handleRowClick"
+  >
+    <q-table-cell-checkbox
+      v-if="isSelectable"
+      base-tag="td"
+      base-class="q-table-t-body-cell"
+      :checked="isChecked"
+      @change="handleCheckboxChange"
+    />
+
+    <q-table-t-body-cell
+      v-for="(column, colIndex) in columnList"
+      :key="randId(`body-row-${rowIndex}-cell-${colIndex}-`)"
+      :row="row"
+      :row-index="rowIndex"
+      :column="column"
+      :column-index="colIndex"
+      :value="getRowValue(column.key)"
+    />
+  </tr>
+</template>

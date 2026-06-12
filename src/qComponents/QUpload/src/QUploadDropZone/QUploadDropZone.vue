@@ -1,21 +1,3 @@
-<template>
-  <div
-    class="q-upload-drop-zone"
-    :class="classes"
-    tabindex="0"
-    @dragenter.prevent
-    @drop.prevent="handleDrop"
-    @dragover.prevent="handleDragover"
-    @dragleave.prevent="handleDragleave"
-  >
-    <span
-      class="q-upload-drop-zone__icon"
-      :class="icon"
-    />
-    <div class="q-upload-drop-zone__text">{{ text }}</div>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 
@@ -112,3 +94,21 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    class="q-upload-drop-zone"
+    :class="classes"
+    tabindex="0"
+    @dragenter.prevent
+    @drop.prevent="handleDrop"
+    @dragover.prevent="handleDragover"
+    @dragleave.prevent="handleDragleave"
+  >
+    <span
+      class="q-upload-drop-zone__icon"
+      :class="icon"
+    />
+    <div class="q-upload-drop-zone__text">{{ text }}</div>
+  </div>
+</template>

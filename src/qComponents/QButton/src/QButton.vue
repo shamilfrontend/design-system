@@ -1,28 +1,3 @@
-<template>
-  <button
-    class="q-button"
-    :disabled="isDisabled || isLoading"
-    :autofocus="Boolean(autofocus)"
-    :type="nativeType ?? 'button'"
-    :class="classList"
-  >
-    <span
-      v-if="isLoading"
-      class="q-button__spinner-icon q-icon-reverse"
-    />
-    <span
-      v-else-if="icon"
-      :class="icon"
-    />
-    <span
-      v-if="$slots.default"
-      class="q-button__inner"
-    >
-      <slot />
-    </span>
-  </button>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed, inject } from 'vue';
 import type { PropType } from 'vue';
@@ -183,3 +158,28 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <button
+    class="q-button"
+    :disabled="isDisabled || isLoading"
+    :autofocus="Boolean(autofocus)"
+    :type="nativeType ?? 'button'"
+    :class="classList"
+  >
+    <span
+      v-if="isLoading"
+      class="q-button__spinner-icon q-icon-reverse"
+    />
+    <span
+      v-else-if="icon"
+      :class="icon"
+    />
+    <span
+      v-if="$slots.default"
+      class="q-button__inner"
+    >
+      <slot />
+    </span>
+  </button>
+</template>

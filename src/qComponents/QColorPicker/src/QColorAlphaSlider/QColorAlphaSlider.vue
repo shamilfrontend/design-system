@@ -1,22 +1,3 @@
-<template>
-  <div
-    ref="root"
-    class="q-color-alpha-slider"
-  >
-    <div
-      ref="bar"
-      class="q-color-alpha-slider__bar"
-      :style="barStyles"
-      @click="handleBarClick"
-    />
-    <div
-      ref="thumb"
-      class="q-color-alpha-slider__thumb"
-      :style="thumbStyles"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import { colord } from 'colord';
 import {
@@ -135,3 +116,22 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    class="q-color-alpha-slider"
+  >
+    <div
+      ref="bar"
+      class="q-color-alpha-slider__bar"
+      :style="barStyles"
+      @click="handleBarClick"
+    />
+    <div
+      ref="thumb"
+      class="q-color-alpha-slider__thumb"
+      :style="thumbStyles"
+    />
+  </div>
+</template>

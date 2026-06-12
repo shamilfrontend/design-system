@@ -1,3 +1,11 @@
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'IconChevronUp'
+});
+</script>
+
 <template>
   <svg
     width="24"
@@ -12,11 +20,3 @@
     />
   </svg>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'IconChevronUp'
-});
-</script>

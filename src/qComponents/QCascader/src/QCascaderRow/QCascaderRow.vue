@@ -1,35 +1,3 @@
-<template>
-  <div
-    :id="uniqueId"
-    :class="rootClasses"
-    role="menuitem"
-    :tabindex="row.disabled ? undefined : -1"
-    @click="handleClick"
-    @keyup.right="handleRightKeyUp"
-    @keyup.enter="handleEnterKeyUp"
-  >
-    <div
-      v-if="isMultiple || (!isMultiple && isCheckStrictly)"
-      class="q-cascader-row__checkbox"
-    >
-      <q-checkbox
-        tabindex="-1"
-        :model-value="isChecked"
-        :indeterminate="isIndeterminate"
-        :disabled="row.disabled"
-        @change="handleCheckboxChange"
-      />
-    </div>
-
-    <span class="q-cascader-row__label">{{ row.label }}</span>
-
-    <span
-      v-if="isIconShown"
-      :class="iconClasses"
-    />
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, inject, computed, PropType } from 'vue';
 
@@ -185,3 +153,35 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    :id="uniqueId"
+    :class="rootClasses"
+    role="menuitem"
+    :tabindex="row.disabled ? undefined : -1"
+    @click="handleClick"
+    @keyup.right="handleRightKeyUp"
+    @keyup.enter="handleEnterKeyUp"
+  >
+    <div
+      v-if="isMultiple || (!isMultiple && isCheckStrictly)"
+      class="q-cascader-row__checkbox"
+    >
+      <q-checkbox
+        tabindex="-1"
+        :model-value="isChecked"
+        :indeterminate="isIndeterminate"
+        :disabled="row.disabled"
+        @change="handleCheckboxChange"
+      />
+    </div>
+
+    <span class="q-cascader-row__label">{{ row.label }}</span>
+
+    <span
+      v-if="isIconShown"
+      :class="iconClasses"
+    />
+  </div>
+</template>

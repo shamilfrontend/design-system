@@ -1,16 +1,3 @@
-<template>
-  <component
-    :is="tag || 'div'"
-    ref="root"
-    class="q-radio-group"
-    :class="`q-radio-group_${direction}`"
-    role="radiogroup"
-    @keydown="handleKeydown"
-  >
-    <slot />
-  </component>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -156,3 +143,16 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <component
+    :is="tag || 'div'"
+    ref="root"
+    class="q-radio-group"
+    :class="`q-radio-group_${direction}`"
+    role="radiogroup"
+    @keydown="handleKeydown"
+  >
+    <slot />
+  </component>
+</template>

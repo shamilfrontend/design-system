@@ -1,92 +1,3 @@
-<template>
-  <div
-    ref="root"
-    class="q-select"
-    :class="qSelectClasses"
-    @click="toggleMenu"
-    @mouseenter="state.hover = true"
-    @mouseleave="state.hover = false"
-  >
-    <div class="q-select__input">
-      <q-input
-        ref="input"
-        v-model="state.selectedLabel"
-        type="text"
-        :placeholder="preparedPlaceholder"
-        :autocomplete="autocomplete"
-        :disabled="isDisabled"
-        :readonly="isReadonly"
-        :validate-event="false"
-        :root-class="{ 'q-input_focused': state.isDropdownShown }"
-        :tabindex="multiple && filterable ? '-1' : null"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @keyup="onInputChange"
-        @keyup.enter="handleEnterKeyUp"
-        @keyup.esc.stop.prevent="state.isDropdownShown = false"
-        @keydown.tab="state.isDropdownShown = false"
-        @paste="onInputChange"
-      >
-        <template #suffix>
-          <span
-            v-show="!isClearBtnShown"
-            class="q-select__caret q-input__icon"
-            :class="iconClass"
-          />
-          <span
-            v-if="isClearBtnShown"
-            class="q-select__caret q-input__icon q-icon-close"
-            @click.stop="clearSelected"
-          />
-        </template>
-      </q-input>
-    </div>
-
-    <q-select-tags
-      v-if="multiple && state.selected"
-      ref="tags"
-      v-model:query="state.query"
-      @keyup-enter="handleEnterKeyUp"
-      @focus="handleFocus"
-      @remove-tag="deleteTag"
-      @exit="state.isDropdownShown = false"
-    />
-
-    <teleport
-      :to="teleportTo || 'body'"
-      :disabled="!teleportTo"
-    >
-      <transition
-        name="q-select__dropdown_animation"
-        @after-leave="afterLeave"
-      >
-        <q-select-dropdown
-          ref="dropdown"
-          :shown="state.isDropdownShown"
-          :width="state.inputWidth"
-          :select-all-shown="Boolean(selectAllShown)"
-          :select-all-text="selectAllText || t('QSelect.selectAll')"
-          :show-empty-content="showEmptyContent"
-          :empty-text="emptyText"
-          :is-can-load-more-shown="isCanLoadMoreShown"
-          :load-more-text="loadMoreText || t('QSelect.more')"
-          :is-new-option-shown="isNewOptionShown"
-          @select-all="emitValueUpdate"
-        >
-          <slot v-if="!loading" />
-
-          <template
-            v-if="$slots.empty"
-            #empty
-          >
-            <slot name="empty" />
-          </template>
-        </q-select-dropdown>
-      </transition>
-    </teleport>
-  </div>
-</template>
-
 <script lang="ts">
 import { createPopper } from '@popperjs/core';
 import {
@@ -977,3 +888,92 @@ export default defineComponent({
   }
 });
 </script>
+
+<template>
+  <div
+    ref="root"
+    class="q-select"
+    :class="qSelectClasses"
+    @click="toggleMenu"
+    @mouseenter="state.hover = true"
+    @mouseleave="state.hover = false"
+  >
+    <div class="q-select__input">
+      <q-input
+        ref="input"
+        v-model="state.selectedLabel"
+        type="text"
+        :placeholder="preparedPlaceholder"
+        :autocomplete="autocomplete"
+        :disabled="isDisabled"
+        :readonly="isReadonly"
+        :validate-event="false"
+        :root-class="{ 'q-input_focused': state.isDropdownShown }"
+        :tabindex="multiple && filterable ? '-1' : null"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @keyup="onInputChange"
+        @keyup.enter="handleEnterKeyUp"
+        @keyup.esc.stop.prevent="state.isDropdownShown = false"
+        @keydown.tab="state.isDropdownShown = false"
+        @paste="onInputChange"
+      >
+        <template #suffix>
+          <span
+            v-show="!isClearBtnShown"
+            class="q-select__caret q-input__icon"
+            :class="iconClass"
+          />
+          <span
+            v-if="isClearBtnShown"
+            class="q-select__caret q-input__icon q-icon-close"
+            @click.stop="clearSelected"
+          />
+        </template>
+      </q-input>
+    </div>
+
+    <q-select-tags
+      v-if="multiple && state.selected"
+      ref="tags"
+      v-model:query="state.query"
+      @keyup-enter="handleEnterKeyUp"
+      @focus="handleFocus"
+      @remove-tag="deleteTag"
+      @exit="state.isDropdownShown = false"
+    />
+
+    <teleport
+      :to="teleportTo || 'body'"
+      :disabled="!teleportTo"
+    >
+      <transition
+        name="q-select__dropdown_animation"
+        @after-leave="afterLeave"
+      >
+        <q-select-dropdown
+          ref="dropdown"
+          :shown="state.isDropdownShown"
+          :width="state.inputWidth"
+          :select-all-shown="Boolean(selectAllShown)"
+          :select-all-text="selectAllText || t('QSelect.selectAll')"
+          :show-empty-content="showEmptyContent"
+          :empty-text="emptyText"
+          :is-can-load-more-shown="isCanLoadMoreShown"
+          :load-more-text="loadMoreText || t('QSelect.more')"
+          :is-new-option-shown="isNewOptionShown"
+          @select-all="emitValueUpdate"
+        >
+          <slot v-if="!loading" />
+
+          <template
+            v-if="$slots.empty"
+            #empty
+          >
+            <slot name="empty" />
+          </template>
+        </q-select-dropdown>
+      </transition>
+    </teleport>
+  </div>
+</template>
