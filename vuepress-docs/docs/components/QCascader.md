@@ -19,10 +19,7 @@ Default view:
 Using in template:
 
 ```vue
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-/>
+<q-cascader v-model="modelValue" :options="options" />
 ```
 
 Using in component instance:
@@ -207,11 +204,7 @@ Whether all path to value in tags is shown.
 Using in template:
 
 ```vue {4}
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-  :all-levels-shown="false"
-/>
+<q-cascader v-model="modelValue" :options="options" :all-levels-shown="false" />
 ```
 
 <iframe height="250" style="width: 100%;" scrolling="no" frameborder="no" src="/QCascader/allLevelsShown.html"></iframe>
@@ -226,11 +219,7 @@ The separator symbol in the selected value.
 Using in template:
 
 ```vue {4}
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-  separator=" | "
-/>
+<q-cascader v-model="modelValue" :options="options" separator=" | " />
 ```
 
 <iframe height="250" style="width: 100%;" scrolling="no" frameborder="no" src="/QCascader/separator.html"></iframe>
@@ -243,11 +232,7 @@ Using in template:
 Whether QCascader accepts multiple values. Pass array as `modelValue`.
 
 ```vue {4}
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-  multiple
-/>
+<q-cascader v-model="modelValue" :options="options" multiple />
 ```
 
 <iframe height="250" style="width: 100%;" scrolling="no" frameborder="no" src="/QCascader/multiple.html"></iframe>
@@ -260,11 +245,7 @@ Whether QCascader accepts multiple values. Pass array as `modelValue`.
 Whether QCascader is clearable.
 
 ```vue {4}
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-  clearable
-/>
+<q-cascader v-model="modelValue" :options="options" clearable />
 ```
 
 ### disabled
@@ -275,11 +256,7 @@ Whether QCascader is clearable.
 Whether QCascader is disabled.
 
 ```vue {4}
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-  disabled
-/>
+<q-cascader v-model="modelValue" :options="options" disabled />
 ```
 
 ### checkStrictly
@@ -290,11 +267,7 @@ Whether QCascader is disabled.
 Checks each value as independent. Use for selecting category as value instead of it's children.
 
 ```vue {4}
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-  check-strictly
-/>
+<q-cascader v-model="modelValue" :options="options" check-strictly />
 ```
 
 <iframe height="250" style="width: 100%;" scrolling="no" frameborder="no" src="/QCascader/checkStrictly.html"></iframe>
@@ -309,12 +282,7 @@ Checks each value as independent. Use for selecting category as value instead of
 Hide tags in counter.
 
 ```vue {4,5}
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-  collapse-tags
-  multiple
-/>
+<q-cascader v-model="modelValue" :options="options" collapse-tags multiple />
 ```
 
 <iframe height="250" style="width: 100%;" scrolling="no" frameborder="no" src="/QCascader/collapseTags.html"></iframe>
@@ -334,11 +302,7 @@ As native placeholder.
 Specifies a target element where QCascader will be moved from original layout place. (has to be a valid query selector, or an HTMLElement).
 
 ```vue {4}
-<q-cascader
-  v-model="modelValue"
-  :options="options"
-  teleport-to="body"
-/>
+<q-cascader v-model="modelValue" :options="options" teleport-to="body" />
 ```
 
 ## Events

@@ -56,10 +56,10 @@ const useRightPrevYearClick = (rightDate: Date): Date => subYears(rightDate, 1);
 const isValidValue = (value: Nullable<Date>[]): boolean => {
   return Boolean(
     Array.isArray(value) &&
-      value &&
-      value[0] instanceof Date &&
-      value[1] instanceof Date &&
-      value[0].getTime() <= value[1].getTime()
+    value &&
+    value[0] instanceof Date &&
+    value[1] instanceof Date &&
+    value[0].getTime() <= value[1].getTime()
   );
 };
 

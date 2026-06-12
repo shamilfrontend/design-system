@@ -1,15 +1,17 @@
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { resolve } from 'path';
 
-/* eslint-disable import/no-extraneous-dependencies */
 import vue from '@vitejs/plugin-vue';
 import copy from 'rollup-plugin-copy';
 import sassPlugin from 'rollup-plugin-sass';
-import type { IdAndContentObject } from 'rollup-plugin-sass/dist/types';
 import sass from 'sass';
+
+interface StyleSheetIdAndContent {
+  id?: string;
+  content?: string;
+}
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-/* eslint-enable import/no-extraneous-dependencies */
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -65,7 +67,7 @@ export default defineConfig({
       plugins: [
         sassPlugin({
           runtime: sass,
-          output(_: string, styleNodes: IdAndContentObject[]) {
+          output(_: string, styleNodes: StyleSheetIdAndContent[]) {
             styleNodes.forEach(styleNode => {
               const splittedPath = styleNode.id?.split('/') ?? [];
               const fileName = splittedPath[splittedPath.length - 1].replace(

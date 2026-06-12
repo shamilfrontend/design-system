@@ -1,3 +1,34 @@
 {
-  "extends": ["stylelint-config-standard-scss"]
+  "extends": ["stylelint-config-standard-scss"],
+  "overrides": [
+    {
+      "files": ["**/*.vue"],
+      "customSyntax": "postcss-html"
+    }
+  ],
+  "ignoreFiles": [
+    "dist/**",
+    "storybook-static/**",
+    "node_modules/**",
+    "coverage/**"
+  ],
+  "rules": {
+    "selector-class-pattern": null,
+    "selector-not-notation": null,
+    "declaration-block-single-line-max-declarations": null,
+    "declaration-block-no-duplicate-properties": null,
+    "declaration-property-value-keyword-no-deprecated": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "number-max-precision": null,
+    "property-no-vendor-prefix": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "color-function-alias-notation": null,
+    "media-feature-range-notation": null,
+    "selector-pseudo-element-colon-notation": null,
+    "import-notation": null,
+    "keyframes-name-pattern": null,
+    "scss/dollar-variable-pattern": null,
+    "scss/operator-no-unspaced": null
+  }
 }

@@ -8,8 +8,7 @@ import type {
   QMessageBoxContainerInstance
 } from './QMessageBoxContainer';
 
-export interface ComponentInternalInstanceWithProvides
-  extends ComponentInternalInstance {
+export interface ComponentInternalInstanceWithProvides extends ComponentInternalInstance {
   provides: Record<symbol | string, unknown>;
 }
 

@@ -67,10 +67,7 @@ Sets disabled switch state
 Code example:
 
 ```vue {3}
-<q-switch
-  v-model="model"
-  disabled
-/>
+<q-switch v-model="model" disabled />
 ```
 
 Examples:
@@ -87,11 +84,7 @@ Set loading animation inside switch slider.
 Template:
 
 ```vue {3}
-<q-switch
-  v-model="model"
-  :loading="loading"
-  @change="handleSwitcherChange"
-/>
+<q-switch v-model="model" :loading="loading" @change="handleSwitcherChange" />
 ```
 
 Component instance:
@@ -132,10 +125,7 @@ Example:
 If `QSwitch` wrapped in `QFormItem`, this prop defines if switch's `change` event will be validated immediately
 
 ```vue {10}
-<q-form
-  :model="model"
-  :rules="rules"
->
+<q-form :model="model" :rules="rules">
   <q-form-item prop="switch">
     <q-switch 
       v-model="model.switch"

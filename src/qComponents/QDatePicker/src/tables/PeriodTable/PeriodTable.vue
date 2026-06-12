@@ -161,8 +161,8 @@ export default defineComponent({
 
             cell.inRange = Boolean(
               minDateNum &&
-                date.getTime() >= minDateNum &&
-                date.getTime() <= maxDateNum
+              date.getTime() >= minDateNum &&
+              date.getTime() <= maxDateNum
             );
           }
 
@@ -192,7 +192,7 @@ export default defineComponent({
       );
       const isInRange = Boolean(
         cell.inRange ||
-          (cell.date && isDateInRangeInterval(cell.date, props.rangeState))
+        (cell.date && isDateInRangeInterval(cell.date, props.rangeState))
       );
 
       const isNextDecade = !isMonthTable.value && Boolean(cell.text > 9);
@@ -211,7 +211,7 @@ export default defineComponent({
       String(
         isMonthTable.value
           ? getMonthName(cell.text)
-          : cell.date?.getFullYear() ?? ''
+          : (cell.date?.getFullYear() ?? '')
       );
 
     const mouseMove = (cell: PeriodCellModel): void => {

@@ -205,37 +205,37 @@ export default defineComponent({
     const isSymbolLimitShown = computed<boolean>(() =>
       Boolean(
         props.showSymbolLimit &&
-          ctx.attrs.maxlength &&
-          !isDisabled.value &&
-          !ctx.attrs.readonly &&
-          !props.passwordSwitch
+        ctx.attrs.maxlength &&
+        !isDisabled.value &&
+        !ctx.attrs.readonly &&
+        !props.passwordSwitch
       )
     );
 
     const isPasswordSwitchShown = computed<boolean>(() =>
       Boolean(
         props.passwordSwitch &&
-          !ctx.attrs.readonly &&
-          (props.modelValue || state.focused || state.hovering)
+        !ctx.attrs.readonly &&
+        (props.modelValue || state.focused || state.hovering)
       )
     );
 
     const isClearButtonShown = computed<boolean>(() =>
       Boolean(
         props.clearable &&
-          !ctx.attrs.readonly &&
-          props.modelValue &&
-          (state.focused || state.hovering)
+        !ctx.attrs.readonly &&
+        props.modelValue &&
+        (state.focused || state.hovering)
       )
     );
 
     const isSuffixVisible = computed<boolean>(() =>
       Boolean(
         isDisabled.value ||
-          isClearButtonShown.value ||
-          isPasswordSwitchShown.value ||
-          props.suffixIcon ||
-          ctx.slots.suffix
+        isClearButtonShown.value ||
+        isPasswordSwitchShown.value ||
+        props.suffixIcon ||
+        ctx.slots.suffix
       )
     );
 

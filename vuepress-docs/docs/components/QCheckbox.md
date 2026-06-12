@@ -31,10 +31,7 @@ Defines the text of the checkbox. You could use default [slot](#slots) instead o
 Defines the label size of the checkbox.
 
 ```vue
-<q-checkbox
-  label="Label"
-  label-size="small"
-/>
+<q-checkbox label="Label" label-size="small" />
 ```
 
 <iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QCheckbox/labelSize.html"></iframe>
@@ -101,10 +98,7 @@ If checkbox wrapped in `QFormItem`, prop `validateEvent` defines if checkbox `ch
 Code Example
 
 ```vue {6}
-<q-form
-  :model="model"
-  :rules="rules"
->
+<q-form :model="model" :rules="rules">
   <q-form-item prop="checkbox">
     <q-checkbox
       v-model="model.checkbox"
@@ -132,10 +126,7 @@ Alias for [update:modelValue](#update-modelvalue)
 In template:
 
 ```vue
-<q-checkbox
-  v-model="model"
-  @change="changeHandler"
-/>
+<q-checkbox v-model="model" @change="changeHandler" />
 ```
 
 In setup:

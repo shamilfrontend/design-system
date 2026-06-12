@@ -35,7 +35,9 @@
     cursor: grab;
     background-color: var(--color-tertiary-white);
     border-radius: 50%;
-    box-shadow: 0 0 0 1.5px #fff, 0 1px 4px rgb(var(--color-rgb-shadow) / 40%);
+    box-shadow:
+      0 0 0 1.5px #fff,
+      0 1px 4px rgb(var(--color-rgb-shadow) / 40%);
     transform: translate(-4px, -4px);
   }
 }

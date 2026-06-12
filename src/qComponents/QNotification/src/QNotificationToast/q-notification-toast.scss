@@ -11,7 +11,9 @@
   background-color: var(--color-tertiary-white);
   border-radius: var(--border-radius-base);
   box-shadow: var(--box-shadow-primary);
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 
   &__icon {
     position: absolute;

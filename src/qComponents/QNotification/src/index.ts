@@ -14,7 +14,7 @@ import type {
   QNotifyId
 } from './types';
 
-let notifyList = ref<QNotifyItem[]>([]);
+const notifyList = ref<QNotifyItem[]>([]);
 
 export const createNotification = (
   config?: QNotificationOptions,

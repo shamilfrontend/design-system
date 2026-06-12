@@ -452,9 +452,9 @@ export default defineComponent({
     const showEmptyContent = computed<boolean>(() =>
       Boolean(
         emptyText.value &&
-          (!props.allowCreate ||
-            props.loading ||
-            (props.allowCreate && state.options.length === 0))
+        (!props.allowCreate ||
+          props.loading ||
+          (props.allowCreate && state.options.length === 0))
       )
     );
 
@@ -488,9 +488,9 @@ export default defineComponent({
 
       return Boolean(
         props.filterable &&
-          props.allowCreate &&
-          state.query !== '' &&
-          !hasExistingOption
+        props.allowCreate &&
+        state.query !== '' &&
+        !hasExistingOption
       );
     });
 
@@ -511,7 +511,7 @@ export default defineComponent({
       const newOption: NewOption = {
         value,
         key: value,
-        preparedLabel: isObject(value) ? '' : value ?? ''
+        preparedLabel: isObject(value) ? '' : (value ?? '')
       };
 
       return newOption;

@@ -18,11 +18,7 @@ Default view:
 Binding value.
 
 ```vue {3}
-<q-radio
-  :checked="false"
-  :value="1"
-  label="Option"
-/>
+<q-radio :checked="false" :value="1" label="Option" />
 ```
 
 ### label
@@ -33,11 +29,7 @@ Binding value.
 The Radio's label.
 
 ```vue {4}
-<q-radio
-  :checked="false"
-  :value="1"
-  label="Option"
-/>
+<q-radio :checked="false" :value="1" label="Option" />
 ```
 
 ### labelSize
@@ -48,12 +40,7 @@ The Radio's label.
 The Radio's label size.
 
 ```vue {4}
-<q-radio
-  :checked="false"
-  :value="1"
-  label="Option"
-  label-size="small"
-/>
+<q-radio :checked="false" :value="1" label="Option" label-size="small" />
 ```
 
 <iframe style="width: 100%; height: 64px" scrolling="no" frameborder="no" src="/QRadio/labelSize.html"></iframe>
@@ -66,11 +53,7 @@ The Radio's label size.
 Whether Radio is checked.
 
 ```vue {2}
-<q-radio
-  :checked="false"
-  :value="1"
-  label="Option"
-/>
+<q-radio :checked="false" :value="1" label="Option" />
 ```
 
 ### disabled
@@ -81,12 +64,7 @@ Whether Radio is checked.
 Whether Radio is disabled.
 
 ```vue {5}
-<q-radio
-  :checked="false"
-  :value="1"
-  label="Option"
-  disabled
-/>
+<q-radio :checked="false" :value="1" label="Option" disabled />
 ```
 
 ## Events
@@ -111,10 +89,7 @@ Triggers when value updates.
 Set custom content as `label`.
 
 ```vue
-<q-radio
-  :checked="true"
-  :value="1"
->
+<q-radio :checked="true" :value="1">
   <b>label from slot<b>
 </q-radio>
 ```
@@ -128,10 +103,7 @@ As you're not to be able to use `QRadio` in isolation (if you're making great UX
 <iframe style="width: 100%; height: 150px" scrolling="no" frameborder="no" src="/QRadio/QRadioGroup.html"></iframe>
 
 ```vue
-<q-radio-group
-  v-model="value"
-  @change="handleChange"
->
+<q-radio-group v-model="value" @change="handleChange">
   <q-radio :value="1" label="Option A"></q-radio>
   <q-radio :value="2" label="Option B"></q-radio>
   <q-radio :value="3" label="Option C"></q-radio>

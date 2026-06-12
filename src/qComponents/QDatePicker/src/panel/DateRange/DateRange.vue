@@ -259,7 +259,7 @@ export default defineComponent({
         rightYear.value * MONTHS_COUNT +
           rightMonth.value -
           (leftYear.value * MONTHS_COUNT + leftMonth.value + 1) >=
-          MONTHS_COUNT
+        MONTHS_COUNT
       );
     });
 

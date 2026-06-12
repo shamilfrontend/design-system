@@ -9,7 +9,6 @@ import { defineComponent } from 'vue';
 
 import type { QCollapseTransitionInstance } from './types';
 
-/* eslint-disable no-param-reassign */
 const on = {
   beforeEnter(el: HTMLElement): void {
     el.classList.add('collapse-transition');
@@ -69,7 +68,6 @@ const on = {
     el.style.paddingBottom = el.dataset.oldPaddingBottom ?? '';
   }
 };
-/* eslint-enable no-param-reassign */
 
 export default defineComponent({
   name: 'QCollapseTransition',

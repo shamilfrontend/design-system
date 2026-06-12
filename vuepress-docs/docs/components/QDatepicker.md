@@ -86,10 +86,7 @@ type QDatePickerPropType =
 ```
 
 ```vue {3}
-<q-date-picker
-  v-model="value"
-  type="date"
-/>
+<q-date-picker v-model="value" type="date" />
 ```
 
 See [example](./QDatepicker/#example) above.
@@ -102,10 +99,7 @@ See [example](./QDatepicker/#example) above.
 Sets custom date formatting in the input. We use `date-fns` formatting, so you should use their [config](https://date-fns.org/v2.28.0/docs/format)
 
 ```vue {3}
-<q-date-picker
-  v-model="value"
-  format="yyyy/MM/dd"
-/>
+<q-date-picker v-model="value" format="yyyy/MM/dd" />
 ```
 
 <iframe style="height: 367px; width: 769px" scrolling="no" frameborder="no" src="/QDatepicker/format.html"></iframe>
@@ -142,10 +136,7 @@ As native input placeholder. Use this prop for single types: `date`, `week`, `mo
 - Default: `null`
 
 ```vue {3}
-<q-date-picker
-  v-model="value"
-  placeholder="Pick a date"
-/>
+<q-date-picker v-model="value" placeholder="Pick a date" />
 ```
 
 ### startPlaceholder / endPlaceholder
@@ -156,11 +147,7 @@ The ranged datepickers have two inputs, so `startPlaceholder` and `endPlaceholde
 - Default: `null`
 
 ```vue {3,4}
-<q-date-picker
-  v-model="value"
-  start-placeholder="from"
-  end-placeholder="to"
-/>
+<q-date-picker v-model="value" start-placeholder="from" end-placeholder="to" />
 ```
 
 ### shortcuts
@@ -187,10 +174,7 @@ type QDatePickerPropShortcuts = {
 ```
 
 ```vue {3}
-<q-date-picker
-  v-model="value"
-  :shortcuts="shortcuts"
-/>
+<q-date-picker v-model="value" :shortcuts="shortcuts" />
 ```
 
 ```js
@@ -238,10 +222,7 @@ Each `number` correspondes a week day:
 
 ```vue {4}
 // start with monday
-<q-date-picker
-  v-model="value"
-  :first-day-of-week="1"
-/>
+<q-date-picker v-model="value" :first-day-of-week="1" />
 ```
 
 <iframe style="height: 367px; width: 769px" scrolling="no" frameborder="no" src="/QDatepicker/firstDayOfWeek.html"></iframe>
@@ -305,10 +286,7 @@ type QDatePickerPropDisabledValues = Nullable<{
 ```
 
 ```vue {3}
-<q-date-picker
-  v-model="value"
-  :disabled-values="disabledValues"
-/>
+<q-date-picker v-model="value" :disabled-values="disabledValues" />
 ```
 
 ```js

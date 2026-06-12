@@ -11,7 +11,7 @@
   --pgn-box-shadow-secondary: none;
 
   display: inline-grid;
-  grid-gap: 8px;
+  gap: 8px;
   margin-top: 24px;
   white-space: nowrap;
 
@@ -49,7 +49,7 @@
       }
 
       .q-pagination_disabled &,
-      &:not(:focus):not(:hover) {
+      &:not(:focus, :hover) {
         &::before {
           font-size: var(--font-size-base);
           content: '...';

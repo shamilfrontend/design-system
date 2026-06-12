@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Quality & Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Prettier
+        run: yarn prettier
+
+      - name: Stylelint
+        run: yarn lint:style
+
+      - name: ESLint
+        run: yarn lint:js
+
+      - name: Unit tests
+        run: yarn test:c
+
+      - name: Build library
+        run: yarn build
+
+      - name: Build Storybook
+        run: yarn build-storybook

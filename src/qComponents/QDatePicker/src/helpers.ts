@@ -86,9 +86,9 @@ const calcInputData = (data: string, inputType: string): string => {
 const validator = function (val: Nullable<string | string[]>): boolean {
   return Boolean(
     val === null ||
-      val === undefined ||
-      isString(val) ||
-      (Array.isArray(val) && val.length === 2 && val.every(isString))
+    val === undefined ||
+    isString(val) ||
+    (Array.isArray(val) && val.length === 2 && val.every(isString))
   );
 };
 
@@ -108,8 +108,8 @@ const modelValueValidator = (val: QDatePickerPropModelValue): boolean => {
 
   return Boolean(
     (isString(val) && checkISOIsValid(val)) ||
-      isValid(val) ||
-      (Array.isArray(val) && checkArrayValueIsValid(val))
+    isValid(val) ||
+    (Array.isArray(val) && checkArrayValueIsValid(val))
   );
 };
 

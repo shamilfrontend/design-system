@@ -83,7 +83,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    @media (max-width: 415px) {
+    @media (width <= 415px) {
       &__close {
         top: 20px;
         right: 20px;
@@ -93,7 +93,7 @@
     }
   }
 
-  @media (min-width: 375px) {
+  @media (width >= 375px) {
     &__dialog-view {
       .q-picker-panel__header-sign,
       .q-picker-panel__header-label {

@@ -17,7 +17,6 @@ const storyMetadata: Meta = {
 };
 
 const Template: Story<QBreadcrumbsProps> = args =>
-  // eslint-disable-next-line vue/one-component-per-file
   defineComponent({
     setup() {
       const route = computed<QBreadcrumbsPropRoute>(() => {

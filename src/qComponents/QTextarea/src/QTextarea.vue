@@ -147,9 +147,9 @@ export default defineComponent({
     const isSymbolLimitShown = computed<boolean>(() =>
       Boolean(
         props.showSymbolLimit &&
-          ctx.attrs.maxlength &&
-          !isDisabled.value &&
-          !ctx.attrs.readonly
+        ctx.attrs.maxlength &&
+        !isDisabled.value &&
+        !ctx.attrs.readonly
       )
     );
 

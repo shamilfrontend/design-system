@@ -6,7 +6,8 @@
   margin-top: 8px;
   overflow: hidden;
   cursor: pointer;
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       45deg,
       var(--color-tertiary-gray-ultra-dark) 25%,
       transparent 25%
@@ -26,7 +27,11 @@
       transparent 75%,
       var(--color-tertiary-gray-ultra-dark) 75%
     );
-  background-position: 8px 16px, -8px 8px, 16px 8px, -16px 0;
+  background-position:
+    8px 16px,
+    -8px 8px,
+    16px 8px,
+    -16px 0;
   background-size: 16px 16px;
   border-radius: var(--border-radius-base);
   box-shadow: inset 0 0 0 1px rgb(var(--color-rgb-shadow) / 10%);
@@ -46,7 +51,8 @@
     margin: 2px;
     background-color: var(--color-tertiary-white);
     border-radius: 2px;
-    box-shadow: 0 0 0 1px rgb(var(--color-rgb-shadow) / 15%),
+    box-shadow:
+      0 0 0 1px rgb(var(--color-rgb-shadow) / 15%),
       0 1px 3px rgb(var(--color-rgb-shadow) / 30%);
   }
 }

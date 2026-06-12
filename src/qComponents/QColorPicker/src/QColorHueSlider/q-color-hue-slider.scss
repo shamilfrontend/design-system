@@ -33,7 +33,8 @@
     margin: 2px;
     background-color: var(--color-tertiary-white);
     border-radius: 2px;
-    box-shadow: 0 0 0 1px rgb(var(--color-rgb-shadow) / 15%),
+    box-shadow:
+      0 0 0 1px rgb(var(--color-rgb-shadow) / 15%),
       0 1px 3px rgb(var(--color-rgb-shadow) / 30%);
   }
 }

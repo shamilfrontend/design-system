@@ -106,7 +106,7 @@ export default defineComponent({
 
       return Boolean(
         preparedLabel.value.toLowerCase().includes(qSelectQuery) ||
-          props.created
+        props.created
       );
     });
 

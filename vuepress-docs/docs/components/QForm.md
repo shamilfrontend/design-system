@@ -15,11 +15,7 @@ Default view:
 Using in template:
 
 ```vue
-<q-form
-  ref="form"
-  :model="formModel"
-  :rules="rules"
->
+<q-form ref="form" :model="formModel" :rules="rules">
     <q-form-item label="Name" prop="name">
       <q-input v-model="formModel.name" type="text" />
     </q-form-item>
@@ -189,12 +185,7 @@ Whether are all components in this form disabled. If set to true, it cannot be o
 - Default: `false`
 
 ```vue {5}
-<q-form
-  ref="form"
-  :model="formModel"
-  :rules="rules"
-  disabled
->
+<q-form ref="form" :model="formModel" :rules="rules" disabled>
 ...
 </q-form>
 ```
@@ -211,12 +202,7 @@ Whether required fields should have a red asterisk (star) beside their labels.
 - Default: `false`
 
 ```vue {5}
-<q-form
-  ref="form"
-  :model="formModel"
-  :rules="rules"
-  hide-required-asterisk
->
+<q-form ref="form" :model="formModel" :rules="rules" hide-required-asterisk>
 ...
 </q-form>
 ```

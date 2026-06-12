@@ -34,7 +34,7 @@
     box-shadow: var(--box-shadow-secondary);
 
     &:hover {
-      &:not(.cell_disabled):not(.cell_current):not(.cell_in-range) {
+      &:not(.cell_disabled, .cell_current, .cell_in-range) {
         color: var(--color-primary-black);
         background-color: var(--color-tertiary-gray);
       }
