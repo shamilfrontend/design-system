@@ -27,6 +27,9 @@ export default {
     placeholder: '选择',
     noDataText: '无数据'
   },
+  QAlert: {
+    close: '关闭'
+  },
   QColorPicker: {
     clear: '清空',
     confirm: '确定'

@@ -10,8 +10,11 @@ import {
   zh as localeZh
 } from './constants/locales';
 import { setMessages, setI18n } from './locale';
+import { QAlert } from './QAlert';
+import { QBadge } from './QBadge';
 import { QBreadcrumbs } from './QBreadcrumbs';
 import { QButton } from './QButton';
+import { QCard } from './QCard';
 import { QCascader } from './QCascader';
 import { QCheckbox } from './QCheckbox';
 import { QCheckboxGroup } from './QCheckboxGroup';
@@ -37,12 +40,14 @@ import { QRow } from './QRow';
 import { QScrollbar } from './QScrollbar';
 import { QSelect } from './QSelect';
 import { QSlider } from './QSlider';
+import { QSkeleton } from './QSkeleton';
 import { QSwitch } from './QSwitch';
 import { QTable } from './QTable';
 import { QTabPane } from './QTabPane';
 import { QTabs } from './QTabs';
 import { QTag } from './QTag';
 import { QTextarea } from './QTextarea';
+import { QTooltip } from './QTooltip';
 import { QUpload } from './QUpload';
 import type { ConfigOptions } from './types';
 
@@ -53,6 +58,9 @@ import '../main.scss';
 import './QBreadcrumbs/src/q-breadcrumbs.scss';
 import './QButton/src/q-button.scss';
 import './QCascader/src/q-cascader.scss';
+import './QAlert/src/q-alert.scss';
+import './QBadge/src/q-badge.scss';
+import './QCard/src/q-card.scss';
 import './QCheckbox/src/q-checkbox.scss';
 import './QCheckboxGroup/src/q-checkbox-group.scss';
 import './QCol/src/q-col.scss';
@@ -78,12 +86,14 @@ import './QRow/src/q-row.scss';
 import './QScrollbar/src/q-scrollbar.scss';
 import './QSelect/src/q-select.scss';
 import './QSlider/src/q-slider.scss';
+import './QSkeleton/src/q-skeleton.scss';
 import './QSwitch/src/q-switch.scss';
 import './QTable/src/q-table.scss';
 import './QTabPane/src/q-tab-pane.scss';
 import './QTabs/src/q-tabs.scss';
 import './QTag/src/q-tag.scss';
 import './QTextarea/src/q-textarea.scss';
+import './QTooltip/src/q-tooltip.scss';
 import './QUpload/src/q-upload.scss';
 
 const setupQui = ({
@@ -122,7 +132,10 @@ const install = (app: App, config?: ConfigOptions): void => {
   });
 
   app.use(QBreadcrumbs);
+  app.use(QAlert);
+  app.use(QBadge);
   app.use(QButton);
+  app.use(QCard);
   app.use(QCascader);
   app.use(QCheckbox);
   app.use(QCheckboxGroup);
@@ -148,12 +161,14 @@ const install = (app: App, config?: ConfigOptions): void => {
   app.use(QScrollbar);
   app.use(QSelect);
   app.use(QSlider);
+  app.use(QSkeleton);
   app.use(QSwitch);
   app.use(QTable);
   app.use(QTabPane);
   app.use(QTabs);
   app.use(QTag);
   app.use(QTextarea);
+  app.use(QTooltip);
   app.use(QUpload);
 };
 
@@ -163,6 +178,9 @@ export { createDesignSystem, setMessages, setI18n, localeEn, localeRu, localeZh 
 export * from './QBreadcrumbs';
 export * from './QButton';
 export * from './QCascader';
+export * from './QAlert';
+export * from './QBadge';
+export * from './QCard';
 export * from './QCheckbox';
 export * from './QCheckboxGroup';
 export * from './QCol';
@@ -190,10 +208,12 @@ export * from './QRow';
 export * from './QScrollbar';
 export * from './QSelect';
 export * from './QSlider';
+export * from './QSkeleton';
 export * from './QSwitch';
 export * from './QTable';
 export * from './QTabPane';
 export * from './QTabs';
 export * from './QTag';
 export * from './QTextarea';
+export * from './QTooltip';
 export * from './QUpload';

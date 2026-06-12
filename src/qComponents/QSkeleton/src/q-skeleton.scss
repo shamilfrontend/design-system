@@ -1,0 +1,58 @@
+@keyframes q-skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.q-skeleton {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    var(--color-tertiary-gray) 25%,
+    var(--color-tertiary-gray-light) 37%,
+    var(--color-tertiary-gray) 63%
+  );
+  background-size: 400% 100%;
+
+  &_animated {
+    animation: q-skeleton-loading 1.4s ease infinite;
+  }
+
+  &_variant {
+    &_text {
+      width: 100%;
+      height: 14px;
+      border-radius: 4px;
+    }
+
+    &_circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    &_rect {
+      width: 100%;
+      height: 120px;
+      border-radius: var(--border-radius-base);
+    }
+
+    &_button {
+      width: 96px;
+      height: 38px;
+      border-radius: var(--border-radius-base);
+    }
+  }
+
+  &__row + &__row {
+    margin-top: 12px;
+  }
+}
+
+.q-skeleton-group {
+  width: 100%;
+}

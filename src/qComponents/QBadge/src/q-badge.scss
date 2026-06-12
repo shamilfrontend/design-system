@@ -1,0 +1,54 @@
+.q-badge {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+
+  &__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    color: #fff;
+    white-space: nowrap;
+    border: 2px solid var(--color-tertiary-white);
+    border-radius: 999px;
+    transform: translate(50%, -50%);
+
+    &_dot {
+      width: 8px;
+      min-width: 8px;
+      height: 8px;
+      padding: 0;
+    }
+
+    &_type {
+      &_primary {
+        background-color: var(--color-primary);
+      }
+
+      &_success {
+        background-color: var(--color-success);
+      }
+
+      &_warning {
+        background-color: var(--color-warning);
+      }
+
+      &_danger {
+        background-color: var(--color-danger);
+      }
+
+      &_info {
+        background-color: var(--color-info);
+      }
+    }
+  }
+}

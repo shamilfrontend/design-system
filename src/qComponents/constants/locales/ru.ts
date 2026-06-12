@@ -27,6 +27,9 @@ export default {
     placeholder: 'Выберите',
     noDataText: 'Нет данных'
   },
+  QAlert: {
+    close: 'Закрыть'
+  },
   QColorPicker: {
     clear: 'Очистить',
     confirm: 'Применить'

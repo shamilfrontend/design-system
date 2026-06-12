@@ -27,6 +27,9 @@ export default {
     placeholder: 'Pick',
     noDataText: 'No data'
   },
+  QAlert: {
+    close: 'Close alert'
+  },
   QColorPicker: {
     clear: 'Clear',
     confirm: 'Apply'
