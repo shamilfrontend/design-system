@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "vuepress": "^2.0.0-beta.35",
-    "vuepress-vite": "^2.0.0-beta.27"
+    "vuepress-vite": "^2.0.0-beta.41"
   },
   "license": "MIT",
   "maintainers": [
