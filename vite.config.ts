@@ -15,7 +15,7 @@ interface StyleSheetIdAndContent {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/qui-max/',
+  base: '/design-system/',
   resolve: {
     alias: [
       // @/xxxx => src/xxxx
@@ -42,7 +42,7 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: resolve(__dirname, 'src/qComponents/index.ts'),
-      name: 'QuiMax'
+      name: 'DesignSystem'
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
@@ -52,7 +52,7 @@ export default defineConfig({
       output: [
         {
           format: 'umd',
-          name: 'QuiMax',
+          name: 'DesignSystem',
           // Provide global variables to use in the UMD build
           // for externalized deps
           exports: 'named',

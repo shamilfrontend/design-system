@@ -1,7 +1,7 @@
 # Layout 🧱
 
-Qui Max supports 12-column `flex` based layout. To define your layout start with `<q-row>` component, and then add `<q-col>` with `cols` property.
-You can try it out in a sandbox [story](https://qui-max.netlify.app/?path=/story/components-layout--default).
+Design System supports 12-column `flex` based layout. To define your layout start with `<q-row>` component, and then add `<q-col>` with `cols` property.
+You can try it out in a sandbox [story](https://github.com/shamilfrontend/design-system).
 
 Default view:
 

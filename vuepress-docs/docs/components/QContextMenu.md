@@ -65,7 +65,7 @@ Array of item's settings.
 
 ```ts
 // import type from lib
-import type { QContextMenuPropMenuItems } from '@qvant/qui-max';
+import type { QContextMenuPropMenuItems } from 'design-system';
 
 // TS type
 type QContextMenuPropMenuItems = MenuItem[];

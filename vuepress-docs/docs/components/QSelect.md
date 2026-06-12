@@ -1,6 +1,6 @@
 # QSelect 🔽
 
-Select component is a component that allows users pick a single value or a several values from predefined options. Ideally, it should be used if you have more than 5 options, otherwise you might consider using a radio group instead. Try [story](https://qui-max.netlify.app/?path=/story/components-qselect--default)
+Select component is a component that allows users pick a single value or a several values from predefined options. Ideally, it should be used if you have more than 5 options, otherwise you might consider using a radio group instead. Try [story](https://github.com/shamilfrontend/design-system)
 
 ## Examples
 

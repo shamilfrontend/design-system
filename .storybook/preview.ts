@@ -2,14 +2,14 @@ import type { Preview } from '@storybook/vue3';
 import { setup } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import Qui from '../src/qComponents';
+import DesignSystem from '../src/qComponents';
 import { localeEn, localeRu } from '../src/qComponents';
 import messages from './locales';
 
 import '../src/main.scss';
 
 setup(app => {
-  app.use(Qui, {
+  app.use(DesignSystem, {
     localization: {
       locale: 'en',
       messages: {

@@ -17,7 +17,7 @@ defineProps<Props>();
         <img
           class="landing-hero__logo"
           src="/qui-logo.svg"
-          alt="Qui Max"
+          alt="Design System"
           width="64"
           height="64"
         />

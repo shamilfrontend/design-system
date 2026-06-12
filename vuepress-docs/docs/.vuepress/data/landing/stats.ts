@@ -2,7 +2,7 @@ import type { LandingStatsSection } from './types';
 
 export const stats: LandingStatsSection = {
   title: 'Для кого',
-  subtitle: 'Qui Max помогает командам быстрее выпускать качественные интерфейсы.',
+  subtitle: 'Design System помогает командам быстрее выпускать качественные интерфейсы.',
   items: [
     { value: '30+', label: 'готовых компонентов', percent: 75 },
     { value: '100+', label: 'иконок в наборе', percent: 85 },

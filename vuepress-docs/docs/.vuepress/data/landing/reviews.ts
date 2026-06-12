@@ -2,7 +2,7 @@ import type { LandingReviewsSection } from './types';
 
 export const reviews: LandingReviewsSection = {
   title: 'Отзывы',
-  subtitle: 'Что говорят разработчики, которые используют Qui Max в проектах.',
+  subtitle: 'Что говорят разработчики, которые используют Design System в проектах.',
   items: [
     {
       name: 'Алексей',

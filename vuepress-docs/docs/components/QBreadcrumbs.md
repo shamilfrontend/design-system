@@ -1,6 +1,6 @@
 # QBreadcrumbs 🍞
 
-Displays the location of the current page, shows all nested levels. Try a sandbox [story](https://qui-max.netlify.app/?path=/story/components-qbreadcrumbs--default)
+Displays the location of the current page, shows all nested levels. Try a sandbox [story](https://github.com/shamilfrontend/design-system)
 
 ## When to use
 
@@ -60,7 +60,7 @@ setup() {
   <CodeGroupItem title="TS">
 
 ```ts
-import type { QBreadcrumbsPropRoute } from '@qvant/qui-max';
+import type { QBreadcrumbsPropRoute } from 'design-system';
 
 setup() {
   const route: QBreadcrumbsPropRoute = [
@@ -102,7 +102,7 @@ setup() {
 - Default: `null`
 
 ```ts
-import type { QBreadcrumbsPropRoute } from '@qvant/qui-max';
+import type { QBreadcrumbsPropRoute } from 'design-system';
 ```
 
 `route` MUST be an `Array` of `Object`s, each object MUST contain required fields:

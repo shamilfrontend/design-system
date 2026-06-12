@@ -1,7 +1,7 @@
 # QSlider 🎚️
 
 The Slider is used to allow users to make selections from a range of values.
-Try [story](https://qui-max.netlify.app/?path=/story/components-qslider--default)
+Try [story](https://github.com/shamilfrontend/design-system)
 
 ## Example
 

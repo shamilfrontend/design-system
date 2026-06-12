@@ -1,8 +1,8 @@
 {
-  "name": "qui-max-docs",
+  "name": "design-system-docs",
   "version": "0.1.0",
   "private": false,
-  "description": "Qui Max Docs",
+  "description": "Design System Docs",
   "author": {
     "name": "Qvant Frontend team"
   },
@@ -52,6 +52,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Qvant-lab/qui-max.git"
+    "url": "git+https://github.com/shamilfrontend/design-system.git"
   }
 }

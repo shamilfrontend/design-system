@@ -7,17 +7,17 @@ export const tools: LandingToolsSection = {
     {
       name: 'npm',
       description: 'Установка через yarn или npm в Vue 3 проект',
-      link: 'https://www.npmjs.com/package/@qvant/qui-max'
+      link: 'https://www.npmjs.com/package/design-system'
     },
     {
       name: 'Storybook',
       description: 'Песочница с живыми примерами и состояниями',
-      link: 'https://qui-max.netlify.app/'
+      link: 'https://github.com/shamilfrontend/design-system'
     },
     {
       name: 'GitHub',
       description: 'Исходный код, issues и contributing',
-      link: 'https://github.com/Qvant-lab/qui-max'
+      link: 'https://github.com/shamilfrontend/design-system'
     },
     {
       name: 'Figma',

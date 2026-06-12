@@ -70,14 +70,14 @@ export { router, setupRouter };
 ```ts
 // main.ts
 import { createApp } from 'vue';
-import { createQui, QProgressIndicatior } from '@qvant/qui-max';
+import { createDesignSystem, QProgressIndicatior } from 'design-system';
 import { setupRouter } from './router';
 
 const bootstrap = async (): Promise<void> => {
   const app = createApp(App);
-  const Qui = createQui();
+  const designSystem = createDesignSystem();
 
-  app.use(Qui);
+  app.use(DesignSystem);
   app.use(QProgressIndicatior, {
     trickle: true,
     trickleSpeed: 200,

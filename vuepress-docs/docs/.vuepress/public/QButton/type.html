@@ -4,7 +4,7 @@
     <!-- import CSS -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/@qvant/qui-max/dist/style.css"
+      href="https://unpkg.com/design-system/styles"
     />
   </head>
 
@@ -29,13 +29,13 @@
       </div>
     </div>
   </body>
-  <!-- import Vue before Qui -->
+  <!-- import Vue before Design System -->
   <script src="https://unpkg.com/vue@latest"></script>
   <!-- import JavaScript -->
-  <script src="https://unpkg.com/@qvant/qui-max@latest"></script>
+  <script src="https://unpkg.com/design-system@latest"></script>
   <script>
     const app = Vue.createApp({});
-    app.use(QuiMax.default);
+    app.use(DesignSystem.default);
     app.mount('#app');
   </script>
   <style>

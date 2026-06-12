@@ -20,7 +20,7 @@ defineProps<Props>();
         <div class="landing-customization__phone">
           <img
             :src="content.image"
-            alt="Пример компонентов Qui Max"
+            alt="Пример компонентов Design System"
             class="landing-customization__image"
             width="256"
             height="400"

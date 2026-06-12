@@ -1,6 +1,6 @@
 # QCheckbox ✔️
 
-Allows to choose one or more options. Try a sandbox [story](https://qui-max.netlify.app/?path=/story/components-qcheckbox--default)
+Allows to choose one or more options. Try a sandbox [story](https://github.com/shamilfrontend/design-system)
 
 ## Examples
 
@@ -179,4 +179,4 @@ Defines the text of the checkbox label, like [label](#label) prop does. Just put
 
 ## QCheckboxGroup
 
-You also could wrap a several QCheckboxes in a group using [QCheckboxGroup](/qui-max/components/QCheckboxGroup).
+You also could wrap a several QCheckboxes in a group using [QCheckboxGroup](design-system/components/QCheckboxGroup).

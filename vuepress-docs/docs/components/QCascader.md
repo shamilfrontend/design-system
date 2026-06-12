@@ -1,6 +1,6 @@
 # QCascader 🪜
 
-Cascade selection box. [Try story](https://qui-max.netlify.app/?path=/story/components-qcascader--default)
+Cascade selection box. [Try story](https://github.com/shamilfrontend/design-system)
 
 ## When to use
 
@@ -86,7 +86,7 @@ Using in component instance:
 import type {
   QCascaderPropOptions,
   QCascaderPropModelValue
-} from '@qvant/qui-max';
+} from 'design-system';
 
 export default defineComponent({
   setup() {
@@ -151,7 +151,7 @@ export default defineComponent({
 
 ```ts
 // import type from lib
-import type { QCascaderPropOptions } from '@qvant/qui-max';
+import type { QCascaderPropOptions } from 'design-system';
 ```
 
 `options` MUST be an `Array` of `Object`s, each object MUST contain required fields:
@@ -181,7 +181,7 @@ interface Option {
 
 ```ts
 // import type from lib
-import type { QCascaderPropModelValue } from '@qvant/qui-max';
+import type { QCascaderPropModelValue } from 'design-system';
 
 // TS type
 type QCascaderPropModelValue = Nullable<number | string | (number | string)[]>;

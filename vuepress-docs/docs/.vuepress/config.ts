@@ -10,7 +10,7 @@ const isAnalyze = process.env.ANALYZE === 'true';
 export default defineUserConfig({
   base: '/',
   lang: 'ru-RU',
-  title: 'Qui Max',
+  title: 'Design System',
   description:
     'Vue 3 дизайн-система с TypeScript, Composition API и 30+ компонентов',
   head: [['link', { rel: 'icon', href: '/qui-logo.svg' }]],
@@ -80,11 +80,11 @@ export default defineUserConfig({
       },
       {
         text: 'Storybook',
-        link: 'https://qui-max.netlify.app/'
+        link: 'https://github.com/shamilfrontend/design-system'
       },
       {
         text: 'Github',
-        link: 'https://github.com/Qvant-lab/qui-max'
+        link: 'https://github.com/shamilfrontend/design-system'
       }
     ],
     sidebar: {

@@ -1,6 +1,6 @@
 # QCheckboxGroup ✔️✔️✔️
 
-Is being used to wrap multiple [QCheckbox](/qui-max/components/QCheckbox)
+Is being used to wrap multiple [QCheckbox](design-system/components/QCheckbox)
 
 ## Examples
 
@@ -20,7 +20,7 @@ Is being used to wrap multiple [QCheckbox](/qui-max/components/QCheckbox)
 
 <script>
 import { defineComponent, ref } from 'vue';
-import { QCheckboxGroup, QCheckbox } from '@qvant/qui-max';
+import { QCheckboxGroup, QCheckbox } from 'design-system';
 
 defineComponent({
   components: { QCheckboxGroup, QCheckbox },
@@ -51,7 +51,7 @@ defineComponent({
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { QCheckboxGroup, QCheckbox } from '@qvant/qui-max';
+import { QCheckboxGroup, QCheckbox } from 'design-system';
 
 defineComponent({
   components: { QCheckboxGroup, QCheckbox },

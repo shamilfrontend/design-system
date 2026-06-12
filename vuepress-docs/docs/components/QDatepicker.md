@@ -55,7 +55,7 @@ Binding value.
 
 ```ts
 // import type from lib
-import type { QDatePickerPropModelValue } from '@qvant/qui-max';
+import type { QDatePickerPropModelValue } from 'design-system';
 
 // TS type
 type QDatePickerPropModelValue = Nullable<
@@ -72,7 +72,7 @@ Defines the picker mode.
 
 ```ts
 // import type from lib
-import type { QDatePickerPropType } from '@qvant/qui-max';
+import type { QDatePickerPropType } from 'design-system';
 
 // TS type
 type QDatePickerPropType =
@@ -164,7 +164,7 @@ The `shortcuts` MUST be an `Array` of `Object`s, each object MUST contain:
 
 ```ts
 // import type from lib
-import { QDatePickerPropShortcuts } from '@qvant/qui-max';
+import { QDatePickerPropShortcuts } from 'design-system';
 
 // TS type
 type QDatePickerPropShortcuts = {
@@ -272,7 +272,7 @@ Any field is optional.
 
 ```ts
 // import type from lib
-import { QDatePickerPropDisabledValues } from '@qvant/qui-max';
+import { QDatePickerPropDisabledValues } from 'design-system';
 
 // TS type
 type QDatePickerPropDisabledValues = Nullable<{

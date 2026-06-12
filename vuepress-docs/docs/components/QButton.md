@@ -1,6 +1,6 @@
 # QButton 🆗
 
-Commonly used button. See props to configure `QButton`. Try a sandbox [story](https://qui-max.netlify.app/?path=/story/components-qbutton--theme-primary)
+Commonly used button. See props to configure `QButton`. Try a sandbox [story](https://github.com/shamilfrontend/design-system)
 
 ## Examples
 
@@ -61,7 +61,7 @@ Result:
 
 - Type: `String`
 
-- `'q-icon-*'` - class string, see full list [here](https://qui-max.netlify.app/?path=/story/core-icons-all--all)
+- `'q-icon-*'` - class string, see full list [here](https://github.com/shamilfrontend/design-system)
 
 Code example:
 

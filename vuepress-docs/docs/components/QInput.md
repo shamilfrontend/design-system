@@ -77,7 +77,7 @@ If input wrapped in `QFormItem`, prop `validateEvent` defines if input `change` 
 - Type: `String`
 - Default: `null`
 
-`'q-icon-*'` - class string, see full list [here](https://qui-max.netlify.app/?path=/story/core-icons-all--all)
+`'q-icon-*'` - class string, see full list [here](https://github.com/shamilfrontend/design-system)
 
 ```vue
 <q-input v-model="value" suffix-icon="q-icon-account" />
@@ -130,7 +130,7 @@ As native attrs bind to native input (so if you set the `class` attr to `QInput`
 
 .. and [others](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attributes)
 
-p.s `input` has a lot of attributes, we can't claim `QInput` well supported all of them, but mostly true. Feel free to fix and contribute bugs [here](https://github.com/Qvant-lab/qui-max)
+p.s `input` has a lot of attributes, we can't claim `QInput` well supported all of them, but mostly true. Feel free to fix and contribute bugs [here](https://github.com/shamilfrontend/design-system)
 
 ## Events
 

@@ -38,7 +38,7 @@ Popover content title inside context window.
 - Type: `String`
 - default: `null`
 
-- `'q-icon-*'` - class string, see full list [here](https://qui-max.netlify.app/?path=/story/core-icons-all--all)
+- `'q-icon-*'` - class string, see full list [here](https://github.com/shamilfrontend/design-system)
 
 Popover content icon inside context window.
 

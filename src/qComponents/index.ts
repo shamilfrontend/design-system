@@ -97,7 +97,7 @@ const setupQui = ({
   if (i18n) setI18n(i18n);
 };
 
-const createQui = (config?: ConfigOptions): Plugin => ({
+const createDesignSystem = (config?: ConfigOptions): Plugin => ({
   install: (): void => {
     setupQui({
       ...config,
@@ -155,7 +155,7 @@ const install = (app: App, config?: ConfigOptions): void => {
 };
 
 export default { install };
-export { createQui, setMessages, setI18n, localeEn, localeRu, localeZh };
+export { createDesignSystem, setMessages, setI18n, localeEn, localeRu, localeZh };
 
 export * from './QBreadcrumbs';
 export * from './QButton';

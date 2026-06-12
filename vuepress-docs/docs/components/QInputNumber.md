@@ -1,6 +1,6 @@
 # QInputNumber 🔢
 
-Provides an input field accepting only numbers. Try a sandbox [story](https://qui-max.netlify.app/?path=/story/components-qinputnumber--default)
+Provides an input field accepting only numbers. Try a sandbox [story](https://github.com/shamilfrontend/design-system)
 
 ## Example
 

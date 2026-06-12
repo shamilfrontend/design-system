@@ -1,6 +1,6 @@
-# Qui Max Docs (VuePress)
+# Design System Docs (VuePress)
 
-Документация и кастомный лендинг дизайн-системы Qui Max.
+Документация и кастомный лендинг Design System.
 
 ## Разработка
 

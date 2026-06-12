@@ -134,7 +134,7 @@ If textarea wrapped in `QFormItem`, prop `validateEvent` defines if textarea `ch
 
 .. and [others](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes)
 
-p.s `textarea` has a lot of attributes, we can't claim `QTextarea` well supported all of them, but mostly true. Feel free to fix and contribute bugs [here](https://github.com/Qvant-lab/qui-max)
+p.s `textarea` has a lot of attributes, we can't claim `QTextarea` well supported all of them, but mostly true. Feel free to fix and contribute bugs [here](https://github.com/shamilfrontend/design-system)
 
 ## Events
 

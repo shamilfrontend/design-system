@@ -19,7 +19,7 @@ export default create({
 
   textColor: '#5e5873',
 
-  brandTitle: 'QUI-MAX',
-  brandUrl: 'https://qui-max.netlify.app',
+  brandTitle: 'Design System',
+  brandUrl: 'https://github.com/shamilfrontend/design-system',
   brandImage: logo
 });

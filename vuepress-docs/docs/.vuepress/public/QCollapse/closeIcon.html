@@ -4,7 +4,7 @@
     <!-- import CSS -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/@qvant/qui-max/dist/style.css"
+      href="https://unpkg.com/design-system/styles"
     />
   </head>
 
@@ -44,10 +44,10 @@
       </div>
     </div>
   </body>
-  <!-- import Vue before Qui -->
+  <!-- import Vue before Design System -->
   <script src="https://unpkg.com/vue@latest"></script>
   <!-- import JavaScript -->
-  <script src="https://unpkg.com/@qvant/qui-max@latest"></script>
+  <script src="https://unpkg.com/design-system@latest"></script>
   <script src="https://unpkg.com/feather-icons@4"></script>
   <script src="https://unpkg.com/vue-feather@2"></script>
   <script>
@@ -67,7 +67,7 @@
         };
       }
     })
-      .use(QuiMax.default)
+      .use(DesignSystem.default)
       .component(VueFeather.name, VueFeather)
       .mount('#app');
   </script>

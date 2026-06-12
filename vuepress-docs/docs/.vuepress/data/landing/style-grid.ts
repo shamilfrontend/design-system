@@ -8,7 +8,7 @@ export const styleGrid: LandingStyleGridSection = {
       title: 'Цвета',
       description: 'Палитра primary, semantic и surface-токены',
       icon: '🎨',
-      link: 'https://qui-max.netlify.app/?path=/story/core-colors--page',
+      link: 'https://github.com/shamilfrontend/design-system',
       external: true
     },
     {
@@ -27,14 +27,14 @@ export const styleGrid: LandingStyleGridSection = {
       title: 'Иконки',
       description: '100+ иконок в icon font',
       icon: '◈',
-      link: 'https://qui-max.netlify.app/?path=/story/core-icons--page',
+      link: 'https://github.com/shamilfrontend/design-system',
       external: true
     },
     {
       title: 'Тени',
       description: 'Elevation и box-shadow токены',
       icon: '◐',
-      link: 'https://qui-max.netlify.app/',
+      link: 'https://github.com/shamilfrontend/design-system',
       external: true
     },
     {

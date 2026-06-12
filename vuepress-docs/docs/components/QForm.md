@@ -110,7 +110,7 @@ const formModel = reactive({
 });
 
 // import type from lib
-import { QFormPropModel } from '@qvant/qui-max';
+import { QFormPropModel } from 'design-system';
 // TS type
 type QFormPropModel = Nullable<Record<string, unknown>>;
 ```
@@ -143,7 +143,7 @@ Types:
 
 ```ts
 // import type from lib
-import { QFormPropRules } from '@qvant/qui-max';
+import { QFormPropRules } from 'design-system';
 // TS type
 type QFormPropRules = Nullable<Record<string, QFormItemPropRules>>;
 
@@ -175,7 +175,7 @@ export interface RuleItem {
 ...
 ```
 
-All nested types [here](https://github.com/Qvant-lab/qui-max/blob/main/src/qComponents/QFormItem/src/types.ts)
+All nested types [here](https://github.com/shamilfrontend/design-system/blob/main/src/qComponents/QFormItem/src/types.ts)
 
 ### disabled
 

@@ -4,26 +4,25 @@
 
 <p align="center" class="unchanged rich-diff-level-one">
   <img src="https://img.shields.io/badge/vue-3.x-brightgreen">
-  <img alt="npm type definitions" src="https://img.shields.io/npm/types/@qvant/qui-max">
+  <img alt="npm type definitions" src="https://img.shields.io/npm/types/design-system">
   <a href="https://github.com/storybooks/storybook" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>
-  <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/@qvant/qui-max?color=brightgreen">
-  <span class="badge-npmversion"><a href="https://npmjs.org/package/@qvant/qui-max" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@qvant/qui-max.svg" alt="NPM version" /></a></span>
-  <span class="badge-npmdownloads"><a href="https://npmjs.org/package/@qvant/qui-max" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/@qvant/qui-max.svg" alt="NPM downloads" /></a></span>
-  <span><a href="https://app.netlify.com/sites/qui-max/deploys"><img src="https://api.netlify.com/api/v1/badges/e2694a79-f584-4e05-9e5f-5a87d3d7c52b/deploy-status" /></a>
+  <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/design-system?color=brightgreen">
+  <span class="badge-npmversion"><a href="https://npmjs.org/package/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/v/design-system.svg" alt="NPM version" /></a></span>
+  <span class="badge-npmdownloads"><a href="https://npmjs.org/package/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/design-system.svg" alt="NPM downloads" /></a></span>
 </p>
 
 <p align="center" class="unchanged rich-diff-level-one">
 
-# Qui is Neumorphic design system for Web
+# Design System — Neumorphic UI library for Web
 
 Written in TypeScript with Composition API 🔥
 
 A component's library helping us build great products for our customers.
 This library for Vue 3.x
 
-🏓 [Storybook (live demo)](https://qui-max.netlify.app/?path=/story/intro--page)
+🏓 [Storybook (live demo)](https://github.com/shamilfrontend/design-system)
 
-📚 [Documentation (New!)](https://qui-docs.netlify.app/)
+📚 [Documentation (New!)](https://github.com/shamilfrontend/design-system/)
 
 Qui for Vue 2.x is [here](https://github.com/Qvant-lab/qui)!
 
@@ -48,8 +47,8 @@ Some examples below:
 ## Install
 
 ```bash
-npm install @qvant/qui-max -S
-yarn add @qvant/qui-max
+npm install design-system -S
+yarn add design-system
 ```
 
 You can import Qui entirely, or just import what you need. Let's start with fully import.
@@ -60,12 +59,12 @@ In main.js:
 
 ```js
 import { createApp } from 'vue';
-import Qui from '@qvant/qui-max';
-import '@qvant/qui-max/styles';
+import DesignSystem from 'design-system';
+import 'design-system/styles';
 
 const app = createApp(App);
 // Setup all components
-app.use(Qui);
+app.use(DesignSystem);
 // that's it! All components will be imported with styles
 ```
 
@@ -99,23 +98,23 @@ In main.js:
 ```js
 import { createApp } from 'vue';
 import {
-  createQui,
+  createDesignSystem,
   QButton,
   QProgressIndicatior,
   // import default messages for different locales
   localeRu
-} from '@qvant/qui-max';
+} from 'design-system';
 
 // import required styles
-import '@qvant/qui-max/css/main';
-import '@qvant/qui-max/fonts';
-import '@qvant/qui-max/icons';
+import 'design-system/css/main';
+import 'design-system/fonts';
+import 'design-system/icons';
 
 // import the only styles of component you gonna use
-import '@qvant/qui-max/css/q-button';
-import '@qvant/qui-max/css/q-progress-indicatior';
+import 'design-system/css/q-button';
+import 'design-system/css/q-progress-indicatior';
 
-const Qui = createQui({
+const designSystem = createDesignSystem({
   localization: {
     // English language by default, but we have two more locales out-of-the-box: 'ru' | 'zh'
     // set 'ru' - for Russian, set 'zh' - for Chinese
@@ -136,7 +135,7 @@ const Qui = createQui({
   }
 });
 
-app.use(Qui);
+app.use(DesignSystem);
 app.use(QButton);
 app.use(QProgressIndicatior, {
   trickle: true,
@@ -145,8 +144,8 @@ app.use(QProgressIndicatior, {
 });
 ```
 
-Now you have implemented Vue and Qui Max to your project, and it's time to write your code.
-Please refer to each component's [Stories](https://qvant-lab.github.io/qui-max/) to learn how to use them.
+Now you have implemented Vue and Design System to your project, and it's time to write your code.
+Please refer to each component's [Stories](https://github.com/shamilfrontend/design-system) to learn how to use them.
 
 ## Supported languages
 
@@ -159,12 +158,12 @@ Please refer to each component's [Stories](https://qvant-lab.github.io/qui-max/)
 Create a file in your plugins folder:
 
 ```ts
-// plugins/qui.ts
+// plugins/design-system.ts
 import { defineNuxtPlugin } from '#imports';
-import Qui from '@qvant/qui-max';
+import DesignSystem from 'design-system';
 
 export default defineNuxtPlugin(nuxtApp => {
-  nuxtApp.vueApp.use(Qui);
+  nuxtApp.vueApp.use(DesignSystem);
 });
 ```
 
@@ -174,9 +173,9 @@ Add configuration to your `nuxt.config.ts` file:
 import { defineNuxtConfig } from 'nuxt3';
 
 export default defineNuxtConfig({
-  css: ['@qvant/qui-max/styles'],
+  css: ['design-system/styles'],
   build: {
-    transpile: ['@qvant/qui-max']
+    transpile: ['design-system']
   }
 });
 ```

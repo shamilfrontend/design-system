@@ -3,11 +3,11 @@
 ## Install
 
 ```bash
-npm install @qvant/qui-max -S
-yarn add @qvant/qui-max
+npm install design-system -S
+yarn add design-system
 ```
 
-You can import Qui entirely, or just import what you need. Let's start with fully import.
+You can import Design System entirely, or just import what you need. Let's start with fully import.
 
 ## Quick setup
 
@@ -15,12 +15,12 @@ In main.js:
 
 ```js
 import { createApp } from 'vue';
-import Qui from '@qvant/qui-max';
-import '@qvant/qui-max/styles';
+import DesignSystem from 'design-system';
+import 'design-system/styles';
 
 const app = createApp(App);
 // Setup all components
-app.use(Qui);
+app.use(DesignSystem);
 // that's it! All components will be imported with styles
 ```
 
@@ -53,18 +53,18 @@ In main.js:
 
 ```js
 import { createApp } from 'vue';
-import { createQui, QButton, QProgressIndicatior } from '@qvant/qui-max';
+import { createDesignSystem, QButton, QProgressIndicatior } from 'design-system';
 
 // import required styles
-import '@qvant/qui-max/css/main';
-import '@qvant/qui-max/fonts';
-import '@qvant/qui-max/icons';
+import 'design-system/css/main';
+import 'design-system/fonts';
+import 'design-system/icons';
 
 // import the only styles of component you gonna use
-import '@qvant/qui-max/css/q-button';
-import '@qvant/qui-max/css/q-progress-indicatior';
+import 'design-system/css/q-button';
+import 'design-system/css/q-progress-indicatior';
 
-const Qui = createQui({
+const designSystem = createDesignSystem({
   localization: {
     // Russian language by default, you can set `en` for English
     locale: 'en',
@@ -82,7 +82,7 @@ const Qui = createQui({
   }
 });
 
-app.use(Qui);
+app.use(designSystem);
 app.use(QButton);
 app.use(QProgressIndicatior, {
   trickle: true,
@@ -91,26 +91,26 @@ app.use(QProgressIndicatior, {
 });
 ```
 
-Now you have implemented Vue and Qui Max to your project, and it's time to write your code.
-Please refer to each component's [Stories](https://qvant-lab.github.io/qui-max/) to learn how to use them.
+Now you have implemented Vue and Design System to your project, and it's time to write your code.
+Please refer to each component's [Stories](https://github.com/shamilfrontend/design-system) to learn how to use them.
 
 ## Supported languages
 
 - Russian ✅
 - English ✅
-- Also you can use any language by setting texts for components via `localization.messages` property in the Qui instance. See the example above.
+- Also you can use any language by setting texts for components via `localization.messages` property in the Design System instance. See the example above.
 
 ## Using with Nuxt 3
 
 Create a file in your plugins folder:
 
 ```ts
-// plugins/qui.ts
+// plugins/design-system.ts
 import { defineNuxtPlugin } from '#imports';
-import Qui from '@qvant/qui-max';
+import DesignSystem from 'design-system';
 
 export default defineNuxtPlugin(nuxtApp => {
-  nuxtApp.vueApp.use(Qui);
+  nuxtApp.vueApp.use(DesignSystem);
 });
 ```
 
@@ -120,9 +120,9 @@ Add configuration to your `nuxt.config.ts` file:
 import { defineNuxtConfig } from 'nuxt3';
 
 export default defineNuxtConfig({
-  css: ['@qvant/qui-max/styles'],
+  css: ['design-system/styles'],
   build: {
-    transpile: ['@qvant/qui-max']
+    transpile: ['design-system']
   }
 });
 ```

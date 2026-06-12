@@ -39,7 +39,7 @@ Binding value.
 
 ```ts
 // import type from lib
-import type { QDatePickerPropModelValue } from '@qvant/qui-max';
+import type { QDatePickerPropModelValue } from 'design-system';
 
 // TS type
 type QDatePickerPropModelValue = Nullable<string | Date | string[] | Date[]>;
