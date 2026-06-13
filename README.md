@@ -19,14 +19,6 @@
 
 📚 [Документация](https://github.com/shamilfrontend/design-system/tree/main/vuepress-docs) · 🏓 Storybook: `yarn storybook` (http://localhost:6006)
 
-## Примеры
-
-![buttons](/.readme-assets/buttons.jpg?raw=true)
-![inputs](/.readme-assets/inputs.gif?raw=true)
-![icons](/.readme-assets/icons.gif?raw=true)
-![tables](/.readme-assets/tables.jpg?raw=true)
-![other](/.readme-assets/other.jpg?raw=true)
-
 ## Установка
 
 ```bash
