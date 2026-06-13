@@ -4,11 +4,11 @@
 
 <p align="center" class="unchanged rich-diff-level-one">
   <img src="https://img.shields.io/badge/vue-3.x-brightgreen">
-  <img alt="npm type definitions" src="https://img.shields.io/npm/types/design-system">
+  <img alt="npm type definitions" src="https://img.shields.io/npm/types/@shamilfrontend/design-system">
   <a href="https://github.com/storybooks/storybook" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>
-  <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/design-system?color=brightgreen">
-  <span class="badge-npmversion"><a href="https://npmjs.org/package/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/v/design-system.svg" alt="NPM version" /></a></span>
-  <span class="badge-npmdownloads"><a href="https://npmjs.org/package/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/design-system.svg" alt="NPM downloads" /></a></span>
+  <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/@shamilfrontend/design-system?color=brightgreen">
+  <span class="badge-npmversion"><a href="https://www.npmjs.com/package/@shamilfrontend/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@shamilfrontend/design-system.svg" alt="NPM version" /></a></span>
+  <span class="badge-npmdownloads"><a href="https://www.npmjs.com/package/@shamilfrontend/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/@shamilfrontend/design-system.svg" alt="NPM downloads" /></a></span>
 </p>
 
 <p align="center" class="unchanged rich-diff-level-one">
@@ -47,8 +47,8 @@ Some examples below:
 ## Install
 
 ```bash
-npm install design-system -S
-yarn add design-system
+npm install @shamilfrontend/design-system -S
+yarn add @shamilfrontend/design-system
 ```
 
 You can import Qui entirely, or just import what you need. Let's start with fully import.
@@ -59,8 +59,8 @@ In main.js:
 
 ```js
 import { createApp } from 'vue';
-import DesignSystem from 'design-system';
-import 'design-system/styles';
+import DesignSystem from '@shamilfrontend/design-system';
+import '@shamilfrontend/design-system/styles';
 
 const app = createApp(App);
 // Setup all components
@@ -103,16 +103,16 @@ import {
   QProgressIndicatior,
   // import default messages for different locales
   localeRu
-} from 'design-system';
+} from '@shamilfrontend/design-system';
 
 // import required styles
-import 'design-system/css/main';
-import 'design-system/fonts';
-import 'design-system/icons';
+import '@shamilfrontend/design-system/css/main';
+import '@shamilfrontend/design-system/fonts';
+import '@shamilfrontend/design-system/icons';
 
 // import the only styles of component you gonna use
-import 'design-system/css/q-button';
-import 'design-system/css/q-progress-indicatior';
+import '@shamilfrontend/design-system/css/q-button';
+import '@shamilfrontend/design-system/css/q-progress-indicatior';
 
 const designSystem = createDesignSystem({
   localization: {
@@ -160,7 +160,7 @@ Create a file in your plugins folder:
 ```ts
 // plugins/design-system.ts
 import { defineNuxtPlugin } from '#imports';
-import DesignSystem from 'design-system';
+import DesignSystem from '@shamilfrontend/design-system';
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.use(DesignSystem);
@@ -173,9 +173,9 @@ Add configuration to your `nuxt.config.ts` file:
 import { defineNuxtConfig } from 'nuxt3';
 
 export default defineNuxtConfig({
-  css: ['design-system/styles'],
+  css: ['@shamilfrontend/design-system/styles'],
   build: {
-    transpile: ['design-system']
+    transpile: ['@shamilfrontend/design-system']
   }
 });
 ```

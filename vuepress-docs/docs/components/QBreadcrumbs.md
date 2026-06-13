@@ -60,7 +60,7 @@ setup() {
   <CodeGroupItem title="TS">
 
 ```ts
-import type { QBreadcrumbsPropRoute } from 'design-system';
+import type { QBreadcrumbsPropRoute } from '@shamilfrontend/design-system';
 
 setup() {
   const route: QBreadcrumbsPropRoute = [
@@ -102,7 +102,7 @@ setup() {
 - Default: `null`
 
 ```ts
-import type { QBreadcrumbsPropRoute } from 'design-system';
+import type { QBreadcrumbsPropRoute } from '@shamilfrontend/design-system';
 ```
 
 `route` MUST be an `Array` of `Object`s, each object MUST contain required fields:

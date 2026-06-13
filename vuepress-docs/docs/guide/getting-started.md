@@ -3,8 +3,8 @@
 ## Install
 
 ```bash
-npm install design-system -S
-yarn add design-system
+npm install @shamilfrontend/design-system -S
+yarn add @shamilfrontend/design-system
 ```
 
 You can import Design System entirely, or just import what you need. Let's start with fully import.
@@ -15,8 +15,8 @@ In main.js:
 
 ```js
 import { createApp } from 'vue';
-import DesignSystem from 'design-system';
-import 'design-system/styles';
+import DesignSystem from '@shamilfrontend/design-system';
+import '@shamilfrontend/design-system/styles';
 
 const app = createApp(App);
 // Setup all components
@@ -53,16 +53,20 @@ In main.js:
 
 ```js
 import { createApp } from 'vue';
-import { createDesignSystem, QButton, QProgressIndicatior } from 'design-system';
+import {
+  createDesignSystem,
+  QButton,
+  QProgressIndicatior
+} from '@shamilfrontend/design-system';
 
 // import required styles
-import 'design-system/css/main';
-import 'design-system/fonts';
-import 'design-system/icons';
+import '@shamilfrontend/design-system/css/main';
+import '@shamilfrontend/design-system/fonts';
+import '@shamilfrontend/design-system/icons';
 
 // import the only styles of component you gonna use
-import 'design-system/css/q-button';
-import 'design-system/css/q-progress-indicatior';
+import '@shamilfrontend/design-system/css/q-button';
+import '@shamilfrontend/design-system/css/q-progress-indicatior';
 
 const designSystem = createDesignSystem({
   localization: {
@@ -107,7 +111,7 @@ Create a file in your plugins folder:
 ```ts
 // plugins/design-system.ts
 import { defineNuxtPlugin } from '#imports';
-import DesignSystem from 'design-system';
+import DesignSystem from '@shamilfrontend/design-system';
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.use(DesignSystem);
@@ -120,9 +124,9 @@ Add configuration to your `nuxt.config.ts` file:
 import { defineNuxtConfig } from 'nuxt3';
 
 export default defineNuxtConfig({
-  css: ['design-system/styles'],
+  css: ['@shamilfrontend/design-system/styles'],
   build: {
-    transpile: ['design-system']
+    transpile: ['@shamilfrontend/design-system']
   }
 });
 ```

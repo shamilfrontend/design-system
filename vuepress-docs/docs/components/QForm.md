@@ -110,7 +110,7 @@ const formModel = reactive({
 });
 
 // import type from lib
-import { QFormPropModel } from 'design-system';
+import { QFormPropModel } from '@shamilfrontend/design-system';
 // TS type
 type QFormPropModel = Nullable<Record<string, unknown>>;
 ```
@@ -143,7 +143,7 @@ Types:
 
 ```ts
 // import type from lib
-import { QFormPropRules } from 'design-system';
+import { QFormPropRules } from '@shamilfrontend/design-system';
 // TS type
 type QFormPropRules = Nullable<Record<string, QFormItemPropRules>>;
 

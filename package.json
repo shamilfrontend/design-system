@@ -1,5 +1,5 @@
 {
-  "name": "design-system",
+  "name": "@shamilfrontend/design-system",
   "version": "0.0.1",
   "private": false,
   "description": "Design system for Web (vue 3)",

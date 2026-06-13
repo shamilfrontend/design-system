@@ -86,7 +86,7 @@ Using in component instance:
 import type {
   QCascaderPropOptions,
   QCascaderPropModelValue
-} from 'design-system';
+} from '@shamilfrontend/design-system';
 
 export default defineComponent({
   setup() {
@@ -151,7 +151,7 @@ export default defineComponent({
 
 ```ts
 // import type from lib
-import type { QCascaderPropOptions } from 'design-system';
+import type { QCascaderPropOptions } from '@shamilfrontend/design-system';
 ```
 
 `options` MUST be an `Array` of `Object`s, each object MUST contain required fields:
@@ -181,7 +181,7 @@ interface Option {
 
 ```ts
 // import type from lib
-import type { QCascaderPropModelValue } from 'design-system';
+import type { QCascaderPropModelValue } from '@shamilfrontend/design-system';
 
 // TS type
 type QCascaderPropModelValue = Nullable<number | string | (number | string)[]>;

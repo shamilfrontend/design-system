@@ -65,7 +65,7 @@ Array of item's settings.
 
 ```ts
 // import type from lib
-import type { QContextMenuPropMenuItems } from 'design-system';
+import type { QContextMenuPropMenuItems } from '@shamilfrontend/design-system';
 
 // TS type
 type QContextMenuPropMenuItems = MenuItem[];

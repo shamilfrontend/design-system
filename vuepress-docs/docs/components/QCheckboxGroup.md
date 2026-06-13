@@ -20,7 +20,7 @@ Is being used to wrap multiple [QCheckbox](design-system/components/QCheckbox)
 
 <script>
 import { defineComponent, ref } from 'vue';
-import { QCheckboxGroup, QCheckbox } from 'design-system';
+import { QCheckboxGroup, QCheckbox } from '@shamilfrontend/design-system';
 
 defineComponent({
   components: { QCheckboxGroup, QCheckbox },
@@ -51,7 +51,7 @@ defineComponent({
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { QCheckboxGroup, QCheckbox } from 'design-system';
+import { QCheckboxGroup, QCheckbox } from '@shamilfrontend/design-system';
 
 defineComponent({
   components: { QCheckboxGroup, QCheckbox },
