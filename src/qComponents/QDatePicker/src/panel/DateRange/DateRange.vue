@@ -23,6 +23,7 @@ import {
   MONTHS_COUNT
 } from '../../constants';
 import DateTable from '../../tables/DateTable/DateTable.vue';
+import QDatePickerTimeFooter from '../QDatePickerTimeFooter.vue';
 import type { QDatePickerProvider } from '../../types';
 import {
   getActualMonth,
@@ -83,6 +84,19 @@ const rightPanel = ref<Nullable<HTMLElement>>(null);
 
 const shortcuts = picker.shortcuts;
 const isMobileView = picker.isMobileView;
+const isDateTimeRange = computed<boolean>(
+  () => picker.type.value === 'datetimerange'
+);
+const startHours = ref<number>(0);
+const startMinutes = ref<number>(0);
+const endHours = ref<number>(23);
+const endMinutes = ref<number>(59);
+
+const showTimeFooter = computed<boolean>(
+  () =>
+    isDateTimeRange.value &&
+    Boolean(state.minDate && state.maxDate)
+);
 
 const leftLabel = computed<string>(() =>
   getLabelFromDate(state.leftDate, picker.type.value)
@@ -147,11 +161,37 @@ function handleRangePick(val: RangePickValue, close = true): void {
 
   picker.emit('intermediateChange', [minDate, maxDate]);
 
-  if (!close) return;
+  if (isDateTimeRange.value && isValidValue([minDate, maxDate])) {
+    if (minDate) {
+      startHours.value = minDate.getHours();
+      startMinutes.value = minDate.getMinutes();
+    }
+
+    if (maxDate) {
+      endHours.value = maxDate.getHours();
+      endMinutes.value = maxDate.getMinutes();
+    }
+  }
+
+  const shouldClose = close && !isDateTimeRange.value;
+
+  if (!shouldClose) return;
 
   if (isValidValue([minDate, maxDate]) && state.minDate && state.maxDate) {
     emit('pick', [state.minDate, state.maxDate]);
   }
+}
+
+function confirmDateTimeRange(): void {
+  if (!state.minDate || !state.maxDate) return;
+
+  const start = new Date(state.minDate);
+  start.setHours(startHours.value, startMinutes.value, 0, 0);
+
+  const end = new Date(state.maxDate);
+  end.setHours(endHours.value, endMinutes.value, 0, 0);
+
+  emit('pick', [start, end]);
 }
 
 function handleClear(): void {
@@ -453,6 +493,23 @@ defineExpose({
             @range-selecting="handleRangeSelecting"
           />
         </div>
+      </div>
+      <div
+        v-if="showTimeFooter"
+        class="q-picker-panel__datetime-range-footer"
+      >
+        <q-date-picker-time-footer
+          v-model:hours="startHours"
+          v-model:minutes="startMinutes"
+          :label="t('QDatePicker.timeFrom')"
+          @confirm="confirmDateTimeRange"
+        />
+        <q-date-picker-time-footer
+          v-model:hours="endHours"
+          v-model:minutes="endMinutes"
+          :label="t('QDatePicker.timeTo')"
+          @confirm="confirmDateTimeRange"
+        />
       </div>
     </div>
   </div>

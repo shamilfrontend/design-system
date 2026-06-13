@@ -1,0 +1,45 @@
+.q-drawer-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: var(--font-weight-bold, 600);
+    color: var(--color-text-heading);
+  }
+
+  &__close {
+    padding: 4px;
+    font-size: 20px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-radius: var(--border-radius-base);
+
+    &:hover {
+      background-color: var(--color-tertiary-gray-light);
+    }
+  }
+
+  &__body {
+    flex: 1;
+    padding: 16px 24px;
+    overflow: auto;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding: 0 24px 16px;
+  }
+}

@@ -1,0 +1,8 @@
+.q-watermark {
+  &__canvas { display: none; }
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+}

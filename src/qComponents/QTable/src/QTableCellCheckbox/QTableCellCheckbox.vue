@@ -76,6 +76,8 @@ const rootStyles = computed<StyleValue>(() => ({
 const handleCheckboxChange = (value: boolean): void => {
   emit(CHANGE_EVENT, value);
 };
+
+const isLoading = computed<boolean>(() => Boolean(qTable.isLoading?.value));
 </script>
 
 <template>
@@ -87,7 +89,7 @@ const handleCheckboxChange = (value: boolean): void => {
     <div :class="`${baseClass}__container`">
       <div :class="`${baseClass}__content ${baseClass}__content_checkbox`">
         <div
-          v-if="qTable.isLoading && isCheckable"
+          v-if="isLoading && isCheckable"
           class="q-table-t__skeleton"
         />
         <q-checkbox

@@ -1,0 +1,114 @@
+.q-progress {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+
+  &_type_line {
+    .q-progress__outer {
+      flex: 1;
+      height: 6px;
+      overflow: hidden;
+      background-color: var(--color-tertiary-gray);
+      border-radius: 100px;
+    }
+
+    .q-progress__inner {
+      height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 100px;
+      transition: width 0.3s ease;
+    }
+  }
+
+  &_type_circle {
+    position: relative;
+    display: inline-flex;
+    width: auto;
+  }
+
+  &_status_success {
+    .q-progress__inner,
+    .q-progress__circle-bar {
+      stroke: var(--color-success);
+      background: var(--color-success);
+    }
+  }
+
+  &_status_warning {
+    .q-progress__inner,
+    .q-progress__circle-bar {
+      stroke: var(--color-warning);
+      background: var(--color-warning);
+    }
+  }
+
+  &_status_error {
+    .q-progress__inner,
+    .q-progress__circle-bar {
+      stroke: var(--color-danger);
+      background: var(--color-danger);
+    }
+  }
+
+  &_indeterminate {
+    .q-progress__inner {
+      width: 40% !important;
+      animation: q-progress-indeterminate 1.5s ease-in-out infinite;
+    }
+
+    .q-progress__circle-bar {
+      animation: q-progress-circle-indeterminate 1.5s linear infinite;
+    }
+  }
+
+  &__text {
+    min-width: 40px;
+    font-size: var(--font-size-sm, 14px);
+    color: var(--color-text-regular);
+    text-align: center;
+
+    &_circle {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__circle {
+    transform: rotate(-90deg);
+  }
+
+  &__circle-track {
+    stroke: var(--color-tertiary-gray);
+  }
+
+  &__circle-bar {
+    stroke: var(--color-primary);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.3s ease;
+  }
+}
+
+@keyframes q-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes q-progress-circle-indeterminate {
+  0% {
+    stroke-dashoffset: 300;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

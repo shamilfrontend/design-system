@@ -27,6 +27,7 @@ import {
 } from '../../constants';
 import DateTable from '../../tables/DateTable/DateTable.vue';
 import PeriodTable from '../../tables/PeriodTable/PeriodTable.vue';
+import QDatePickerTimeFooter from '../QDatePickerTimeFooter.vue';
 import type { QDatePickerProvider } from '../../types';
 import { getPeriodNextNodeIndex } from '../composition';
 
@@ -66,7 +67,8 @@ switch (picker.type.value) {
   case 'week':
   case 'month':
   case 'year':
-    state.currentView = picker.type.value;
+  case 'datetime':
+    state.currentView = picker.type.value === 'datetime' ? 'date' : picker.type.value;
     break;
   default:
     break;
@@ -78,6 +80,10 @@ if (props.modelValue instanceof Date) {
 }
 
 const root = ref<Nullable<HTMLElement>>(null);
+const isDateTime = computed<boolean>(() => picker.type.value === 'datetime');
+const pendingDate = ref<Nullable<Date>>(null);
+const timeHours = ref<number>(0);
+const timeMinutes = ref<number>(0);
 const datePanel = ref<Nullable<HTMLElement>>(null);
 
 const shortcuts = picker.shortcuts;
@@ -222,7 +228,23 @@ function handlePeriodPick(month: number, year: number, type: string): void {
 }
 
 function handleDatePick(value: DatePanelPropModelValue): void {
+  if (isDateTime.value && value instanceof Date) {
+    pendingDate.value = value;
+    timeHours.value = value.getHours();
+    timeMinutes.value = value.getMinutes();
+
+    return;
+  }
+
   emit('pick', value);
+}
+
+function confirmDateTime(): void {
+  if (!pendingDate.value) return;
+
+  const result = new Date(pendingDate.value);
+  result.setHours(timeHours.value, timeMinutes.value, 0, 0);
+  emit('pick', result);
 }
 
 function moveWithinPeriod(e: KeyboardEvent): void {
@@ -420,6 +442,16 @@ defineExpose({
           :year="state.year"
           @pick="handlePeriodPick"
         />
+        <div
+          v-if="isDateTime && pendingDate"
+          class="q-picker-panel__datetime-footer-wrapper"
+        >
+          <q-date-picker-time-footer
+            v-model:hours="timeHours"
+            v-model:minutes="timeMinutes"
+            @confirm="confirmDateTime"
+          />
+        </div>
       </div>
     </div>
   </div>

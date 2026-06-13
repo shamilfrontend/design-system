@@ -102,7 +102,9 @@ const props = defineProps({
       'week',
       'month',
       'year',
+      'datetime',
       'daterange',
+      'datetimerange',
       'monthrange',
       'yearrange'
     ])
@@ -299,6 +301,7 @@ const rangeClasses = computed<ClassValue>(() => ({
 const panelComponent = computed<QDatePickerPanelComponent>(() => {
   switch (props.type) {
     case 'daterange':
+    case 'datetimerange':
       return DateRangePanel;
     case 'monthrange':
       return MonthRangePanel;
@@ -330,13 +333,24 @@ const isRanged = computed<boolean>(
   () => props.type?.includes('range') ?? false
 );
 
+const displayFormat = computed<string>(() => {
+  if (
+    (props.type === 'datetime' || props.type === 'datetimerange') &&
+    props.format === 'dd MMMM yyyy'
+  ) {
+    return 'dd MMMM yyyy HH:mm';
+  }
+
+  return props.format;
+});
+
 const rangeDisplayValue = computed<string[]>(() => {
   if (!isRanged.value || !Array.isArray(transformedToDate.value)) return [];
 
   return transformedToDate.value.map(dateFromArray =>
     formatToLocalReadableString(
       dateFromArray,
-      props.format,
+      displayFormat.value,
       getConfig('locale')
     )
   );
@@ -358,7 +372,7 @@ const displayValue = computed<string>(() => {
   ) {
     formattedValue = formatToLocalReadableString(
       transformedToDate.value,
-      props.format,
+      displayFormat.value,
       getConfig('locale')
     );
   }
