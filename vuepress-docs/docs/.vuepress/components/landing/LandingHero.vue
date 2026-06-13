@@ -11,16 +11,12 @@ defineProps<Props>();
 </script>
 
 <template>
-  <section class="landing-hero" aria-label="Главный экран">
+  <section
+    class="landing-hero"
+    aria-label="Главный экран"
+  >
     <div class="landing-hero__inner">
       <div class="landing-hero__content">
-        <img
-          class="landing-hero__logo"
-          src="/qui-logo.svg"
-          alt="Design System"
-          width="64"
-          height="64"
-        />
         <h1 class="landing-hero__title">{{ content.title }}</h1>
         <p class="landing-hero__subtitle">{{ content.subtitle }}</p>
         <div class="landing-hero__actions">
@@ -32,7 +28,10 @@ defineProps<Props>();
         </div>
       </div>
       <div class="landing-hero__graphic">
-        <OrbitalGraphic variant="hero" size="lg" />
+        <OrbitalGraphic
+          variant="hero"
+          size="lg"
+        />
       </div>
     </div>
   </section>
@@ -55,10 +54,6 @@ defineProps<Props>();
     max-width: var(--landing-max-width);
     margin: 0 auto;
     width: 100%;
-  }
-
-  &__logo {
-    margin-bottom: 24px;
   }
 
   &__title {

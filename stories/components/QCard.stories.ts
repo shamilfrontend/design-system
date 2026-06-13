@@ -29,7 +29,7 @@ const QCardStory: StoryFn<QCardProps> = args =>
         :body-padding="args.bodyPadding"
         style="width: 360px"
       >
-        Card body with neumorphic surface and flexible slots.
+        Card body with flexible slots.
         <template #footer>
           <q-button size="small">Action</q-button>
         </template>
@@ -50,7 +50,7 @@ HoverShadow.args = {
   shadow: 'hover'
 };
 
-export const CustomHeader = () =>
+export const CustomHeader: StoryFn = () =>
   defineComponent({
     components: { QCard },
     template: `

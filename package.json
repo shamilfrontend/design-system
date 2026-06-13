@@ -43,7 +43,6 @@
   "devDependencies": {
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
-    "@qvant/prettier-config": "^0.1.0",
     "@storybook/addon-docs": "^10.4.4",
     "@storybook/addon-links": "^10.4.4",
     "@storybook/vue3-vite": "^10.4.4",

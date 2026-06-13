@@ -4,7 +4,7 @@ Design System is a component's library helping us build great products. After so
 
 To see how it works, we've made a [Storybook (live demo)](https://github.com/shamilfrontend/design-system).
 
-This library written on Typescript for Vue 3 with Composition API. But also we have Qui for Vue 2.x [here](https://github.com/Qvant-lab/qui)!
+This library written on Typescript for Vue 3 with Composition API.
 
 ## How It Works
 

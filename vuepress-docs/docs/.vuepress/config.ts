@@ -13,7 +13,6 @@ export default defineUserConfig({
   title: 'Design System',
   description:
     'Vue 3 дизайн-система с TypeScript, Composition API и 30+ компонентов',
-  head: [['link', { rel: 'icon', href: '/qui-logo.svg' }]],
 
   bundler: viteBundler({
     viteOptions: {
@@ -23,10 +22,7 @@ export default defineUserConfig({
           plugins: isAnalyze
             ? [
                 visualizer({
-                  filename: path.resolve(
-                    configDir,
-                    'dist/stats.html'
-                  ),
+                  filename: path.resolve(configDir, 'dist/stats.html'),
                   gzipSize: true,
                   open: false
                 })
@@ -42,7 +38,6 @@ export default defineUserConfig({
   },
 
   theme: defaultTheme({
-    logo: './qui-logo.svg',
     navbar: [
       {
         text: 'Гайд',

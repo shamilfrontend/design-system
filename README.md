@@ -1,42 +1,25 @@
+# Design System — UI library for Web
+
 <p align="center">
-  <img src="/.readme-assets/qui-logo.svg?raw=true" />
-</p>
-
-<p align="center" class="unchanged rich-diff-level-one">
-  <img src="https://img.shields.io/badge/vue-3.x-brightgreen">
+  <img src="https://img.shields.io/badge/vue-3.x-brightgreen" alt="Vue 3">
   <img alt="npm type definitions" src="https://img.shields.io/npm/types/@shamilfrontend/design-system">
-  <a href="https://github.com/storybooks/storybook" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>
+  <a href="https://github.com/storybooks/storybook" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg" alt="Storybook"></a>
   <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/@shamilfrontend/design-system?color=brightgreen">
-  <span class="badge-npmversion"><a href="https://www.npmjs.com/package/@shamilfrontend/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@shamilfrontend/design-system.svg" alt="NPM version" /></a></span>
-  <span class="badge-npmdownloads"><a href="https://www.npmjs.com/package/@shamilfrontend/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/@shamilfrontend/design-system.svg" alt="NPM downloads" /></a></span>
+  <a href="https://www.npmjs.com/package/@shamilfrontend/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@shamilfrontend/design-system.svg" alt="NPM version" /></a>
+  <a href="https://www.npmjs.com/package/@shamilfrontend/design-system" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/@shamilfrontend/design-system.svg" alt="NPM downloads" /></a>
 </p>
 
-<p align="center" class="unchanged rich-diff-level-one">
+Библиотека Vue 3-компонентов на TypeScript с Composition API для быстрой сборки интерфейсов.
 
-# Design System — Neumorphic UI library for Web
+- 🔩 40+ компонентов
+- 🔥 Composition API
+- 🔑 TypeScript
+- 📦 набор иконок
+- 📚 Storybook и документация
 
-Written in TypeScript with Composition API 🔥
+🏓 Storybook и 📚 документация — ссылки будут добавлены позже.
 
-A component's library helping us build great products for our customers.
-This library for Vue 3.x
-
-🏓 [Storybook (live demo)](https://github.com/shamilfrontend/design-system)
-
-📚 [Documentation (New!)](https://github.com/shamilfrontend/design-system/)
-
-Qui for Vue 2.x is [here](https://github.com/Qvant-lab/qui)!
-
-What is it?
-
-- 🔩 30+ Vue 3 components
-- 🔥 Fully written with Composition API
-- 🔑 Typescript
-- 📦 icons pack
-- 🏳️‍🌈 colors & grid
-- 🥷 neumorphism styles
-- 📚 storybook sandbox
-
-Some examples below:
+## Примеры
 
 ![buttons](/.readme-assets/buttons.jpg?raw=true)
 ![inputs](/.readme-assets/inputs.gif?raw=true)
@@ -44,18 +27,19 @@ Some examples below:
 ![tables](/.readme-assets/tables.jpg?raw=true)
 ![other](/.readme-assets/other.jpg?raw=true)
 
-## Install
+## Установка
 
 ```bash
-npm install @shamilfrontend/design-system -S
+npm install @shamilfrontend/design-system
+# или
 yarn add @shamilfrontend/design-system
 ```
 
-You can import Qui entirely, or just import what you need. Let's start with fully import.
+**Требования:** Vue `^3.5.0`, Node.js `>=22`.
 
-## Quick setup
+## Быстрый старт
 
-In main.js:
+Подключите всю библиотеку целиком:
 
 ```js
 import { createApp } from 'vue';
@@ -63,37 +47,28 @@ import DesignSystem from '@shamilfrontend/design-system';
 import '@shamilfrontend/design-system/styles';
 
 const app = createApp(App);
-// Setup all components
+
 app.use(DesignSystem);
-// that's it! All components will be imported with styles
+app.mount('#app');
 ```
 
-in YourComponent.vue: (Example)
+Пример использования компонента:
 
 ```vue
 <template>
   <q-input v-model="value" />
 </template>
-<script>
+
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref('');
-    return { value };
-  }
-};
+const value = ref('');
 </script>
 ```
 
-## Configure setup:
+## Выборочное подключение
 
-- import styles separately to avoid unused css
-- set `localization.messages` to support any language for components
-- change zIndex of appeared components (e.g Dialogs, Notifications, Dropdowns etc.)
-- control setup of components
-
-In main.js:
+Импортируйте только нужные компоненты и стили, чтобы уменьшить размер бандла:
 
 ```js
 import { createApp } from 'vue';
@@ -101,61 +76,65 @@ import {
   createDesignSystem,
   QButton,
   QProgressIndicatior,
-  // import default messages for different locales
   localeRu
 } from '@shamilfrontend/design-system';
 
-// import required styles
 import '@shamilfrontend/design-system/css/main';
 import '@shamilfrontend/design-system/fonts';
 import '@shamilfrontend/design-system/icons';
-
-// import the only styles of component you gonna use
 import '@shamilfrontend/design-system/css/q-button';
 import '@shamilfrontend/design-system/css/q-progress-indicatior';
 
+const app = createApp(App);
+
 const designSystem = createDesignSystem({
   localization: {
-    // English language by default, but we have two more locales out-of-the-box: 'ru' | 'zh'
-    // set 'ru' - for Russian, set 'zh' - for Chinese
     locale: 'ru',
     messages: {
       ru: {
-        // import and merge default messages for different locale
         ...localeRu,
-        // rewrite default texts, see the source: src/qComponents/constants/locales or set your custom messages
         QDatepicker: {
           placeholder: 'Выберите дату рождения'
         }
       }
     },
-    // zIndexCounter is being used by some components (e.g QPopover, QSelect, QDialog ...etc)
-    // 2000 by default
     zIndexCounter: 3000
   }
 });
 
-app.use(DesignSystem);
+app.use(designSystem);
 app.use(QButton);
 app.use(QProgressIndicatior, {
   trickle: true,
   trickleSpeed: 200,
   stackable: true
 });
+
+app.mount('#app');
 ```
 
-Now you have implemented Vue and Design System to your project, and it's time to write your code.
-Please refer to each component's [Stories](https://github.com/shamilfrontend/design-system) to learn how to use them.
+Дополнительные настройки:
 
-## Supported languages
+- импортируйте стили отдельно, чтобы не тянуть лишний CSS;
+- задайте `localization.messages` для своих переводов;
+- измените `zIndexCounter` для оверлеев (диалоги, уведомления, выпадающие списки);
+- передавайте опции при регистрации отдельных плагинов.
 
-- Russian ✅
-- English ✅
-- Also you can use any language by setting texts for components via `localization.messages` property in the Qui instance. See the example above.
+Подробнее о каждом компоненте — в Storybook (ссылка будет добавлена позже).
 
-## Using with Nuxt 3
+## Локализация
 
-Create a file in your plugins folder:
+Из коробки доступны:
+
+- русский (`ru`)
+- английский (`en`)
+- китайский (`zh`)
+
+Свои тексты можно задать через `localization.messages` в `createDesignSystem`. Примеры — в `src/qComponents/constants/locales`.
+
+## Nuxt 3
+
+Создайте плагин:
 
 ```ts
 // plugins/design-system.ts
@@ -167,10 +146,10 @@ export default defineNuxtPlugin(nuxtApp => {
 });
 ```
 
-Add configuration to your `nuxt.config.ts` file:
+Добавьте в `nuxt.config.ts`:
 
 ```ts
-import { defineNuxtConfig } from 'nuxt3';
+import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
   css: ['@shamilfrontend/design-system/styles'],
@@ -180,26 +159,50 @@ export default defineNuxtConfig({
 });
 ```
 
-## Browser Support
+## Поддержка браузеров
 
-Modern browsers are recomended:
+Библиотека рассчитана на современные evergreen-браузеры. **Internet Explorer и Legacy Edge не поддерживаются.**
 
-- safari: >11
-- chrome: >=61
-- firefox: >=58
-- opera: >=62
-- edge: >=16
-- yandex: >=18
+### Минимальные версии
 
-## Development
+| Браузер         | Версия       |
+| --------------- | ------------ |
+| Chrome          | 80+          |
+| Edge (Chromium) | 80+          |
+| Firefox         | 78+          |
+| Safari (macOS)  | 14+          |
+| Safari (iOS)    | 14+          |
+| Opera           | 67+          |
+| Яндекс.Браузер  | Chromium 80+ |
 
-Clone repository and run storybook
+Ограничения: Vue 3.5 (`Proxy`), сборка ES2020, `ResizeObserver` в хуках и компонентах.
+
+### Рекомендуется для продакшена
+
+Последние 2 версии основных браузеров: Chrome / Edge 90+, Firefox 90+, Safari / iOS Safari 15+.
+
+### Для старых браузеров
+
+Сборка не понижает синтаксис до ES5. Если нужна поддержка более старых окружений, транспилируйте `@shamilfrontend/design-system` на стороне приложения (Babel, `build.transpile` в Nuxt, `build.target` в Vite).
+
+## Разработка
 
 ```bash
-yarn storybook
-npm run storybook
+git clone https://github.com/shamilfrontend/design-system.git
+cd design-system
+yarn install
+yarn storybook   # http://localhost:6006
+yarn build       # сборка библиотеки
+yarn test        # тесты
+yarn type-check  # проверка типов
 ```
 
-## LICENSE
+## Лицензия
 
-MIT
+[MIT](LICENSE) © [ShamilFrontend](https://github.com/shamilfrontend)
+
+## Благодарности
+
+Данная дизайн-система основана на [Qui-Max](https://github.com/altai-ui/qui-max) — открытой библиотеке Vue 3-компонентов.
+
+Благодарим команду QuiMax (где я работал) за проделанную работу, архитектуру и вклад в развитие экосистемы Vue.

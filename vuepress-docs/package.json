@@ -4,7 +4,7 @@
   "private": false,
   "description": "Design System Docs",
   "author": {
-    "name": "Qvant Frontend team"
+    "name": "ShamilFrontend"
   },
   "scripts": {
     "postinstall": "patch-package",

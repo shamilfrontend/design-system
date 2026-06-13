@@ -2,7 +2,7 @@ import type { LandingTeamSection } from './types';
 
 export const team: LandingTeamSection = {
   title: 'Команда',
-  subtitle: 'Design System развивается командой Qvant Frontend.',
+  subtitle: 'Design System развивается командой ShamilFrontend.',
   items: [
     {
       name: 'Tim Bochkarev',

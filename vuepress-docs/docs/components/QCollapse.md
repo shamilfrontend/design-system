@@ -72,7 +72,7 @@ Binding value.
 
 ```ts
 // import type from lib
-import type { QCollapsePropModelValue } from '@qvant';
+import type { QCollapsePropModelValue } from '@shamilfrontend/design-system';
 
 // TS type
 export type QCollapsePropModelValue = Nullable<

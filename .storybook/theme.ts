@@ -1,5 +1,4 @@
 import { create } from 'storybook/theming/create';
-import logo from '../.readme-assets/qui-logo.svg';
 
 export default create({
   name: 'Theme',
@@ -20,6 +19,5 @@ export default create({
   textColor: '#5e5873',
 
   brandTitle: 'Design System',
-  brandUrl: 'https://github.com/shamilfrontend/design-system',
-  brandImage: logo
+  brandUrl: 'https://github.com/shamilfrontend/design-system'
 });
