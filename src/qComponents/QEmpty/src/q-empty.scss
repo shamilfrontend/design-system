@@ -1,0 +1,28 @@
+.q-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  text-align: center;
+
+  &__image {
+    margin-bottom: 16px;
+  }
+
+  &__img {
+    display: block;
+    object-fit: contain;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  &__footer {
+    margin-top: 16px;
+  }
+}

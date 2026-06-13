@@ -11,13 +11,13 @@
 
 Библиотека Vue 3-компонентов на TypeScript с Composition API для быстрой сборки интерфейсов.
 
-- 🔩 40+ компонентов
+- 🔩 60+ компонентов
 - 🔥 Composition API
 - 🔑 TypeScript
 - 📦 набор иконок
 - 📚 Storybook и документация
 
-🏓 Storybook и 📚 документация — ссылки будут добавлены позже.
+📚 [Документация](https://github.com/shamilfrontend/design-system/tree/main/vuepress-docs) · 🏓 Storybook: `yarn storybook` (http://localhost:6006)
 
 ## Примеры
 
@@ -120,7 +120,7 @@ app.mount('#app');
 - измените `zIndexCounter` для оверлеев (диалоги, уведомления, выпадающие списки);
 - передавайте опции при регистрации отдельных плагинов.
 
-Подробнее о каждом компоненте — в Storybook (ссылка будет добавлена позже).
+Подробнее о каждом компоненте — в [документации](https://github.com/shamilfrontend/design-system/tree/main/vuepress-docs/docs/components) и Storybook (`yarn storybook`).
 
 ## Локализация
 

@@ -1,0 +1,60 @@
+.q-transfer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  &__panel {
+    flex: 1;
+    min-width: 200px;
+    border: var(--border-base);
+    border-radius: var(--border-radius-base);
+  }
+
+  &__header {
+    padding: 8px 12px;
+    font-weight: var(--font-weight-bold, 600);
+    border-bottom: var(--border-base);
+  }
+
+  &__list {
+    max-height: 240px;
+    padding: 4px 0;
+    margin: 0;
+    overflow-y: auto;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 8px 12px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-primary-lighter);
+    }
+
+    &_selected {
+      color: var(--color-primary);
+      background-color: var(--color-primary-lighter);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: var(--color-tertiary-white);
+    border: var(--border-base);
+    border-radius: var(--border-radius-base);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

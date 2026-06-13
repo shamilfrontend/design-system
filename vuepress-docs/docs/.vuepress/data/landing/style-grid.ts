@@ -8,8 +8,7 @@ export const styleGrid: LandingStyleGridSection = {
       title: 'Цвета',
       description: 'Палитра primary, semantic и surface-токены',
       icon: '🎨',
-      link: 'https://github.com/shamilfrontend/design-system',
-      external: true
+      link: '/guide/colors'
     },
     {
       title: 'Типографика',
@@ -34,14 +33,13 @@ export const styleGrid: LandingStyleGridSection = {
       title: 'Тени',
       description: 'Elevation и box-shadow токены',
       icon: '◐',
-      link: 'https://github.com/shamilfrontend/design-system',
-      external: true
+      link: '/guide/shadows'
     },
     {
       title: 'Токены',
       description: 'CSS custom properties в vars.scss',
       icon: '⚙',
-      link: '/guide/getting-started'
+      link: '/guide/tokens'
     },
     {
       title: 'Компоненты',

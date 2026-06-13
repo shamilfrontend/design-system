@@ -64,5 +64,54 @@ export default {
   },
   QScrollbar: {
     ariaLabel: 'Прокручиваемая область'
+  },
+  QEmpty: {
+    description: 'Нет данных'
+  },
+  QTimePicker: {
+    placeholder: 'Выберите время',
+    cancel: 'Отмена',
+    confirm: 'Применить'
+  },
+  QAutoComplete: {
+    placeholder: 'Введите для поиска'
+  },
+  QPageHeader: {
+    back: 'Назад'
+  },
+  QTreeSelect: {
+    placeholder: 'Выберите'
+  },
+  QTransfer: {
+    sourceTitle: 'Доступные',
+    targetTitle: 'Выбранные',
+    filterPlaceholder: 'Поиск'
+  },
+  QResult: {
+    successTitle: 'Успешно',
+    errorTitle: 'Ошибка',
+    warningTitle: 'Предупреждение',
+    infoTitle: 'Информация',
+    notFoundTitle: '404',
+    forbiddenTitle: '403',
+    serverErrorTitle: '500'
+  },
+  QCarousel: {
+    prev: 'Предыдущий слайд',
+    next: 'Следующий слайд'
+  },
+  QBackTop: {
+    ariaLabel: 'Наверх'
+  },
+  QSegmented: {
+    ariaLabel: 'Сегментированный переключатель'
+  },
+  QMentions: {
+    placeholder: 'Введите @ для упоминания'
+  },
+  QTour: {
+    prev: 'Назад',
+    next: 'Далее',
+    finish: 'Готово'
   }
 };

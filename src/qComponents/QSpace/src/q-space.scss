@@ -1,0 +1,36 @@
+.q-space {
+  display: inline-flex;
+
+  &_direction_horizontal {
+    flex-direction: row;
+  }
+
+  &_direction_vertical {
+    flex-direction: column;
+  }
+
+  &_align_start {
+    align-items: flex-start;
+  }
+
+  &_align_center {
+    align-items: center;
+  }
+
+  &_align_end {
+    align-items: flex-end;
+  }
+
+  &_align_baseline {
+    align-items: baseline;
+  }
+
+  &_wrap {
+    flex-wrap: wrap;
+  }
+
+  &_fill {
+    display: flex;
+    width: 100%;
+  }
+}

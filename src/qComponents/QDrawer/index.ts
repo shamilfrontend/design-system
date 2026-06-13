@@ -19,6 +19,16 @@ const useDrawer = (options?: QDrawerHookOptions): QDrawer => {
 };
 
 export { useDrawer };
+export { QDrawerModal } from './src/QDrawerModal';
+export type {
+  QDrawerModalProps,
+  QDrawerModalPropModelValue,
+  QDrawerModalPropTitle,
+  QDrawerModalPropWidth,
+  QDrawerModalPropPosition,
+  QDrawerModalPropTeleportTo,
+  QDrawerModalPropBeforeClose
+} from './src/QDrawerModal';
 export type { QDrawerContainerProvider } from './src/QDrawerContainer';
 export { QDrawerContent } from './src/QDrawerContent';
 export type {
