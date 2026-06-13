@@ -76,7 +76,7 @@ const offsetsList = computed<Record<string, number>>(() => {
     if (column.sticky?.position !== 'left') return;
 
     result[index] = offset.left;
-    offset.left += colSizes.value[index].width;
+    offset.left += colSizes.value[String(index)]?.width ?? 0;
   });
 
   [...columnList].reverse().forEach((column, index) => {
@@ -84,7 +84,7 @@ const offsetsList = computed<Record<string, number>>(() => {
 
     const recoveredIndex = columnList.length - index - 1;
     result[recoveredIndex] = offset.right;
-    offset.right += colSizes.value[recoveredIndex].width;
+    offset.right += colSizes.value[String(recoveredIndex)]?.width ?? 0;
   });
 
   return result;

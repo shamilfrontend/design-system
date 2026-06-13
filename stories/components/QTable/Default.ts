@@ -50,6 +50,8 @@ const QTableStory: StoryFn<QTableProps> = args =>
         :custom-row-class="args.customRowClass"
         :custom-row-style="args.customRowStyle"
         :selection-column="args.selectionColumn"
+        :empty-text="args.emptyText"
+        :default-col-width="args.defaultColWidth"
         @row-click="handleRowClick"
       >
         <template #customHeader="{ value }">

@@ -85,6 +85,8 @@ const formattedValue = computed(() => {
   return props.value;
 });
 
+const isLoading = computed<boolean>(() => Boolean(qTable.isLoading?.value));
+
 const slotContent = computed(() => {
   const slotName = props.column.slots?.row ?? 'row';
   const currentSlot = qTable?.slots[slotName];
@@ -116,7 +118,7 @@ const slotContent = computed(() => {
     <div class="q-table-t-body-cell__container">
       <div class="q-table-t-body-cell__content">
         <div
-          v-if="qTable.isLoading"
+          v-if="isLoading"
           class="q-table-t__skeleton"
         />
         <component
