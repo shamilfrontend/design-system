@@ -7,7 +7,7 @@ export const values: LandingValuesSection = {
   items: [
     {
       icon: '🔩',
-      title: '30+ компонентов',
+      title: '60+ компонентов',
       description:
         'Готовые UI-блоки: формы, таблицы, навигация, оверлеи и многое другое — с единым API и стилями.'
     },

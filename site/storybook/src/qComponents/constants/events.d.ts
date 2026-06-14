@@ -1,0 +1,14 @@
+export declare const UPDATE_MODEL_VALUE_EVENT = 'update:modelValue';
+export declare const CLICK_EVENT = 'click';
+export declare const CHANGE_EVENT = 'change';
+export declare const INPUT_EVENT = 'input';
+export declare const FOCUS_EVENT = 'focus';
+export declare const BLUR_EVENT = 'blur';
+export declare const CLEAR_EVENT = 'clear';
+export declare const CLEAR_ALL_EVENT = 'clear-all';
+export declare const CLOSE_EVENT = 'close';
+export declare const REMOVE_EVENT = 'remove';
+export declare const ABORT_EVENT = 'abort';
+export declare const SELECT_EVENT = 'select';
+export declare const EXCEED_EVENT = 'exceed';
+export declare const SELECT_ALL_EVENT = 'select-all';

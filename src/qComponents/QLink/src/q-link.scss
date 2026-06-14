@@ -1,0 +1,40 @@
+.q-link {
+  font-size: var(--font-size-base);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+
+  &_underline {
+    text-decoration: underline;
+  }
+
+  &_type_default {
+    color: var(--color-text-regular);
+
+    &:hover:not(&_disabled) {
+      color: var(--color-primary);
+    }
+  }
+
+  &_type_primary {
+    color: var(--color-primary);
+  }
+
+  &_type_success {
+    color: var(--color-success);
+  }
+
+  &_type_warning {
+    color: var(--color-warning);
+  }
+
+  &_type_danger {
+    color: var(--color-danger);
+  }
+
+  &_disabled {
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

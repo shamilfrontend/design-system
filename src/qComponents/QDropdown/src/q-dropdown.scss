@@ -1,0 +1,9 @@
+.q-dropdown {
+  display: inline-block;
+
+  &__popper {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

@@ -172,6 +172,70 @@
     vertical-align: middle;
   }
 
+  &__datetime-footer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 12px 16px;
+    border-top: var(--border-base);
+  }
+
+  &__datetime-footer-wrapper {
+    border-top: var(--border-base);
+  }
+
+  &__datetime-range-footer {
+    display: flex;
+    flex-direction: column;
+    border-top: var(--border-base);
+  }
+
+  &__time-label {
+    margin-right: auto;
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+
+  &__time-columns {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__time-column {
+    max-height: 120px;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    list-style: none;
+  }
+
+  &__time-cell {
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: var(--border-radius-base);
+
+    &:hover {
+      background: var(--color-tertiary-gray-light);
+    }
+
+    &_active {
+      color: var(--color-tertiary-white);
+      background: var(--color-primary);
+    }
+  }
+
+  &__confirm-btn {
+    padding: 6px 12px;
+    margin-left: 8px;
+    color: var(--color-tertiary-white);
+    cursor: pointer;
+    background: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius-base);
+  }
+
   &-animation {
     &-enter-active,
     &-leave-active {

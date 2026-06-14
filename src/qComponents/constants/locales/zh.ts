@@ -64,5 +64,54 @@ export default {
   },
   QScrollbar: {
     ariaLabel: '可滚动内容'
+  },
+  QEmpty: {
+    description: '无数据'
+  },
+  QTimePicker: {
+    placeholder: '选择时间',
+    cancel: '取消',
+    confirm: '确定'
+  },
+  QAutoComplete: {
+    placeholder: '输入以搜索'
+  },
+  QPageHeader: {
+    back: '返回'
+  },
+  QTreeSelect: {
+    placeholder: '请选择'
+  },
+  QTransfer: {
+    sourceTitle: '可选',
+    targetTitle: '已选',
+    filterPlaceholder: '搜索'
+  },
+  QResult: {
+    successTitle: '成功',
+    errorTitle: '错误',
+    warningTitle: '警告',
+    infoTitle: '信息',
+    notFoundTitle: '404',
+    forbiddenTitle: '403',
+    serverErrorTitle: '500'
+  },
+  QCarousel: {
+    prev: '上一张',
+    next: '下一张'
+  },
+  QBackTop: {
+    ariaLabel: '回到顶部'
+  },
+  QSegmented: {
+    ariaLabel: '分段控制器'
+  },
+  QMentions: {
+    placeholder: '输入 @ 提及'
+  },
+  QTour: {
+    prev: '上一步',
+    next: '下一步',
+    finish: '完成'
   }
 };

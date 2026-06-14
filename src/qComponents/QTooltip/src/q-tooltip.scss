@@ -9,7 +9,7 @@
   font-size: 12px;
   font-weight: var(--font-weight-base);
   line-height: 16px;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   border-radius: var(--border-radius-base);
 
   &_effect {

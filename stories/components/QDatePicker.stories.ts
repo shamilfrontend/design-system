@@ -42,7 +42,9 @@ const storyMetadata: Meta = {
         'week',
         'month',
         'year',
+        'datetime',
         'daterange',
+        'datetimerange',
         'monthrange',
         'yearrange'
       ],
@@ -136,7 +138,9 @@ const Template: StoryFn<QDatePickerProps> = args =>
 export const Default = Template.bind({});
 export const Month = Template.bind({});
 export const Year = Template.bind({});
+export const DateTime = Template.bind({});
 export const DateRange = Template.bind({});
+export const DateTimeRange = Template.bind({});
 export const MonthRange = Template.bind({});
 export const YearRange = Template.bind({});
 export const Shortcuts = Template.bind({});
@@ -149,8 +153,18 @@ MonthRange.args = {
   type: 'monthrange'
 };
 
+DateTime.args = {
+  type: 'datetime',
+  format: 'dd MMMM yyyy HH:mm'
+};
+
 DateRange.args = {
   type: 'daterange'
+};
+
+DateTimeRange.args = {
+  type: 'datetimerange',
+  format: 'dd MMMM yyyy HH:mm'
 };
 
 Month.args = {

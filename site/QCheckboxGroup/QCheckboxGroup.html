@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/design-system/styles"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      <q-checkbox-group v-model="checkedCities">
+        <q-checkbox
+          v-for="city in cities"
+          :key="city"
+          :label="city"
+        />
+      </q-checkbox-group>
+    </div>
+  </body>
+  <!-- import Vue before Design System -->
+  <script src="https://unpkg.com/vue@latest"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/design-system@latest"></script>
+  <script>
+    const App = {
+      data() {
+        const checkedCities = Vue.ref(['Shanghai', 'Beijing']);
+        const cities = Vue.ref([
+          'Shanghai',
+          'Beijing',
+          'Guangzhou',
+          'Shenzhen'
+        ]);
+
+        return { checkedCities, cities };
+      }
+    };
+
+    const app = Vue.createApp(App);
+    const designSystem = window.DesignSystem.default;
+    app.use(DesignSystem);
+    app.mount('#app');
+  </script>
+  <style>
+    #app {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 25px;
+    }
+  </style>
+</html>

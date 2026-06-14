@@ -1,0 +1,65 @@
+.q-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-base);
+
+  &__track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    height: 100%;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    color: var(--color-text-regular);
+    cursor: pointer;
+    background: rgb(var(--color-rgb-white) / 80%);
+    border: none;
+    border-radius: 50%;
+    transform: translateY(-50%);
+
+    &_prev {
+      left: 12px;
+    }
+
+    &_next {
+      right: 12px;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    display: flex;
+    gap: 8px;
+    transform: translateX(-50%);
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    cursor: pointer;
+    background: rgb(var(--color-rgb-white) / 50%);
+    border: none;
+    border-radius: 50%;
+
+    &_active {
+      background: var(--color-primary);
+    }
+  }
+}
