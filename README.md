@@ -17,12 +17,13 @@
 - 📦 набор иконок
 - 📚 Storybook и документация
 
-📚 [Документация](https://github.com/shamilfrontend/design-system/tree/main/vuepress-docs) · 🏓 Storybook: `yarn storybook` (http://localhost:6006)
+📚 [Документация](https://shamilfrontend.github.io/design-system/) · 🏓 [Storybook](https://shamilfrontend.github.io/design-system/storybook/) · локально: `yarn storybook` (http://localhost:6006)
 
 ## Установка
 
 ```bash
 npm install @shamilfrontend/design-system
+
 # или
 yarn add @shamilfrontend/design-system
 ```
@@ -38,7 +39,9 @@ import { createApp } from 'vue';
 import DesignSystem from '@shamilfrontend/design-system';
 import '@shamilfrontend/design-system/styles';
 
-const app = createApp(App);
+import AppComponent from '@/App.vue';
+
+const app = createApp(AppComponent);
 
 app.use(DesignSystem);
 app.mount('#app');
@@ -51,7 +54,7 @@ app.mount('#app');
   <q-input v-model="value" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue';
 
 const value = ref('');
@@ -111,8 +114,6 @@ app.mount('#app');
 - задайте `localization.messages` для своих переводов;
 - измените `zIndexCounter` для оверлеев (диалоги, уведомления, выпадающие списки);
 - передавайте опции при регистрации отдельных плагинов.
-
-Подробнее о каждом компоненте — в [документации](https://github.com/shamilfrontend/design-system/tree/main/vuepress-docs/docs/components) и Storybook (`yarn storybook`).
 
 ## Локализация
 

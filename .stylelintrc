@@ -8,6 +8,7 @@
   ],
   "ignoreFiles": [
     "dist/**",
+    "site/**",
     "storybook-static/**",
     "node_modules/**",
     "coverage/**"

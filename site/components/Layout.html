@@ -1,0 +1,2786 @@
+<!doctype html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1"
+    />
+    <meta
+      name="generator"
+      content="VuePress 2.0.0-rc.30"
+    />
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html,
+      body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+        document.documentElement.classList.toggle('dark', true);
+      }
+    </script>
+    <title>Layout 🧱 | Design System</title>
+    <meta
+      name="description"
+      content="Vue 3 дизайн-система с TypeScript, Composition API и 60+ компонентов"
+    />
+    <link
+      rel="preload"
+      href="/design-system/assets/style-CPSPyJxB.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="/design-system/assets/style-CPSPyJxB.css"
+    />
+    <link
+      rel="modulepreload"
+      href="/design-system/assets/app-CIsYDi5X.js"
+    />
+    <link
+      rel="modulepreload"
+      href="/design-system/assets/Layout-BT8rM-or.js"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/README-C4Fwi4pl.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/VUEPRESS_UPGRADE-DBCfrA0Q.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/README-_CdPnJBY.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/colors-rbzAhlHz.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/getting-started-BifkPC2g.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/shadows-D6_RshfH.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/theming-C9nfKQzU.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/tokens-h9lKBXj-.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QAffix-CXC6Ipef.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QAlert-BBD41BHa.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QAnchor-DWRiBMq8.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QAutoComplete-Thp3JKi8.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QAvatar-p1bkvXwE.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QBackTop-DmKdpoa1.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QBadge-qVQBr1aC.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QBreadcrumbs-DR2dTUiI.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QButton-BRpzknfe.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QCalendar-VLkC2zlP.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QCard-VhQ_nkG1.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QCarousel-BuSFQzTf.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QCascader-BsRldrRv.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QCheckbox-CX8q-_L7.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QCheckboxGroup-l7Ykl7im.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QCollapse-h6H8ubmb.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QColorpicker-dgN7qKO-.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QContextMenu-B9UsQcrM.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QDatepicker-63M0p9cm.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QDescriptions-D_6cWmJq.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QDialog-D0NRy3pn.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QDivider-6wOY6c58.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QDrawer-yjJGvCwx.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QDropdown-CwuirDrw.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QEmpty-DhJvL-b8.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QForm-BFmup3nn.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QIcon-BhZkQqWN.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QImage-wjWKRwI5.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QInput-CvnhPiNN.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QInputNumber-Fq-rqYOF.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QLayout-CHnFllnT.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QLink-BRvWTPHu.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QList-CCfLgwcF.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QLoading-CPAtXIAo.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QMentions-CBwIM8R6.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QMenu-B738FK4K.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QMessageBox-qCCta44g.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QNotification-Dci8xexD.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QPageHeader-fXkGKqMA.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QPagination-3WC4uuGA.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QParagraph-g7tTNk1x.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QPopover-nPtKzHuh.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QProgress-CvEJsrHb.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QProgressIndicatior-CjAwWU5o.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QRadio-alrTooiB.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QRadioGroup-CsQxkeN-.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QRate-BiQrvsbH.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QResult-1HI4t30y.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QScrollbar-Cqq157u5.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QSegmented-d7yaVbPz.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QSelect-D4vJy2OR.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QSkeleton-DrGE4w9t.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QSlider-C1rUBXi7.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QSpace-DDrVD0GK.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QStatistic-D7XaWRXa.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QSteps-DU8SuGo9.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QSwitch-COalDyG9.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTable-Bq1l3_ZI.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTabs-Cq7pjx_9.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTag-Col5XAYm.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QText-SBHbkXiL.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTextarea-C3nuCk0i.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTimePicker-CZT-vW8F.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTimeline-BtKf-cWy.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTitle-DxXHjlkY.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTooltip-Dbhab9pA.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTour-DUOCsKSg.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTransfer-CL41r6rb.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTree-CehgPB7q.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QTreeSelect-DPH-cpBJ.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QUpload-BiJGUEFA.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/QWatermark-b2JgCwuT.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/404.html-CfbeV7C_.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingPlatforms-DKPRQXiq.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingStats-CuzocsLF.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingCustomization-w2Rb-JB4.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingStyleGrid-DhWNLs6e.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingTools-l6TEyTUW.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingExamples-icIqc2pG.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingReviews-BEc_oKeb.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingTeam-ByINtCeK.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingAnnouncements-ChLRpBb5.js"
+      as="script"
+    />
+    <link
+      rel="prefetch"
+      href="/design-system/assets/LandingFooter-D5ScyEt8.js"
+      as="script"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!--[-->
+      <div class="theme-container external-link-icon">
+        <!--[-->
+        <header class="navbar">
+          <div
+            class="toggle-sidebar-button"
+            title="toggle sidebar"
+            aria-expanded="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="icon"
+              aria-hidden="true"
+            >
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <span
+            ><a
+              class="route-link"
+              href="/design-system/"
+              ><!----><span
+                class="site-name"
+                aria-hidden="true"
+                >Design System</span
+              ></a
+            ></span
+          >
+          <div
+            class="navbar-items-wrapper"
+            style=""
+          >
+            <!--[--><!--]-->
+            <nav
+              class="navbar-items can-hide"
+              aria-label="site navigation"
+            >
+              <!--[-->
+              <div class="navbar-item">
+                <a
+                  class="route-link auto-link"
+                  href="/design-system/guide/getting-started.html"
+                  aria-label="Гайд"
+                  ><!---->Гайд<!----></a
+                >
+              </div>
+              <div class="navbar-item">
+                <div class="navbar-dropdown-wrapper">
+                  <button
+                    class="navbar-dropdown-title"
+                    type="button"
+                    aria-label="Components"
+                  >
+                    <span class="title">Components</span
+                    ><span class="arrow down"></span></button
+                  ><button
+                    class="navbar-dropdown-title-mobile"
+                    type="button"
+                    aria-label="Components"
+                  >
+                    <span class="title">Components</span
+                    ><span class="right arrow"></span>
+                  </button>
+                  <ul
+                    class="navbar-dropdown"
+                    style="display: none"
+                  >
+                    <!--[-->
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link route-link-active auto-link"
+                        href="/design-system/components/Layout.html"
+                        aria-label="Layout 🧱"
+                        ><!---->Layout 🧱<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QAlert.html"
+                        aria-label="QAlert"
+                        ><!---->QAlert<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QAutoComplete.html"
+                        aria-label="QAutoComplete"
+                        ><!---->QAutoComplete<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QAvatar.html"
+                        aria-label="QAvatar"
+                        ><!---->QAvatar<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QBadge.html"
+                        aria-label="QBadge"
+                        ><!---->QBadge<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QBreadcrumbs.html"
+                        aria-label="QBreadcrumbs 🍞"
+                        ><!---->QBreadcrumbs 🍞<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QButton.html"
+                        aria-label="QButton 🆗"
+                        ><!---->QButton 🆗<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QCard.html"
+                        aria-label="QCard"
+                        ><!---->QCard<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QCascader.html"
+                        aria-label="QCascader 🪜"
+                        ><!---->QCascader 🪜<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QCheckbox.html"
+                        aria-label="QCheckbox ✔️"
+                        ><!---->QCheckbox ✔️<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QCheckboxGroup.html"
+                        aria-label="QCheckboxGroup ✔️✔️✔️"
+                        ><!---->QCheckboxGroup ✔️✔️✔️<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QCollapse.html"
+                        aria-label="QCollapse 🪗"
+                        ><!---->QCollapse 🪗<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QColorpicker.html"
+                        aria-label="QColorpicker 🎨"
+                        ><!---->QColorpicker 🎨<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QContextMenu.html"
+                        aria-label="QContextMenu 📎"
+                        ><!---->QContextMenu 📎<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QDatepicker.html"
+                        aria-label="QDatepicker 📅"
+                        ><!---->QDatepicker 📅<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QDescriptions.html"
+                        aria-label="QDescriptions"
+                        ><!---->QDescriptions<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QDialog.html"
+                        aria-label="QDialog"
+                        ><!---->QDialog<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QDivider.html"
+                        aria-label="QDivider"
+                        ><!---->QDivider<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QDrawer.html"
+                        aria-label="QDrawer"
+                        ><!---->QDrawer<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QDropdown.html"
+                        aria-label="QDropdown"
+                        ><!---->QDropdown<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QEmpty.html"
+                        aria-label="QEmpty"
+                        ><!---->QEmpty<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QForm.html"
+                        aria-label="QForm ✉️"
+                        ><!---->QForm ✉️<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QIcon.html"
+                        aria-label="QIcon"
+                        ><!---->QIcon<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QImage.html"
+                        aria-label="QImage"
+                        ><!---->QImage<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QInput.html"
+                        aria-label="QInput ⌨️"
+                        ><!---->QInput ⌨️<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QInputNumber.html"
+                        aria-label="QInputNumber 🔢"
+                        ><!---->QInputNumber 🔢<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QLayout.html"
+                        aria-label="QLayout"
+                        ><!---->QLayout<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QLink.html"
+                        aria-label="QLink"
+                        ><!---->QLink<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QList.html"
+                        aria-label="QList"
+                        ><!---->QList<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QLoading.html"
+                        aria-label="QLoading"
+                        ><!---->QLoading<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QMenu.html"
+                        aria-label="QMenu"
+                        ><!---->QMenu<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QMessageBox.html"
+                        aria-label="QMessageBox"
+                        ><!---->QMessageBox<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QNotification.html"
+                        aria-label="QNotification"
+                        ><!---->QNotification<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QPageHeader.html"
+                        aria-label="QPageHeader"
+                        ><!---->QPageHeader<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QPagination.html"
+                        aria-label="QPagination 📖"
+                        ><!---->QPagination 📖<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QPopover.html"
+                        aria-label="QPopover 💬"
+                        ><!---->QPopover 💬<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QProgress.html"
+                        aria-label="QProgress"
+                        ><!---->QProgress<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QProgressIndicatior.html"
+                        aria-label="QProgressIndicatior"
+                        ><!---->QProgressIndicatior<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QRadio.html"
+                        aria-label="QRadio 📻"
+                        ><!---->QRadio 📻<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QResult.html"
+                        aria-label="QResult"
+                        ><!---->QResult<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QRadioGroup.html"
+                        aria-label="QRadioGroup"
+                        ><!---->QRadioGroup<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QScrollbar.html"
+                        aria-label="QScrollbar 📜"
+                        ><!---->QScrollbar 📜<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QSegmented.html"
+                        aria-label="QSegmented"
+                        ><!---->QSegmented<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QSelect.html"
+                        aria-label="QSelect 🔽"
+                        ><!---->QSelect 🔽<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QSpace.html"
+                        aria-label="QSpace"
+                        ><!---->QSpace<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QSkeleton.html"
+                        aria-label="QSkeleton"
+                        ><!---->QSkeleton<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QSlider.html"
+                        aria-label="QSlider 🎚️"
+                        ><!---->QSlider 🎚️<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QStatistic.html"
+                        aria-label="QStatistic"
+                        ><!---->QStatistic<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QSteps.html"
+                        aria-label="QSteps"
+                        ><!---->QSteps<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QSwitch.html"
+                        aria-label="QSwitch 🔛"
+                        ><!---->QSwitch 🔛<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTable.html"
+                        aria-label="QTable"
+                        ><!---->QTable<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTabs.html"
+                        aria-label="QTabs 🗂️"
+                        ><!---->QTabs 🗂️<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTag.html"
+                        aria-label="QTag #️⃣"
+                        ><!---->QTag #️⃣<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTextarea.html"
+                        aria-label="QTextarea 📝"
+                        ><!---->QTextarea 📝<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTimeline.html"
+                        aria-label="QTimeline"
+                        ><!---->QTimeline<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTimePicker.html"
+                        aria-label="QTimePicker"
+                        ><!---->QTimePicker<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTooltip.html"
+                        aria-label="QTooltip"
+                        ><!---->QTooltip<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTransfer.html"
+                        aria-label="QTransfer"
+                        ><!---->QTransfer<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTree.html"
+                        aria-label="QTree"
+                        ><!---->QTree<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTreeSelect.html"
+                        aria-label="QTreeSelect"
+                        ><!---->QTreeSelect<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QBackTop.html"
+                        aria-label="QBackTop"
+                        ><!---->QBackTop<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QCarousel.html"
+                        aria-label="QCarousel"
+                        ><!---->QCarousel<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QRate.html"
+                        aria-label="QRate"
+                        ><!---->QRate<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QUpload.html"
+                        aria-label="QUpload 📤"
+                        ><!---->QUpload 📤<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QAnchor.html"
+                        aria-label="QAnchor"
+                        ><!---->QAnchor<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QAffix.html"
+                        aria-label="QAffix"
+                        ><!---->QAffix<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTitle.html"
+                        aria-label="QTitle"
+                        ><!---->QTitle<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QText.html"
+                        aria-label="QText"
+                        ><!---->QText<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QParagraph.html"
+                        aria-label="QParagraph"
+                        ><!---->QParagraph<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QMentions.html"
+                        aria-label="QMentions"
+                        ><!---->QMentions<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QCalendar.html"
+                        aria-label="QCalendar"
+                        ><!---->QCalendar<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QWatermark.html"
+                        aria-label="QWatermark"
+                        ><!---->QWatermark<!----></a
+                      >
+                    </li>
+                    <li class="navbar-dropdown-item">
+                      <a
+                        class="route-link auto-link"
+                        href="/design-system/components/QTour.html"
+                        aria-label="QTour"
+                        ><!---->QTour<!----></a
+                      >
+                    </li>
+                    <!--]-->
+                  </ul>
+                </div>
+              </div>
+              <div class="navbar-item">
+                <a
+                  class="route-link auto-link"
+                  href="/design-system/design-system/storybook/"
+                  aria-label="Storybook"
+                  ><!---->Storybook<!----></a
+                >
+              </div>
+              <div class="navbar-item">
+                <a
+                  class="auto-link external-link"
+                  href="https://github.com/shamilfrontend/design-system"
+                  aria-label="Github"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  ><!---->Github<!----></a
+                >
+              </div>
+              <!--]-->
+            </nav>
+            <!--[--><!--]--><button
+              class="toggle-color-mode-button"
+              title="toggle color mode"
+            >
+              <svg
+                class="icon"
+                focusable="false"
+                viewBox="0 0 32 32"
+                style=""
+              >
+                <path
+                  d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M2 15.005h5v2H2z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M15 25.005h2v5h-2z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M25 15.005h5v2h-5z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M15 2.005h2v5h-2z"
+                  fill="currentColor"
+                ></path></svg
+              ><svg
+                class="icon"
+                focusable="false"
+                viewBox="0 0 32 32"
+                style="display: none"
+              >
+                <path
+                  d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z"
+                  fill="currentColor"
+                ></path>
+              </svg></button
+            ><!---->
+          </div>
+        </header>
+        <!--]-->
+        <div class="sidebar-mask"></div>
+        <!--[-->
+        <aside class="sidebar">
+          <nav
+            class="navbar-items"
+            aria-label="site navigation"
+          >
+            <!--[-->
+            <div class="navbar-item">
+              <a
+                class="route-link auto-link"
+                href="/design-system/guide/getting-started.html"
+                aria-label="Гайд"
+                ><!---->Гайд<!----></a
+              >
+            </div>
+            <div class="navbar-item">
+              <div class="navbar-dropdown-wrapper">
+                <button
+                  class="navbar-dropdown-title"
+                  type="button"
+                  aria-label="Components"
+                >
+                  <span class="title">Components</span
+                  ><span class="arrow down"></span></button
+                ><button
+                  class="navbar-dropdown-title-mobile"
+                  type="button"
+                  aria-label="Components"
+                >
+                  <span class="title">Components</span
+                  ><span class="right arrow"></span>
+                </button>
+                <ul
+                  class="navbar-dropdown"
+                  style="display: none"
+                >
+                  <!--[-->
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link route-link-active auto-link"
+                      href="/design-system/components/Layout.html"
+                      aria-label="Layout 🧱"
+                      ><!---->Layout 🧱<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QAlert.html"
+                      aria-label="QAlert"
+                      ><!---->QAlert<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QAutoComplete.html"
+                      aria-label="QAutoComplete"
+                      ><!---->QAutoComplete<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QAvatar.html"
+                      aria-label="QAvatar"
+                      ><!---->QAvatar<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QBadge.html"
+                      aria-label="QBadge"
+                      ><!---->QBadge<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QBreadcrumbs.html"
+                      aria-label="QBreadcrumbs 🍞"
+                      ><!---->QBreadcrumbs 🍞<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QButton.html"
+                      aria-label="QButton 🆗"
+                      ><!---->QButton 🆗<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QCard.html"
+                      aria-label="QCard"
+                      ><!---->QCard<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QCascader.html"
+                      aria-label="QCascader 🪜"
+                      ><!---->QCascader 🪜<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QCheckbox.html"
+                      aria-label="QCheckbox ✔️"
+                      ><!---->QCheckbox ✔️<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QCheckboxGroup.html"
+                      aria-label="QCheckboxGroup ✔️✔️✔️"
+                      ><!---->QCheckboxGroup ✔️✔️✔️<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QCollapse.html"
+                      aria-label="QCollapse 🪗"
+                      ><!---->QCollapse 🪗<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QColorpicker.html"
+                      aria-label="QColorpicker 🎨"
+                      ><!---->QColorpicker 🎨<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QContextMenu.html"
+                      aria-label="QContextMenu 📎"
+                      ><!---->QContextMenu 📎<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QDatepicker.html"
+                      aria-label="QDatepicker 📅"
+                      ><!---->QDatepicker 📅<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QDescriptions.html"
+                      aria-label="QDescriptions"
+                      ><!---->QDescriptions<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QDialog.html"
+                      aria-label="QDialog"
+                      ><!---->QDialog<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QDivider.html"
+                      aria-label="QDivider"
+                      ><!---->QDivider<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QDrawer.html"
+                      aria-label="QDrawer"
+                      ><!---->QDrawer<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QDropdown.html"
+                      aria-label="QDropdown"
+                      ><!---->QDropdown<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QEmpty.html"
+                      aria-label="QEmpty"
+                      ><!---->QEmpty<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QForm.html"
+                      aria-label="QForm ✉️"
+                      ><!---->QForm ✉️<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QIcon.html"
+                      aria-label="QIcon"
+                      ><!---->QIcon<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QImage.html"
+                      aria-label="QImage"
+                      ><!---->QImage<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QInput.html"
+                      aria-label="QInput ⌨️"
+                      ><!---->QInput ⌨️<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QInputNumber.html"
+                      aria-label="QInputNumber 🔢"
+                      ><!---->QInputNumber 🔢<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QLayout.html"
+                      aria-label="QLayout"
+                      ><!---->QLayout<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QLink.html"
+                      aria-label="QLink"
+                      ><!---->QLink<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QList.html"
+                      aria-label="QList"
+                      ><!---->QList<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QLoading.html"
+                      aria-label="QLoading"
+                      ><!---->QLoading<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QMenu.html"
+                      aria-label="QMenu"
+                      ><!---->QMenu<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QMessageBox.html"
+                      aria-label="QMessageBox"
+                      ><!---->QMessageBox<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QNotification.html"
+                      aria-label="QNotification"
+                      ><!---->QNotification<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QPageHeader.html"
+                      aria-label="QPageHeader"
+                      ><!---->QPageHeader<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QPagination.html"
+                      aria-label="QPagination 📖"
+                      ><!---->QPagination 📖<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QPopover.html"
+                      aria-label="QPopover 💬"
+                      ><!---->QPopover 💬<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QProgress.html"
+                      aria-label="QProgress"
+                      ><!---->QProgress<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QProgressIndicatior.html"
+                      aria-label="QProgressIndicatior"
+                      ><!---->QProgressIndicatior<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QRadio.html"
+                      aria-label="QRadio 📻"
+                      ><!---->QRadio 📻<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QResult.html"
+                      aria-label="QResult"
+                      ><!---->QResult<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QRadioGroup.html"
+                      aria-label="QRadioGroup"
+                      ><!---->QRadioGroup<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QScrollbar.html"
+                      aria-label="QScrollbar 📜"
+                      ><!---->QScrollbar 📜<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QSegmented.html"
+                      aria-label="QSegmented"
+                      ><!---->QSegmented<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QSelect.html"
+                      aria-label="QSelect 🔽"
+                      ><!---->QSelect 🔽<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QSpace.html"
+                      aria-label="QSpace"
+                      ><!---->QSpace<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QSkeleton.html"
+                      aria-label="QSkeleton"
+                      ><!---->QSkeleton<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QSlider.html"
+                      aria-label="QSlider 🎚️"
+                      ><!---->QSlider 🎚️<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QStatistic.html"
+                      aria-label="QStatistic"
+                      ><!---->QStatistic<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QSteps.html"
+                      aria-label="QSteps"
+                      ><!---->QSteps<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QSwitch.html"
+                      aria-label="QSwitch 🔛"
+                      ><!---->QSwitch 🔛<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTable.html"
+                      aria-label="QTable"
+                      ><!---->QTable<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTabs.html"
+                      aria-label="QTabs 🗂️"
+                      ><!---->QTabs 🗂️<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTag.html"
+                      aria-label="QTag #️⃣"
+                      ><!---->QTag #️⃣<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTextarea.html"
+                      aria-label="QTextarea 📝"
+                      ><!---->QTextarea 📝<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTimeline.html"
+                      aria-label="QTimeline"
+                      ><!---->QTimeline<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTimePicker.html"
+                      aria-label="QTimePicker"
+                      ><!---->QTimePicker<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTooltip.html"
+                      aria-label="QTooltip"
+                      ><!---->QTooltip<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTransfer.html"
+                      aria-label="QTransfer"
+                      ><!---->QTransfer<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTree.html"
+                      aria-label="QTree"
+                      ><!---->QTree<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTreeSelect.html"
+                      aria-label="QTreeSelect"
+                      ><!---->QTreeSelect<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QBackTop.html"
+                      aria-label="QBackTop"
+                      ><!---->QBackTop<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QCarousel.html"
+                      aria-label="QCarousel"
+                      ><!---->QCarousel<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QRate.html"
+                      aria-label="QRate"
+                      ><!---->QRate<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QUpload.html"
+                      aria-label="QUpload 📤"
+                      ><!---->QUpload 📤<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QAnchor.html"
+                      aria-label="QAnchor"
+                      ><!---->QAnchor<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QAffix.html"
+                      aria-label="QAffix"
+                      ><!---->QAffix<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTitle.html"
+                      aria-label="QTitle"
+                      ><!---->QTitle<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QText.html"
+                      aria-label="QText"
+                      ><!---->QText<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QParagraph.html"
+                      aria-label="QParagraph"
+                      ><!---->QParagraph<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QMentions.html"
+                      aria-label="QMentions"
+                      ><!---->QMentions<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QCalendar.html"
+                      aria-label="QCalendar"
+                      ><!---->QCalendar<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QWatermark.html"
+                      aria-label="QWatermark"
+                      ><!---->QWatermark<!----></a
+                    >
+                  </li>
+                  <li class="navbar-dropdown-item">
+                    <a
+                      class="route-link auto-link"
+                      href="/design-system/components/QTour.html"
+                      aria-label="QTour"
+                      ><!---->QTour<!----></a
+                    >
+                  </li>
+                  <!--]-->
+                </ul>
+              </div>
+            </div>
+            <div class="navbar-item">
+              <a
+                class="route-link auto-link"
+                href="/design-system/design-system/storybook/"
+                aria-label="Storybook"
+                ><!---->Storybook<!----></a
+              >
+            </div>
+            <div class="navbar-item">
+              <a
+                class="auto-link external-link"
+                href="https://github.com/shamilfrontend/design-system"
+                aria-label="Github"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><!---->Github<!----></a
+              >
+            </div>
+            <!--]-->
+          </nav>
+          <!--[--><!--]-->
+          <ul class="sidebar-items">
+            <!--[-->
+            <li>
+              <p
+                tabindex="0"
+                class="sidebar-item sidebar-heading active"
+              >
+                Components
+                <!---->
+              </p>
+              <ul
+                class="sidebar-item-children"
+                style=""
+              >
+                <!--[-->
+                <li>
+                  <a
+                    class="route-link route-link-active auto-link sidebar-item active"
+                    href="/design-system/components/Layout.html"
+                    aria-label="Layout 🧱"
+                    ><!---->Layout 🧱<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QAlert.html"
+                    aria-label="QAlert"
+                    ><!---->QAlert<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QAutoComplete.html"
+                    aria-label="QAutoComplete"
+                    ><!---->QAutoComplete<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QAvatar.html"
+                    aria-label="QAvatar"
+                    ><!---->QAvatar<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QBadge.html"
+                    aria-label="QBadge"
+                    ><!---->QBadge<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QBreadcrumbs.html"
+                    aria-label="QBreadcrumbs 🍞"
+                    ><!---->QBreadcrumbs 🍞<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QButton.html"
+                    aria-label="QButton 🆗"
+                    ><!---->QButton 🆗<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QCard.html"
+                    aria-label="QCard"
+                    ><!---->QCard<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QCascader.html"
+                    aria-label="QCascader 🪜"
+                    ><!---->QCascader 🪜<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QCheckbox.html"
+                    aria-label="QCheckbox ✔️"
+                    ><!---->QCheckbox ✔️<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QCheckboxGroup.html"
+                    aria-label="QCheckboxGroup ✔️✔️✔️"
+                    ><!---->QCheckboxGroup ✔️✔️✔️<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QCollapse.html"
+                    aria-label="QCollapse 🪗"
+                    ><!---->QCollapse 🪗<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QColorpicker.html"
+                    aria-label="QColorpicker 🎨"
+                    ><!---->QColorpicker 🎨<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QContextMenu.html"
+                    aria-label="QContextMenu 📎"
+                    ><!---->QContextMenu 📎<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QDatepicker.html"
+                    aria-label="QDatepicker 📅"
+                    ><!---->QDatepicker 📅<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QDescriptions.html"
+                    aria-label="QDescriptions"
+                    ><!---->QDescriptions<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QDialog.html"
+                    aria-label="QDialog"
+                    ><!---->QDialog<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QDivider.html"
+                    aria-label="QDivider"
+                    ><!---->QDivider<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QDrawer.html"
+                    aria-label="QDrawer"
+                    ><!---->QDrawer<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QDropdown.html"
+                    aria-label="QDropdown"
+                    ><!---->QDropdown<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QEmpty.html"
+                    aria-label="QEmpty"
+                    ><!---->QEmpty<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QForm.html"
+                    aria-label="QForm ✉️"
+                    ><!---->QForm ✉️<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QIcon.html"
+                    aria-label="QIcon"
+                    ><!---->QIcon<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QImage.html"
+                    aria-label="QImage"
+                    ><!---->QImage<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QInput.html"
+                    aria-label="QInput ⌨️"
+                    ><!---->QInput ⌨️<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QInputNumber.html"
+                    aria-label="QInputNumber 🔢"
+                    ><!---->QInputNumber 🔢<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QLayout.html"
+                    aria-label="QLayout"
+                    ><!---->QLayout<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QLink.html"
+                    aria-label="QLink"
+                    ><!---->QLink<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QList.html"
+                    aria-label="QList"
+                    ><!---->QList<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QLoading.html"
+                    aria-label="QLoading"
+                    ><!---->QLoading<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QMenu.html"
+                    aria-label="QMenu"
+                    ><!---->QMenu<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QMessageBox.html"
+                    aria-label="QMessageBox"
+                    ><!---->QMessageBox<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QNotification.html"
+                    aria-label="QNotification"
+                    ><!---->QNotification<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QPageHeader.html"
+                    aria-label="QPageHeader"
+                    ><!---->QPageHeader<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QPagination.html"
+                    aria-label="QPagination 📖"
+                    ><!---->QPagination 📖<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QPopover.html"
+                    aria-label="QPopover 💬"
+                    ><!---->QPopover 💬<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QProgress.html"
+                    aria-label="QProgress"
+                    ><!---->QProgress<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QProgressIndicatior.html"
+                    aria-label="QProgressIndicatior"
+                    ><!---->QProgressIndicatior<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QRadio.html"
+                    aria-label="QRadio 📻"
+                    ><!---->QRadio 📻<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QResult.html"
+                    aria-label="QResult"
+                    ><!---->QResult<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QRadioGroup.html"
+                    aria-label="QRadioGroup"
+                    ><!---->QRadioGroup<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QScrollbar.html"
+                    aria-label="QScrollbar 📜"
+                    ><!---->QScrollbar 📜<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QSegmented.html"
+                    aria-label="QSegmented"
+                    ><!---->QSegmented<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QSelect.html"
+                    aria-label="QSelect 🔽"
+                    ><!---->QSelect 🔽<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QSpace.html"
+                    aria-label="QSpace"
+                    ><!---->QSpace<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QSkeleton.html"
+                    aria-label="QSkeleton"
+                    ><!---->QSkeleton<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QSlider.html"
+                    aria-label="QSlider 🎚️"
+                    ><!---->QSlider 🎚️<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QStatistic.html"
+                    aria-label="QStatistic"
+                    ><!---->QStatistic<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QSteps.html"
+                    aria-label="QSteps"
+                    ><!---->QSteps<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QSwitch.html"
+                    aria-label="QSwitch 🔛"
+                    ><!---->QSwitch 🔛<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTable.html"
+                    aria-label="QTable"
+                    ><!---->QTable<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTabs.html"
+                    aria-label="QTabs 🗂️"
+                    ><!---->QTabs 🗂️<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTag.html"
+                    aria-label="QTag #️⃣"
+                    ><!---->QTag #️⃣<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTextarea.html"
+                    aria-label="QTextarea 📝"
+                    ><!---->QTextarea 📝<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTimeline.html"
+                    aria-label="QTimeline"
+                    ><!---->QTimeline<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTimePicker.html"
+                    aria-label="QTimePicker"
+                    ><!---->QTimePicker<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTooltip.html"
+                    aria-label="QTooltip"
+                    ><!---->QTooltip<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTransfer.html"
+                    aria-label="QTransfer"
+                    ><!---->QTransfer<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTree.html"
+                    aria-label="QTree"
+                    ><!---->QTree<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTreeSelect.html"
+                    aria-label="QTreeSelect"
+                    ><!---->QTreeSelect<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QBackTop.html"
+                    aria-label="QBackTop"
+                    ><!---->QBackTop<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QCarousel.html"
+                    aria-label="QCarousel"
+                    ><!---->QCarousel<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QRate.html"
+                    aria-label="QRate"
+                    ><!---->QRate<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QUpload.html"
+                    aria-label="QUpload 📤"
+                    ><!---->QUpload 📤<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QAnchor.html"
+                    aria-label="QAnchor"
+                    ><!---->QAnchor<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QAffix.html"
+                    aria-label="QAffix"
+                    ><!---->QAffix<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTitle.html"
+                    aria-label="QTitle"
+                    ><!---->QTitle<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QText.html"
+                    aria-label="QText"
+                    ><!---->QText<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QParagraph.html"
+                    aria-label="QParagraph"
+                    ><!---->QParagraph<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QMentions.html"
+                    aria-label="QMentions"
+                    ><!---->QMentions<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QCalendar.html"
+                    aria-label="QCalendar"
+                    ><!---->QCalendar<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QWatermark.html"
+                    aria-label="QWatermark"
+                    ><!---->QWatermark<!----></a
+                  ><!---->
+                </li>
+                <li>
+                  <a
+                    class="route-link auto-link sidebar-item"
+                    href="/design-system/components/QTour.html"
+                    aria-label="QTour"
+                    ><!---->QTour<!----></a
+                  ><!---->
+                </li>
+                <!--]-->
+              </ul>
+            </li>
+            <!--]-->
+          </ul>
+          <!--[--><!--]-->
+        </aside>
+        <!--]--><!--[-->
+        <main class="page">
+          <!--[--><!--]-->
+          <div class="theme-default-content">
+            <!--[--><!--]-->
+            <div>
+              <h1
+                id="layout-🧱"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#layout-🧱"
+                  ><span>Layout 🧱</span></a
+                >
+              </h1>
+              <p>
+                Design System supports 12-column <code>flex</code> based layout.
+                To define your layout start with
+                <code>&lt;q-row&gt;</code> component, and then add
+                <code>&lt;q-col&gt;</code> with <code>cols</code> property. You
+                can try it out in a sandbox
+                <a
+                  href="https://github.com/shamilfrontend/design-system"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >story</a
+                >.
+              </p>
+              <p>Default view:</p>
+              <iframe
+                height="340"
+                style="width: 100%"
+                scrolling="no"
+                frameborder="no"
+                src="/Layout/Layout.html"
+              ></iframe>
+              <h2
+                id="examples"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#examples"
+                  ><span>Examples</span></a
+                >
+              </h2>
+              <p>Default view code example below:</p>
+              <pre><code class="language-vue">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-row</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__row<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__col<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__col<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>4<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__col<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__col<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>5<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__col<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>7<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-row</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+              <h2
+                id="qcol-props"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#qcol-props"
+                  ><span>QCol Props</span></a
+                >
+              </h2>
+              <p><code>QCol</code> uses these props</p>
+              <pre><code class="language-ts"><span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token punctuation">{</span>
+  tag<span class="token operator">:</span> <span class="token string">&#39;div&#39;</span><span class="token punctuation">,</span>
+  cols<span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+  offset<span class="token operator">:</span> <span class="token number">3</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+              <iframe
+                height="340"
+                style="width: 100%"
+                scrolling="no"
+                frameborder="no"
+                src="/Layout/Layout[qcol].html"
+              ></iframe>
+              <pre><code class="language-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-row</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__row<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span>
+    <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__col<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:tag</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>args.tag<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>args.cols<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:offset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>args.offset<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-row</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+              <h3
+                id="tag"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#tag"
+                  ><span>tag</span></a
+                >
+              </h3>
+              <p>Custom HTML tag.</p>
+              <ul>
+                <li>Type: <code>String</code></li>
+                <li>Default: <code>div</code></li>
+              </ul>
+              <h3
+                id="cols"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#cols"
+                  ><span>cols</span></a
+                >
+              </h3>
+              <p>Columns count for the current element (affects the width).</p>
+              <p><code>auto || [1-12]</code></p>
+              <ul>
+                <li>Type: <code>String</code> or <code>Number</code></li>
+                <li>Default: <code>auto</code></li>
+              </ul>
+              <h3
+                id="offset"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#offset"
+                  ><span>offset</span></a
+                >
+              </h3>
+              <p>Columns count for the left margin of the current element.</p>
+              <p><code>[0-11]</code></p>
+              <ul>
+                <li>Type: <code>String</code> or <code>Number</code></li>
+                <li>Default: <code>null</code></li>
+              </ul>
+              <h2
+                id="qrow-props"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#qrow-props"
+                  ><span>QRow Props</span></a
+                >
+              </h2>
+              <p><code>QRow</code> uses these props</p>
+              <pre><code class="language-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-row</span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__row<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">:align-v</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>args.alignV<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">:align-h</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>args.alignH<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">:tag</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>args.tag<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block-col<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__col<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>4<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q-col</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__col<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>block__content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-col</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q-row</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+              <h3
+                id="tag-1"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#tag-1"
+                  ><span>tag</span></a
+                >
+              </h3>
+              <p>Custom HTML tag.</p>
+              <ul>
+                <li>Type: <code>String</code></li>
+                <li>Default: <code>div</code></li>
+              </ul>
+              <h3
+                id="alignv"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#alignv"
+                  ><span>alignV</span></a
+                >
+              </h3>
+              <p>
+                Vertical alignment. Similar to <code>align-content</code> from
+                <code>flex</code> layout.
+              </p>
+              <ul>
+                <li>Type: <code>String</code></li>
+                <li>Default: <code>null</code></li>
+              </ul>
+              <h3
+                id="alignh"
+                tabindex="-1"
+              >
+                <a
+                  class="header-anchor"
+                  href="#alignh"
+                  ><span>alignH</span></a
+                >
+              </h3>
+              <p>
+                Horizontal alignment. Similar to
+                <code>flex-direction</code> from <code>flex</code> layout
+              </p>
+              <ul>
+                <li>Type: <code>String</code></li>
+                <li>Default: <code>null</code></li>
+              </ul>
+            </div>
+            <!--[--><!--]-->
+          </div>
+          <footer class="vp-page-meta">
+            <!---->
+            <div class="vp-meta-item git-info">
+              <div class="vp-meta-item last-updated">
+                <span class="meta-item-label">Last Updated: </span
+                ><!---->
+              </div>
+              <div class="vp-meta-item contributors">
+                <span class="meta-item-label">Contributors: </span
+                ><span class="meta-item-info"
+                  ><!--[--><!--[--><span
+                    class="contributor"
+                    title="email: Shamil.Alisultanov@transitcard.ru"
+                    >Alisultanov Shamil</span
+                  ><!----><!--]--><!--]--></span
+                >
+              </div>
+            </div>
+          </footer>
+          <nav
+            class="vp-page-nav"
+            aria-label="page navigation"
+          >
+            <!----><a
+              class="route-link auto-link next"
+              href="/design-system/components/QAlert.html"
+              aria-label="QAlert"
+              ><div class="hint">Next <span class="arrow right"></span></div>
+              <div class="link"><span>QAlert</span></div></a
+            >
+          </nav>
+          <!--[--><!--]-->
+        </main>
+        <!--]-->
+      </div>
+      <!--[--><!----><!--]--><!--]-->
+    </div>
+    <script
+      type="module"
+      src="/design-system/assets/app-CIsYDi5X.js"
+      defer
+    ></script>
+  </body>
+</html>

@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/vue3-vite';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
+const storybookBase = process.env.STORYBOOK_BASE ?? '/';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(ts|js)'],
@@ -32,6 +33,10 @@ const config: StorybookConfig = {
       lib: undefined,
       rollupOptions: undefined
     };
+
+    viteConfig.base = storybookBase.endsWith('/')
+      ? storybookBase
+      : `${storybookBase}/`;
 
     return viteConfig;
   }

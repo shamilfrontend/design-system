@@ -1,0 +1,19 @@
+import { Component, Ref } from 'vue';
+import { Nullable } from '../../../../types/helpers';
+export type QCollapsePropModelValue = Nullable<
+  string | number | (string | number)[]
+>;
+export interface QCollapseProps {
+  modelValue: QCollapsePropModelValue;
+  accordion: Nullable<boolean>;
+  openIcon: Nullable<Component>;
+  closeIcon: Nullable<Component>;
+}
+export interface QCollapseProvider {
+  uniqueId: (prefix?: string) => string;
+  activeNames: Ref<(string | number)[]>;
+  updateValue: (name: string | number) => void;
+  openIcon: Nullable<Component | string>;
+  closeIcon: Nullable<Component | string>;
+}
+export type QCollapseInstance = void;

@@ -6,6 +6,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 const configDir = path.resolve(process.cwd(), 'docs/.vuepress');
 const isAnalyze = process.env.ANALYZE === 'true';
+const pagesBase = process.env.VUEPRESS_BASE ?? '/';
 
 const componentPages = [
   '/components/Layout.md',
@@ -84,7 +85,7 @@ const componentPages = [
 ];
 
 export default defineUserConfig({
-  base: '/',
+  base: pagesBase,
   lang: 'ru-RU',
   title: 'Design System',
   description:
@@ -126,7 +127,8 @@ export default defineUserConfig({
       },
       {
         text: 'Storybook',
-        link: 'https://github.com/shamilfrontend/design-system'
+        link:
+          pagesBase === '/' ? 'http://localhost:6006' : `${pagesBase}storybook/`
       },
       {
         text: 'Github',
