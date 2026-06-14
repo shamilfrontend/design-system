@@ -1,5 +1,5 @@
-@import './components/QSliderButton/q-slider-button';
-@import './components/QSliderCaptions/q-slider-captions';
+@use './components/QSliderButton/q-slider-button';
+@use './components/QSliderCaptions/q-slider-captions';
 
 .q-slider {
   --box-shadow-line: none;

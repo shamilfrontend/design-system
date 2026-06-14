@@ -4,7 +4,7 @@ import { defineComponent } from 'vue';
 import { QContainer } from '@/qComponents/QLayout';
 
 const storyMetadata: Meta = {
-  title: 'Components/QContainer',
+  title: 'Basic/QContainer',
   component: QContainer
 };
 

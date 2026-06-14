@@ -1,8 +1,8 @@
-@import './QCascaderInput/q-cascader-input';
-@import './QCascaderDropdown/q-cascader-dropdown';
-@import './QCascaderColumn/q-cascader-column';
-@import './QCascaderRow/q-cascader-row';
-@import './QCascaderTags/q-cascader-tags';
+@use './QCascaderInput/q-cascader-input';
+@use './QCascaderDropdown/q-cascader-dropdown';
+@use './QCascaderColumn/q-cascader-column';
+@use './QCascaderRow/q-cascader-row';
+@use './QCascaderTags/q-cascader-tags';
 
 .q-cascader {
   position: relative;

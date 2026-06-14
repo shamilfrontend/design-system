@@ -7,7 +7,7 @@ import type { QInputProps } from '@/qComponents/QInput';
 import iconsList from '../core/iconsList';
 
 const storyMetadata: Meta = {
-  title: 'Components/QInput',
+  title: 'Form/QInput',
   component: QInput,
   argTypes: {
     placeholder: { control: { type: 'text' } },

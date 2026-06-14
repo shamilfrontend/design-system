@@ -1,13 +1,13 @@
-@import './QTableEmpty/q-table-empty';
-@import './QTableContainer/q-table-container';
-@import './QTableT/q-table-t';
-@import './QTableTHead/q-table-t-head';
-@import './QTableTHead/QTableTHeadCell/q-table-t-head-cell';
-@import './QTableTTotal/q-table-t-total';
-@import './QTableTTotal/QTableTTotalCell/q-table-t-total-cell';
-@import './QTableTBody/q-table-t-body';
-@import './QTableTBody/QTableTBodyCell/q-table-t-body-cell';
-@import './QTableTBody/QTableTBodyRow/q-table-t-body-row';
+@use './QTableEmpty/q-table-empty';
+@use './QTableContainer/q-table-container';
+@use './QTableT/q-table-t';
+@use './QTableTHead/q-table-t-head';
+@use './QTableTHead/QTableTHeadCell/q-table-t-head-cell';
+@use './QTableTTotal/q-table-t-total';
+@use './QTableTTotal/QTableTTotalCell/q-table-t-total-cell';
+@use './QTableTBody/q-table-t-body';
+@use './QTableTBody/QTableTBodyCell/q-table-t-body-cell';
+@use './QTableTBody/QTableTBodyRow/q-table-t-body-row';
 
 .q-table {
   --table-box-shadow-base: 4px 0 8px -4px rgb(var(--color-rgb-shadow) / 20%);

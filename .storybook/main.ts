@@ -11,7 +11,9 @@ const config: StorybookConfig = {
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/vue3-vite',
-    options: {}
+    options: {
+      docgen: 'vue-component-meta'
+    }
   },
   async viteFinal(viteConfig) {
     viteConfig.plugins = viteConfig.plugins?.filter(

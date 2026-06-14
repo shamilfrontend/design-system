@@ -6,7 +6,7 @@ import { QCheckboxGroup } from '@/qComponents/QCheckboxGroup';
 import type { QCheckboxGroupProps } from '@/qComponents/QCheckboxGroup';
 
 const storyMetadata: Meta = {
-  title: 'Components/QCheckboxGroup',
+  title: 'Form/QCheckboxGroup',
   component: QCheckboxGroup,
   argTypes: {
     direction: {

@@ -6,7 +6,7 @@ import type { QCollapseProps } from '@/qComponents/QCollapse';
 import { QCollapseItem } from '@/qComponents/QCollapseItem';
 
 const storyMetadata: Meta = {
-  title: 'Components/QCollapse',
+  title: 'Data/QCollapse',
   component: QCollapse,
   subcomponents: { QCollapseItem },
   argTypes: {

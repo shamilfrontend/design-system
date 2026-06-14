@@ -1,17 +1,8 @@
-import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { resolve } from 'path';
 
 import vue from '@vitejs/plugin-vue';
 import copy from 'rollup-plugin-copy';
-import sassPlugin from 'rollup-plugin-sass';
-import sass from 'sass';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
-
-interface StyleSheetIdAndContent {
-  id?: string;
-  content?: string;
-}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -30,15 +21,9 @@ export default defineConfig({
       }
     ]
   },
-  plugins: [
-    dts({
-      staticImport: true,
-      insertTypesEntry: true,
-      include: ['src/**/*.ts', 'src/**/*.vue', 'src/**/*.d.ts', 'types/**/*.ts']
-    }),
-    vue()
-  ],
+  plugins: [vue()],
   build: {
+    emptyOutDir: false,
     sourcemap: true,
     lib: {
       entry: resolve(__dirname, 'src/qComponents/index.ts'),
@@ -65,35 +50,6 @@ export default defineConfig({
         }
       ],
       plugins: [
-        sassPlugin({
-          runtime: sass,
-          output(_: string, styleNodes: StyleSheetIdAndContent[]) {
-            styleNodes.forEach(styleNode => {
-              const splittedPath = styleNode.id?.split('/') ?? [];
-              const fileName = splittedPath[splittedPath.length - 1].replace(
-                '.scss',
-                '.css'
-              );
-
-              if (!existsSync('dist')) mkdirSync('dist');
-              if (!existsSync('dist/css')) mkdirSync('dist/css');
-              if (!existsSync('dist/icons')) mkdirSync('dist/icons');
-              if (!existsSync('dist/fonts')) mkdirSync('dist/fonts');
-
-              let fileDir = 'css';
-              if ('icons.css'.includes(fileName)) {
-                fileDir = 'icons';
-              } else if ('fonts.css'.includes(fileName)) {
-                fileDir = 'fonts';
-              }
-
-              writeFileSync(
-                `dist/${fileDir}/${fileName}`,
-                styleNode?.content ?? ''
-              );
-            });
-          }
-        }),
         copy({
           targets: [
             {

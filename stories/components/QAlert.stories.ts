@@ -5,7 +5,7 @@ import { QAlert } from '@/qComponents/QAlert';
 import type { QAlertProps } from '@/qComponents/QAlert';
 
 const storyMetadata: Meta = {
-  title: 'Components/QAlert',
+  title: 'Feedback/QAlert',
   component: QAlert,
   argTypes: {
     type: {
@@ -50,7 +50,7 @@ Closable.args = {
   closable: true
 };
 
-export const Types = () =>
+export const Types: StoryFn = () =>
   defineComponent({
     components: { QAlert },
     template: `

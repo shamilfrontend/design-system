@@ -5,7 +5,7 @@ import { QSwitch } from '@/qComponents';
 import type { QSwitchProps } from '@/qComponents';
 
 const storyMetadata: Meta = {
-  title: 'Components/QSwitch',
+  title: 'Form/QSwitch',
   component: QSwitch,
 
   argTypes: {

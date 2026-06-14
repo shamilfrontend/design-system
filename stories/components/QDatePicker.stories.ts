@@ -11,7 +11,7 @@ import type {
 const now = new Date();
 
 const storyMetadata: Meta = {
-  title: 'Components/QDatePicker',
+  title: 'Form/QDatePicker',
   component: QDatePicker,
   argTypes: {
     'v-model': { control: false },

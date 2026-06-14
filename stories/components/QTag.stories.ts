@@ -5,7 +5,7 @@ import { QTag } from '@/qComponents/QTag';
 import type { QTagProps } from '@/qComponents/QTag';
 
 const storyMetadata: Meta = {
-  title: 'Components/QTag',
+  title: 'Data/QTag',
   component: QTag
 };
 

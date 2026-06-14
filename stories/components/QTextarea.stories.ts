@@ -5,7 +5,7 @@ import { QTextarea } from '@/qComponents/QTextarea';
 import type { QTextareaProps } from '@/qComponents/QTextarea';
 
 const storyMetadata: Meta = {
-  title: 'Components/QTextarea',
+  title: 'Form/QTextarea',
   component: QTextarea,
   argTypes: {
     placeholder: { category: 'Native attrs', control: { type: 'text' } },

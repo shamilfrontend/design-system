@@ -5,7 +5,7 @@ import { QCheckbox } from '@/qComponents/QCheckbox';
 import type { QCheckboxProps } from '@/qComponents/QCheckbox';
 
 const storyMetadata: Meta = {
-  title: 'Components/QCheckbox',
+  title: 'Form/QCheckbox',
   component: QCheckbox,
   argTypes: {
     modelValue: {

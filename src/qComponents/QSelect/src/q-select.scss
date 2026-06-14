@@ -1,5 +1,5 @@
-@import './components/QSelectTags/q-select-tags';
-@import './components/QSelectDropdown/q-select-dropdown';
+@use './components/QSelectTags/q-select-tags';
+@use './components/QSelectDropdown/q-select-dropdown';
 
 .q-select {
   position: relative;

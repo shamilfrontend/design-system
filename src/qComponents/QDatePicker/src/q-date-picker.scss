@@ -1,7 +1,7 @@
-@import './panel/q-picker-panel';
-@import './tables/DateTable/date-table';
-@import './tables/period-table';
-@import './mobile/q-dialog-mobile-panel';
+@use './panel/q-picker-panel';
+@use './tables/DateTable/date-table';
+@use './tables/period-table';
+@use './mobile/q-dialog-mobile-panel';
 
 .q-date-picker {
   --field-icon-color-base: var(--color-primary);

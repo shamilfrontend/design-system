@@ -5,7 +5,7 @@ import { QInputNumber } from '@/qComponents/QInputNumber';
 import type { QInputNumberProps } from '@/qComponents/QInputNumber';
 
 const storyMetadata: Meta = {
-  title: 'Components/QInputNumber',
+  title: 'Form/QInputNumber',
   component: QInputNumber,
   argTypes: {
     modelValue: { control: false },

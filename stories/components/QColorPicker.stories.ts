@@ -6,7 +6,7 @@ import { QColorPicker } from '@/qComponents/QColorPicker';
 import type { QColorPickerProps } from '@/qComponents/QColorPicker';
 
 const storyMetadata: Meta = {
-  title: 'Components/QColorPicker',
+  title: 'Form/QColorPicker',
   component: QColorPicker,
   argTypes: {
     modelValue: { control: false },

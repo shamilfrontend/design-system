@@ -10,13 +10,16 @@ import {
   zh as localeZh
 } from './constants/locales';
 import { setMessages, setI18n } from './locale';
+import { QAffix } from './QAffix';
 import { QAlert } from './QAlert';
+import { QAnchor } from './QAnchor';
 import { QAutoComplete } from './QAutoComplete';
 import { QAvatar } from './QAvatar';
 import { QBackTop } from './QBackTop';
 import { QBadge } from './QBadge';
 import { QBreadcrumbs } from './QBreadcrumbs';
 import { QButton } from './QButton';
+import { QCalendar } from './QCalendar';
 import { QCard } from './QCard';
 import { QCarousel, QCarouselItem } from './QCarousel';
 import { QCascader } from './QCascader';
@@ -31,6 +34,7 @@ import { QDatePicker } from './QDatePicker';
 import { QDescriptions, QDescriptionsItem } from './QDescriptions';
 import { QDialogModal } from './QDialog';
 import { QDivider } from './QDivider';
+import { QDrawerModal } from './QDrawer';
 import { QDropdown } from './QDropdown';
 import { QEmpty } from './QEmpty';
 import { QForm } from './QForm';
@@ -39,16 +43,11 @@ import { QIcon } from './QIcon';
 import { QImage } from './QImage';
 import { QInput } from './QInput';
 import { QInputNumber } from './QInputNumber';
-import {
-  QContainer,
-  QFooter,
-  QHeader,
-  QLayout,
-  QSidebar
-} from './QLayout';
+import { QContainer, QFooter, QHeader, QLayout, QSidebar } from './QLayout';
 import { QLink } from './QLink';
 import { QList, QListItem } from './QList';
-import { QLoading, QLoadingPlugin } from './QLoading';
+import { QLoadingPlugin } from './QLoading';
+import { QMentions } from './QMentions';
 import { QMenu, QMenuItem } from './QMenu';
 import { QNotification } from './QNotification';
 import { QOption } from './QOption';
@@ -57,9 +56,9 @@ import { QPagination } from './QPagination';
 import { QPopover } from './QPopover';
 import { QProgress } from './QProgress';
 import { QProgressIndicatior } from './QProgressIndicatior';
-import { QRate } from './QRate';
 import { QRadio } from './QRadio';
 import { QRadioGroup } from './QRadioGroup';
+import { QRate } from './QRate';
 import { QResult } from './QResult';
 import { QRow } from './QRow';
 import { QScrollbar } from './QScrollbar';
@@ -79,98 +78,14 @@ import { QTextarea } from './QTextarea';
 import { QTimeline } from './QTimeline';
 import { QTimePicker } from './QTimePicker';
 import { QTooltip } from './QTooltip';
+import { QTour } from './QTour';
 import { QTransfer } from './QTransfer';
 import { QTree } from './QTree';
 import { QTreeSelect } from './QTreeSelect';
-import { QUpload } from './QUpload';
-import { QAnchor } from './QAnchor';
-import { QAffix } from './QAffix';
 import { QTitle, QText, QParagraph } from './QTypography';
-import { QMentions } from './QMentions';
-import { QCalendar } from './QCalendar';
+import { QUpload } from './QUpload';
 import { QWatermark } from './QWatermark';
-import { QTour } from './QTour';
-import { QDrawerModal } from './QDrawer';
 import type { ConfigOptions } from './types';
-
-import '../fonts/fonts.scss';
-import '../icons/icons.scss';
-import '../main.scss';
-
-import './QBreadcrumbs/src/q-breadcrumbs.scss';
-import './QButton/src/q-button.scss';
-import './QCascader/src/q-cascader.scss';
-import './QAlert/src/q-alert.scss';
-import './QAutoComplete/src/q-autocomplete.scss';
-import './QAvatar/src/q-avatar.scss';
-import './QBackTop/src/q-back-top.scss';
-import './QBadge/src/q-badge.scss';
-import './QCard/src/q-card.scss';
-import './QCarousel/src/q-carousel.scss';
-import './QCheckbox/src/q-checkbox.scss';
-import './QCheckboxGroup/src/q-checkbox-group.scss';
-import './QCol/src/q-col.scss';
-import './QCollapseItem/src/q-collapse-item.scss';
-import './QColorPicker/src/q-color-picker.scss';
-import './QContextMenu/src/q-context-menu.scss';
-import './QDatePicker/src/q-date-picker.scss';
-import './QDescriptions/src/q-descriptions.scss';
-import './QDialog/src/q-dialog.scss';
-import './QDivider/src/q-divider.scss';
-import './QDrawer/src/q-drawer.scss';
-import './QDropdown/src/q-dropdown.scss';
-import './QEmpty/src/q-empty.scss';
-import './QFormItem/src/q-form-item.scss';
-import './QIcon/src/q-icon.scss';
-import './QInput/src/q-input.scss';
-import './QInputNumber/src/q-input-number.scss';
-import './QImage/src/q-image.scss';
-import './QLayout/src/q-layout.scss';
-import './QLink/src/q-link.scss';
-import './QList/src/q-list.scss';
-import './QLoading/src/q-loading.scss';
-import './QMenu/src/q-menu.scss';
-import './QMessageBox/src/q-message-box.scss';
-import './QNotification/src/q-notification.scss';
-import './QOption/src/q-option.scss';
-import './QPageHeader/src/q-page-header.scss';
-import './QPagination/src/q-pagination.scss';
-import './QPopover/src/q-popover.scss';
-import './QProgress/src/q-progress.scss';
-import './QProgressIndicatior/src/q-progress-indicatior.scss';
-import './QRate/src/q-rate.scss';
-import './QRadio/src/q-radio.scss';
-import './QRadioGroup/src/q-radio-group.scss';
-import './QResult/src/q-result.scss';
-import './QRow/src/q-row.scss';
-import './QScrollbar/src/q-scrollbar.scss';
-import './QSegmented/src/q-segmented.scss';
-import './QSelect/src/q-select.scss';
-import './QSlider/src/q-slider.scss';
-import './QSkeleton/src/q-skeleton.scss';
-import './QSpace/src/q-space.scss';
-import './QStatistic/src/q-statistic.scss';
-import './QSteps/src/q-steps.scss';
-import './QSwitch/src/q-switch.scss';
-import './QTable/src/q-table.scss';
-import './QTabPane/src/q-tab-pane.scss';
-import './QTabs/src/q-tabs.scss';
-import './QTag/src/q-tag.scss';
-import './QTextarea/src/q-textarea.scss';
-import './QTimeline/src/q-timeline.scss';
-import './QTimePicker/src/q-time-picker.scss';
-import './QTooltip/src/q-tooltip.scss';
-import './QTransfer/src/q-transfer.scss';
-import './QTree/src/q-tree.scss';
-import './QTreeSelect/src/q-tree-select.scss';
-import './QUpload/src/q-upload.scss';
-import './QAnchor/src/q-anchor.scss';
-import './QAffix/src/q-affix.scss';
-import './QTypography/src/q-typography.scss';
-import './QMentions/src/q-mentions.scss';
-import './QCalendar/src/q-calendar.scss';
-import './QWatermark/src/q-watermark.scss';
-import './QTour/src/q-tour.scss';
 
 const setupQui = ({
   localization: { locale, messages, i18n } = {},
@@ -295,7 +210,14 @@ const install = (app: App, config?: ConfigOptions): void => {
 };
 
 export default { install };
-export { createDesignSystem, setMessages, setI18n, localeEn, localeRu, localeZh };
+export {
+  createDesignSystem,
+  setMessages,
+  setI18n,
+  localeEn,
+  localeRu,
+  localeZh
+};
 
 export * from './QBreadcrumbs';
 export * from './QBackTop';

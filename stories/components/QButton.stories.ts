@@ -5,7 +5,7 @@ import { QButton } from '@/qComponents/QButton';
 import type { QButtonProps } from '@/qComponents/QButton';
 
 const storyMetadata: Meta = {
-  title: 'Components/QButton',
+  title: 'Basic/QButton',
   component: QButton,
   argTypes: {
     type: {

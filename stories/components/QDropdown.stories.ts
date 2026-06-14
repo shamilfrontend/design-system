@@ -6,7 +6,7 @@ import { QDropdown } from '@/qComponents/QDropdown';
 import { QMenu, QMenuItem } from '@/qComponents/QMenu';
 
 const storyMetadata: Meta = {
-  title: 'Components/QDropdown',
+  title: 'Navigation/QDropdown',
   component: QDropdown
 };
 

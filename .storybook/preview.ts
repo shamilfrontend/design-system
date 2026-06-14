@@ -47,6 +47,107 @@ const withTheme = (
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          'Intro',
+          'Basic',
+          [
+            'QButton',
+            'QContainer',
+            'QIcon',
+            'Layout',
+            'QLayout',
+            'QRow',
+            'QCol',
+            'QLink',
+            'QTitle',
+            'QScrollbar',
+            'QSpace'
+          ],
+          'Form',
+          [
+            'QAutoComplete',
+            'QCascader',
+            'QCheckbox',
+            'QCheckboxGroup',
+            'QColorPicker',
+            'QDatePicker',
+            'QForm',
+            'QInput',
+            'QInputNumber',
+            'QMentions',
+            'QRadio',
+            'QRadioGroup',
+            'QRate',
+            'QSelect',
+            'QSlider',
+            'QSwitch',
+            'QTimePicker',
+            'QTransfer',
+            'QTreeSelect',
+            'QUpload',
+            'QTextarea'
+          ],
+          'Data',
+          [
+            'QAvatar',
+            'QBadge',
+            'QCalendar',
+            'QCard',
+            'QCarousel',
+            'QCollapse',
+            'QDescriptions',
+            'QEmpty',
+            'QImage',
+            'QPagination',
+            'QProgress',
+            'QResult',
+            'QSkeleton',
+            'QTable',
+            'QTag',
+            'QTimeline',
+            'QTour',
+            'QTree',
+            'QStatistic',
+            'QSegmented',
+            'QList',
+            'QProgressIndicatior'
+          ],
+          'Navigation',
+          [
+            'QAffix',
+            'QAnchor',
+            'QBackTop',
+            'QBreadcrumbs',
+            'QDropdown',
+            'QMenu',
+            'QPageHeader',
+            'QSteps',
+            'QTabs',
+            'QContextMenu'
+          ],
+          'Feedback',
+          [
+            'QAlert',
+            'QDialog',
+            'QDialogModal',
+            'QDrawer',
+            'QDrawerModal',
+            'QLoading',
+            'QMessageBox',
+            'QNotification',
+            'QPopover',
+            'QTooltip'
+          ],
+          'Others',
+          ['QDivider', 'QWatermark'],
+          'Core',
+          ['Colors', 'Icons']
+        ],
+        method: 'alphabetical'
+      }
+    },
     layout: 'centered',
     controls: { expanded: true },
     backgrounds: {

@@ -5,7 +5,7 @@ import { QCascader } from '@/qComponents/QCascader';
 import type { QCascaderProps } from '@/qComponents/QCascader';
 
 const storyMetadata: Meta = {
-  title: 'Components/QCascader',
+  title: 'Form/QCascader',
   component: QCascader,
   argTypes: {
     modelValue: { control: false }

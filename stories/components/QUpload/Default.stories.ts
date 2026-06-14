@@ -15,7 +15,7 @@ interface FormModel {
 }
 
 const storyMetadata: Meta = {
-  title: 'Components/QUpload',
+  title: 'Form/QUpload',
   component: QUpload,
   argTypes: {
     multiple: { control: false },

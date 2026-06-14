@@ -13,7 +13,7 @@ import { QFormItem } from '@/qComponents/QFormItem';
 import type { UnwrappedInstance } from '#/helpers';
 
 const storyMetadata: Meta = {
-  title: 'Components/QForm',
+  title: 'Form/QForm',
   component: QForm,
   subcomponents: { QFormItem },
   argTypes: {

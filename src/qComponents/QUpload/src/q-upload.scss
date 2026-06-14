@@ -1,6 +1,6 @@
-@import './QUploadDropZone/q-upload-drop-zone';
-@import './QUploadFileSingle/q-upload-file-single';
-@import './QUploadFileMultiple/q-upload-file-multiple';
+@use './QUploadDropZone/q-upload-drop-zone';
+@use './QUploadFileSingle/q-upload-file-single';
+@use './QUploadFileMultiple/q-upload-file-multiple';
 
 .q-upload {
   --q-upload-size: 264px;

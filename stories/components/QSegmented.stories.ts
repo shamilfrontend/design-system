@@ -4,7 +4,7 @@ import { defineComponent, ref } from 'vue';
 import { QSegmented } from '@/qComponents/QSegmented';
 
 const storyMetadata: Meta = {
-  title: 'Components/QSegmented',
+  title: 'Data/QSegmented',
   component: QSegmented
 };
 

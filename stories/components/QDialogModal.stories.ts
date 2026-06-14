@@ -5,7 +5,7 @@ import { QButton } from '@/qComponents/QButton';
 import { QDialogModal } from '@/qComponents/QDialog';
 
 const storyMetadata: Meta = {
-  title: 'Components/QDialogModal',
+  title: 'Feedback/QDialogModal',
   component: QDialogModal
 };
 

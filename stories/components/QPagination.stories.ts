@@ -5,7 +5,7 @@ import { QPagination } from '@/qComponents/QPagination';
 import type { QPaginationProps } from '@/qComponents/QPagination';
 
 const storyMetadata: Meta = {
-  title: 'Components/QPagination',
+  title: 'Data/QPagination',
   component: QPagination
 };
 

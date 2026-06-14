@@ -7,7 +7,7 @@ import SlotCaption from './SlotCaption';
 import WithEmptyCaptions from './WithEmptyCaptions';
 
 const storyMetadata: Meta = {
-  title: 'Components/QSlider',
+  title: 'Form/QSlider',
   component: QSlider,
   argTypes: {
     tooltipMode: {

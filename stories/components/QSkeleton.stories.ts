@@ -5,7 +5,7 @@ import { QSkeleton } from '@/qComponents/QSkeleton';
 import type { QSkeletonProps } from '@/qComponents/QSkeleton';
 
 const storyMetadata: Meta = {
-  title: 'Components/QSkeleton',
+  title: 'Data/QSkeleton',
   component: QSkeleton,
   argTypes: {
     variant: {
@@ -49,7 +49,7 @@ Paragraph.args = {
   rows: 4
 };
 
-export const AvatarBlock = () =>
+export const AvatarBlock: StoryFn = () =>
   defineComponent({
     components: { QSkeleton },
     template: `
@@ -62,7 +62,7 @@ export const AvatarBlock = () =>
     `
   });
 
-export const CardPlaceholder = () =>
+export const CardPlaceholder: StoryFn = () =>
   defineComponent({
     components: { QSkeleton },
     template: `

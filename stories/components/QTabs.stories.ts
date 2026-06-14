@@ -6,7 +6,7 @@ import { QTabs } from '@/qComponents/QTabs';
 import type { QTabsProps } from '@/qComponents/QTabs';
 
 const storyMetadata: Meta = {
-  title: 'Components/QTabs',
+  title: 'Navigation/QTabs',
   component: QTabs,
   subcomponents: { QTabPane },
   argTypes: {

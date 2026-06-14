@@ -9,7 +9,7 @@ import type {
 } from '@/qComponents/QBreadcrumbs';
 
 const storyMetadata: Meta = {
-  title: 'Components/QBreadcrumbs',
+  title: 'Navigation/QBreadcrumbs',
   component: QBreadcrumbs,
   argTypes: {
     linkComponent: { control: false }

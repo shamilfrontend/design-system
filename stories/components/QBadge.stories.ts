@@ -2,12 +2,12 @@ import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
 import { QBadge } from '@/qComponents/QBadge';
+import type { QBadgeProps } from '@/qComponents/QBadge';
 import { QButton } from '@/qComponents/QButton';
 import { QIcon } from '@/qComponents/QIcon';
-import type { QBadgeProps } from '@/qComponents/QBadge';
 
 const storyMetadata: Meta = {
-  title: 'Components/QBadge',
+  title: 'Data/QBadge',
   component: QBadge,
   argTypes: {
     type: {
@@ -59,7 +59,7 @@ MaxValue.args = {
   max: 99
 };
 
-export const WithIcon = () =>
+export const WithIcon: StoryFn = () =>
   defineComponent({
     components: { QBadge, QIcon },
     template: `

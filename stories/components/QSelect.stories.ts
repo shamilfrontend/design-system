@@ -6,7 +6,7 @@ import { QSelect } from '@/qComponents/QSelect';
 import type { QSelectProps } from '@/qComponents/QSelect';
 
 const storyMetadata: Meta = {
-  title: 'Components/QSelect',
+  title: 'Form/QSelect',
   component: QSelect,
   subcomponents: { QOption },
   argTypes: {

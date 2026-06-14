@@ -5,7 +5,7 @@ import { QRadio } from '@/qComponents/QRadio';
 import type { QRadioProps } from '@/qComponents/QRadio';
 
 const storyMetadata: Meta = {
-  title: 'Components/QRadio',
+  title: 'Form/QRadio',
   component: QRadio,
   argTypes: {
     checked: { control: false },

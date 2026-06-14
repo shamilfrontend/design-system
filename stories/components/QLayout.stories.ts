@@ -10,7 +10,7 @@ import {
 } from '@/qComponents/QLayout';
 
 const storyMetadata: Meta = {
-  title: 'Components/QLayout',
+  title: 'Basic/QLayout',
   component: QLayout
 };
 

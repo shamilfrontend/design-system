@@ -6,7 +6,7 @@ import type { QDialogOptions } from '@/qComponents';
 import { QDialogContainer } from '@/qComponents/QDialog/src/QDialogContainer';
 
 const storyMetadata: Meta = {
-  title: 'Plugins/QDialog/Extended',
+  title: 'Feedback/QDialog/Extended',
   component: QDialogContainer,
   argTypes: {
     content: { control: false },

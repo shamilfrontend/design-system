@@ -8,7 +8,7 @@ import type { QPopoverProps } from '@/qComponents/QPopover';
 import iconsList from '../core/iconsList';
 
 const storyMetadata: Meta = {
-  title: 'Components/QPopover',
+  title: 'Feedback/QPopover',
   component: QPopover,
   argTypes: {
     trigger: { options: ['click', 'hover'], control: { type: 'inline-radio' } },

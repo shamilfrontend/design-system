@@ -6,7 +6,7 @@ import type { QMessageBoxOptions } from '@/qComponents';
 import { QMessageBoxContainer } from '@/qComponents/QMessageBox/src/QMessageBoxContainer';
 
 const storyMetadata: Meta = {
-  title: 'Plugins/QMessageBox/Extended',
+  title: 'Feedback/QMessageBox/Extended',
   component: QMessageBoxContainer,
   argTypes: {
     content: { control: false },

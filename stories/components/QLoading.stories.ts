@@ -5,7 +5,7 @@ import { QButton } from '@/qComponents/QButton';
 import { QLoading } from '@/qComponents/QLoading';
 
 const storyMetadata: Meta = {
-  title: 'Components/QLoading',
+  title: 'Feedback/QLoading',
   component: QLoading
 };
 

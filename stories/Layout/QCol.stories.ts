@@ -7,7 +7,7 @@ import { QRow } from '@/qComponents/QRow';
 import './layout.scss';
 
 const storyMetadata: Meta = {
-  title: 'Components/Layout/QCol',
+  title: 'Basic/Layout/QCol',
   component: QCol,
   subcomponents: { QRow },
   argTypes: {

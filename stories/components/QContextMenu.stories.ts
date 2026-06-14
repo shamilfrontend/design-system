@@ -5,7 +5,7 @@ import { QContextMenu } from '@/qComponents/QContextMenu';
 import type { QContextMenuProps } from '@/qComponents/QContextMenu';
 
 const storyMetadata: Meta = {
-  title: 'Components/QContextMenu',
+  title: 'Navigation/QContextMenu',
   component: QContextMenu,
   argTypes: {
     position: { options: ['left', 'right'], control: { type: 'inline-radio' } }

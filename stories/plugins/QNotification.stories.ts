@@ -12,7 +12,7 @@ import type { Nullable } from '#/helpers';
 import iconsList from '../core/iconsList';
 
 const storyMetadata: Meta = {
-  title: 'Plugins/QNotification',
+  title: 'Feedback/QNotification',
   component: QNotificationToast,
   argTypes: {
     icon: { options: iconsList, control: { type: 'select' } },

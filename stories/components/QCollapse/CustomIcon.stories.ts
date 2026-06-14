@@ -7,7 +7,7 @@ import { QCollapseItem } from '@/qComponents/QCollapseItem';
 type QCollapseStoryWithExtraControl = QCollapseProps & { customIcon: boolean };
 
 const storyMetadata: Meta = {
-  title: 'Components/QCollapse',
+  title: 'Data/QCollapse',
   component: QCollapse,
   subcomponents: { QCollapseItem },
   argTypes: {

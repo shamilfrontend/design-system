@@ -6,7 +6,7 @@ import type { QDrawerOptions } from '@/qComponents';
 import { QDrawerContainer } from '@/qComponents/QDrawer/src/QDrawerContainer';
 
 const storyMetadata: Meta = {
-  title: 'Plugins/QDrawer/Component',
+  title: 'Feedback/QDrawer/Component',
   component: QDrawerContainer,
   argTypes: {
     content: { control: false },

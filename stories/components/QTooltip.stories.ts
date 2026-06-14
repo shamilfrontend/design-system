@@ -6,7 +6,7 @@ import { QTooltip } from '@/qComponents/QTooltip';
 import type { QTooltipProps } from '@/qComponents/QTooltip';
 
 const storyMetadata: Meta = {
-  title: 'Components/QTooltip',
+  title: 'Feedback/QTooltip',
   component: QTooltip,
   argTypes: {
     placement: {
@@ -59,7 +59,7 @@ Light.args = {
   content: 'Light tooltip'
 };
 
-export const CustomContent = () =>
+export const CustomContent: StoryFn = () =>
   defineComponent({
     components: { QTooltip, QButton },
     template: `

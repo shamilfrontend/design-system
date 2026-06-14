@@ -1,10 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 
 import { QProgress } from '@/qComponents/QProgress';
 
 const storyMetadata: Meta = {
-  title: 'Components/QProgress',
+  title: 'Data/QProgress',
   component: QProgress
 };
 

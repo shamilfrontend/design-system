@@ -1,12 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QIcon } from '@/qComponents/QIcon';
 import type { QIconProps } from '@/qComponents/QIcon';
+import { QIcon } from '@/qComponents/QIcon';
 import { Q_ICON_NAMES } from '@/qComponents/QIcon';
 
 const storyMetadata: Meta = {
-  title: 'Components/QIcon',
+  title: 'Basic/QIcon',
   component: QIcon,
   argTypes: {
     name: {
@@ -63,7 +63,7 @@ Spinning.args = {
   color: '#6366f1'
 };
 
-export const Sizes = () =>
+export const Sizes: StoryFn = () =>
   defineComponent({
     components: { QIcon },
     template: `

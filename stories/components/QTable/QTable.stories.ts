@@ -19,7 +19,7 @@ import StickyColumn from './StickyColumn';
 import Total from './Total';
 
 const storyMetadata: Meta = {
-  title: 'Components/QTable',
+  title: 'Data/QTable',
   component: QTable,
   argTypes: {
     isLoading: { control: 'boolean' },

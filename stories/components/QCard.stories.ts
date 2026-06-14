@@ -6,7 +6,7 @@ import { QCard } from '@/qComponents/QCard';
 import type { QCardProps } from '@/qComponents/QCard';
 
 const storyMetadata: Meta = {
-  title: 'Components/QCard',
+  title: 'Data/QCard',
   component: QCard,
   argTypes: {
     shadow: {

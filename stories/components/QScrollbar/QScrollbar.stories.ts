@@ -7,7 +7,7 @@ import type { QScrollbarProps } from '@/qComponents/QScrollbar';
 import './q-scrollbar.scss';
 
 const storyMetadata: Meta = {
-  title: 'Components/QScrollbar',
+  title: 'Basic/QScrollbar',
   component: QScrollbar,
   argTypes: {
     theme: {
