@@ -31,9 +31,3 @@ updates:
           - '@vitejs/*'
           - 'vitest'
           - '@vitest/*'
-  - package-ecosystem: npm
-    directory: '/vuepress-docs'
-    schedule:
-      interval: weekly
-    labels:
-      - 'pr: dependencies'

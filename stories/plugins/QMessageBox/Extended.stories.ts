@@ -1,9 +1,9 @@
 import type { StoryFn, Meta } from '@storybook/vue3';
 import { defineComponent, defineAsyncComponent } from 'vue';
 
-import { useMessageBox } from '@/qComponents';
-import type { QMessageBoxOptions } from '@/qComponents';
-import { QMessageBoxContainer } from '@/qComponents/QMessageBox/src/QMessageBoxContainer';
+import { useMessageBox } from '@/components';
+import type { QMessageBoxOptions } from '@/components';
+import { QMessageBoxContainer } from '@/components/QMessageBox/src/QMessageBoxContainer';
 
 const storyMetadata: Meta = {
   title: 'Feedback/QMessageBox/Extended',

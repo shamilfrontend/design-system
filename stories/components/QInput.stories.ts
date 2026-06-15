@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QInput } from '@/qComponents/QInput';
-import type { QInputProps } from '@/qComponents/QInput';
+import { QInput } from '@/components/QInput';
+import type { QInputProps } from '@/components/QInput';
 
 import iconsList from '../core/iconsList';
 

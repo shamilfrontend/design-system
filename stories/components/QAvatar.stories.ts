@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QAvatar } from '@/qComponents/QAvatar';
-import { QSpace } from '@/qComponents/QSpace';
+import { QAvatar } from '@/components/QAvatar';
+import { QSpace } from '@/components/QSpace';
 export default { title: 'Data/QAvatar', component: QAvatar } satisfies Meta;
 export const Fallback: StoryFn = () =>
   defineComponent({

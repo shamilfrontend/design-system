@@ -1,14 +1,14 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, reactive, ref } from 'vue';
 
-import { QForm } from '@/qComponents/QForm';
+import { QForm } from '@/components/QForm';
 import type {
   QFormProps,
   QFormPropRules,
   QFormPropModel,
   QFormInstance
-} from '@/qComponents/QForm';
-import { QFormItem } from '@/qComponents/QFormItem';
+} from '@/components/QForm';
+import { QFormItem } from '@/components/QFormItem';
 
 import type { UnwrappedInstance } from '#/helpers';
 

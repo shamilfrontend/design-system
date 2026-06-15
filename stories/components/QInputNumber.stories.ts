@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QInputNumber } from '@/qComponents/QInputNumber';
-import type { QInputNumberProps } from '@/qComponents/QInputNumber';
+import { QInputNumber } from '@/components/QInputNumber';
+import type { QInputNumberProps } from '@/components/QInputNumber';
 
 const storyMetadata: Meta = {
   title: 'Form/QInputNumber',

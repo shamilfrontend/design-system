@@ -84,12 +84,12 @@
   "files": ["dist"],
   "sideEffects": false,
   "main": "./dist/design-system.umd.js",
-  "module": "./dist/src/qComponents/index.js",
+  "module": "./dist/src/components/index.js",
   "style": "./dist/design-system.css",
-  "types": "./dist/src/qComponents/index.d.ts",
+  "types": "./dist/src/components/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/src/qComponents/index.js",
+      "import": "./dist/src/components/index.js",
       "require": "./dist/design-system.umd.js"
     },
     "./styles": "./dist/design-system.css",

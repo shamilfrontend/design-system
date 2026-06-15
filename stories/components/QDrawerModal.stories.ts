@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QDrawerModal } from '@/qComponents/QDrawer';
+import { QButton } from '@/components/QButton';
+import { QDrawerModal } from '@/components/QDrawer';
 export default {
   title: 'Feedback/QDrawerModal',
   component: QDrawerModal

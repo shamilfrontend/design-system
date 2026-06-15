@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import type { QSliderPropData } from '@/qComponents/QSlider';
+import type { QSliderPropData } from '@/components/QSlider';
 
 const QSliderStory: StoryFn = args =>
   defineComponent({

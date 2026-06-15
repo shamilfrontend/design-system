@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QScrollbar } from '@/qComponents/QScrollbar';
-import type { QScrollbarProps } from '@/qComponents/QScrollbar';
+import { QScrollbar } from '@/components/QScrollbar';
+import type { QScrollbarProps } from '@/components/QScrollbar';
 
 import './q-scrollbar.scss';
 

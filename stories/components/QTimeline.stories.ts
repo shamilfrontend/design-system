@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QTimeline } from '@/qComponents/QTimeline';
+import { QTimeline } from '@/components/QTimeline';
 export default { title: 'Data/QTimeline', component: QTimeline } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

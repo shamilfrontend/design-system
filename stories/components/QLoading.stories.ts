@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QLoading } from '@/qComponents/QLoading';
+import { QButton } from '@/components/QButton';
+import { QLoading } from '@/components/QLoading';
 
 const storyMetadata: Meta = {
   title: 'Feedback/QLoading',

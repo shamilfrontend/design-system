@@ -1,7 +1,3 @@
 /src/normalize.scss
 /dist
-/site
-/vuepress-docs/.vuepress/.temp/
-/vuepress-docs/.vuepress/.cache/
-/vuepress-docs/.vuepress/dist/
 /tests

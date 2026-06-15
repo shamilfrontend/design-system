@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QDivider } from '@/qComponents/QDivider';
+import { QDivider } from '@/components/QDivider';
 export default { title: 'Others/QDivider', component: QDivider } satisfies Meta;
 export const Horizontal: StoryFn = () =>
   defineComponent({

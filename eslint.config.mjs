@@ -10,11 +10,9 @@ export default tseslint.config(
   {
     ignores: [
       'dist/**',
-      'site/**',
       'storybook-static/**',
       'node_modules/**',
       'coverage/**',
-      'vuepress-docs/**',
       '.storybook/**'
     ]
   },

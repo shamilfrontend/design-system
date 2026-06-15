@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QProgress } from '@/qComponents/QProgress';
+import { QProgress } from '@/components/QProgress';
 
 const storyMetadata: Meta = {
   title: 'Data/QProgress',

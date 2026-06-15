@@ -45,11 +45,3 @@ jobs:
 
       - name: Build Storybook
         run: yarn build-storybook
-
-      - name: Install docs dependencies
-        working-directory: vuepress-docs
-        run: yarn install --frozen-lockfile
-
-      - name: Build documentation
-        working-directory: vuepress-docs
-        run: yarn docs:build

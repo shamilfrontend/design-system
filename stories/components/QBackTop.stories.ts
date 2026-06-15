@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QBackTop } from '@/qComponents/QBackTop';
+import { QBackTop } from '@/components/QBackTop';
 export default {
   title: 'Navigation/QBackTop',
   component: QBackTop

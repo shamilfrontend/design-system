@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QTree } from '@/qComponents/QTree';
+import { QTree } from '@/components/QTree';
 export default { title: 'Data/QTree', component: QTree } satisfies Meta;
 const data = [
   {

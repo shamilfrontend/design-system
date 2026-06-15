@@ -2,8 +2,8 @@ import type { Preview } from '@storybook/vue3';
 import { setup } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import DesignSystem from '../src/qComponents';
-import { localeEn, localeRu } from '../src/qComponents';
+import DesignSystem from '../src/components';
+import { localeEn, localeRu } from '../src/components';
 import messages from './locales';
 
 import '../src/styles.scss';
@@ -67,7 +67,6 @@ const preview: Preview = {
           ],
           'Form',
           [
-            'QAutoComplete',
             'QCascader',
             'QCheckbox',
             'QCheckboxGroup',
@@ -107,7 +106,6 @@ const preview: Preview = {
             'QTable',
             'QTag',
             'QTimeline',
-            'QTour',
             'QTree',
             'QStatistic',
             'QSegmented',
@@ -116,8 +114,6 @@ const preview: Preview = {
           ],
           'Navigation',
           [
-            'QAffix',
-            'QAnchor',
             'QBackTop',
             'QBreadcrumbs',
             'QDropdown',
@@ -141,7 +137,7 @@ const preview: Preview = {
             'QTooltip'
           ],
           'Others',
-          ['QDivider', 'QWatermark'],
+          ['QDivider'],
           'Core',
           ['Colors', 'Icons']
         ],

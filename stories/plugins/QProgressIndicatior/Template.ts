@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { useProgressIndicatior } from '@/qComponents/QProgressIndicatior';
+import { useProgressIndicatior } from '@/components/QProgressIndicatior';
 
 export const QProgressIndicatiorStory: StoryFn = () =>
   defineComponent({

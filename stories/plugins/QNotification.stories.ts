@@ -1,11 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { useNotify, NotifyType } from '@/qComponents/QNotification';
-import type { QNotifyId } from '@/qComponents/QNotification';
+import { useNotify, NotifyType } from '@/components/QNotification';
+import type { QNotifyId } from '@/components/QNotification';
 import QNotificationToast, {
   QNotificationToastProps
-} from '@/qComponents/QNotification/src/QNotificationToast';
+} from '@/components/QNotification/src/QNotificationToast';
 
 import type { Nullable } from '#/helpers';
 

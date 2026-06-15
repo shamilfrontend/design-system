@@ -1,4 +1,4 @@
-import type { QTablePropGroupsOfColumns } from '@/qComponents/QTable';
+import type { QTablePropGroupsOfColumns } from '@/components/QTable';
 
 import { loadingRowCount, rows, sortBy } from './args';
 import Template from './Default';

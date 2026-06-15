@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QContainer } from '@/qComponents/QLayout';
+import { QContainer } from '@/components/QLayout';
 
 const storyMetadata: Meta = {
   title: 'Basic/QContainer',

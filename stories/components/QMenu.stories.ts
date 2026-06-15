@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QDropdown } from '@/qComponents/QDropdown';
-import { QMenu, QMenuItem } from '@/qComponents/QMenu';
+import { QButton } from '@/components/QButton';
+import { QDropdown } from '@/components/QDropdown';
+import { QMenu, QMenuItem } from '@/components/QMenu';
 export default { title: 'Navigation/QMenu', component: QMenu } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

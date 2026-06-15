@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QCarousel, QCarouselItem } from '@/qComponents/QCarousel';
+import { QCarousel, QCarouselItem } from '@/components/QCarousel';
 export default { title: 'Data/QCarousel', component: QCarousel } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

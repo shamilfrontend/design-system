@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QDialogModal } from '@/qComponents/QDialog';
+import { QButton } from '@/components/QButton';
+import { QDialogModal } from '@/components/QDialog';
 
 const storyMetadata: Meta = {
   title: 'Feedback/QDialogModal',

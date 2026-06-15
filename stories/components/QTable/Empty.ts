@@ -1,12 +1,12 @@
 import type { StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
+import { QButton } from '@/components/QButton';
 import type {
   QTablePropGroupsOfColumns,
   QTablePropSortBy,
   QTableProps
-} from '@/qComponents/QTable';
+} from '@/components/QTable';
 
 import { groupsOfColumns, loadingRowCount } from './args';
 

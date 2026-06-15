@@ -40,28 +40,13 @@ jobs:
       - name: Build Storybook
         run: STORYBOOK_BASE=/design-system/storybook yarn build-storybook
 
-      - name: Install docs dependencies
-        working-directory: vuepress-docs
-        run: yarn install --frozen-lockfile
-
-      - name: Build documentation
-        working-directory: vuepress-docs
-        run: VUEPRESS_BASE=/design-system/ yarn docs:build
-
-      - name: Prepare site artifact
-        run: |
-          mkdir -p site
-          cp -r vuepress-docs/docs/.vuepress/dist/. site/
-          cp -r storybook-static site/storybook
-          touch site/.nojekyll
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: storybook-static
 
       - name: Deploy to GitHub Pages
         id: deployment

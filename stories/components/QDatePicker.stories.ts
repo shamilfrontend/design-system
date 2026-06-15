@@ -2,11 +2,11 @@ import type { Meta, StoryFn } from '@storybook/vue3';
 import { addMonths, startOfYesterday, subMonths, subWeeks } from 'date-fns';
 import { defineComponent, reactive, watch } from 'vue';
 
-import { QDatePicker } from '@/qComponents/QDatePicker';
+import { QDatePicker } from '@/components/QDatePicker';
 import type {
   QDatePickerPropModelValue,
   QDatePickerProps
-} from '@/qComponents/QDatePicker';
+} from '@/components/QDatePicker';
 
 const now = new Date();
 

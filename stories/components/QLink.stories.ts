@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QLink } from '@/qComponents/QLink';
+import { QLink } from '@/components/QLink';
 export default { title: 'Basic/QLink', component: QLink } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

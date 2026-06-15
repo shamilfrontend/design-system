@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QAlert } from '@/qComponents/QAlert';
-import type { QAlertProps } from '@/qComponents/QAlert';
+import { QAlert } from '@/components/QAlert';
+import type { QAlertProps } from '@/components/QAlert';
 
 const storyMetadata: Meta = {
   title: 'Feedback/QAlert',

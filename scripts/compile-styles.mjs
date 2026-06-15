@@ -14,7 +14,10 @@ const sassOptions = {
 };
 
 async function parseComponentEntries() {
-  const componentsScss = await readFile(join(srcDir, 'components.scss'), 'utf8');
+  const componentsScss = await readFile(
+    join(srcDir, 'ui-components.scss'),
+    'utf8'
+  );
 
   return [...componentsScss.matchAll(/@use\s+'\.\/(.+)';/g)].map(([, importPath]) => ({
     input: join(srcDir, `${importPath}.scss`),

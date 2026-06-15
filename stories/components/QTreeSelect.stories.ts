@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QTreeSelect } from '@/qComponents/QTreeSelect';
+import { QTreeSelect } from '@/components/QTreeSelect';
 export default {
   title: 'Form/QTreeSelect',
   component: QTreeSelect

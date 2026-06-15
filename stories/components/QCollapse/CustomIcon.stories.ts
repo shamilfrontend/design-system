@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineAsyncComponent, defineComponent, ref } from 'vue';
 
-import { QCollapse, type QCollapseProps } from '@/qComponents/QCollapse';
-import { QCollapseItem } from '@/qComponents/QCollapseItem';
+import { QCollapse, type QCollapseProps } from '@/components/QCollapse';
+import { QCollapseItem } from '@/components/QCollapseItem';
 
 type QCollapseStoryWithExtraControl = QCollapseProps & { customIcon: boolean };
 

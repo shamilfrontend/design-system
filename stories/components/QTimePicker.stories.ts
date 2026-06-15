@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QTimePicker } from '@/qComponents/QTimePicker';
+import { QTimePicker } from '@/components/QTimePicker';
 export default {
   title: 'Form/QTimePicker',
   component: QTimePicker

@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QCheckbox } from '@/qComponents/QCheckbox';
-import type { QCheckboxProps } from '@/qComponents/QCheckbox';
+import { QCheckbox } from '@/components/QCheckbox';
+import type { QCheckboxProps } from '@/components/QCheckbox';
 
 const storyMetadata: Meta = {
   title: 'Form/QCheckbox',

@@ -2,8 +2,8 @@ import { placements } from '@popperjs/core/lib/enums';
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QPopover } from '@/qComponents/QPopover';
-import type { QPopoverProps } from '@/qComponents/QPopover';
+import { QPopover } from '@/components/QPopover';
+import type { QPopoverProps } from '@/components/QPopover';
 
 import iconsList from '../core/iconsList';
 

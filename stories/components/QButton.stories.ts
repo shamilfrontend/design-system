@@ -7,8 +7,8 @@ import {
   QButtonSizeEnum,
   QButtonNativeTypeEnum,
   QButtonTagEnum
-} from '@/qComponents/QButton';
-import type { QButtonColorType, QButtonProps } from '@/qComponents/QButton';
+} from '@/components/QButton';
+import type { QButtonColorType, QButtonProps } from '@/components/QButton';
 
 const COLOR_TYPES: QButtonColorType[] = [
   QButtonTypeEnum.Default,

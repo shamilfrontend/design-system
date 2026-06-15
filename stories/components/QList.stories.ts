@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QAvatar } from '@/qComponents/QAvatar';
-import { QList, QListItem } from '@/qComponents/QList';
+import { QAvatar } from '@/components/QAvatar';
+import { QList, QListItem } from '@/components/QList';
 export default { title: 'Data/QList', component: QList } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

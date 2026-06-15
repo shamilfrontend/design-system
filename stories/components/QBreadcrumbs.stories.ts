@@ -1,12 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, computed } from 'vue';
 
-import { t } from '@/qComponents/locale';
-import { QBreadcrumbs } from '@/qComponents/QBreadcrumbs';
+import { QBreadcrumbs } from '@/components/QBreadcrumbs';
 import type {
   QBreadcrumbsProps,
   QBreadcrumbsPropRoute
-} from '@/qComponents/QBreadcrumbs';
+} from '@/components/QBreadcrumbs';
+import { t } from '@/locale';
 
 const storyMetadata: Meta = {
   title: 'Navigation/QBreadcrumbs',

@@ -1,10 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QBadge } from '@/qComponents/QBadge';
-import type { QBadgeProps } from '@/qComponents/QBadge';
-import { QButton } from '@/qComponents/QButton';
-import { QIcon } from '@/qComponents/QIcon';
+import { QBadge } from '@/components/QBadge';
+import type { QBadgeProps } from '@/components/QBadge';
+import { QButton } from '@/components/QButton';
+import { QIcon } from '@/components/QIcon';
 
 const storyMetadata: Meta = {
   title: 'Data/QBadge',

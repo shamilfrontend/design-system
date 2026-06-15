@@ -1,7 +1,7 @@
 import type {
   QTablePropGroupsOfColumns,
   QTablePropSortBy
-} from '@/qComponents/QTable';
+} from '@/components/QTable';
 
 const groupsOfColumns: QTablePropGroupsOfColumns = [
   {

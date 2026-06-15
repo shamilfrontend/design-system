@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QSteps } from '@/qComponents/QSteps';
+import { QSteps } from '@/components/QSteps';
 export default { title: 'Navigation/QSteps', component: QSteps } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

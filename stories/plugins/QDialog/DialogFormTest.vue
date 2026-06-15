@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, inject } from 'vue';
 
-import { QDialogAction, QDialogContent } from '@/qComponents';
-import type { QDialogContainerProvider } from '@/qComponents';
+import { QDialogAction, QDialogContent } from '@/components';
+import type { QDialogContainerProvider } from '@/components';
 
 export default defineComponent({
   name: 'DialogFormTest',

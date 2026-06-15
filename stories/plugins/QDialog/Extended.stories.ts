@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineAsyncComponent, defineComponent } from 'vue';
 
-import { useDialog } from '@/qComponents';
-import type { QDialogOptions } from '@/qComponents';
-import { QDialogContainer } from '@/qComponents/QDialog/src/QDialogContainer';
+import { useDialog } from '@/components';
+import type { QDialogOptions } from '@/components';
+import { QDialogContainer } from '@/components/QDialog/src/QDialogContainer';
 
 const storyMetadata: Meta = {
   title: 'Feedback/QDialog/Extended',

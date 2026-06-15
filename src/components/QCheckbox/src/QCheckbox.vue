@@ -1,0 +1,233 @@
+<script setup lang="ts">
+import { computed, inject, watch, ref } from 'vue';
+import type { PropType } from 'vue';
+
+import type { QCheckboxGroupProvider } from '@/components/QCheckboxGroup';
+import type { QFormProvider } from '@/components/QForm';
+import type { QFormItemProvider } from '@/components/QFormItem';
+import { validateArray } from '@/helpers';
+
+import type { Nullable, ClassValue } from '#/helpers';
+
+import type {
+  QCheckboxPropLabelSize,
+  QCheckboxPropModelValue,
+  QCheckboxPropLabel,
+  QCheckboxPropIndeterminate,
+  QCheckboxPropDisabled,
+  QCheckboxPropRootTag,
+  QCheckboxPropValidateEvent
+} from './types';
+
+defineOptions({
+  name: 'QCheckbox',
+  inheritAttrs: false
+});
+
+const props = defineProps({
+  /**
+   * Array for group, Boolean for single
+   */
+  modelValue: {
+    type: Boolean as PropType<QCheckboxPropModelValue>,
+    default: null
+  },
+  /**
+   * Checkbox label
+   */
+  label: {
+    type: String as PropType<QCheckboxPropLabel>,
+    default: null
+  },
+  /**
+   * wheteher Checkbox is indeterminate
+   */
+  indeterminate: {
+    type: Boolean as PropType<QCheckboxPropIndeterminate>,
+    default: false
+  },
+  /**
+   * wheteher Checkbox is disabled
+   */
+  disabled: {
+    type: Boolean as PropType<QCheckboxPropDisabled>,
+    default: false
+  },
+  rootTag: {
+    type: String as PropType<QCheckboxPropRootTag>,
+    default: 'label'
+  },
+  /**
+   * wheteher is validate parent q-form if present
+   */
+  validateEvent: {
+    type: Boolean as PropType<QCheckboxPropValidateEvent>,
+    default: false
+  },
+  /**
+   * label size
+   */
+  labelSize: {
+    type: String as PropType<QCheckboxPropLabelSize>,
+    default: 'regular',
+    validator: validateArray<QCheckboxPropLabelSize>(['regular', 'small'])
+  }
+});
+
+const emit = defineEmits<{
+  'update:modelValue': [value: boolean];
+  change: [value: boolean];
+  click: [event: Event];
+}>();
+
+const qFormItem = inject<Nullable<QFormItemProvider>>('qFormItem', null);
+const qForm = inject<Nullable<QFormProvider>>('qForm', null);
+const qCheckboxGroup = inject<Nullable<QCheckboxGroupProvider>>(
+  'qCheckboxGroup',
+  null
+);
+const checkboxInput = ref<Nullable<HTMLInputElement>>(null);
+
+const focus = ref<boolean>(false);
+
+const isChecked = computed<boolean>(() => {
+  if (!qCheckboxGroup) return Boolean(props.modelValue);
+
+  return qCheckboxGroup.modelValue.value?.includes(props.label ?? '') ?? false;
+});
+
+const isLimitDisabled = computed<boolean>(() => {
+  if (qCheckboxGroup === null) return false;
+
+  const { max, min, modelValue } = qCheckboxGroup;
+  const groupLength = modelValue.value?.length ?? 0;
+
+  return (
+    (max.value !== null && groupLength >= max.value && !isChecked.value) ||
+    (min.value !== null && groupLength <= min.value && isChecked.value)
+  );
+});
+
+const isDisabled = computed<boolean>(() =>
+  qCheckboxGroup
+    ? qCheckboxGroup?.disabled.value ||
+      props.disabled ||
+      (qForm?.disabled.value ?? false) ||
+      isLimitDisabled.value
+    : props.disabled || (qForm?.disabled.value ?? false)
+);
+
+const isIndeterminate = computed<boolean>(
+  () => !isChecked.value && Boolean(props.indeterminate)
+);
+
+const labelClass = computed<ClassValue>(
+  () => `q-checkbox__label_size_${props.labelSize ?? 'regular'}`
+);
+
+const qCheckboxClasses = computed<ClassValue>(() => ({
+  'q-checkbox_disabled': isDisabled.value,
+  'q-checkbox_checked': isChecked.value,
+  'q-checkbox_indeterminate': isIndeterminate.value
+}));
+
+const qCheckboxInputClasses = computed<ClassValue>(() => ({
+  'q-checkbox__input_disabled': isDisabled.value,
+  'q-checkbox__input_checked': isChecked.value,
+  'q-checkbox__input_indeterminate': isIndeterminate.value,
+  'q-checkbox__input_focus': focus.value
+}));
+
+const qCheckboxInnerIconClasses = computed<ClassValue>(() => ({
+  'q-icon-minus': isIndeterminate.value,
+  'q-icon-check': isChecked.value
+}));
+
+function handleCheckboxClick(event: Event): void {
+  if (isDisabled.value) return;
+
+  const value = !isChecked.value;
+
+  if (!qCheckboxGroup) {
+    emit('update:modelValue', value);
+    emit('change', value);
+  } else {
+    if (!props.label) return;
+
+    const set = new Set(qCheckboxGroup.modelValue.value);
+
+    if (value) {
+      set.add(props.label);
+    } else {
+      set.delete(props.label);
+    }
+
+    qCheckboxGroup.update(Array.from(set));
+  }
+
+  emit('click', event);
+}
+
+watch(
+  () => props.modelValue,
+  () => {
+    if (props.validateEvent) qFormItem?.validateField('change');
+  }
+);
+
+/**
+ * @public
+ */
+function nativeClick(): void {
+  const checkboxEl: Nullable<HTMLInputElement> = checkboxInput.value;
+  checkboxEl?.click();
+}
+
+defineExpose({ nativeClick });
+</script>
+
+<template>
+  <component
+    :is="rootTag || 'label'"
+    class="q-checkbox"
+    :class="qCheckboxClasses"
+    @click.prevent="handleCheckboxClick"
+  >
+    <span
+      class="q-checkbox__input"
+      :class="qCheckboxInputClasses"
+      :tabindex="isIndeterminate ? 0 : undefined"
+      :role="isIndeterminate ? 'checkbox' : undefined"
+      :aria-checked="isIndeterminate ? 'mixed' : undefined"
+    >
+      <span class="q-checkbox__inner">
+        <span
+          class="q-checkbox__inner-icon"
+          :class="qCheckboxInnerIconClasses"
+          aria-hidden="true"
+        />
+      </span>
+      <input
+        v-bind="$attrs"
+        ref="checkboxInput"
+        class="q-checkbox__original"
+        type="checkbox"
+        :checked="isChecked"
+        :aria-hidden="isIndeterminate ? 'true' : undefined"
+        :aria-checked="
+          isIndeterminate ? undefined : isChecked ? 'true' : 'false'
+        "
+        :disabled="isDisabled"
+        @focus="focus = true"
+        @blur="focus = false"
+      />
+    </span>
+    <span
+      v-if="$slots.default || label"
+      class="q-checkbox__label"
+      :class="labelClass"
+    >
+      <slot>{{ label }}</slot>
+    </span>
+  </component>
+</template>

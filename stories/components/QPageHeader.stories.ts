@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QPageHeader } from '@/qComponents/QPageHeader';
+import { QButton } from '@/components/QButton';
+import { QPageHeader } from '@/components/QPageHeader';
 export default {
   title: 'Navigation/QPageHeader',
   component: QPageHeader

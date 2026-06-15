@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QSkeleton } from '@/qComponents/QSkeleton';
-import type { QSkeletonProps } from '@/qComponents/QSkeleton';
+import { QSkeleton } from '@/components/QSkeleton';
+import type { QSkeletonProps } from '@/components/QSkeleton';
 
 const storyMetadata: Meta = {
   title: 'Data/QSkeleton',

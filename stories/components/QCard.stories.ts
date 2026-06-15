@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QCard } from '@/qComponents/QCard';
-import type { QCardProps } from '@/qComponents/QCard';
+import { QButton } from '@/components/QButton';
+import { QCard } from '@/components/QCard';
+import type { QCardProps } from '@/components/QCard';
 
 const storyMetadata: Meta = {
   title: 'Data/QCard',

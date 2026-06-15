@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QTag } from '@/qComponents/QTag';
-import type { QTagProps } from '@/qComponents/QTag';
+import { QTag } from '@/components/QTag';
+import type { QTagProps } from '@/components/QTag';
 
 const storyMetadata: Meta = {
   title: 'Data/QTag',

@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QSegmented } from '@/qComponents/QSegmented';
+import { QSegmented } from '@/components/QSegmented';
 
 const storyMetadata: Meta = {
   title: 'Data/QSegmented',

@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QCascader } from '@/qComponents/QCascader';
-import type { QCascaderProps } from '@/qComponents/QCascader';
+import { QCascader } from '@/components/QCascader';
+import type { QCascaderProps } from '@/components/QCascader';
 
 const storyMetadata: Meta = {
   title: 'Form/QCascader',

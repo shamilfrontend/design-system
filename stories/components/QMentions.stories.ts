@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QMentions } from '@/qComponents/QMentions';
+import { QMentions } from '@/components/QMentions';
 export default { title: 'Form/QMentions', component: QMentions } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

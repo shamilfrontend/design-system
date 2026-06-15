@@ -1,9 +1,18 @@
 import type { StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import type { QTablePropGroupsOfColumns, QTablePropSortBy, QTableProps } from '@/qComponents/QTable';
+import type {
+  QTablePropGroupsOfColumns,
+  QTablePropSortBy,
+  QTableProps
+} from '@/components/QTable';
 
-import { groupsOfColumns, loadingRowCount, rows, sortBy as sortByParams } from './args';
+import {
+  groupsOfColumns,
+  loadingRowCount,
+  rows,
+  sortBy as sortByParams
+} from './args';
 
 const RowClick: StoryFn<QTableProps> = args =>
   defineComponent({
@@ -14,7 +23,10 @@ const RowClick: StoryFn<QTableProps> = args =>
       );
       const lastClicked = ref<string>('Click a row to select it');
 
-      const handleRowClick = (row: Record<string, unknown>, rowIndex: number): void => {
+      const handleRowClick = (
+        row: Record<string, unknown>,
+        rowIndex: number
+      ): void => {
         lastClicked.value = `Row ${rowIndex + 1}: ${String(row.col1 ?? '')}`;
       };
 

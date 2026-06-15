@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QResult } from '@/qComponents/QResult';
+import { QButton } from '@/components/QButton';
+import { QResult } from '@/components/QResult';
 export default { title: 'Data/QResult', component: QResult } satisfies Meta;
 export const Success: StoryFn = () =>
   defineComponent({

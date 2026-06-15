@@ -6,7 +6,7 @@ import type {
   QTablePropSortBy,
   QTablePropGroupsOfColumns,
   QTableProps
-} from '@/qComponents/QTable';
+} from '@/components/QTable';
 
 import {
   groupsOfColumns,

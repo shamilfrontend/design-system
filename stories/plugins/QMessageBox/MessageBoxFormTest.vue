@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, inject } from 'vue';
 
-import { QMessageBoxContent, QMessageBoxAction } from '@/qComponents';
-import type { QMessageBoxContainerProvider } from '@/qComponents';
+import { QMessageBoxContent, QMessageBoxAction } from '@/components';
+import type { QMessageBoxContainerProvider } from '@/components';
 
 export default defineComponent({
   name: 'MessageBoxFormTest',

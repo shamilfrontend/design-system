@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QCalendar } from '@/qComponents/QCalendar';
+import { QCalendar } from '@/components/QCalendar';
 export default { title: 'Data/QCalendar', component: QCalendar } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

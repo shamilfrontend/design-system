@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QSpace } from '@/qComponents/QSpace';
+import { QButton } from '@/components/QButton';
+import { QSpace } from '@/components/QSpace';
 export default { title: 'Basic/QSpace', component: QSpace } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

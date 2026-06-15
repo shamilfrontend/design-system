@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QSwitch } from '@/qComponents';
-import type { QSwitchProps } from '@/qComponents';
+import { QSwitch } from '@/components';
+import type { QSwitchProps } from '@/components';
 
 const storyMetadata: Meta = {
   title: 'Form/QSwitch',

@@ -121,9 +121,8 @@ app.mount('#app');
 
 - русский (`ru`)
 - английский (`en`)
-- китайский (`zh`)
 
-Свои тексты можно задать через `localization.messages` в `createDesignSystem`. Примеры — в `src/qComponents/constants/locales`.
+Свои тексты можно задать через `localization.messages` в `createDesignSystem`. Примеры — в `src/components/constants/locales`.
 
 ## Nuxt 3
 

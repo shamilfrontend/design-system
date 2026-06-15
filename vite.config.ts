@@ -26,7 +26,7 @@ export default defineConfig({
     emptyOutDir: false,
     sourcemap: true,
     lib: {
-      entry: resolve(__dirname, 'src/qComponents/index.ts'),
+      entry: resolve(__dirname, 'src/components/index.ts'),
       name: 'DesignSystem'
     },
     rollupOptions: {

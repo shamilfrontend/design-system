@@ -14,9 +14,7 @@
     "node_modules",
     "dist",
     "stories",
-    "site",
     "storybook-static",
-    "vuepress-docs",
     "**/*.test.ts",
     "**/*.spec.ts"
   ]

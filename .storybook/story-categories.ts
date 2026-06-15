@@ -20,7 +20,6 @@ export const STORY_TITLES = {
   QScrollbar: 'Basic/QScrollbar',
   QSpace: 'Basic/QSpace',
 
-  QAutoComplete: 'Form/QAutoComplete',
   QCascader: 'Form/QCascader',
   QCheckbox: 'Form/QCheckbox',
   QCheckboxGroup: 'Form/QCheckboxGroup',
@@ -63,12 +62,9 @@ export const STORY_TITLES = {
   QTable: 'Data/QTable',
   QTag: 'Data/QTag',
   QTimeline: 'Data/QTimeline',
-  QTour: 'Data/QTour',
   QTree: 'Data/QTree',
   QList: 'Data/QList',
 
-  QAffix: 'Navigation/QAffix',
-  QAnchor: 'Navigation/QAnchor',
   QBackTop: 'Navigation/QBackTop',
   QBreadcrumbs: 'Navigation/QBreadcrumbs',
   QContextMenu: 'Navigation/QContextMenu',
@@ -96,8 +92,7 @@ export const STORY_TITLES = {
   QPopover: 'Feedback/QPopover',
   QTooltip: 'Feedback/QTooltip',
 
-  QDivider: 'Others/QDivider',
-  QWatermark: 'Others/QWatermark'
+  QDivider: 'Others/QDivider'
 } as const;
 
 /** Keep in sync with `options.storySort.order` in `.storybook/preview.ts` (Storybook 10 requires inline literals). */
@@ -119,7 +114,6 @@ export const STORY_SORT_ORDER = [
   ],
   'Form',
   [
-    'QAutoComplete',
     'QCascader',
     'QCheckbox',
     'QCheckboxGroup',
@@ -159,7 +153,6 @@ export const STORY_SORT_ORDER = [
     'QTable',
     'QTag',
     'QTimeline',
-    'QTour',
     'QTree',
     'QStatistic',
     'QSegmented',
@@ -168,8 +161,6 @@ export const STORY_SORT_ORDER = [
   ],
   'Navigation',
   [
-    'QAffix',
-    'QAnchor',
     'QBackTop',
     'QBreadcrumbs',
     'QDropdown',
@@ -193,7 +184,7 @@ export const STORY_SORT_ORDER = [
     'QTooltip'
   ],
   'Others',
-  ['QDivider', 'QWatermark'],
+  ['QDivider'],
   'Core',
   ['Colors', 'Icons']
 ];

@@ -1,1 +1,1 @@
-export { Q_ICON_NAMES as default } from '@/qComponents/QIcon';
+export { Q_ICON_NAMES as default } from '@/components/QIcon';

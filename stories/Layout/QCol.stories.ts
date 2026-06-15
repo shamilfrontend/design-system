@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QCol } from '@/qComponents/QCol';
-import type { QColProps } from '@/qComponents/QCol';
-import { QRow } from '@/qComponents/QRow';
+import { QCol } from '@/components/QCol';
+import type { QColProps } from '@/components/QCol';
+import { QRow } from '@/components/QRow';
 import './layout.scss';
 
 const storyMetadata: Meta = {

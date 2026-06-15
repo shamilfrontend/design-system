@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QRate } from '@/qComponents/QRate';
+import { QRate } from '@/components/QRate';
 export default { title: 'Form/QRate', component: QRate } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

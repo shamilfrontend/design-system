@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QRadio } from '@/qComponents/QRadio';
-import type { QRadioProps } from '@/qComponents/QRadio';
+import { QRadio } from '@/components/QRadio';
+import type { QRadioProps } from '@/components/QRadio';
 
 const storyMetadata: Meta = {
   title: 'Form/QRadio',

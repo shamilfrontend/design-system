@@ -1,11 +1,11 @@
 import type { StoryFn, Meta } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QMessageBoxContent, useMessageBox } from '@/qComponents';
+import { QMessageBoxContent, useMessageBox } from '@/components';
 import type {
   QMessageBoxContentPropBeforeClose,
   QMessageBoxContentProps
-} from '@/qComponents';
+} from '@/components';
 
 const storyMetadata: Meta = {
   title: 'Feedback/QMessageBox',

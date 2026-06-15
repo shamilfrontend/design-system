@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QStatistic } from '@/qComponents/QStatistic';
+import { QStatistic } from '@/components/QStatistic';
 export default {
   title: 'Data/QStatistic',
   component: QStatistic

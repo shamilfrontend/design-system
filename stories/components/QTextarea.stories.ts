@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QTextarea } from '@/qComponents/QTextarea';
-import type { QTextareaProps } from '@/qComponents/QTextarea';
+import { QTextarea } from '@/components/QTextarea';
+import type { QTextareaProps } from '@/components/QTextarea';
 
 const storyMetadata: Meta = {
   title: 'Form/QTextarea',

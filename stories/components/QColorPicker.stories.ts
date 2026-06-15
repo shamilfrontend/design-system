@@ -2,8 +2,8 @@ import { placements } from '@popperjs/core/lib/enums';
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { QColorPicker } from '@/qComponents/QColorPicker';
-import type { QColorPickerProps } from '@/qComponents/QColorPicker';
+import { QColorPicker } from '@/components/QColorPicker';
+import type { QColorPickerProps } from '@/components/QColorPicker';
 
 const storyMetadata: Meta = {
   title: 'Form/QColorPicker',

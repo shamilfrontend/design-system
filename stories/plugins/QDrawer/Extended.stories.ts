@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineAsyncComponent, defineComponent } from 'vue';
 
-import { useDrawer } from '@/qComponents';
-import type { QDrawerOptions } from '@/qComponents';
-import { QDrawerContainer } from '@/qComponents/QDrawer/src/QDrawerContainer';
+import { useDrawer } from '@/components';
+import type { QDrawerOptions } from '@/components';
+import { QDrawerContainer } from '@/components/QDrawer/src/QDrawerContainer';
 
 const storyMetadata: Meta = {
   title: 'Feedback/QDrawer/Extended',

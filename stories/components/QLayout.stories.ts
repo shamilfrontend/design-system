@@ -7,7 +7,7 @@ import {
   QHeader,
   QLayout,
   QSidebar
-} from '@/qComponents/QLayout';
+} from '@/components/QLayout';
 
 const storyMetadata: Meta = {
   title: 'Basic/QLayout',

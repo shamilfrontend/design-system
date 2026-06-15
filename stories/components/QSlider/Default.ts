@@ -1,11 +1,11 @@
 import type { StoryFn } from '@storybook/vue3';
 import { defineComponent, ref } from 'vue';
 
-import { t } from '@/qComponents/locale';
 import type {
   QSliderPropModelValue,
   QSliderPropData
-} from '@/qComponents/QSlider';
+} from '@/components/QSlider';
+import { t } from '@/locale';
 
 type ModelValue = QSliderPropModelValue<'easy' | 'normal' | 'hard'>;
 

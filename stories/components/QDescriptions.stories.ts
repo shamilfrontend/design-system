@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QDescriptions, QDescriptionsItem } from '@/qComponents/QDescriptions';
+import { QDescriptions, QDescriptionsItem } from '@/components/QDescriptions';
 export default {
   title: 'Data/QDescriptions',
   component: QDescriptions

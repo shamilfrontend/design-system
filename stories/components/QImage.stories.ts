@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QImage } from '@/qComponents/QImage';
+import { QImage } from '@/components/QImage';
 export default { title: 'Data/QImage', component: QImage } satisfies Meta;
 export const Default: StoryFn = () =>
   defineComponent({

@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent, watch, reactive } from 'vue';
 
-import { QOption } from '@/qComponents/QOption';
-import { QSelect } from '@/qComponents/QSelect';
-import type { QSelectProps } from '@/qComponents/QSelect';
+import { QOption } from '@/components/QOption';
+import { QSelect } from '@/components/QSelect';
+import type { QSelectProps } from '@/components/QSelect';
 
 const storyMetadata: Meta = {
   title: 'Form/QSelect',

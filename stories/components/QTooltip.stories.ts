@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
-import { QTooltip } from '@/qComponents/QTooltip';
-import type { QTooltipProps } from '@/qComponents/QTooltip';
+import { QButton } from '@/components/QButton';
+import { QTooltip } from '@/components/QTooltip';
+import type { QTooltipProps } from '@/components/QTooltip';
 
 const storyMetadata: Meta = {
   title: 'Feedback/QTooltip',
