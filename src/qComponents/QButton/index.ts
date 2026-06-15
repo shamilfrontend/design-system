@@ -4,6 +4,13 @@ import Button from './src/QButton.vue';
 
 export const QButton = withInstall(Button);
 
+export {
+  QButtonTypeEnum,
+  QButtonSizeEnum,
+  QButtonNativeTypeEnum,
+  QButtonTagEnum
+} from './src/types';
+
 export type {
   QButtonProps,
   QButtonColorType,

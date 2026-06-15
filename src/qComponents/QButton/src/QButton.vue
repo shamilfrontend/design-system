@@ -1,186 +1,40 @@
 <script setup lang="ts">
 import { computed, inject, useSlots } from 'vue';
-import type { PropType } from 'vue';
 
-import { validateArray } from '@/qComponents/helpers';
 import type { QFormProvider } from '@/qComponents/QForm';
 
 import type { Nullable, ClassValue } from '#/helpers';
 
-import type {
-  QButtonPropType,
-  QButtonPropSize,
-  QButtonPropPlain,
-  QButtonPropText,
-  QButtonPropLink,
-  QButtonPropIcon,
-  QButtonPropNativeType,
-  QButtonPropLoading,
-  QButtonPropDisabled,
-  QButtonPropAutofocus,
-  QButtonPropRound,
-  QButtonPropCircle,
-  QButtonPropBg,
-  QButtonPropTag,
-  QButtonPropColor,
-  QButtonPropDark,
-  QButtonPropAutoInsertSpace,
-  QButtonPropFullWidth
+import {
+  QButtonTypeEnum,
+  QButtonSizeEnum,
+  QButtonNativeTypeEnum,
+  QButtonTagEnum
 } from './types';
+import type { QButtonProps } from './types';
 
 defineOptions({ name: 'QButton' });
 
-const props = defineProps({
-  type: {
-    type: String as PropType<QButtonPropType>,
-    default: 'primary',
-    validator: validateArray<QButtonPropType>([
-      'default',
-      'primary',
-      'success',
-      'warning',
-      'danger',
-      'info'
-    ])
-  },
-
-  plain: {
-    type: Boolean as PropType<QButtonPropPlain>,
-    default: false
-  },
-
-  text: {
-    type: Boolean as PropType<QButtonPropText>,
-    default: false
-  },
-
-  link: {
-    type: Boolean as PropType<QButtonPropLink>,
-    default: false
-  },
-
-  size: {
-    type: String as PropType<QButtonPropSize>,
-    default: 'default',
-    validator: validateArray<QButtonPropSize>(['large', 'default', 'small'])
-  },
-
-  /**
-   * any q-icon
-   */
-  icon: {
-    type: String as PropType<QButtonPropIcon>,
-    default: null
-  },
-
-  /**
-   * as native button type
-   */
-  nativeType: {
-    type: String as PropType<QButtonPropNativeType>,
-    default: 'button',
-    validator: validateArray<QButtonPropNativeType>([
-      'button',
-      'submit',
-      'reset'
-    ])
-  },
-
-  /**
-   * whether to show loader inside button
-   */
-  loading: {
-    type: Boolean as PropType<QButtonPropLoading>,
-    default: false
-  },
-
-  /**
-   * whether the button is disabled
-   */
-  disabled: {
-    type: Boolean as PropType<QButtonPropDisabled>,
-    default: false
-  },
-
-  /**
-   * as native button autofocus
-   */
-  autofocus: {
-    type: Boolean as PropType<QButtonPropAutofocus>,
-    default: false
-  },
-
-  /**
-   * whether to round button corners
-   */
-  round: {
-    type: Boolean as PropType<QButtonPropRound>,
-    default: false
-  },
-
-  /**
-   * change button's shape to circle
-   */
-  circle: {
-    type: Boolean as PropType<QButtonPropCircle>,
-    default: false
-  },
-
-  /**
-   * whether to show text-button background
-   */
-  bg: {
-    type: Boolean as PropType<QButtonPropBg>,
-    default: false
-  },
-
-  /**
-   * root html tag
-   */
-  tag: {
-    type: String as PropType<QButtonPropTag>,
-    default: 'button'
-  },
-
-  /**
-   * custom button color
-   */
-  color: {
-    type: String as PropType<QButtonPropColor>,
-    default: ''
-  },
-
-  /**
-   * dark mode when used with custom color
-   */
-  dark: {
-    type: Boolean as PropType<QButtonPropDark>,
-    default: false
-  },
-
-  /**
-   * compatible prop with Element Plus API
-   */
-  autoInsertSpace: {
-    type: Boolean as PropType<QButtonPropAutoInsertSpace>,
-    default: false
-  },
-
-  /**
-   * sets button width to 100%
-   */
-  fullWidth: {
-    type: Boolean as PropType<QButtonPropFullWidth>,
-    default: false
-  },
-
-  /**
-   * accessible label for icon-only buttons
-   */
-  ariaLabel: {
-    type: String,
-    default: null
-  }
+const props = withDefaults(defineProps<QButtonProps>(), {
+  type: QButtonTypeEnum.Primary,
+  plain: false,
+  text: false,
+  link: false,
+  size: QButtonSizeEnum.Default,
+  icon: null,
+  nativeType: QButtonNativeTypeEnum.Button,
+  loading: false,
+  disabled: false,
+  autofocus: false,
+  round: false,
+  circle: false,
+  bg: false,
+  tag: QButtonTagEnum.Button,
+  color: '',
+  dark: false,
+  autoInsertSpace: false,
+  fullWidth: false,
+  ariaLabel: null
 });
 
 const slots = useSlots();
@@ -193,7 +47,9 @@ const isDisabled = computed<boolean>(
 
 const isLoading = computed<boolean>(() => Boolean(props.loading));
 
-const isButtonTag = computed<boolean>(() => props.tag === 'button');
+const isButtonTag = computed<boolean>(
+  () => props.tag === QButtonTagEnum.Button
+);
 
 const isCircle = computed<boolean>(() => Boolean(props.circle));
 
@@ -204,7 +60,9 @@ const isIconOnly = computed<boolean>(
 const isBlocked = computed<boolean>(() => isDisabled.value || isLoading.value);
 
 const nativeTypeAttr = computed<string | undefined>(() =>
-  isButtonTag.value ? (props.nativeType ?? 'button') : undefined
+  isButtonTag.value
+    ? (props.nativeType ?? QButtonNativeTypeEnum.Button)
+    : undefined
 );
 
 const disabledAttr = computed<boolean | undefined>(() =>

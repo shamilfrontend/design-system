@@ -1,17 +1,27 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import { QButton } from '@/qComponents/QButton';
+import {
+  QButton,
+  QButtonTypeEnum,
+  QButtonSizeEnum,
+  QButtonNativeTypeEnum,
+  QButtonTagEnum
+} from '@/qComponents/QButton';
 import type { QButtonColorType, QButtonProps } from '@/qComponents/QButton';
 
 const COLOR_TYPES: QButtonColorType[] = [
-  'default',
-  'primary',
-  'success',
-  'warning',
-  'danger',
-  'info'
+  QButtonTypeEnum.Default,
+  QButtonTypeEnum.Primary,
+  QButtonTypeEnum.Success,
+  QButtonTypeEnum.Warning,
+  QButtonTypeEnum.Danger,
+  QButtonTypeEnum.Info
 ];
+
+const SIZE_TYPES = Object.values(QButtonSizeEnum);
+const NATIVE_TYPE_OPTIONS = Object.values(QButtonNativeTypeEnum);
+const TAG_OPTIONS = Object.values(QButtonTagEnum);
 
 const storyMetadata: Meta = {
   title: 'Basic/QButton',
@@ -22,7 +32,11 @@ const storyMetadata: Meta = {
       control: { type: 'select' }
     },
     size: {
-      options: ['large', 'default', 'small'],
+      options: SIZE_TYPES,
+      control: { type: 'select' }
+    },
+    nativeType: {
+      options: NATIVE_TYPE_OPTIONS,
       control: { type: 'select' }
     },
     plain: {
@@ -56,7 +70,8 @@ const storyMetadata: Meta = {
       control: { type: 'color' }
     },
     tag: {
-      control: { type: 'text' }
+      options: TAG_OPTIONS,
+      control: { type: 'select' }
     },
     icon: {
       control: { type: 'text' }
@@ -104,116 +119,116 @@ const Template: StoryFn<StoryArgs> = args =>
 
 export const Primary = Template.bind({});
 Primary.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   label: 'Primary',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  type: 'default',
+  type: QButtonTypeEnum.Default,
   label: 'Default',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  type: 'success',
+  type: QButtonTypeEnum.Success,
   label: 'Success',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  type: 'warning',
+  type: QButtonTypeEnum.Warning,
   label: 'Warning',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
-  type: 'danger',
+  type: QButtonTypeEnum.Danger,
   label: 'Danger',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const Info = Template.bind({});
 Info.args = {
-  type: 'info',
+  type: QButtonTypeEnum.Info,
   label: 'Info',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const PlainPrimary = Template.bind({});
 PlainPrimary.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   plain: true,
   label: 'Plain',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const TextPrimary = Template.bind({});
 TextPrimary.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   text: true,
   label: 'Text',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const LinkPrimary = Template.bind({});
 LinkPrimary.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   link: true,
   label: 'Link',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const SizeLarge = Template.bind({});
 SizeLarge.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   label: 'Large',
-  size: 'large'
+  size: QButtonSizeEnum.Large
 };
 
 export const SizeSmall = Template.bind({});
 SizeSmall.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   label: 'Small',
-  size: 'small'
+  size: QButtonSizeEnum.Small
 };
 
 export const IconPrimary = Template.bind({});
 IconPrimary.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   icon: 'q-icon-bell',
-  size: 'default',
+  size: QButtonSizeEnum.Default,
   label: ''
 };
 
 export const IconPlain = Template.bind({});
 IconPlain.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   plain: true,
   icon: 'q-icon-bell',
-  size: 'default',
+  size: QButtonSizeEnum.Default,
   label: ''
 };
 
 export const IconCircle = Template.bind({});
 IconCircle.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   circle: true,
   icon: 'q-icon-bell',
-  size: 'default',
+  size: QButtonSizeEnum.Default,
   label: ''
 };
 
 export const Round = Template.bind({});
 Round.args = {
-  type: 'primary',
+  type: QButtonTypeEnum.Primary,
   round: true,
   label: 'Round',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const CustomColor = Template.bind({});
@@ -221,15 +236,15 @@ CustomColor.args = {
   color: '#409eff',
   dark: true,
   label: 'Custom',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const AsLinkTag = Template.bind({});
 AsLinkTag.args = {
-  type: 'primary',
-  tag: 'a',
+  type: QButtonTypeEnum.Primary,
+  tag: QButtonTagEnum.Anchor,
   label: 'Anchor',
-  size: 'default'
+  size: QButtonSizeEnum.Default
 };
 
 export const AllTypes = (): ReturnType<typeof defineComponent> =>
