@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { PropType, StyleValue } from 'vue';
+
 import type { QAffixPropOffsetTop } from './types';
 
-defineOptions({ name: 'QAffix', componentName: 'QAffix' });
+defineOptions({ name: 'QAffix'});
 
 const props = defineProps({
   offsetTop: { type: Number as PropType<QAffixPropOffsetTop>, default: 0 }

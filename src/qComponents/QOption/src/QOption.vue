@@ -26,7 +26,6 @@ import type {
 
 defineOptions({
   name: 'QOption',
-  componentName: 'QOption'
 });
 
 const props = defineProps({

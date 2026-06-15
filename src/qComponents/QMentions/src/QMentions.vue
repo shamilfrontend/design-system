@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import type { PropType } from 'vue';
+
 import { t } from '@/qComponents/locale';
+
 import type { QMentionOption } from './types';
 
-defineOptions({ name: 'QMentions', componentName: 'QMentions' });
+defineOptions({ name: 'QMentions'});
 const props = defineProps({
   modelValue: { type: String, default: '' },
   options: { type: Array as PropType<QMentionOption[]>, default: () => [] },

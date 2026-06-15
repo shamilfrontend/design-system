@@ -7,7 +7,6 @@ import type { QCollapsePropModelValue, QCollapseProvider } from './types';
 
 defineOptions({
   name: 'QCollapse',
-  componentName: 'QCollapse'
 });
 
 const props = defineProps({

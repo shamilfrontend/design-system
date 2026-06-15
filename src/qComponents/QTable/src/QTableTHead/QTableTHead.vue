@@ -16,7 +16,6 @@ import QTableTHeadCell from './QTableTHeadCell/QTableTHeadCell.vue';
 
 defineOptions({
   name: 'QTableTHead',
-  componentName: ' QTableTHead'
 });
 
 const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);

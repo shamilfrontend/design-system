@@ -10,7 +10,6 @@ import type { QBreadcrumbsPropRoute, RouteItem } from './types';
 
 defineOptions({
   name: 'QBreadcrumbs',
-  componentName: 'QBreadcrumbs'
 });
 
 const props = defineProps({

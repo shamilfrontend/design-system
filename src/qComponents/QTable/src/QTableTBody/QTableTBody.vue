@@ -8,7 +8,6 @@ import QTableTBodyRow from './QTableTBodyRow/QTableTBodyRow.vue';
 
 defineOptions({
   name: 'QTableTBody',
-  componentName: 'QTableTBody'
 });
 
 const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);

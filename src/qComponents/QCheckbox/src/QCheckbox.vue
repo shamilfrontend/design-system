@@ -21,7 +21,6 @@ import type {
 
 defineOptions({
   name: 'QCheckbox',
-  componentName: 'QCheckbox',
   inheritAttrs: false
 });
 

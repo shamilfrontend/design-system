@@ -25,7 +25,6 @@ const WRAPPER_PADDING_LEFT = 32;
 
 defineOptions({
   name: 'QTableTSticky',
-  componentName: ' QTableTSticky'
 });
 
 const qTableContainer = inject<QTableContainerProvider>(

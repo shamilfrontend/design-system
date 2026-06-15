@@ -10,7 +10,6 @@ import type { QRowPropAlignV, QRowPropAlignH } from './types';
 
 defineOptions({
   name: 'QRow',
-  componentName: 'QRow'
 });
 
 const props = defineProps({

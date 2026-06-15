@@ -18,7 +18,6 @@ import type {
 
 defineOptions({
   name: 'QNotificationToast',
-  componentName: 'QNotificationToast'
 });
 
 const props = defineProps({

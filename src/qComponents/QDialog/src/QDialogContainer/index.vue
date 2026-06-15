@@ -28,7 +28,6 @@ import { isExternalComponent } from './utils';
 
 defineOptions({
   name: 'QDialogContainer',
-  componentName: 'QDialogContainer'
 });
 
 const props = defineProps({

@@ -7,7 +7,6 @@ export type QContainerPropSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
 
 defineOptions({
   name: 'QContainer',
-  componentName: 'QContainer'
 });
 
 defineProps({

@@ -27,9 +27,9 @@ import {
 } from '../../constants';
 import DateTable from '../../tables/DateTable/DateTable.vue';
 import PeriodTable from '../../tables/PeriodTable/PeriodTable.vue';
-import QDatePickerTimeFooter from '../QDatePickerTimeFooter.vue';
 import type { QDatePickerProvider } from '../../types';
 import { getPeriodNextNodeIndex } from '../composition';
+import QDatePickerTimeFooter from '../QDatePickerTimeFooter.vue';
 
 import type { DatePanelPropModelValue, DatePanelState } from './types';
 

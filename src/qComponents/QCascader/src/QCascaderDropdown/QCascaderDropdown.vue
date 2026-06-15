@@ -15,7 +15,6 @@ const DEFAULT_Z_INDEX = 2000;
 
 defineOptions({
   name: 'QCascaderDropdown',
-  componentName: 'QCascaderDropdown'
 });
 
 const emit = defineEmits(['close']);

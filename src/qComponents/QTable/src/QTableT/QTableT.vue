@@ -21,7 +21,6 @@ import type { QTableTProvider } from './types';
 
 defineOptions({
   name: 'QTableT',
-  componentName: 'QTableT'
 });
 
 const emit = defineEmits(['change-width']);

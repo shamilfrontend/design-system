@@ -40,7 +40,6 @@ const DEFAULT_ALPHA = 100;
 
 defineOptions({
   name: 'QPickerDropdown',
-  componentName: 'QPickerDropdown'
 });
 
 const props = defineProps({

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'QParagraph', componentName: 'QParagraph' });
+defineOptions({ name: 'QParagraph'});
 defineProps({ ellipsis: { type: Boolean, default: false } });
 </script>
 <template>

@@ -5,7 +5,6 @@ import { t } from '@/qComponents/locale';
 
 defineOptions({
   name: 'QBackTop',
-  componentName: 'QBackTop'
 });
 
 const props = defineProps({

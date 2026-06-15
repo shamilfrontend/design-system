@@ -12,7 +12,6 @@ import type { QTableProvider } from '../../types';
 
 defineOptions({
   name: 'QTableTTotalCell',
-  componentName: 'QTableTTotalCell'
 });
 
 const props = defineProps({

@@ -10,7 +10,6 @@ import type { QTableProvider } from '../types';
 
 defineOptions({
   name: 'QTableTColgroup',
-  componentName: 'QTableTColgroup'
 });
 
 const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);

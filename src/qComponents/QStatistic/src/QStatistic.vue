@@ -3,7 +3,6 @@ import type { PropType } from 'vue';
 
 defineOptions({
   name: 'QStatistic',
-  componentName: 'QStatistic'
 });
 
 defineProps({

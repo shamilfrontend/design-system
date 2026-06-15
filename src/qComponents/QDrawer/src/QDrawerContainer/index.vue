@@ -30,7 +30,6 @@ import { isExternalComponent } from './utils';
 
 defineOptions({
   name: 'QDrawerContainer',
-  componentName: 'QDrawerContainer'
 });
 
 const props = defineProps({

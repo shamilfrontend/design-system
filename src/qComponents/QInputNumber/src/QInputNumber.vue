@@ -11,7 +11,6 @@ import type { Nullable } from '#/helpers';
 
 defineOptions({
   name: 'QInputNumber',
-  componentName: 'QInputNumber',
   inheritAttrs: false
 });
 

@@ -5,7 +5,6 @@ import { t } from '@/qComponents/locale';
 
 defineOptions({
   name: 'QCarousel',
-  componentName: 'QCarousel'
 });
 
 const props = defineProps({

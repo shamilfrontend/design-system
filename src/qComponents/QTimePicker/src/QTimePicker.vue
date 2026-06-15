@@ -15,7 +15,6 @@ const DEFAULT_Z_INDEX = 2000;
 
 defineOptions({
   name: 'QTimePicker',
-  componentName: 'QTimePicker'
 });
 
 const props = defineProps({

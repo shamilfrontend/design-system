@@ -33,7 +33,6 @@ const DEFAULT_Z_INDEX = 2000;
 
 defineOptions({
   name: 'QDropdown',
-  componentName: 'QDropdown'
 });
 
 const props = defineProps({

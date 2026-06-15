@@ -78,7 +78,6 @@ import type {
 
 defineOptions({
   name: 'QDatePicker',
-  componentName: 'QDatePicker'
 });
 
 const props = defineProps({

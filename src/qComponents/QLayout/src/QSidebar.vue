@@ -1,7 +1,6 @@
 <script setup lang="ts">
 defineOptions({
   name: 'QSidebar',
-  componentName: 'QSidebar'
 });
 
 defineProps({

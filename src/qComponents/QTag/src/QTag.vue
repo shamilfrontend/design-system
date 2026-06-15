@@ -5,7 +5,6 @@ import { t } from '@/qComponents/locale';
 
 defineOptions({
   name: 'QTag',
-  componentName: 'QTag'
 });
 
 const props = defineProps({

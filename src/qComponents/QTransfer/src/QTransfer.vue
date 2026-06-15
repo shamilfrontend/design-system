@@ -13,7 +13,6 @@ import type {
 
 defineOptions({
   name: 'QTransfer',
-  componentName: 'QTransfer'
 });
 
 const props = defineProps({

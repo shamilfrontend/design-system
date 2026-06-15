@@ -32,7 +32,6 @@ const DEFAULT_Z_INDEX = 2000;
 
 defineOptions({
   name: 'QTooltip',
-  componentName: 'QTooltip'
 });
 
 const props = defineProps({

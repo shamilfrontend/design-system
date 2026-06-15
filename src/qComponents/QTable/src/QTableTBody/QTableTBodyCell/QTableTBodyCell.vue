@@ -14,7 +14,6 @@ import type { QTableTBodyCellPropRow, QTableTBodyCellPropValue } from './types';
 
 defineOptions({
   name: 'QTableTBodyCell',
-  componentName: ' QTableTBodyCell'
 });
 
 const props = defineProps({

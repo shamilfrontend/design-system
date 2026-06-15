@@ -5,7 +5,6 @@ import type { Nullable } from '#/helpers';
 
 defineOptions({
   name: 'QCol',
-  componentName: 'QCol'
 });
 
 const props = defineProps({

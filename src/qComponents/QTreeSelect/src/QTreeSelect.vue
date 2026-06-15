@@ -11,8 +11,8 @@ import {
 import type { PropType } from 'vue';
 
 import { getConfig } from '@/qComponents/config';
-import { QTree, type QTreeNode } from '@/qComponents/QTree';
 import { t } from '@/qComponents/locale';
+import { QTree, type QTreeNode } from '@/qComponents/QTree';
 
 import type { Nullable } from '#/helpers';
 
@@ -30,7 +30,6 @@ const DEFAULT_Z_INDEX = 2000;
 
 defineOptions({
   name: 'QTreeSelect',
-  componentName: 'QTreeSelect'
 });
 
 const props = defineProps({

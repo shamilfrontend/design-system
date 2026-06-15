@@ -28,7 +28,6 @@ import type {
 
 defineOptions({
   name: 'QTable',
-  componentName: ' QTable'
 });
 
 const props = defineProps({

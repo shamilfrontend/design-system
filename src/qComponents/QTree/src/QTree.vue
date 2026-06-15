@@ -7,7 +7,6 @@ import type { QTreeNode as QTreeNodeType, QTreePropData } from './types';
 
 defineOptions({
   name: 'QTree',
-  componentName: 'QTree'
 });
 
 const props = defineProps({
@@ -80,7 +79,7 @@ watch(
     class="q-tree"
     role="tree"
   >
-    <QTreeNode
+    <q-tree-node
       v-for="node in data"
       :key="node.id"
       :node="node"

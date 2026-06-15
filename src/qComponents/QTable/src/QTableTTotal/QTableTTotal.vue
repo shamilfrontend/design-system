@@ -13,7 +13,6 @@ import QTableTTotalCell from './QTableTTotalCell/QTableTTotalCell.vue';
 
 defineOptions({
   name: 'QTableTTotal',
-  componentName: 'QTableTTotal'
 });
 
 const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);

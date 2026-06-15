@@ -9,7 +9,6 @@ import draggable from '../utils/draggable';
 
 defineOptions({
   name: 'QColorHueSlider',
-  componentName: 'QColorHueSlider'
 });
 
 const emit = defineEmits<{

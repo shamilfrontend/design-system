@@ -9,7 +9,6 @@ import type { QEmptyPropDescription, QEmptyPropImageSize } from './types';
 
 defineOptions({
   name: 'QEmpty',
-  componentName: 'QEmpty'
 });
 
 const props = defineProps({

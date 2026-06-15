@@ -28,10 +28,7 @@ import type {
   QButtonPropFullWidth
 } from './types';
 
-defineOptions({
-  name: 'QButton',
-  componentName: 'QButton'
-});
+defineOptions({ name: 'QButton' });
 
 const props = defineProps({
   type: {

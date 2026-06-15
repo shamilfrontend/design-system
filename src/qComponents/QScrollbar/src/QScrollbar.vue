@@ -32,7 +32,6 @@ const OFFSET = -10;
 
 defineOptions({
   name: 'QScrollbar',
-  componentName: 'QScrollbar'
 });
 
 const props = defineProps({

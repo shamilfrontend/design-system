@@ -1,7 +1,6 @@
 <script setup lang="ts">
 defineOptions({
   name: 'QListItem',
-  componentName: 'QListItem'
 });
 </script>
 

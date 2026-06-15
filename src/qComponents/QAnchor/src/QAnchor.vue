@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import type { PropType } from 'vue';
-import type { QAnchorItem, QAnchorPropItems, QAnchorPropOffset } from './types';
 
-defineOptions({ name: 'QAnchor', componentName: 'QAnchor' });
+import type { QAnchorPropItems, QAnchorPropOffset } from './types';
+
+defineOptions({ name: 'QAnchor'});
 
 const props = defineProps({
   items: { type: Array as PropType<QAnchorPropItems>, default: () => [] },

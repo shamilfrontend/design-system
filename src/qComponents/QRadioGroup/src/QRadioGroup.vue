@@ -14,7 +14,6 @@ import type {
 
 defineOptions({
   name: 'QRadioGroup',
-  componentName: 'QRadioGroup'
 });
 
 const props = defineProps({

@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
 
-import { validateArray } from '@/qComponents/helpers';
-
 export type QDescriptionsItemPropLabel = string;
 export type QDescriptionsItemPropSpan = number;
 
 defineOptions({
   name: 'QDescriptionsItem',
-  componentName: 'QDescriptionsItem'
 });
 
 defineProps({

@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { addMonths, eachDayOfInterval, endOfMonth, endOfWeek, format, isSameDay, isSameMonth, startOfMonth, startOfWeek, subMonths } from 'date-fns';
 import { computed, ref, watch } from 'vue';
 import type { PropType } from 'vue';
-import { addMonths, eachDayOfInterval, endOfMonth, endOfWeek, format, isSameDay, isSameMonth, startOfMonth, startOfWeek, subMonths } from 'date-fns';
+
 import type { QCalendarEvent } from './types';
 
-defineOptions({ name: 'QCalendar', componentName: 'QCalendar' });
+defineOptions({ name: 'QCalendar'});
 const props = defineProps({
   modelValue: { type: Date, default: () => new Date() },
   events: { type: Array as PropType<QCalendarEvent[]>, default: () => [] }

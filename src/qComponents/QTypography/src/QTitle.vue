@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { PropType } from 'vue';
+
 import { validateArray } from '@/qComponents/helpers';
+
 import type { QTitlePropLevel } from './types';
 
-defineOptions({ name: 'QTitle', componentName: 'QTitle' });
+defineOptions({ name: 'QTitle'});
 const props = defineProps({
   level: {
     type: Number as PropType<QTitlePropLevel>,

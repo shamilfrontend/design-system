@@ -14,7 +14,6 @@ import { renderThumbStyle } from './util';
 
 defineOptions({
   name: 'QBar',
-  componentName: 'QBar'
 });
 
 const props = defineProps({

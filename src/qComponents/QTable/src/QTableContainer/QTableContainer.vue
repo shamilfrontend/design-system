@@ -11,7 +11,6 @@ import type { QTableContainerProvider, ExtendedColumn } from './types';
 
 defineOptions({
   name: 'QTableContainer',
-  componentName: 'QTableContainer'
 });
 
 const qTable = inject<QTableProvider>('qTable', {} as QTableProvider);

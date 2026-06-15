@@ -15,7 +15,6 @@ import type { Nullable, UnwrappedInstance } from '#/helpers';
 
 defineOptions({
   name: 'QSelectDropdown',
-  componentName: 'QSelectDropdown'
 });
 
 const DEFAULT_Z_INDEX = 2000;

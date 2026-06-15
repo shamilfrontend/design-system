@@ -13,7 +13,6 @@ import type {
 
 defineOptions({
   name: 'QResult',
-  componentName: 'QResult'
 });
 
 const props = defineProps({

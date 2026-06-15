@@ -12,7 +12,6 @@ import type {
 
 defineOptions({
   name: 'QCard',
-  componentName: 'QCard'
 });
 
 const props = defineProps({

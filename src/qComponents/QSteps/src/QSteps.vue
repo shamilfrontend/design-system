@@ -13,7 +13,6 @@ import type {
 
 defineOptions({
   name: 'QSteps',
-  componentName: 'QSteps'
 });
 
 const props = defineProps({

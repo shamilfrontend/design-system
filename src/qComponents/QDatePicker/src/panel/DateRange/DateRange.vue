@@ -23,7 +23,6 @@ import {
   MONTHS_COUNT
 } from '../../constants';
 import DateTable from '../../tables/DateTable/DateTable.vue';
-import QDatePickerTimeFooter from '../QDatePickerTimeFooter.vue';
 import type { QDatePickerProvider } from '../../types';
 import {
   getActualMonth,
@@ -36,6 +35,7 @@ import {
   getRangeChangedState,
   getLabelFromDate
 } from '../composition';
+import QDatePickerTimeFooter from '../QDatePickerTimeFooter.vue';
 
 import type {
   DatePanelRangePropModelValue,

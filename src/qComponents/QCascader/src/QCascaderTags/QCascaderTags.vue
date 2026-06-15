@@ -10,7 +10,6 @@ import type { TagItem } from './types';
 
 defineOptions({
   name: 'QCascaderTags',
-  componentName: 'QCascaderTags'
 });
 
 const qCascader = inject<QCascaderProvider>(

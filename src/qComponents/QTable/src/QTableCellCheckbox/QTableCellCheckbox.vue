@@ -19,7 +19,6 @@ import type {
 
 defineOptions({
   name: 'QTableCellCheckbox',
-  componentName: 'QTableCellCheckbox'
 });
 
 const props = defineProps({

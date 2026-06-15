@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
+
 import { validateArray } from '@/qComponents/helpers';
+
 import type { QTextPropType } from './types';
 
-defineOptions({ name: 'QText', componentName: 'QText' });
+defineOptions({ name: 'QText'});
 defineProps({
   type: {
     type: String as PropType<QTextPropType>,

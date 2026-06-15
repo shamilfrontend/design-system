@@ -73,7 +73,6 @@ import type {
 
 defineOptions({
   name: 'QSelect',
-  componentName: 'QSelect'
 });
 
 const props = defineProps({

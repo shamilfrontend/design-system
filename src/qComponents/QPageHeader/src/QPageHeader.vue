@@ -11,7 +11,6 @@ import type {
 
 defineOptions({
   name: 'QPageHeader',
-  componentName: 'QPageHeader'
 });
 
 defineProps({

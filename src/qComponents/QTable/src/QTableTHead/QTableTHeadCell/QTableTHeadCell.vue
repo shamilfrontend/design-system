@@ -15,7 +15,6 @@ import type { QTableTHeadCellPropSortBy } from './types';
 
 defineOptions({
   name: 'QTableTHeadCell',
-  componentName: ' QTableTHeadCell'
 });
 
 const props = defineProps({

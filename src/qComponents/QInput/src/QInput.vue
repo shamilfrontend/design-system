@@ -34,7 +34,6 @@ import type {
 
 defineOptions({
   name: 'QInput',
-  componentName: 'QInput',
   inheritAttrs: false
 });
 

@@ -17,7 +17,6 @@ import type {
 
 defineOptions({
   name: 'QForm',
-  componentName: 'QForm'
 });
 
 const props = defineProps({

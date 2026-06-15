@@ -14,7 +14,6 @@ import type {
 
 defineOptions({
   name: 'QLink',
-  componentName: 'QLink',
   inheritAttrs: false
 });
 

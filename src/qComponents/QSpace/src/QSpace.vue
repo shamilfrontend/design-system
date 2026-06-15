@@ -14,7 +14,6 @@ import type {
 
 defineOptions({
   name: 'QSpace',
-  componentName: 'QSpace'
 });
 
 const props = defineProps({

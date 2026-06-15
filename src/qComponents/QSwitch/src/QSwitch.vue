@@ -9,7 +9,6 @@ import type { QSwitchTabIndexType, QSwitchEmitValueType } from './types';
 
 defineOptions({
   name: 'QSwitch',
-  componentName: 'QSwitch'
 });
 
 const props = defineProps({

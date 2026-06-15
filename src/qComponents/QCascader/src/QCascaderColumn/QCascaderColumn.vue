@@ -16,7 +16,6 @@ import type { QCascaderColumnPropColumn } from './types';
 
 defineOptions({
   name: 'QCascaderColumn',
-  componentName: 'QCascaderColumn'
 });
 
 const props = defineProps({

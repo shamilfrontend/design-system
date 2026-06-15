@@ -8,7 +8,6 @@ export type QListPropBordered = boolean;
 
 defineOptions({
   name: 'QList',
-  componentName: 'QList'
 });
 
 defineProps({

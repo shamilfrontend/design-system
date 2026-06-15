@@ -10,7 +10,6 @@ export type QDescriptionsPropSize = 'small' | 'medium' | 'large';
 
 defineOptions({
   name: 'QDescriptions',
-  componentName: 'QDescriptions'
 });
 
 defineProps({

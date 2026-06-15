@@ -5,7 +5,6 @@ import type { QTabPropModelValue, QTabsProvider } from './types';
 
 defineOptions({
   name: 'QTabs',
-  componentName: 'QTabs'
 });
 
 const props = defineProps({

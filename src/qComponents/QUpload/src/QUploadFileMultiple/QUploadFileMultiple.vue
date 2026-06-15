@@ -18,7 +18,6 @@ import type { QUploadFileMultiplePropValue } from './types';
 
 defineOptions({
   name: 'QUploadFileMultiple',
-  componentName: 'QUploadFileMultiple'
 });
 
 const props = defineProps({

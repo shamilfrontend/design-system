@@ -12,7 +12,6 @@ import type {
 
 defineOptions({
   name: 'QDivider',
-  componentName: 'QDivider'
 });
 
 const props = defineProps({

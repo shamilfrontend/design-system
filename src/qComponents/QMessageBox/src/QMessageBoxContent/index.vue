@@ -13,7 +13,6 @@ import type { QMessageBoxContentPropBeforeClose } from './types';
 
 defineOptions({
   name: 'QMessageBoxContent',
-  componentName: 'QMessageBoxContent'
 });
 
 const props = defineProps({

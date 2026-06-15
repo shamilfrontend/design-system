@@ -16,7 +16,6 @@ import type {
 
 defineOptions({
   name: 'QSegmented',
-  componentName: 'QSegmented'
 });
 
 const props = defineProps({

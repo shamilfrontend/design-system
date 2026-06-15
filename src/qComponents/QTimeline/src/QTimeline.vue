@@ -7,7 +7,6 @@ import type { QTimelinePropItems, QTimelinePropMode } from './types';
 
 defineOptions({
   name: 'QTimeline',
-  componentName: 'QTimeline'
 });
 
 defineProps({

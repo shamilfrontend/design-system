@@ -4,7 +4,6 @@ import type { PropType, Ref } from 'vue';
 
 defineOptions({
   name: 'QProgressIndicatiorContainer',
-  componentName: 'QProgressIndicatiorContainer'
 });
 
 const props = defineProps({

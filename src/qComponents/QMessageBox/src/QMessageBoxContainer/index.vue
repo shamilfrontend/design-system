@@ -35,7 +35,6 @@ import { isExternalComponent, isInternalComponent } from './utils';
 
 defineOptions({
   name: 'QMessageBoxContainer',
-  componentName: 'QMessageBoxContainer'
 });
 
 const props = defineProps({

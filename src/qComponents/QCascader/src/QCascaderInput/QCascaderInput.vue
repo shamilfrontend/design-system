@@ -10,7 +10,6 @@ import type { QCascaderProvider } from '../types';
 
 defineOptions({
   name: 'QCascaderInput',
-  componentName: 'QCascaderInput'
 });
 
 const qCascader = inject<QCascaderProvider>(

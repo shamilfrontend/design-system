@@ -10,7 +10,6 @@ import type { NewOption } from '../../types';
 
 defineOptions({
   name: 'QSelectTags',
-  componentName: 'QSelectTags'
 });
 
 const emit = defineEmits([

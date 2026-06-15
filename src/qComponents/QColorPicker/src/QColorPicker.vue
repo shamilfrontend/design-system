@@ -27,7 +27,6 @@ const DEFAULT_Z_INDEX = 2000;
 
 defineOptions({
   name: 'QColorPicker',
-  componentName: 'QColorPicker'
 });
 
 const props = defineProps({

@@ -11,7 +11,6 @@ import type { QCascaderRowPropRow } from './types';
 
 defineOptions({
   name: 'QCascaderRow',
-  componentName: 'QCascaderRow'
 });
 
 const props = defineProps({

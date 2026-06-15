@@ -5,7 +5,6 @@ import { t } from '@/qComponents/locale';
 
 defineOptions({
   name: 'QUploadDropZone',
-  componentName: 'QUploadDropZone'
 });
 
 const props = defineProps({

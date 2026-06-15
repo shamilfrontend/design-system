@@ -16,7 +16,6 @@ import type {
 
 defineOptions({
   name: 'QMenuItem',
-  componentName: 'QMenuItem'
 });
 
 const props = defineProps({

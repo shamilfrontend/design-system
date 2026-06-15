@@ -20,7 +20,6 @@ import type {
 
 defineOptions({
   name: 'QUpload',
-  componentName: 'QUpload'
 });
 
 const props = defineProps({

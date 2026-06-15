@@ -11,8 +11,8 @@ import {
 import type { PropType } from 'vue';
 
 import { getConfig } from '@/qComponents/config';
-import { QInput } from '@/qComponents/QInput';
 import { t } from '@/qComponents/locale';
+import { QInput } from '@/qComponents/QInput';
 
 import type { Nullable } from '#/helpers';
 
@@ -26,7 +26,6 @@ const DEFAULT_Z_INDEX = 2000;
 
 defineOptions({
   name: 'QAutoComplete',
-  componentName: 'QAutoComplete'
 });
 
 const props = defineProps({

@@ -6,7 +6,6 @@ import { t } from '@/qComponents/locale';
 
 defineOptions({
   name: 'QPagination',
-  componentName: 'QPagination'
 });
 
 const props = defineProps({

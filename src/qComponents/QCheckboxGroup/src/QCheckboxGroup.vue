@@ -13,7 +13,6 @@ import type {
 
 defineOptions({
   name: 'QCheckboxGroup',
-  componentName: 'QCheckboxGroup'
 });
 
 const props = defineProps({

@@ -20,7 +20,6 @@ import type { QTableTBodyRowPropRow } from './types';
 
 defineOptions({
   name: 'QTableTBodyRow',
-  componentName: ' QTableTBodyRow'
 });
 
 const props = defineProps({

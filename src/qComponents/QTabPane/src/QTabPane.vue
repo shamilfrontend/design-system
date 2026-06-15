@@ -7,7 +7,6 @@ import type { Optional } from '#/helpers';
 
 defineOptions({
   name: 'QTabPane',
-  componentName: 'QTabPane'
 });
 
 const props = defineProps({

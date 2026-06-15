@@ -5,7 +5,6 @@ import { CLEAR_EVENT, ABORT_EVENT } from '@/qComponents/constants/events';
 
 defineOptions({
   name: 'QUploadFileSingle',
-  componentName: 'QUploadFileSingle'
 });
 
 const props = defineProps({

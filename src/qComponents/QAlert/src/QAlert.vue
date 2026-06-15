@@ -15,7 +15,6 @@ import type {
 
 defineOptions({
   name: 'QAlert',
-  componentName: 'QAlert'
 });
 
 const props = defineProps({

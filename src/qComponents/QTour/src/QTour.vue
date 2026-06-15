@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import type { PropType } from 'vue';
+
 import { t } from '@/qComponents/locale';
+
 import type { QTourStep } from './types';
 
-defineOptions({ name: 'QTour', componentName: 'QTour' });
+defineOptions({ name: 'QTour'});
 const props = defineProps({
   modelValue: { type: Boolean, default: false },
   steps: { type: Array as PropType<QTourStep[]>, default: () => [] },

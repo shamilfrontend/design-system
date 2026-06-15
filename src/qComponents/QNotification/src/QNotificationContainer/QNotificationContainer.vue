@@ -10,7 +10,6 @@ import type { QNotifyItem, QNotifyId } from '../types';
 
 defineOptions({
   name: 'QNotificationContainer',
-  componentName: 'QNotificationContainer'
 });
 
 const props = defineProps({

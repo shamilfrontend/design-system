@@ -10,7 +10,6 @@ import QCollapseTransition from './QCollapseTransition.vue';
 
 defineOptions({
   name: 'QCollapseItem',
-  componentName: 'QCollapseItem'
 });
 
 const props = defineProps({

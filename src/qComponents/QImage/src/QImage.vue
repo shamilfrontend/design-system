@@ -17,7 +17,6 @@ import type {
 
 defineOptions({
   name: 'QImage',
-  componentName: 'QImage'
 });
 
 const props = defineProps({

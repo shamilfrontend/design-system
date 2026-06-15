@@ -23,7 +23,6 @@ import type { QTextareaPropResize, QTextareaPropAutosize } from './types';
 
 defineOptions({
   name: 'QTextarea',
-  componentName: 'QTextarea',
   inheritAttrs: false
 });
 

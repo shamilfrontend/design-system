@@ -13,7 +13,6 @@ import type {
 
 defineOptions({
   name: 'QAvatar',
-  componentName: 'QAvatar'
 });
 
 const props = defineProps({

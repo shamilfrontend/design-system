@@ -11,7 +11,6 @@ import type { QDialogContainerProvider } from '../QDialogContainer';
 
 defineOptions({
   name: 'QDialogContent',
-  componentName: 'QDialogContent'
 });
 
 const props = defineProps({

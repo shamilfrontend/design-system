@@ -8,7 +8,6 @@ import type { QLoadingPropSize, QLoadingPropText } from './types';
 
 defineOptions({
   name: 'QLoading',
-  componentName: 'QLoading'
 });
 
 const props = defineProps({

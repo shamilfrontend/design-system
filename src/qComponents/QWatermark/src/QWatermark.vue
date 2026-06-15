@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
 
-defineOptions({ name: 'QWatermark', componentName: 'QWatermark' });
+defineOptions({ name: 'QWatermark'});
 
 const props = defineProps({
   content: { type: String, default: 'Watermark' },

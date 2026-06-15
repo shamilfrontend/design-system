@@ -18,7 +18,6 @@ import type {
 
 defineOptions({
   name: 'QRadio',
-  componentName: 'QRadio',
   inheritAttrs: false
 });
 

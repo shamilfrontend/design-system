@@ -34,7 +34,6 @@ import type {
 
 defineOptions({
   name: 'QFormItem',
-  componentName: 'QFormItem'
 });
 
 const props = defineProps({

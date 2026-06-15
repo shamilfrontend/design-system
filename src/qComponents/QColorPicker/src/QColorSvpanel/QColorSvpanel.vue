@@ -10,7 +10,6 @@ import draggable from '../utils/draggable';
 
 defineOptions({
   name: 'QColorSvpanel',
-  componentName: 'QColorSvpanel'
 });
 
 const emit = defineEmits<{

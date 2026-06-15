@@ -15,7 +15,6 @@ import type {
 
 defineOptions({
   name: 'QProgress',
-  componentName: 'QProgress'
 });
 
 const props = defineProps({

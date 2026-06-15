@@ -17,7 +17,6 @@ import { resolveIconClass } from './utils';
 
 defineOptions({
   name: 'QIcon',
-  componentName: 'QIcon'
 });
 
 const props = defineProps({

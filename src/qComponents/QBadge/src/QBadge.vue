@@ -14,7 +14,6 @@ import type {
 
 defineOptions({
   name: 'QBadge',
-  componentName: 'QBadge'
 });
 
 const props = defineProps({

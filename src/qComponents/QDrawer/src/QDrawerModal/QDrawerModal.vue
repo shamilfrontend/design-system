@@ -12,9 +12,11 @@ import type { PropType } from 'vue';
 import { getConfig } from '@/qComponents/config';
 import { isServer } from '@/qComponents/constants/isServer';
 import { validateArray } from '@/qComponents/helpers';
-import { QDrawerAction } from '../constants';
 
 import type { Nullable } from '#/helpers';
+
+import { QDrawerAction } from '../constants';
+
 
 import type {
   QDrawerModalPropBeforeClose,
@@ -27,7 +29,6 @@ import type {
 
 defineOptions({
   name: 'QDrawerModal',
-  componentName: 'QDrawerModal'
 });
 
 const props = defineProps({

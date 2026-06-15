@@ -17,7 +17,6 @@ import type {
 
 defineOptions({
   name: 'QSkeleton',
-  componentName: 'QSkeleton'
 });
 
 const props = defineProps({

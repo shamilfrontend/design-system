@@ -9,7 +9,6 @@ import type { QTableEmptyPropEmptyText } from './types';
 
 defineOptions({
   name: 'QTableEmpty',
-  componentName: 'QTableEmpty'
 });
 
 const props = defineProps({

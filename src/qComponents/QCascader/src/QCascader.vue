@@ -24,7 +24,6 @@ import type {
 
 defineOptions({
   name: 'QCascader',
-  componentName: 'QCascader'
 });
 
 const props = defineProps({

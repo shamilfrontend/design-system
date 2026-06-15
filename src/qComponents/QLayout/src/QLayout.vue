@@ -1,7 +1,6 @@
 <script setup lang="ts">
 defineOptions({
   name: 'QLayout',
-  componentName: 'QLayout'
 });
 
 defineProps({

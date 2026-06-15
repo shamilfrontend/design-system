@@ -10,7 +10,6 @@ import type { QDrawerContainerProvider } from '../QDrawerContainer';
 
 defineOptions({
   name: 'QDrawerContent',
-  componentName: 'QDrawerContent'
 });
 
 const props = defineProps({

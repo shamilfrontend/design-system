@@ -25,7 +25,6 @@ import type {
 
 defineOptions({
   name: 'QDialogModal',
-  componentName: 'QDialogModal'
 });
 
 const props = defineProps({

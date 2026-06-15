@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
 import type { PropType } from 'vue';
 
 import type { QTreeNode } from './types';
 
 defineOptions({
   name: 'QTreeNode',
-  componentName: 'QTreeNode'
 });
 
 const props = defineProps({
