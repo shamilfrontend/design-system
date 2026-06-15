@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-import { CLEAR_EVENT, ABORT_EVENT } from '@/constants/events';
-
 defineOptions({
   name: 'QUploadFileSingle'
 });
@@ -47,11 +45,11 @@ const barStyle = computed<{ width?: string }>(() => {
 });
 
 const handleRemoveFileBtnClick = (): void => {
-  emit(CLEAR_EVENT);
+  emit('clear');
 };
 
 const handleAbortUploadingBtnClick = (): void => {
-  emit(ABORT_EVENT);
+  emit('abort');
 };
 </script>
 

@@ -1,4 +1,4 @@
-import type { QDialogAction } from '../constants';
+import type { QDialogAction } from '../types';
 
 export type QDialogModalPropModelValue = boolean;
 export type QDialogModalPropTitle = string | null;

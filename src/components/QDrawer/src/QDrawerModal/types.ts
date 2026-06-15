@@ -1,10 +1,12 @@
+import type { QDrawerAction } from '../types';
+
 export type QDrawerModalPropModelValue = boolean;
 export type QDrawerModalPropTitle = string | null;
 export type QDrawerModalPropWidth = string | number;
 export type QDrawerModalPropPosition = 'left' | 'right';
 export type QDrawerModalPropTeleportTo = string | HTMLElement;
 export type QDrawerModalPropBeforeClose = (
-  action: string
+  action: QDrawerAction
 ) => boolean | Promise<boolean>;
 
 export interface QDrawerModalProps {

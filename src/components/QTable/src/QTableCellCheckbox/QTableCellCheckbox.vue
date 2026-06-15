@@ -3,7 +3,6 @@ import { computed, inject } from 'vue';
 import type { PropType, StyleValue } from 'vue';
 
 import { QCheckbox } from '@/components/QCheckbox';
-import { CHANGE_EVENT } from '@/constants/events';
 
 import type { ClassValue } from '#/helpers';
 
@@ -73,7 +72,7 @@ const rootStyles = computed<StyleValue>(() => ({
 }));
 
 const handleCheckboxChange = (value: boolean): void => {
-  emit(CHANGE_EVENT, value);
+  emit('change', value);
 };
 
 const isLoading = computed<boolean>(() => Boolean(qTable.isLoading?.value));

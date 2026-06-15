@@ -2,8 +2,6 @@
 import { getCurrentInstance, onMounted, computed } from 'vue';
 import type { PropType, Ref } from 'vue';
 
-import { REMOVE_EVENT } from '@/constants/events';
-
 import { DEFAULT_DURATION } from '../constants';
 import QNotificationToast from '../QNotificationToast';
 import type { QNotifyItem, QNotifyId } from '../types';
@@ -45,7 +43,7 @@ const instance = getCurrentInstance();
 const notifyList = computed<QNotifyItem[]>(() => props.list.value);
 
 function handleRemove(id: QNotifyId): void {
-  emit(REMOVE_EVENT, id);
+  emit('remove', id);
 }
 
 function mountInstance(): void {

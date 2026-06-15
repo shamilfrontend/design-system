@@ -2,8 +2,15 @@ import type { App, Component, ComponentInternalInstance } from 'vue';
 
 import type { Nullable, UnwrappedInstance } from '#/helpers';
 
-import type { QDrawerAction } from './constants';
 import type { QDrawerContainerInstance } from './QDrawerContainer';
+
+export const QDrawerAction = {
+  confirm: 'confirm',
+  cancel: 'cancel',
+  close: 'close'
+} as const;
+
+export type QDrawerAction = (typeof QDrawerAction)[keyof typeof QDrawerAction];
 
 export interface ComponentInternalInstanceWithProvides extends ComponentInternalInstance {
   provides: Record<symbol | string, unknown>;

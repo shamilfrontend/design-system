@@ -34,7 +34,7 @@ export type {
   QDialogContentProps,
   QDialogContentInstance
 } from './src/QDialogContent';
-export { QDialogAction } from './src/constants';
+export { QDialogAction } from './src/types';
 export type {
   QDialog,
   QDialogOptionsBeforeClose,

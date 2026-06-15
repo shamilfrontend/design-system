@@ -2,7 +2,6 @@
 import { inject } from 'vue';
 
 import { QButton } from '@/components/QButton';
-import { QDialogAction } from '@/components/QDialog';
 import type { QDialogContainerProvider } from '@/components/QDialog';
 
 import type { QDatePickerPropModelValue, QDatePickerProvider } from '../types';
@@ -25,7 +24,7 @@ const panelComponent = picker.panelComponent;
 const transformedToDate = picker.transformedToDate;
 
 function handlePick(payload: QDatePickerPropModelValue): void {
-  dialog.emitDoneEvent({ action: QDialogAction.confirm, payload });
+  dialog.emitDoneEvent({ action: 'confirm', payload });
 }
 </script>
 

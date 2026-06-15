@@ -16,8 +16,7 @@ import { validateArray } from '@/helpers';
 
 import type { Nullable } from '#/helpers';
 
-import { QDrawerAction } from '../constants';
-import type { QDrawerComponent, QDrawerEvent } from '../types';
+import type { QDrawerAction, QDrawerComponent, QDrawerEvent } from '../types';
 
 import type {
   QDrawerContainerPropContent,
@@ -168,9 +167,7 @@ const emitDoneEvent = async ({
 
 const emitCloseEvent = (): void => {
   emitDoneEvent({
-    action: props.distinguishCancelAndClose
-      ? QDrawerAction.close
-      : QDrawerAction.cancel
+    action: props.distinguishCancelAndClose ? 'close' : 'cancel'
   });
 };
 

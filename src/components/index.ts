@@ -3,7 +3,8 @@ import type { App, Plugin } from 'vue';
 
 import 'focus-visible';
 
-import { en as localeEn, ru as localeRu } from '@/constants/locales';
+import localeEn from '@/constants/locales/en';
+import localeRu from '@/constants/locales/ru';
 import { setMessages, setI18n } from '@/locale';
 
 import { setConfig } from './config';

@@ -5,9 +5,9 @@ import { isServer } from '@/constants/isServer';
 
 import type { Nullable, Nillable, UnwrappedInstance } from '#/helpers';
 
-import { QDialogAction } from './constants';
 import { QDialogContainer } from './QDialogContainer';
 import type { QDialogContainerInstance } from './QDialogContainer';
+import { QDialogAction } from './types';
 import type {
   DialogPromise,
   ComponentInternalInstanceWithProvides,

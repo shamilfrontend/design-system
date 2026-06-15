@@ -3,7 +3,6 @@ import { isNil } from 'lodash-es';
 import { computed, PropType } from 'vue';
 
 import { QButton } from '@/components/QButton';
-import { CLEAR_ALL_EVENT, CLEAR_EVENT, ABORT_EVENT } from '@/constants/events';
 import { t } from '@/locale';
 
 import type { Nullable } from '#/helpers';
@@ -79,15 +78,15 @@ const classes = computed<Record<string, boolean>>(() => ({
 }));
 
 const handleRemoveAllFilesBtnClick = (): void => {
-  emit(CLEAR_ALL_EVENT);
+  emit('clear-all');
 };
 
 const handleRemoveFileBtnClick = (fileId: string): void => {
-  emit(CLEAR_EVENT, fileId);
+  emit('clear', fileId);
 };
 
 const handleAbortUploadingBtnClick = (fileId: string): void => {
-  emit(ABORT_EVENT, fileId);
+  emit('abort', fileId);
 };
 </script>
 

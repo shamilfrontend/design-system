@@ -2,8 +2,15 @@ import type { App, Component, ComponentInternalInstance } from 'vue';
 
 import type { Nullable, UnwrappedInstance } from '#/helpers';
 
-import type { QDialogAction } from './constants';
 import type { QDialogContainerInstance } from './QDialogContainer';
+
+export const QDialogAction = {
+  confirm: 'confirm',
+  cancel: 'cancel',
+  close: 'close'
+} as const;
+
+export type QDialogAction = (typeof QDialogAction)[keyof typeof QDialogAction];
 
 export interface ComponentInternalInstanceWithProvides extends ComponentInternalInstance {
   provides: Record<symbol | string, unknown>;

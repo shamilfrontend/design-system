@@ -10,10 +10,11 @@ import {
 import type { PropType } from 'vue';
 
 import { getConfig } from '@/components/config';
-import { QDialogAction } from '@/components/QDialog/src/constants';
 import { isServer } from '@/constants/isServer';
 
 import type { Nullable } from '#/helpers';
+
+import type { QDialogAction } from '../types';
 
 import type {
   QDialogModalPropBeforeClose,
@@ -78,9 +79,7 @@ const dialogStyle = computed<Record<string, string | number>>(() => ({
   width: typeof props.width === 'number' ? `${props.width}px` : props.width
 }));
 
-async function closeDialog(
-  action: QDialogAction = QDialogAction.close
-): Promise<void> {
+async function closeDialog(action: QDialogAction = 'close'): Promise<void> {
   if (props.beforeClose) {
     const canClose = await props.beforeClose(action);
 
@@ -91,13 +90,13 @@ async function closeDialog(
   emit('update:modelValue', false);
   emit('close');
 
-  if (action === QDialogAction.confirm) emit('confirm');
-  if (action === QDialogAction.cancel) emit('cancel');
+  if (action === 'confirm') emit('confirm');
+  if (action === 'cancel') emit('cancel');
 }
 
 function handleBackdropClick(): void {
   if (props.closeOnClickModal) {
-    closeDialog(QDialogAction.cancel);
+    closeDialog('cancel');
   }
 }
 
@@ -160,7 +159,7 @@ onBeforeUnmount(() => {
           tabindex="-1"
           class="q-dialog-container__wrapper q-dialog-modal"
           :style="dialogStyle"
-          @keyup.esc="closeDialog(QDialogAction.cancel)"
+          @keyup.esc="closeDialog('cancel')"
         >
           <div
             v-if="title || showClose"
@@ -177,7 +176,7 @@ onBeforeUnmount(() => {
               type="button"
               class="q-dialog-modal__close q-icon-close"
               aria-label="Close"
-              @click="closeDialog(QDialogAction.close)"
+              @click="closeDialog('close')"
             />
           </div>
           <div class="q-dialog-container__content q-dialog-modal__body">

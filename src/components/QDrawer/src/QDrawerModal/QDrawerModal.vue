@@ -15,7 +15,7 @@ import { validateArray } from '@/helpers';
 
 import type { Nullable } from '#/helpers';
 
-import { QDrawerAction } from '../constants';
+import type { QDrawerAction } from '../types';
 
 import type {
   QDrawerModalPropBeforeClose,
@@ -90,9 +90,7 @@ const drawerClass = computed<string>(
   () => `q-drawer-container__wrapper_${props.position}`
 );
 
-async function closeDrawer(
-  action: QDrawerAction = QDrawerAction.close
-): Promise<void> {
+async function closeDrawer(action: QDrawerAction = 'close'): Promise<void> {
   if (props.beforeClose) {
     const canClose = await props.beforeClose(action);
 
@@ -103,13 +101,13 @@ async function closeDrawer(
   emit('update:modelValue', false);
   emit('close');
 
-  if (action === QDrawerAction.confirm) emit('confirm');
-  if (action === QDrawerAction.cancel) emit('cancel');
+  if (action === 'confirm') emit('confirm');
+  if (action === 'cancel') emit('cancel');
 }
 
 function handleBackdropClick(): void {
   if (props.closeOnClickModal) {
-    closeDrawer(QDrawerAction.cancel);
+    closeDrawer('cancel');
   }
 }
 
@@ -178,7 +176,7 @@ onBeforeUnmount(() => {
           class="q-drawer-container__wrapper q-drawer-modal"
           :class="drawerClass"
           :style="drawerStyle"
-          @keyup.esc="closeDrawer(QDrawerAction.cancel)"
+          @keyup.esc="closeDrawer('cancel')"
         >
           <div
             v-if="title || showClose"
@@ -195,7 +193,7 @@ onBeforeUnmount(() => {
               type="button"
               class="q-drawer-modal__close q-icon-close"
               aria-label="Close"
-              @click="closeDrawer(QDrawerAction.close)"
+              @click="closeDrawer('close')"
             />
           </div>
           <div class="q-drawer-container__content q-drawer-modal__body">

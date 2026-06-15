@@ -15,8 +15,7 @@ import { isServer } from '@/constants/isServer';
 
 import type { Nullable } from '#/helpers';
 
-import { QDialogAction } from '../constants';
-import type { QDialogComponent, QDialogEvent } from '../types';
+import type { QDialogAction, QDialogComponent, QDialogEvent } from '../types';
 
 import type {
   QDialogContainerPropContent,
@@ -147,9 +146,7 @@ const emitDoneEvent = async ({
 
 const emitCloseEvent = (): void => {
   emitDoneEvent({
-    action: props.distinguishCancelAndClose
-      ? QDialogAction.close
-      : QDialogAction.cancel
+    action: props.distinguishCancelAndClose ? 'close' : 'cancel'
   });
 };
 

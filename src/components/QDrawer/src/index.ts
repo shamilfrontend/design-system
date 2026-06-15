@@ -5,9 +5,9 @@ import { isServer } from '@/constants/isServer';
 
 import type { Nullable, Nillable, UnwrappedInstance } from '#/helpers';
 
-import { QDrawerAction } from './constants';
 import { QDrawerContainer } from './QDrawerContainer';
 import type { QDrawerContainerInstance } from './QDrawerContainer';
+import { QDrawerAction } from './types';
 import type {
   DrawerPromise,
   ComponentInternalInstanceWithProvides,

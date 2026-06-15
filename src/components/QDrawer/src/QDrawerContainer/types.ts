@@ -2,8 +2,12 @@ import type { Ref, ComputedRef, StyleValue } from 'vue';
 
 import type { Nullable } from '#/helpers';
 
-import type { QDrawerAction } from '../constants';
-import type { QDrawerComponent, QDrawerContent, QDrawerEvent } from '../types';
+import type {
+  QDrawerAction,
+  QDrawerComponent,
+  QDrawerContent,
+  QDrawerEvent
+} from '../types';
 
 export type QDrawerContainerPropContent = QDrawerContent;
 export type QDrawerContainerPropPosition = 'left' | 'right';

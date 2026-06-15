@@ -35,7 +35,7 @@ export type {
   QDrawerContentProps,
   QDrawerContentInstance
 } from './src/QDrawerContent';
-export { QDrawerAction } from './src/constants';
+export { QDrawerAction } from './src/types';
 export type {
   QDrawer,
   QDrawerOptionsPosition,
