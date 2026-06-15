@@ -108,10 +108,11 @@ const handleAbortUploadingBtnClick = (fileId: string): void => {
         v-if="isClearable"
         class="q-upload-file-multiple__clear-all"
         circle
-        type="icon"
+        variant="icon"
         icon="q-icon-trash-bin"
         size="small"
-        theme="secondary"
+        type="primary"
+        plain
         :disabled="isDisabled"
         @click="handleRemoveAllFilesBtnClick"
       />

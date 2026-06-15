@@ -8,8 +8,8 @@
   },
   "scripts": {
     "postinstall": "patch-package",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
+    "docs:dev": "node ../scripts/prepare-docs-demos.mjs && vuepress dev docs",
+    "docs:build": "node ../scripts/prepare-docs-demos.mjs && vuepress build docs",
     "docs:analyze": "ANALYZE=true vuepress build docs",
     "test": "vitest run",
     "test:watch": "vitest"

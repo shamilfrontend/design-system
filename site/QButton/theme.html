@@ -1,7 +1,6 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <!-- import CSS -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/design-system/styles"
@@ -11,15 +10,13 @@
   <body>
     <div id="app">
       <div class="block">
-        <q-button>Primary</q-button>
-        <q-button theme="secondary">Secondary</q-button>
-        <q-button theme="link">Link</q-button>
+        <q-button type="primary">Primary</q-button>
+        <q-button type="primary" plain>Plain</q-button>
+        <q-button type="primary" link>Link</q-button>
       </div>
     </div>
   </body>
-  <!-- import Vue before Design System -->
   <script src="https://unpkg.com/vue@latest"></script>
-  <!-- import JavaScript -->
   <script src="https://unpkg.com/design-system@latest"></script>
   <script>
     const app = Vue.createApp({});
@@ -29,8 +26,9 @@
   <style>
     .block {
       display: flex;
-      width: 200px;
+      width: 320px;
       margin: 20px 0 0 20px;
+      gap: 12px;
     }
   </style>
 </html>

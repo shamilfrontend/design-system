@@ -19,13 +19,17 @@ import type { Nullable, ClassValue, IsArray } from '#/helpers';
 import type {
   QInputState,
   QInputPropModelValue,
+  QInputPropType,
+  QInputPropSize,
   QInputPropDisabled,
-  QInputPropShowSymbolLimit,
+  QInputPropShowWordLimit,
   QInputPropValidateEvent,
+  QInputPropPrefixIcon,
   QInputPropSuffixIcon,
   QInputPropClearable,
-  QInputPropPasswordSwitch,
-  QInputPropRootClass
+  QInputPropShowPassword,
+  QInputPropFormatter,
+  QInputPropParser
 } from './types';
 
 defineOptions({
@@ -40,7 +44,21 @@ const props = defineProps({
    */
   modelValue: {
     type: String as PropType<QInputPropModelValue>,
-    default: null
+    default: ''
+  },
+  /**
+   * native input type
+   */
+  type: {
+    type: String as PropType<QInputPropType>,
+    default: 'text'
+  },
+  /**
+   * input size
+   */
+  size: {
+    type: String as PropType<QInputPropSize>,
+    default: 'default'
   },
   /**
    * whether input is disabled
@@ -52,8 +70,8 @@ const props = defineProps({
   /**
    * shows the counter
    */
-  showSymbolLimit: {
-    type: Boolean as PropType<QInputPropShowSymbolLimit>,
+  showWordLimit: {
+    type: Boolean as PropType<QInputPropShowWordLimit>,
     default: false
   },
   /**
@@ -62,6 +80,13 @@ const props = defineProps({
   validateEvent: {
     type: Boolean as PropType<QInputPropValidateEvent>,
     default: true
+  },
+  /**
+   * prefix icon class
+   */
+  prefixIcon: {
+    type: String as PropType<QInputPropPrefixIcon>,
+    default: null
   },
   /**
    * suffix icon class
@@ -80,26 +105,33 @@ const props = defineProps({
   /**
    * whether to show password
    */
-  passwordSwitch: {
-    type: Boolean as PropType<QInputPropPasswordSwitch>,
+  showPassword: {
+    type: Boolean as PropType<QInputPropShowPassword>,
     default: false
   },
   /**
-   * as native attrs bind to native input, via rootClass you can set class for q-input root
+   * value formatter
    */
-  rootClass: {
-    type: [String, Array, Object] as PropType<QInputPropRootClass>,
+  formatter: {
+    type: Function as PropType<QInputPropFormatter>,
+    default: null
+  },
+  /**
+   * value parser
+   */
+  parser: {
+    type: Function as PropType<QInputPropParser>,
     default: null
   }
 });
 
 const emit = defineEmits<{
   'update:modelValue': [value: string];
-  change: [event: Event];
+  change: [value: string];
   focus: [event: FocusEvent];
   blur: [event: FocusEvent];
-  clear: [event: MouseEvent];
-  input: [event: Event];
+  clear: [];
+  input: [value: string];
 }>();
 
 const attrs = useAttrs();
@@ -118,8 +150,20 @@ const state = reactive<QInputState>({
   isPasswordVisible: false
 });
 
+const innerValue = computed<string>(() => String(props.modelValue ?? ''));
+const hasMaxLength = computed<boolean>(() => attrs.maxlength !== undefined);
+const maxLength = computed<string | number | undefined>(
+  () => attrs.maxlength as string | number | undefined
+);
+const isReadonly = computed<boolean>(() => Boolean(attrs.readonly));
+
+const inputAttrs = computed<Record<string, unknown>>(() => {
+  const { class: _class, style: _style, ...rest } = attrs;
+  return rest;
+});
+
 const inputType = computed<string>(() => {
-  if (!props.passwordSwitch) return String(attrs.type ?? 'text');
+  if (!props.showPassword) return props.type ?? 'text';
 
   return state.isPasswordVisible ? 'text' : 'password';
 });
@@ -134,29 +178,34 @@ const isInvalid = computed<boolean>(() =>
 
 const isSymbolLimitShown = computed<boolean>(() =>
   Boolean(
-    props.showSymbolLimit &&
-    attrs.maxlength &&
+    props.showWordLimit &&
+    hasMaxLength.value &&
     !isDisabled.value &&
-    !attrs.readonly &&
-    !props.passwordSwitch
+    !isReadonly.value &&
+    inputType.value !== 'password'
   )
 );
 
 const isPasswordSwitchShown = computed<boolean>(() =>
   Boolean(
-    props.passwordSwitch &&
-    !attrs.readonly &&
-    (props.modelValue || state.focused || state.hovering)
+    props.showPassword &&
+    !isReadonly.value &&
+    (innerValue.value || state.focused || state.hovering)
   )
 );
 
 const isClearButtonShown = computed<boolean>(() =>
   Boolean(
     props.clearable &&
-    !attrs.readonly &&
-    props.modelValue &&
+    !isReadonly.value &&
+    !isDisabled.value &&
+    innerValue.value &&
     (state.focused || state.hovering)
   )
+);
+
+const isPrefixVisible = computed<boolean>(() =>
+  Boolean(props.prefixIcon || slots.prefix)
 );
 
 const isSuffixVisible = computed<boolean>(() =>
@@ -170,28 +219,71 @@ const isSuffixVisible = computed<boolean>(() =>
 );
 
 const classes = computed<ClassValue>(() => {
-  const classList: IsArray<ClassValue> = ['q-input', props.rootClass];
+  const classList: IsArray<ClassValue> = [
+    'q-input',
+    `q-input_size_${props.size}`,
+    attrs.class
+  ];
 
   if (isDisabled.value) classList.push('q-input_disabled');
+  if (state.focused) classList.push('q-input_focused');
+  if (isPrefixVisible.value) classList.push('q-input_prefix');
   if (isSuffixVisible.value) classList.push('q-input_suffix');
+  if (slots.prepend) classList.push('q-input_group-prepend');
+  if (slots.append) classList.push('q-input_group-append');
 
   return classList;
 });
 
-const textLength = computed<number>(() => props.modelValue?.length ?? 0);
+const textLength = computed<number>(() => innerValue.value.length);
+const displayValue = computed<string>(() => {
+  if (props.formatter) {
+    return props.formatter(innerValue.value);
+  }
+
+  return innerValue.value;
+});
 
 function updateModel(event: Event): void {
   const target = event.target as HTMLInputElement;
-  emit('update:modelValue', target.value ?? '');
+  const parsed = props.parser
+    ? props.parser(target.value ?? '')
+    : (target.value ?? '');
+  emit('update:modelValue', parsed);
+}
+
+function focus(): void {
+  input.value?.focus();
+}
+
+function blur(): void {
+  input.value?.blur();
+}
+
+function select(): void {
+  input.value?.select();
+}
+
+function clear(): void {
+  emit('update:modelValue', '');
+  emit('clear');
 }
 
 function handleInput(event: Event): void {
-  emit('input', event);
+  const target = event.target as HTMLInputElement;
+  const parsed = props.parser
+    ? props.parser(target.value ?? '')
+    : (target.value ?? '');
+  emit('input', parsed);
   updateModel(event);
 }
 
 function handleChange(event: Event): void {
-  emit('change', event);
+  const target = event.target as HTMLInputElement;
+  const parsed = props.parser
+    ? props.parser(target.value ?? '')
+    : (target.value ?? '');
+  emit('change', parsed);
   updateModel(event);
 }
 
@@ -208,13 +300,24 @@ function handleFocus(event: FocusEvent): void {
 
 function handlePasswordVisible(): void {
   state.isPasswordVisible = !state.isPasswordVisible;
-  input?.value?.focus();
+  focus();
 }
 
-function handleClearClick(event: MouseEvent): void {
-  emit('update:modelValue', '');
-  emit('clear', event);
-  input?.value?.focus();
+function handleClearClick(): void {
+  clear();
+  focus();
+}
+
+function handleActionIconKeydown(
+  event: KeyboardEvent,
+  handler: () => void
+): void {
+  if (event.key !== 'Enter' && event.key !== ' ') {
+    return;
+  }
+
+  event.preventDefault();
+  handler();
 }
 
 watch(
@@ -223,75 +326,124 @@ watch(
     if (props.validateEvent) qFormItem?.validateField('change');
   }
 );
+
+defineExpose({
+  root,
+  input,
+  focus,
+  blur,
+  select,
+  clear
+});
 </script>
 
 <template>
   <div
     ref="root"
     :class="classes"
+    :style="attrs.style"
     @mouseenter="state.hovering = true"
     @mouseleave="state.hovering = false"
   >
+    <span
+      v-if="$slots.prepend"
+      class="q-input__prepend"
+    >
+      <slot name="prepend" />
+    </span>
+
+    <div class="q-input__wrapper">
+      <span
+        v-if="isPrefixVisible"
+        class="q-input__prefix"
+      >
+        <span
+          v-if="props.prefixIcon"
+          class="q-input__icon"
+          :class="props.prefixIcon"
+          aria-hidden="true"
+        />
+
+        <slot
+          v-else
+          name="prefix"
+        />
+      </span>
+
+      <input
+        v-bind="inputAttrs"
+        ref="input"
+        :value="displayValue"
+        class="q-input__inner"
+        :type="inputType"
+        :disabled="isDisabled"
+        :aria-disabled="isDisabled || undefined"
+        :aria-invalid="isInvalid || undefined"
+        @input="handleInput"
+        @change="handleChange"
+        @focus="handleFocus"
+        @blur="handleBlur"
+      />
+
+      <span
+        v-if="isSuffixVisible"
+        class="q-input__suffix"
+      >
+        <span
+          v-if="isDisabled"
+          class="q-input__icon q-icon-lock"
+          aria-hidden="true"
+        />
+
+        <button
+          v-else-if="isPasswordSwitchShown"
+          class="q-input__icon q-input__action-icon"
+          :class="state.isPasswordVisible ? 'q-icon-eye' : 'q-icon-eye-close'"
+          type="button"
+          aria-label="toggle password visibility"
+          @click="handlePasswordVisible"
+          @keydown="
+            event => handleActionIconKeydown(event, handlePasswordVisible)
+          "
+        />
+
+        <button
+          v-else-if="isClearButtonShown"
+          class="q-input__icon q-input__action-icon q-icon-close"
+          type="button"
+          aria-label="clear input"
+          @click="handleClearClick"
+          @keydown="event => handleActionIconKeydown(event, handleClearClick)"
+        />
+
+        <span
+          v-else-if="props.suffixIcon"
+          class="q-input__icon"
+          :class="props.suffixIcon"
+          aria-hidden="true"
+        />
+
+        <slot
+          v-else
+          name="suffix"
+        />
+      </span>
+    </div>
+
+    <span
+      v-if="$slots.append"
+      class="q-input__append"
+    >
+      <slot name="append" />
+    </span>
+
     <div
       v-if="isSymbolLimitShown"
       class="q-input__count"
     >
       <span class="q-input__count-inner">
-        {{ t('QInput.charNumber') }}: {{ textLength }}/{{ $attrs.maxlength }}
+        {{ t('QInput.charNumber') }}: {{ textLength }}/{{ maxLength }}
       </span>
     </div>
-
-    <input
-      v-bind="$attrs"
-      ref="input"
-      :value="modelValue"
-      class="q-input__inner"
-      :type="inputType"
-      :disabled="isDisabled"
-      :aria-disabled="isDisabled || undefined"
-      :aria-invalid="isInvalid || undefined"
-      @input="handleInput"
-      @change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    />
-
-    <span
-      v-if="isSuffixVisible"
-      class="q-input__suffix"
-    >
-      <span
-        v-if="isDisabled"
-        class="q-input__icon q-icon-lock"
-        aria-hidden="true"
-      />
-
-      <span
-        v-else-if="isPasswordSwitchShown"
-        class="q-input__icon"
-        :class="state.isPasswordVisible ? 'q-icon-eye' : 'q-icon-eye-close'"
-        aria-hidden="true"
-        @click="handlePasswordVisible"
-      />
-
-      <span
-        v-else-if="isClearButtonShown"
-        class="q-input__icon q-icon-close"
-        aria-hidden="true"
-        @click="handleClearClick"
-      />
-
-      <span
-        v-else-if="suffixIcon"
-        class="q-input__icon"
-        :class="suffixIcon"
-        aria-hidden="true"
-      />
-
-      <slot
-        v-else
-        name="suffix"
-      />
-    </span>
   </div>
 </template>

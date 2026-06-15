@@ -1,45 +1,134 @@
-<html>
+<!doctype html>
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <!-- import CSS -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/design-system/styles"
+      href="../design-system/fonts/fonts.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../design-system/icons/icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../design-system/design-system.css"
     />
   </head>
 
   <body>
     <div id="app">
-      <div class="block">
-        <q-button disabled>Primary</q-button>
-        <q-button
-          theme="secondary"
-          disabled
-        >
-          Secondary
-        </q-button>
-        <q-button
-          theme="secondary"
-          type="icon"
-          icon="q-icon-bell"
-          disabled
-        ></q-button>
+      <div class="button-example">
+        <div class="button-row">
+          <q-button
+            type="default"
+            disabled
+            >Default</q-button
+          >
+          <q-button
+            type="primary"
+            disabled
+            >Primary</q-button
+          >
+          <q-button
+            type="success"
+            disabled
+            >Success</q-button
+          >
+          <q-button
+            type="info"
+            disabled
+            >Info</q-button
+          >
+          <q-button
+            type="warning"
+            disabled
+            >Warning</q-button
+          >
+          <q-button
+            type="danger"
+            disabled
+            >Danger</q-button
+          >
+        </div>
+
+        <div class="button-row">
+          <q-button
+            type="default"
+            plain
+            disabled
+            >Plain</q-button
+          >
+          <q-button
+            type="primary"
+            plain
+            disabled
+            >Primary</q-button
+          >
+          <q-button
+            type="success"
+            plain
+            disabled
+            >Success</q-button
+          >
+          <q-button
+            type="info"
+            plain
+            disabled
+            >Info</q-button
+          >
+          <q-button
+            type="warning"
+            plain
+            disabled
+            >Warning</q-button
+          >
+          <q-button
+            type="danger"
+            plain
+            disabled
+            >Danger</q-button
+          >
+        </div>
       </div>
     </div>
   </body>
-  <!-- import Vue before Design System -->
-  <script src="https://unpkg.com/vue@latest"></script>
-  <!-- import JavaScript -->
-  <script src="https://unpkg.com/design-system@latest"></script>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="../design-system/design-system.umd.js"></script>
   <script>
     const app = Vue.createApp({});
     app.use(DesignSystem.default);
     app.mount('#app');
   </script>
+
   <style>
-    .block {
-      width: 400px;
-      margin: 20px 0 0 20px;
+    body {
+      margin: 0;
+      background: #f8f7fa;
+    }
+
+    .button-example {
+      padding: 20px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .button-row + .button-row {
+      margin-top: 1rem;
+    }
+
+    .button-row > * {
+      margin: 0;
     }
   </style>
 </html>

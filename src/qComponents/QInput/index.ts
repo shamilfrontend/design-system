@@ -8,11 +8,15 @@ export type {
   QInputProps,
   QInputInstance,
   QInputPropModelValue,
+  QInputPropType,
+  QInputPropSize,
   QInputPropDisabled,
-  QInputPropShowSymbolLimit,
+  QInputPropShowWordLimit,
   QInputPropValidateEvent,
+  QInputPropPrefixIcon,
   QInputPropSuffixIcon,
   QInputPropClearable,
-  QInputPropPasswordSwitch,
-  QInputPropRootClass
+  QInputPropShowPassword,
+  QInputPropFormatter,
+  QInputPropParser
 } from './src/types';

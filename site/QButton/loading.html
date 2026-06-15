@@ -1,52 +1,48 @@
-<html>
+<!DOCTYPE html>
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <!-- import CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/design-system/styles"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../design-system/fonts/fonts.css" />
+    <link rel="stylesheet" href="../design-system/icons/icons.css" />
+    <link rel="stylesheet" href="../design-system/design-system.css" />
   </head>
 
   <body>
     <div id="app">
-      <div class="block">
-        <q-button loading>Primary</q-button>
-        <q-button
-          type="icon"
-          loading
-        >
-          Primary
-        </q-button>
-        <q-button
-          theme="secondary"
-          loading
-        >
-          Primary
-        </q-button>
-        <q-button
-          theme="secondary"
-          type="icon"
-          loading
-        >
-          Primary
-        </q-button>
+      <div class="button-row">
+        <q-button type="primary" loading>Loading</q-button>
+        <q-button type="primary" plain loading>Loading</q-button>
+        <q-button type="danger" loading>Loading</q-button>
+        <q-button type="primary" icon="q-icon-bell" loading ></q-button>
       </div>
     </div>
   </body>
-  <!-- import Vue before Design System -->
-  <script src="https://unpkg.com/vue@latest"></script>
-  <!-- import JavaScript -->
-  <script src="https://unpkg.com/design-system@latest"></script>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="../design-system/design-system.umd.js"></script>
   <script>
     const app = Vue.createApp({});
     app.use(DesignSystem.default);
     app.mount('#app');
   </script>
+
   <style>
-    .block {
-      width: 400px;
-      margin: 20px 0 0 20px;
+    body {
+      margin: 0;
+      background: #f8f7fa;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .button-row > * {
+      margin: 0;
     }
   </style>
 </html>

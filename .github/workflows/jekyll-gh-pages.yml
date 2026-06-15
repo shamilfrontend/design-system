@@ -34,6 +34,9 @@ jobs:
       - name: Install root dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Build library
+        run: yarn build
+
       - name: Build Storybook
         run: STORYBOOK_BASE=/design-system/storybook yarn build-storybook
 

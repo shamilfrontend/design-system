@@ -736,7 +736,7 @@ provide<QDatePickerProvider>('qDatePicker', {
         ref="reference"
         class="q-date-picker__input"
         :model-value="displayValue"
-        :root-class="{ 'q-input_focused': state.pickerVisible }"
+        :class="{ 'q-input_focused': state.pickerVisible }"
         :readonly="!editable"
         :disabled="isPickerDisabled"
         :name="name"

@@ -33,8 +33,9 @@ function handlePick(payload: QDatePickerPropModelValue): void {
   <q-button
     class="q-dialog-mobile-panel__close"
     circle
-    theme="secondary"
-    type="icon"
+    type="primary"
+    plain
+    variant="icon"
     icon="q-icon-close"
     @click="dialog.emitCloseEvent"
   />

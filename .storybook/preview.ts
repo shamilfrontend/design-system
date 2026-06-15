@@ -6,7 +6,7 @@ import DesignSystem from '../src/qComponents';
 import { localeEn, localeRu } from '../src/qComponents';
 import messages from './locales';
 
-import '../src/main.scss';
+import '../src/styles.scss';
 
 setup(app => {
   app.use(DesignSystem, {

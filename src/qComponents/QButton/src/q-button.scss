@@ -12,29 +12,36 @@
   --box-shadow-default: none;
   --box-shadow-pressed: none;
   --button-main-bg: transparent;
+  --button-hover-active-bg: transparent;
+  --button-hover-color: inherit;
+  --button-active-color: inherit;
+  --button-text-color: inherit;
+  --button-border-color: transparent;
+  --button-plain-bg: transparent;
+  --button-plain-bg-hover: transparent;
+  --button-text-bg-hover: transparent;
+  --button-solid-shadow: none;
   --icon-size: 24px;
   --border-width: 1px;
 
+  position: relative;
   display: inline-block;
   flex-shrink: 0;
   padding: calc(11px - var(--border-width)) 21px;
   font-size: 14px;
   font-weight: var(--font-weight-medium);
   line-height: 16px;
+  color: var(--button-text-color);
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
   background: var(--button-main-bg);
-  border: var(--border-width) solid transparent;
+  border: var(--border-width) solid var(--button-border-color);
   border-radius: var(--border-radius-base);
   outline: none;
   box-shadow: var(--box-shadow-default);
   appearance: none;
-
-  & + & {
-    margin-left: 16px;
-  }
 
   &:focus {
     outline: none;
@@ -49,65 +56,157 @@
     animation: q-button-icon-rotating 2s linear infinite;
   }
 
-  &_theme {
-    &_primary {
-      --button-active-color: #fff;
-      --button-hover-active-bg: var(--color-primary-darker);
-      --button-main-bg: var(--color-primary);
-      --button-hover-color: #fff;
-      /* stylelint-disable length-zero-no-unit */
-      --border-width: 0px;
-
-      color: #fff;
-      box-shadow: var(--box-shadow-primary-button);
-
-      &.focus-visible {
-        background: var(--color-primary-darker);
-      }
-    }
-
-    &_secondary {
+  &_type {
+    &_default {
+      --button-text-color: var(--color-text-regular);
+      --button-plain-color: var(--color-text-regular);
+      --button-hover-color: var(--color-primary);
       --button-active-color: var(--color-primary-darker);
-      --button-hover-active-bg: var(--color-primary-lighter);
-      --button-main-bg: var(--color-primary-lighter);
-      --button-hover-color: var(--color-primary-darker);
-
-      color: var(--color-primary);
-
-      &.focus-visible {
-        border-color: var(--color-primary);
-
-        &:active {
-          border-color: var(--color-primary-darker);
-        }
-      }
+      --button-main-bg: var(--color-tertiary-white);
+      --button-hover-active-bg: var(--color-tertiary-gray-light);
+      --button-border-color: var(--color-border);
+      --button-plain-bg: var(--color-tertiary-white);
+      --button-plain-bg-hover: var(--color-tertiary-gray-light);
+      --button-text-bg-hover: var(--color-tertiary-gray-light);
     }
 
-    &_link {
-      --button-active-color: var(--color-primary);
-      --button-hover-color: rgb(var(--color-rgb-gray) / 96%);
+    &_primary {
+      --button-text-color: #fff;
+      --button-hover-color: #fff;
+      --button-active-color: #fff;
+      --button-main-bg: var(--color-primary);
+      --button-hover-active-bg: var(--color-primary-darker);
+      --button-border-color: var(--color-primary);
+      --button-plain-bg: var(--color-primary-lighter);
+      --button-plain-bg-hover: rgb(var(--color-rgb-primary) / 20%);
+      --button-text-bg-hover: var(--color-primary-lighter);
+      --button-solid-shadow: var(--box-shadow-primary-button);
+      --border-width: 0px;
+    }
 
-      padding: 0;
-      font-size: 14px;
-      font-weight: var(--font-weight-base);
-      line-height: 18px;
-      color: var(--color-primary-blue);
-      text-transform: initial;
-      border-radius: var(--border-radius-base);
-      box-shadow: none;
+    &_success {
+      --button-text-color: #fff;
+      --button-hover-color: #fff;
+      --button-active-color: #fff;
+      --button-main-bg: var(--color-success);
+      --button-hover-active-bg: color-mix(
+        in srgb,
+        var(--color-success) 88%,
+        black
+      );
+      --button-border-color: var(--color-success);
+      --button-plain-bg: var(--color-success-light);
+      --button-plain-bg-hover: color-mix(
+        in srgb,
+        var(--color-success) 20%,
+        transparent
+      );
+      --button-text-bg-hover: var(--color-success-light);
+    }
 
-      &.focus-visible {
-        text-decoration: underline;
+    &_warning {
+      --button-text-color: #fff;
+      --button-hover-color: #fff;
+      --button-active-color: #fff;
+      --button-main-bg: var(--color-warning);
+      --button-hover-active-bg: color-mix(
+        in srgb,
+        var(--color-warning) 88%,
+        black
+      );
+      --button-border-color: var(--color-warning);
+      --button-plain-bg: var(--color-warning-light);
+      --button-plain-bg-hover: color-mix(
+        in srgb,
+        var(--color-warning) 20%,
+        transparent
+      );
+      --button-text-bg-hover: var(--color-warning-light);
+    }
 
-        &.q-button_type_icon {
-          text-decoration: underline;
-          border: 1px solid;
-        }
-      }
+    &_danger {
+      --button-text-color: #fff;
+      --button-hover-color: #fff;
+      --button-active-color: #fff;
+      --button-main-bg: var(--color-danger);
+      --button-hover-active-bg: color-mix(
+        in srgb,
+        var(--color-danger) 88%,
+        black
+      );
+      --button-border-color: var(--color-danger);
+      --button-plain-bg: var(--color-danger-light);
+      --button-plain-bg-hover: color-mix(
+        in srgb,
+        var(--color-danger) 20%,
+        transparent
+      );
+      --button-text-bg-hover: var(--color-danger-light);
+    }
+
+    &_info {
+      --button-text-color: #fff;
+      --button-hover-color: #fff;
+      --button-active-color: #fff;
+      --button-main-bg: var(--color-info);
+      --button-hover-active-bg: color-mix(
+        in srgb,
+        var(--color-info) 88%,
+        black
+      );
+      --button-border-color: var(--color-info);
+      --button-plain-bg: var(--color-info-light);
+      --button-plain-bg-hover: color-mix(
+        in srgb,
+        var(--color-info) 20%,
+        transparent
+      );
+      --button-text-bg-hover: var(--color-info-light);
     }
   }
 
-  &:not(&.q-button_loading, &.q-button_disabled) {
+  &:not(.q-button_plain, .q-button_text, .q-button_link) {
+    box-shadow: var(--button-solid-shadow);
+
+    &.focus-visible {
+      background: var(--button-hover-active-bg);
+    }
+  }
+
+  &_plain {
+    --border-width: 1px;
+
+    color: var(--button-plain-color, var(--button-border-color));
+    background: var(--button-plain-bg);
+    box-shadow: none;
+
+    &.focus-visible {
+      border-color: var(--button-border-color);
+    }
+  }
+
+  &_text,
+  &_link {
+    --border-width: 0px;
+
+    padding: 0;
+    font-weight: var(--font-weight-base);
+    line-height: 18px;
+    color: var(--button-border-color);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  &_link.focus-visible {
+    text-decoration: underline;
+
+    &.q-button_variant_icon {
+      text-decoration: underline;
+      border: 1px solid var(--button-border-color);
+    }
+  }
+
+  &:not(.q-button_loading, .q-button_disabled) {
     &:hover,
     &:active {
       background: var(--button-hover-active-bg);
@@ -120,41 +219,66 @@
     &:active {
       color: var(--button-active-color);
 
-      &:not(&.q-button_theme_link) {
+      &:not(.q-button_text, .q-button_link) {
         box-shadow: var(--box-shadow-pressed);
+      }
+    }
+
+    &.q-button_plain {
+      &:hover,
+      &:active {
+        color: var(--button-plain-color, var(--button-border-color));
+        background: var(--button-plain-bg-hover);
+      }
+    }
+
+    &.q-button_text,
+    &.q-button_link {
+      &:hover,
+      &:active {
+        color: var(--button-border-color);
+        background: var(--button-text-bg-hover);
       }
     }
   }
 
-  &_type_icon {
+  &_variant_icon {
     width: 40px;
     height: 40px;
     padding: calc(8px - var(--border-width)) 7px;
     font-size: var(--icon-size);
+
+    &.q-button_text,
+    &.q-button_link {
+      width: 40px;
+      height: 40px;
+      padding: calc(8px - var(--border-width)) 7px;
+    }
   }
 
   &_disabled {
     color: rgb(var(--color-rgb-gray) / 64%);
     cursor: not-allowed;
 
-    &:not(&.q-button_theme_link) {
+    &:not(.q-button_text, .q-button_link) {
       background: var(--color-tertiary-gray);
+      border-color: var(--color-tertiary-gray);
       box-shadow: var(--box-shadow-pressed);
     }
   }
 
   &_loading {
-    position: relative;
     cursor: progress;
     background: var(--button-main-bg);
 
-    &:not(&.q-button_theme_link) {
+    &:not(.q-button_text, .q-button_link) {
       color: var(--button-active-color);
       box-shadow: var(--box-shadow-default);
     }
 
-    &.q-button_theme_link {
-      color: var(--color-primary-blue);
+    &.q-button_text,
+    &.q-button_link {
+      color: var(--button-border-color);
     }
 
     .q-button__inner {
@@ -166,24 +290,48 @@
     border-radius: 50%;
   }
 
-  &_size_small {
-    --icon-size: 16px;
+  &_size {
+    &_small {
+      --icon-size: 16px;
 
-    padding: calc(8px - var(--border-width)) 20px;
-    font-size: 10px;
-    line-height: 12px;
+      padding: calc(8px - var(--border-width)) 20px;
+      font-size: 10px;
+      line-height: 12px;
 
-    &.q-button_type_icon {
-      width: 24px;
-      height: 24px;
-      padding: calc(4px - var(--border-width)) 3px;
+      &.q-button_variant_icon {
+        width: 24px;
+        height: 24px;
+        padding: calc(4px - var(--border-width)) 3px;
+      }
+
+      &.q-button_text,
+      &.q-button_link {
+        padding: 0;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+      }
     }
 
-    &.q-button_theme_link {
-      padding: 0;
-      font-size: 12px;
-      font-weight: 500;
+    &_large {
+      --icon-size: 28px;
+
+      padding: calc(13px - var(--border-width)) 24px;
+      font-size: 16px;
       line-height: 18px;
+
+      &.q-button_variant_icon {
+        width: 48px;
+        height: 48px;
+        padding: calc(10px - var(--border-width)) 9px;
+      }
+
+      &.q-button_text,
+      &.q-button_link {
+        padding: 0;
+        font-size: 16px;
+        line-height: 20px;
+      }
     }
   }
 

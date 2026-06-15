@@ -286,7 +286,7 @@ defineExpose({
 
       <q-button
         v-if="isClearBtnShown"
-        theme="link"
+        link
         @click="handleClearBtnClick"
       >
         {{ t('QColorPicker.clear') }}

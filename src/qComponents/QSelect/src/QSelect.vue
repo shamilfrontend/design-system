@@ -873,7 +873,7 @@ defineExpose({ toggleOptionSelection });
         :disabled="isDisabled"
         :readonly="isReadonly"
         :validate-event="false"
-        :root-class="{ 'q-input_focused': state.isDropdownShown }"
+        :class="{ 'q-input_focused': state.isDropdownShown }"
         :tabindex="multiple && filterable ? '-1' : null"
         @focus="handleFocus"
         @blur="handleBlur"

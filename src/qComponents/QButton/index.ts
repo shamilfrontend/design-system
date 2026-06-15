@@ -6,14 +6,23 @@ export const QButton = withInstall(Button);
 
 export type {
   QButtonProps,
+  QButtonColorType,
   QButtonPropType,
-  QButtonPropTheme,
+  QButtonPropPlain,
+  QButtonPropText,
+  QButtonPropLink,
   QButtonPropSize,
   QButtonPropIcon,
   QButtonPropNativeType,
   QButtonPropLoading,
   QButtonPropDisabled,
   QButtonPropAutofocus,
+  QButtonPropRound,
   QButtonPropCircle,
+  QButtonPropBg,
+  QButtonPropTag,
+  QButtonPropColor,
+  QButtonPropDark,
+  QButtonPropAutoInsertSpace,
   QButtonPropFullWidth
 } from './src/types';

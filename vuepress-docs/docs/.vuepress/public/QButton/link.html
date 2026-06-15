@@ -23,55 +23,78 @@
   <body>
     <div id="app">
       <div class="button-example">
+        <p class="label">Basic link button</p>
         <div class="button-row">
           <q-button
-            type="primary"
-            size="large"
-            >Large</q-button
-          >
-          <q-button type="primary">Default</q-button>
-          <q-button
-            type="primary"
-            size="small"
-            >Small</q-button
+            type="default"
+            link
+            >plain</q-button
           >
           <q-button
             type="primary"
-            size="large"
-            icon="q-icon-search"
-            >Search</q-button
+            link
+            >primary</q-button
           >
           <q-button
-            type="primary"
-            icon="q-icon-search"
-            >Search</q-button
+            type="success"
+            link
+            >success</q-button
           >
           <q-button
-            type="primary"
-            size="small"
-            icon="q-icon-search"
-            >Search</q-button
+            type="info"
+            link
+            >info</q-button
+          >
+          <q-button
+            type="warning"
+            link
+            >warning</q-button
+          >
+          <q-button
+            type="danger"
+            link
+            >danger</q-button
           >
         </div>
 
+        <p class="label">Disabled link button</p>
         <div class="button-row">
           <q-button
-            type="primary"
-            icon="q-icon-search"
-            size="large"
-            circle
-          ></q-button>
+            type="default"
+            link
+            disabled
+            >plain</q-button
+          >
           <q-button
             type="primary"
-            icon="q-icon-search"
-            circle
-          ></q-button>
+            link
+            disabled
+            >primary</q-button
+          >
           <q-button
-            type="primary"
-            icon="q-icon-search"
-            size="small"
-            circle
-          ></q-button>
+            type="success"
+            link
+            disabled
+            >success</q-button
+          >
+          <q-button
+            type="info"
+            link
+            disabled
+            >info</q-button
+          >
+          <q-button
+            type="warning"
+            link
+            disabled
+            >warning</q-button
+          >
+          <q-button
+            type="danger"
+            link
+            disabled
+            >danger</q-button
+          >
         </div>
       </div>
     </div>
@@ -96,6 +119,12 @@
       flex-direction: column;
       gap: 1rem;
       padding: 20px;
+    }
+
+    .label {
+      margin: 0;
+      font-size: 14px;
+      color: #6e6b7b;
     }
 
     .button-row {

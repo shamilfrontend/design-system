@@ -3,23 +3,31 @@ import type { Ref, ComputedRef } from 'vue';
 import type { Nullable, ClassValue } from '#/helpers';
 
 export type QInputPropModelValue = Nullable<string>;
+export type QInputPropType = Nullable<string>;
+export type QInputPropSize = Nullable<'large' | 'default' | 'small'>;
 export type QInputPropDisabled = Nullable<boolean>;
-export type QInputPropShowSymbolLimit = Nullable<boolean>;
+export type QInputPropShowWordLimit = Nullable<boolean>;
 export type QInputPropValidateEvent = Nullable<boolean>;
+export type QInputPropPrefixIcon = Nullable<string>;
 export type QInputPropSuffixIcon = Nullable<string>;
 export type QInputPropClearable = Nullable<boolean>;
-export type QInputPropPasswordSwitch = Nullable<boolean>;
-export type QInputPropRootClass = Nullable<ClassValue>;
+export type QInputPropShowPassword = Nullable<boolean>;
+export type QInputPropFormatter = Nullable<(value: string) => string>;
+export type QInputPropParser = Nullable<(value: string) => string>;
 
 export interface QInputProps {
   modelValue: QInputPropModelValue;
+  type: QInputPropType;
+  size: QInputPropSize;
   disabled: QInputPropDisabled;
-  showSymbolLimit: QInputPropShowSymbolLimit;
+  showWordLimit: QInputPropShowWordLimit;
   validateEvent: QInputPropValidateEvent;
+  prefixIcon: QInputPropPrefixIcon;
   suffixIcon: QInputPropSuffixIcon;
   clearable: QInputPropClearable;
-  passwordSwitch: QInputPropPasswordSwitch;
-  rootClass: QInputPropRootClass;
+  showPassword: QInputPropShowPassword;
+  formatter: QInputPropFormatter;
+  parser: QInputPropParser;
 }
 
 export interface QInputState {
@@ -42,6 +50,10 @@ export interface QInputInstance {
   input: Ref<Nullable<HTMLInputElement>>;
   root: Ref<Nullable<HTMLElement>>;
   // methods
+  focus: () => void;
+  blur: () => void;
+  select: () => void;
+  clear: () => void;
   handleBlur: (event: FocusEvent) => void;
   handleFocus: (event: FocusEvent) => void;
   handlePasswordVisible: () => void;

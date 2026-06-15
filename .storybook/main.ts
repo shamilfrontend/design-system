@@ -9,6 +9,10 @@ const storybookBase = process.env.STORYBOOK_BASE ?? '/';
 const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(ts|js)'],
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
+  staticDirs: [
+    { from: '../src/fonts', to: '/fonts' },
+    { from: '../src/icons', to: '/icons' }
+  ],
   framework: {
     name: '@storybook/vue3-vite',
     options: {

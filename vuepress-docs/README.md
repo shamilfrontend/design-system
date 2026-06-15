@@ -7,9 +7,13 @@
 ```bash
 cd vuepress-docs
 yarn install   # postinstall применяет patch-package
-yarn docs:dev
+yarn docs:dev    # перед запуском копирует dist в public/design-system для iframe-демо
 yarn docs:build
 ```
+
+Перед `docs:dev` / `docs:build` автоматически выполняется `scripts/prepare-docs-demos.mjs`:
+собирает библиотеку (если нет `dist/`) и копирует её в `docs/.vuepress/public/design-system/`.
+Iframe-примеры компонентов подключают стили и UMD-бандл оттуда.
 
 Node.js: см. `.nvmrc` в корне репозитория.
 

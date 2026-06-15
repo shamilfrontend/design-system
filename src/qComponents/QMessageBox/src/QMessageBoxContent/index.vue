@@ -163,7 +163,8 @@ const handleCancelBtnClick = async (): Promise<void> => {
 
           <q-button
             v-if="cancelButtonText"
-            theme="secondary"
+            type="primary"
+            plain
             :loading="isCancelBtnLoading"
             :disabled="isConfirmBtnLoading"
             @click="handleCancelBtnClick"

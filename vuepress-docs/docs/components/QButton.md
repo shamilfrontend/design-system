@@ -1,174 +1,503 @@
-# QButton 🆗
+# QButton
 
-Commonly used button. See props to configure `QButton`. Try a sandbox [story](https://github.com/shamilfrontend/design-system)
+Кнопка для частых действий в интерфейсе. API выровнен с [Element Plus Button](https://element-plus.org/en-US/component/button): стиль через `type`, `plain`, `text`, `link`, `round`, `circle`, а также поддержка `tag` и кастомного `color`.
 
-## Examples
+## Basic usage {#basic-usage}
 
-All kind of types:
+Используйте `type`, `plain` и `circle`, чтобы задать внешний вид кнопки.
 
-<iframe height="340" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/main.html"></iframe>
-
-## Props
-
-### theme
-
-- Type: `String`
-- Default: `'primary'`
-
-A `theme` prop defines how button appearence, can accept values:
-
-- `'primary'` - button style, being used for primary actions
-- `'secondary'` - button style, being used for secondary actions
-- `'link'` - text button style
-
-Code Example:
+<iframe height="280" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/basic.html"></iframe>
 
 ```vue
-<q-button>Primary</q-button>
-<q-button theme="secondary">Secondary</q-button>
-<q-button theme="link">Link</q-button>
+<template>
+  <div class="button-example">
+    <div class="button-row">
+      <q-button type="default">Default</q-button>
+      <q-button type="primary">Primary</q-button>
+      <q-button type="success">Success</q-button>
+      <q-button type="info">Info</q-button>
+      <q-button type="warning">Warning</q-button>
+      <q-button type="danger">Danger</q-button>
+    </div>
+
+    <div class="button-row">
+      <q-button
+        type="default"
+        plain
+        >Plain</q-button
+      >
+      <q-button
+        type="primary"
+        plain
+        >Primary</q-button
+      >
+      <q-button
+        type="success"
+        plain
+        >Success</q-button
+      >
+      <q-button
+        type="info"
+        plain
+        >Info</q-button
+      >
+      <q-button
+        type="warning"
+        plain
+        >Warning</q-button
+      >
+      <q-button
+        type="danger"
+        plain
+        >Danger</q-button
+      >
+    </div>
+
+    <div class="button-row">
+      <q-button
+        type="default"
+        icon="q-icon-search"
+        circle
+      />
+      <q-button
+        type="primary"
+        icon="q-icon-cog-stroke"
+        circle
+      />
+      <q-button
+        type="success"
+        icon="q-icon-check"
+        circle
+      />
+      <q-button
+        type="info"
+        icon="q-icon-comment"
+        circle
+      />
+      <q-button
+        type="warning"
+        icon="q-icon-bell"
+        circle
+      />
+      <q-button
+        type="danger"
+        icon="q-icon-trash-bin"
+        circle
+      />
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.button-example {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+</style>
 ```
 
-Result:
+## Disabled Button {#disabled-button}
 
-<iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/theme.html"></iframe>
+Атрибут `disabled` определяет, доступна ли кнопка для взаимодействия. Принимает `Boolean`.
 
-### type
-
-- Type: `String`
-
-Defines button type (not native)
-
-- `'icon'` - must be used if you want to put your custom svg / html icon inside QButton
-
-You don't need add `type` prop, if you're going to use our icons.
-
-Code Example:
+<iframe height="140" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/disabled.html"></iframe>
 
 ```vue
-<q-button type="icon">
-  <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 94.926 94.926">
-    <path d="M55.931 47.463 94.306 9.09c.826-.827.826-2.167 0-2.994L88.833.62C88.436.224 87.896 0 87.335 0c-.562 0-1.101.224-1.498.62L47.463 38.994 9.089.62c-.795-.795-2.202-.794-2.995 0L.622 6.096c-.827.827-.827 2.167 0 2.994l38.374 38.373L.622 85.836c-.827.827-.827 2.167 0 2.994l5.473 5.476c.397.396.936.62 1.498.62s1.1-.224 1.497-.62l38.374-38.374 38.374 38.374c.397.396.937.62 1.498.62s1.101-.224 1.498-.62l5.473-5.476c.826-.827.826-2.167 0-2.994L55.931 47.463z"/>
-  </svg>
-</q-button>
+<template>
+  <div class="button-example">
+    <div class="button-row">
+      <q-button
+        type="default"
+        disabled
+        >Default</q-button
+      >
+      <q-button
+        type="primary"
+        disabled
+        >Primary</q-button
+      >
+      <q-button
+        type="success"
+        disabled
+        >Success</q-button
+      >
+      <q-button
+        type="info"
+        disabled
+        >Info</q-button
+      >
+      <q-button
+        type="warning"
+        disabled
+        >Warning</q-button
+      >
+      <q-button
+        type="danger"
+        disabled
+        >Danger</q-button
+      >
+    </div>
+
+    <div class="button-row">
+      <q-button
+        type="default"
+        plain
+        disabled
+        >Plain</q-button
+      >
+      <q-button
+        type="primary"
+        plain
+        disabled
+        >Primary</q-button
+      >
+      <q-button
+        type="success"
+        plain
+        disabled
+        >Success</q-button
+      >
+      <q-button
+        type="info"
+        plain
+        disabled
+        >Info</q-button
+      >
+      <q-button
+        type="warning"
+        plain
+        disabled
+        >Warning</q-button
+      >
+      <q-button
+        type="danger"
+        plain
+        disabled
+        >Danger</q-button
+      >
+    </div>
+  </div>
+</template>
 ```
 
-Result:
+## Link Button {#link-button}
 
-<iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/type.html"></iframe>
+Кнопка-ссылка. Атрибут `link` комбинируется с любым `type`.
 
-### icon
-
-- Type: `String`
-
-- `'q-icon-*'` - class string, see full list [here](https://github.com/shamilfrontend/design-system)
-
-Code example:
+<iframe height="160" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/link.html"></iframe>
 
 ```vue
-<q-button type="icon" icon="q-icon-bell" />
-<q-button type="icon" icon="q-icon-check" />
-<q-button type="icon" icon="q-icon-comment" />
-<q-button type="icon" icon="q-icon-question-mark" />
+<template>
+  <p>Basic link button</p>
+  <div class="button-row">
+    <q-button
+      v-for="button in buttons"
+      :key="button.text"
+      :type="button.type"
+      link
+    >
+      {{ button.text }}
+    </q-button>
+  </div>
+
+  <p>Disabled link button</p>
+  <div class="button-row">
+    <q-button
+      v-for="button in buttons"
+      :key="button.text"
+      :type="button.type"
+      link
+      disabled
+    >
+      {{ button.text }}
+    </q-button>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { QButtonColorType } from '@shamilfrontend/design-system';
+
+const buttons: Array<{ type: QButtonColorType; text: string }> = [
+  { type: 'default', text: 'plain' },
+  { type: 'primary', text: 'primary' },
+  { type: 'success', text: 'success' },
+  { type: 'info', text: 'info' },
+  { type: 'warning', text: 'warning' },
+  { type: 'danger', text: 'danger' }
+];
+</script>
 ```
 
-Result:
+## Text Button {#text-button}
+
+Текстовая кнопка без фона и обводки. Атрибут `text` комбинируется с любым `type`.
+
+<iframe height="160" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/text.html"></iframe>
+
+```vue
+<template>
+  <p>Basic text button</p>
+  <div class="button-row">
+    <q-button
+      v-for="button in buttons"
+      :key="button.text"
+      :type="button.type"
+      text
+    >
+      {{ button.text }}
+    </q-button>
+  </div>
+
+  <p>Disabled text button</p>
+  <div class="button-row">
+    <q-button
+      v-for="button in buttons"
+      :key="button.text"
+      :type="button.type"
+      text
+      disabled
+    >
+      {{ button.text }}
+    </q-button>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { QButtonColorType } from '@shamilfrontend/design-system';
+
+const buttons: Array<{ type: QButtonColorType; text: string }> = [
+  { type: 'default', text: 'plain' },
+  { type: 'primary', text: 'primary' },
+  { type: 'success', text: 'success' },
+  { type: 'info', text: 'info' },
+  { type: 'warning', text: 'warning' },
+  { type: 'danger', text: 'danger' }
+];
+</script>
+```
+
+## Icon Button {#icon-button}
+
+Иконки добавляют смысл кнопке. Можно использовать только иконку или комбинировать с текстом.
+
+Передайте класс иконки `q-icon-*` в prop `icon`. Полный список — в [репозитории](https://github.com/shamilfrontend/design-system).
 
 <iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/icon.html"></iframe>
 
-### size
-
-- Type: `'regular'` | `'small'`
-- Default: `'regular'`
-
-Changes button size.
-
-Code example:
-
 ```vue
-<q-button size="small">Primary</q-button>
+<template>
+  <q-button
+    type="primary"
+    icon="q-icon-cog-stroke"
+  />
+  <q-button
+    type="primary"
+    icon="q-icon-chain"
+  />
+  <q-button
+    type="primary"
+    icon="q-icon-trash-bin"
+  />
+  <q-button
+    type="primary"
+    icon="q-icon-search"
+    >Search</q-button
+  >
+  <q-button
+    type="primary"
+    icon="q-icon-cloud-upload"
+    >Upload</q-button
+  >
+</template>
 ```
 
-Result:
+## Loading Button {#loading-button}
 
-<iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/size.html"></iframe>
-
-### loading
-
-- Type: `Boolean`
-- Default: `false`
-
-Set loading animation inside button
-
-Code example:
-
-```vue
-<q-button loading>Primary</q-button>
-```
-
-Result:
+Установите `loading` в `true`, чтобы показать состояние загрузки.
 
 <iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/loading.html"></iframe>
 
-### disabled
-
-- Type: `Boolean`
-- Default: `false`
-
-Sets disabled button state
-
-Code Example:
-
 ```vue
-<q-button disabled>Primary</q-button>
+<template>
+  <q-button
+    type="primary"
+    loading
+    >Loading</q-button
+  >
+  <q-button
+    type="primary"
+    plain
+    loading
+    >Loading</q-button
+  >
+  <q-button
+    type="primary"
+    icon="q-icon-bell"
+    loading
+  />
+</template>
 ```
 
-Result:
+## Sizes {#sizes}
 
-<iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/disabled.html"></iframe>
+Помимо размера по умолчанию, доступны `large` и `small`.
 
-### circle
-
-- Type `Boolean`
-- Default: `false`
-
-Changes button's shape to circle (use with icon)
-
-Code sample:
+<iframe height="140" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/size.html"></iframe>
 
 ```vue
-<q-button type="icon" icon="q-icon-bell" circle></q-button>
+<template>
+  <div class="button-example">
+    <div class="button-row">
+      <q-button
+        type="primary"
+        size="large"
+        >Large</q-button
+      >
+      <q-button type="primary">Default</q-button>
+      <q-button
+        type="primary"
+        size="small"
+        >Small</q-button
+      >
+      <q-button
+        type="primary"
+        size="large"
+        icon="q-icon-search"
+        >Search</q-button
+      >
+      <q-button
+        type="primary"
+        icon="q-icon-search"
+        >Search</q-button
+      >
+      <q-button
+        type="primary"
+        size="small"
+        icon="q-icon-search"
+        >Search</q-button
+      >
+    </div>
+
+    <div class="button-row">
+      <q-button
+        type="primary"
+        icon="q-icon-search"
+        size="large"
+        circle
+      />
+      <q-button
+        type="primary"
+        icon="q-icon-search"
+        circle
+      />
+      <q-button
+        type="primary"
+        icon="q-icon-search"
+        size="small"
+        circle
+      />
+    </div>
+  </div>
+</template>
 ```
 
-Result:
+## Round Button {#round-button}
 
-<iframe height="80" style="width: 100%;" scrolling="no" frameborder="no" src="/QButton/circle.html"></iframe>
-
-### fullWidth
-
-- Type: `Boolean`
-- Default: `false`
-
-Sets button width to 100%
-
-### autofocus
-
-- Type: `Boolean`
-- Default: `false`
-
-As native autofocus
-
-### nativeType
-
-- Type: `'submit' | 'reset' | 'button'`
-- Default: `'button'`
-
-As native button type
-
-## Slots
-
-There is only default slot exists. Just put your content between QButton tags. Inline text content recommended.
+Закруглённая кнопка с `round`.
 
 ```vue
-<q-button>Your text</q-button>
+<template>
+  <q-button
+    type="primary"
+    round
+    >Round</q-button
+  >
+  <q-button
+    type="success"
+    plain
+    round
+    >Round Plain</q-button
+  >
+</template>
 ```
+
+## Button Tag {#button-tag}
+
+Атрибут `tag` позволяет рендерить кнопку как другой элемент (например, ссылку).
+
+```vue
+<template>
+  <q-button
+    tag="a"
+    href="https://element-plus.org"
+    type="primary"
+  >
+    Open docs
+  </q-button>
+</template>
+```
+
+## Custom Color {#custom-color}
+
+Для кастомной палитры используйте `color`. Для контрастного текста можно включить `dark`. Для text-кнопок фон при hover можно включить через `bg`.
+
+```vue
+<template>
+  <q-button
+    color="#626aef"
+    dark
+    >Custom</q-button
+  >
+  <q-button
+    color="#626aef"
+    plain
+    >Custom Plain</q-button
+  >
+  <q-button
+    text
+    bg
+    color="#626aef"
+    >Text + BG</q-button
+  >
+</template>
+```
+
+## Button API {#button-api}
+
+### Button Attributes {#button-attributes}
+
+| Name            | Description                        | Type                                                                     | Default     |
+| --------------- | ---------------------------------- | ------------------------------------------------------------------------ | ----------- |
+| size            | размер кнопки                      | `'large' \| 'default' \| 'small'`                                        | `'default'` |
+| type            | тип (цвет) кнопки                  | `'default' \| 'primary' \| 'success' \| 'warning' \| 'danger' \| 'info'` | `'primary'` |
+| plain           | plain-кнопка                       | `boolean`                                                                | `false`     |
+| text            | text-кнопка                        | `boolean`                                                                | `false`     |
+| link            | link-кнопка                        | `boolean`                                                                | `false`     |
+| round           | закруглённая форма                 | `boolean`                                                                | `false`     |
+| circle          | круглая форма                      | `boolean`                                                                | `false`     |
+| loading         | состояние загрузки                 | `boolean`                                                                | `false`     |
+| disabled        | отключить кнопку                   | `boolean`                                                                | `false`     |
+| icon            | класс иконки `q-icon-*`            | `string`                                                                 | —           |
+| bg              | hover-фон для text-кнопки          | `boolean`                                                                | `false`     |
+| tag             | root html tag                      | `string`                                                                 | `'button'`  |
+| color           | кастомный цвет кнопки              | `string`                                                                 | —           |
+| dark            | контрастный текст для custom color | `boolean`                                                                | `false`     |
+| autoInsertSpace | совместимость с API Element Plus   | `boolean`                                                                | `false`     |
+| fullWidth       | ширина 100%                        | `boolean`                                                                | `false`     |
+| autofocus       | native autofocus                   | `boolean`                                                                | `false`     |
+| nativeType      | native button type                 | `'button' \| 'submit' \| 'reset'`                                        | `'button'`  |
+| ariaLabel       | accessible label для icon-only     | `string`                                                                 | —           |
+
+### Button Slots {#button-slots}
+
+| Name    | Description       |
+| ------- | ----------------- |
+| default | содержимое кнопки |

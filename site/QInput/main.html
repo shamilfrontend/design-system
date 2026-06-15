@@ -15,11 +15,11 @@
           <q-col cols="6">
             <p>Default</p>
             <q-input v-model="value"></q-input>
-            <p>Show symbol limit</p>
+            <p>Show word limit</p>
             <q-input
               v-model="value2"
               maxlength="20"
-              show-symbol-limit
+              show-word-limit
             ></q-input>
             <p>Disabled</p>
             <q-input
@@ -38,7 +38,7 @@
             <q-input
               v-model="value5"
               type="password"
-              password-switch
+              show-password
             ></q-input>
           </q-col>
         </q-row>

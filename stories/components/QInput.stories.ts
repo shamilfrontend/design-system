@@ -17,7 +17,12 @@ const storyMetadata: Meta = {
       options: ['text', 'password', 'number', 'email', 'hidden', 'tel', 'url'],
       control: { type: 'select' }
     },
+    prefixIcon: { options: [null, ...iconsList], control: { type: 'select' } },
     suffixIcon: { options: [null, ...iconsList], control: { type: 'select' } },
+    size: {
+      options: ['large', 'default', 'small'],
+      control: { type: 'select' }
+    },
     autocomplete: {
       options: ['on', 'off'],
       control: { type: 'select' }
@@ -68,9 +73,11 @@ const QInputStory: StoryFn<StoryArgs> = args =>
       <div style="width: 300px">
         <q-input
           v-model="data"
+          :prefix-icon="args.prefixIcon"
           :suffix-icon="args.suffixIcon"
-          :show-symbol-limit="args.showSymbolLimit"
-          :password-switch="args.passwordSwitch"
+          :show-word-limit="args.showWordLimit"
+          :show-password="args.showPassword"
+          :size="args.size"
           :disabled="args.disabled"
           :clearable="args.clearable"
           :validate-event="args.validateEvent"
@@ -95,6 +102,29 @@ Default.args = {
   placeholder: 'Input text',
   maxlength: 25,
   type: 'text'
+};
+
+export const Password = QInputStory.bind({});
+Password.args = {
+  placeholder: 'Password',
+  type: 'password',
+  showPassword: true
+};
+
+export const WithPrefixSuffix = QInputStory.bind({});
+WithPrefixSuffix.args = {
+  placeholder: 'Search',
+  type: 'text',
+  prefixIcon: 'q-icon-search',
+  suffixIcon: 'q-icon-cog-stroke'
+};
+
+export const WordLimit = QInputStory.bind({});
+WordLimit.args = {
+  placeholder: 'Type text',
+  maxlength: 20,
+  type: 'text',
+  showWordLimit: true
 };
 
 export default storyMetadata;

@@ -70,8 +70,9 @@ const handleCloseBtnClick = (): void => {
       v-if="!hideCloseButton"
       class="q-dialog-content__close"
       circle
-      theme="secondary"
-      type="icon"
+      type="primary"
+      plain
+      variant="icon"
       icon="q-icon-close"
       @click="handleCloseBtnClick"
     />

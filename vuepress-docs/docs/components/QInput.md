@@ -52,15 +52,15 @@ Whether input is disabled.
 <q-input v-model="value" disabled />
 ```
 
-### showSymbolLimit
+### showWordLimit
 
 - Type: `Boolean`
 - Default: `false`
 
-Whether to show symbol limit counter. NOTE: make sure to set `maxlength` attr as well.
+Whether to show word limit counter. NOTE: make sure to set `maxlength` attr as well.
 
 ```vue
-<q-input v-model="value" show-symbol-limit maxlength="20" />
+<q-input v-model="value" show-word-limit maxlength="20" />
 ```
 
 <iframe style="width: 100%; height: 140px" scrolling="no" frameborder="no" src="/QInput/showSymbolLimit.html"></iframe>
@@ -98,7 +98,7 @@ Whether `QInput` is clearable.
 
 <iframe style="width: 100%; height: 140px" scrolling="no" frameborder="no" src="/QInput/clearable.html"></iframe>
 
-### passwordSwitch
+### showPassword
 
 - Type: `Boolean`
 - Default: `false`
@@ -106,17 +106,24 @@ Whether `QInput` is clearable.
 Whether to show show/hide password switcher.
 
 ```vue
-<q-input v-model="value" password-switch />
+<q-input v-model="value" type="password" show-password />
 ```
 
 <iframe style="width: 100%; height: 140px" scrolling="no" frameborder="no" src="/QInput/passwordSwitch.html"></iframe>
 
-### rootClass
+### size
+
+- Type: `'large' | 'default' | 'small'`
+- Default: `'default'`
+
+Input size.
+
+### prefixIcon
 
 - Type: `String`
 - Default: `null`
 
-As native attrs bind to native input (so if you set the `class` attr to `QInput` it will be set for native `input` tag), via `rootСlass` you can set the class for q-input root (wrapper)
+`'q-icon-*'` class string for prefix icon.
 
 ## Attributes
 

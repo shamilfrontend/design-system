@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { createPopper as createPopperJs, Instance } from '@popperjs/core';
-import {
-  ref,
-  computed,
-  watch,
-  onMounted,
-  onUnmounted,
-  nextTick
-} from 'vue';
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue';
 import type { PropType } from 'vue';
 
 import { getConfig } from '@/qComponents/config';
-import { isServer } from '@/qComponents/constants/isServer';
-import { QInput } from '@/qComponents/QInput';
 import { t } from '@/qComponents/locale';
+import { QInput } from '@/qComponents/QInput';
 
 import type { Nullable } from '#/helpers';
 
@@ -218,7 +210,9 @@ onUnmounted(() => {
                 v-for="hour in hoursList"
                 :key="hour"
                 class="q-time-picker__cell"
-                :class="{ 'q-time-picker__cell_active': hour === selectedHours }"
+                :class="{
+                  'q-time-picker__cell_active': hour === selectedHours
+                }"
                 @click="selectHour(hour)"
               >
                 {{ pad(hour) }}
