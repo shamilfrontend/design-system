@@ -61,9 +61,7 @@ const preview: Preview = {
             'QRow',
             'QCol',
             'QLink',
-            'QTitle',
-            'QScrollbar',
-            'QSpace'
+            'QScrollbar'
           ],
           'Form',
           [
@@ -84,7 +82,6 @@ const preview: Preview = {
             'QSwitch',
             'QTimePicker',
             'QTransfer',
-            'QTreeSelect',
             'QUpload',
             'QTextarea'
           ],
@@ -96,30 +93,21 @@ const preview: Preview = {
             'QCard',
             'QCarousel',
             'QCollapse',
-            'QDescriptions',
-            'QEmpty',
-            'QImage',
             'QPagination',
             'QProgress',
-            'QResult',
             'QSkeleton',
             'QTable',
             'QTag',
             'QTimeline',
-            'QTree',
-            'QStatistic',
-            'QSegmented',
             'QList',
             'QProgressIndicatior'
           ],
           'Navigation',
           [
-            'QBackTop',
             'QBreadcrumbs',
             'QDropdown',
             'QMenu',
             'QPageHeader',
-            'QSteps',
             'QTabs',
             'QContextMenu'
           ],
@@ -136,8 +124,6 @@ const preview: Preview = {
             'QPopover',
             'QTooltip'
           ],
-          'Others',
-          ['QDivider'],
           'Core',
           ['Colors', 'Icons']
         ],

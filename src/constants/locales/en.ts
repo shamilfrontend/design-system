@@ -65,9 +65,6 @@ export default {
   QScrollbar: {
     ariaLabel: 'Scrollable content'
   },
-  QEmpty: {
-    description: 'No data'
-  },
   QTimePicker: {
     placeholder: 'Select time',
     cancel: 'Cancel',
@@ -76,32 +73,14 @@ export default {
   QPageHeader: {
     back: 'Back'
   },
-  QTreeSelect: {
-    placeholder: 'Select'
-  },
   QTransfer: {
     sourceTitle: 'Available',
     targetTitle: 'Selected',
     filterPlaceholder: 'Search'
   },
-  QResult: {
-    successTitle: 'Success',
-    errorTitle: 'Error',
-    warningTitle: 'Warning',
-    infoTitle: 'Information',
-    notFoundTitle: '404',
-    forbiddenTitle: '403',
-    serverErrorTitle: '500'
-  },
   QCarousel: {
     prev: 'Previous slide',
     next: 'Next slide'
-  },
-  QBackTop: {
-    ariaLabel: 'Back to top'
-  },
-  QSegmented: {
-    ariaLabel: 'Segmented control'
   },
   QMentions: {
     placeholder: 'Type @ to mention'

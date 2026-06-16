@@ -16,9 +16,7 @@ export const STORY_TITLES = {
   'Layout/QCol': 'Basic/Layout/QCol',
   QLayout: 'Basic/QLayout',
   QLink: 'Basic/QLink',
-  QTitle: 'Basic/QTitle',
   QScrollbar: 'Basic/QScrollbar',
-  QSpace: 'Basic/QSpace',
 
   QCascader: 'Form/QCascader',
   QCheckbox: 'Form/QCheckbox',
@@ -38,7 +36,6 @@ export const STORY_TITLES = {
   QSwitch: 'Form/QSwitch',
   QTimePicker: 'Form/QTimePicker',
   QTransfer: 'Form/QTransfer',
-  QTreeSelect: 'Form/QTreeSelect',
   QUpload: 'Form/QUpload',
   'QUpload/Multiple': 'Form/QUpload/Multiple',
   QTextarea: 'Form/QTextarea',
@@ -49,29 +46,20 @@ export const STORY_TITLES = {
   QCard: 'Data/QCard',
   QCarousel: 'Data/QCarousel',
   QCollapse: 'Data/QCollapse',
-  QDescriptions: 'Data/QDescriptions',
-  QEmpty: 'Data/QEmpty',
-  QImage: 'Data/QImage',
   QPagination: 'Data/QPagination',
   QProgress: 'Data/QProgress',
   QProgressIndicatior: 'Data/QProgressIndicatior',
-  QResult: 'Data/QResult',
   QSkeleton: 'Data/QSkeleton',
-  QStatistic: 'Data/QStatistic',
-  QSegmented: 'Data/QSegmented',
   QTable: 'Data/QTable',
   QTag: 'Data/QTag',
   QTimeline: 'Data/QTimeline',
-  QTree: 'Data/QTree',
   QList: 'Data/QList',
 
-  QBackTop: 'Navigation/QBackTop',
   QBreadcrumbs: 'Navigation/QBreadcrumbs',
   QContextMenu: 'Navigation/QContextMenu',
   QDropdown: 'Navigation/QDropdown',
   QMenu: 'Navigation/QMenu',
   QPageHeader: 'Navigation/QPageHeader',
-  QSteps: 'Navigation/QSteps',
   QTabs: 'Navigation/QTabs',
   'QTabs/QTabPane': 'Navigation/QTabs/QTabPane',
 
@@ -90,9 +78,7 @@ export const STORY_TITLES = {
   'QMessageBox/Extended': 'Feedback/QMessageBox/Extended',
   QNotification: 'Feedback/QNotification',
   QPopover: 'Feedback/QPopover',
-  QTooltip: 'Feedback/QTooltip',
-
-  QDivider: 'Others/QDivider'
+  QTooltip: 'Feedback/QTooltip'
 } as const;
 
 /** Keep in sync with `options.storySort.order` in `.storybook/preview.ts` (Storybook 10 requires inline literals). */
@@ -108,9 +94,7 @@ export const STORY_SORT_ORDER = [
     'QRow',
     'QCol',
     'QLink',
-    'QTitle',
-    'QScrollbar',
-    'QSpace'
+    'QScrollbar'
   ],
   'Form',
   [
@@ -131,7 +115,6 @@ export const STORY_SORT_ORDER = [
     'QSwitch',
     'QTimePicker',
     'QTransfer',
-    'QTreeSelect',
     'QUpload',
     'QTextarea'
   ],
@@ -143,30 +126,21 @@ export const STORY_SORT_ORDER = [
     'QCard',
     'QCarousel',
     'QCollapse',
-    'QDescriptions',
-    'QEmpty',
-    'QImage',
     'QPagination',
     'QProgress',
-    'QResult',
     'QSkeleton',
     'QTable',
     'QTag',
     'QTimeline',
-    'QTree',
-    'QStatistic',
-    'QSegmented',
     'QList',
     'QProgressIndicatior'
   ],
   'Navigation',
   [
-    'QBackTop',
     'QBreadcrumbs',
     'QDropdown',
     'QMenu',
     'QPageHeader',
-    'QSteps',
     'QTabs',
     'QContextMenu'
   ],
@@ -183,8 +157,6 @@ export const STORY_SORT_ORDER = [
     'QPopover',
     'QTooltip'
   ],
-  'Others',
-  ['QDivider'],
   'Core',
   ['Colors', 'Icons']
 ];
