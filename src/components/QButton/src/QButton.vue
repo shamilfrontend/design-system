@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, useSlots } from 'vue';
+import { computed, inject, useSlots, Comment, Text, Fragment } from 'vue';
 
 import type { QFormProvider } from '@/components/QForm';
 
@@ -53,7 +53,34 @@ const isButtonTag = computed<boolean>(
 
 const isCircle = computed<boolean>(() => Boolean(props.circle));
 
-const hasDefaultSlot = computed<boolean>(() => Boolean(slots.default));
+function hasVisibleSlotContent(node: unknown): boolean {
+  if (!node || typeof node !== 'object') {
+    return false;
+  }
+
+  const vnode = node as {
+    type?: unknown;
+    children?: unknown;
+  };
+
+  if (vnode.type === Comment) {
+    return false;
+  }
+
+  if (vnode.type === Text) {
+    return String(vnode.children ?? '').trim().length > 0;
+  }
+
+  if (vnode.type === Fragment && Array.isArray(vnode.children)) {
+    return vnode.children.some(hasVisibleSlotContent);
+  }
+
+  return true;
+}
+
+const hasDefaultSlot = computed<boolean>(() =>
+  (slots.default?.() ?? []).some(hasVisibleSlotContent)
+);
 const isIconOnly = computed<boolean>(
   () => Boolean(props.icon) && !hasDefaultSlot.value
 );
@@ -160,7 +187,7 @@ function onRootClick(event: MouseEvent): void {
       :aria-hidden="hasDefaultSlot ? true : undefined"
     />
     <span
-      v-if="slots.default"
+      v-if="hasDefaultSlot"
       class="q-button__inner"
     >
       <slot />

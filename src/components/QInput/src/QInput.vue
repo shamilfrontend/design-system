@@ -112,14 +112,14 @@ const props = defineProps({
    * value formatter
    */
   formatter: {
-    type: Function as PropType<QInputPropFormatter>,
+    type: null as unknown as PropType<QInputPropFormatter>,
     default: null
   },
   /**
    * value parser
    */
   parser: {
-    type: Function as PropType<QInputPropParser>,
+    type: null as unknown as PropType<QInputPropParser>,
     default: null
   }
 });
@@ -155,6 +155,9 @@ const maxLength = computed<string | number | undefined>(
   () => attrs.maxlength as string | number | undefined
 );
 const isReadonly = computed<boolean>(() => Boolean(attrs.readonly));
+const attrsClass = computed<ClassValue>(() => {
+  return attrs.class === false ? null : (attrs.class as ClassValue);
+});
 
 const inputAttrs = computed<Record<string, unknown>>(() => {
   const { class: _class, style: _style, ...rest } = attrs;
@@ -221,7 +224,7 @@ const classes = computed<ClassValue>(() => {
   const classList: IsArray<ClassValue> = [
     'q-input',
     `q-input_size_${props.size}`,
-    attrs.class
+    attrsClass.value
   ];
 
   if (isDisabled.value) classList.push('q-input_disabled');

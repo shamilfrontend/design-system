@@ -245,14 +245,17 @@
   &_variant_icon {
     width: 40px;
     height: 40px;
-    padding: calc(8px - var(--border-width)) 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
     font-size: var(--icon-size);
 
     &.q-button_text,
     &.q-button_link {
       width: 40px;
       height: 40px;
-      padding: calc(8px - var(--border-width)) 7px;
+      padding: 0;
     }
   }
 
@@ -301,7 +304,9 @@
       &.q-button_variant_icon {
         width: 24px;
         height: 24px;
-        padding: calc(4px - var(--border-width)) 3px;
+        padding: 0;
+        font-size: var(--icon-size);
+        line-height: 1;
       }
 
       &.q-button_text,
@@ -323,7 +328,9 @@
       &.q-button_variant_icon {
         width: 48px;
         height: 48px;
-        padding: calc(10px - var(--border-width)) 9px;
+        padding: 0;
+        font-size: var(--icon-size);
+        line-height: 1;
       }
 
       &.q-button_text,

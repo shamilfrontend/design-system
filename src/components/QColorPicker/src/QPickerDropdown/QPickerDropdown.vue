@@ -140,11 +140,10 @@ const closeDropdown = (e: KeyboardEvent | MouseEvent): void => {
   shouldPreventCloseByClick = false;
 };
 
-const handleInput = (event: Event): void => {
-  const inputValue = (event.target as HTMLInputElement).value;
-  tempColor.value = inputValue;
+const handleInput = (value: string): void => {
+  tempColor.value = value;
 
-  updateHSVAModel(inputValue);
+  updateHSVAModel(value);
 };
 
 const prepareColor = (color: Nullable<string | HsvaColor>): string => {

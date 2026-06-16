@@ -223,13 +223,16 @@ IconCircle.args = {
   label: ''
 };
 
-export const Round = Template.bind({});
-Round.args = {
-  type: QButtonTypeEnum.Primary,
-  round: true,
-  label: 'Round',
-  size: QButtonSizeEnum.Default
-};
+export const IconAllSizes = (): ReturnType<typeof defineComponent> =>
+  defineComponent({
+    template: `
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <q-button type="primary" icon="q-icon-bell" size="large" />
+        <q-button type="primary" icon="q-icon-bell" size="default" />
+        <q-button type="primary" icon="q-icon-bell" size="small" />
+      </div>
+    `
+  });
 
 export const CustomColor = Template.bind({});
 CustomColor.args = {

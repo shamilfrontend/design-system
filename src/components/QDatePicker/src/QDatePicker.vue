@@ -622,17 +622,18 @@ function handleRangeClick(): void {
   emit('focus');
 }
 
-function handleInput(event: Event): void {
-  const target = event.target as HTMLInputElement;
-  const inputType = (event as InputEvent).inputType ?? '';
-  const data = target.value;
+function handleInput(value: string): void {
+  const inputType =
+    (state.userInput?.length ?? 0) > value.length
+      ? 'deleteContentBackward'
+      : 'insertText';
 
   if (inputType === 'deleteContentBackward' && !state.userInput) {
     state.userInput = '';
     return;
   }
 
-  const parsedInputValue = calcInputData(data, inputType);
+  const parsedInputValue = calcInputData(value, inputType);
   state.userInput = parsedInputValue;
   emit('input', parsedInputValue);
 }

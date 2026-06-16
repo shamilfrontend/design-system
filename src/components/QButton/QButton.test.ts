@@ -36,6 +36,18 @@ describe('QButton', () => {
     expect(wrapper.classes()).toContain('q-button_type_success');
   });
 
+  it('renders icon-only class when slot content is empty', () => {
+    const wrapper = shallowMount(QButton, {
+      props: {
+        type: 'primary',
+        icon: 'q-icon-bell'
+      },
+      slots: { default: '' }
+    });
+
+    expect(wrapper.classes()).toContain('q-button_variant_icon');
+  });
+
   it('renders large size class', () => {
     const wrapper = shallowMount(QButton, {
       props: { size: 'large' },
