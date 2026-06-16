@@ -55,7 +55,6 @@ const preview: Preview = {
           [
             'QButton',
             'QContainer',
-            'QIcon',
             'Layout',
             'QLayout',
             'QRow',

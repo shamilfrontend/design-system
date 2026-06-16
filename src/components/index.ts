@@ -30,7 +30,6 @@ import { QDrawerModal } from './QDrawer';
 import { QDropdown } from './QDropdown';
 import { QForm } from './QForm';
 import { QFormItem } from './QFormItem';
-import { QIcon } from './QIcon';
 import { QInput } from './QInput';
 import { QInputNumber } from './QInputNumber';
 import { QContainer, QFooter, QHeader, QLayout, QSidebar } from './QLayout';
@@ -94,7 +93,6 @@ const installableComponents = [
   QFormItem,
   QFooter,
   QHeader,
-  QIcon,
   QInput,
   QInputNumber,
   QLink,
@@ -205,7 +203,6 @@ export * from './QDrawer';
 export * from './QDropdown';
 export * from './QForm';
 export * from './QFormItem';
-export * from './QIcon';
 export * from './QInput';
 export * from './QInputNumber';
 export * from './QLink';

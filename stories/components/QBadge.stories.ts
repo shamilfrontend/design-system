@@ -4,7 +4,6 @@ import { defineComponent } from 'vue';
 import { QBadge } from '@/components/QBadge';
 import type { QBadgeProps } from '@/components/QBadge';
 import { QButton } from '@/components/QButton';
-import { QIcon } from '@/components/QIcon';
 
 const storyMetadata: Meta = {
   title: 'Data/QBadge',
@@ -61,10 +60,10 @@ MaxValue.args = {
 
 export const WithIcon: StoryFn = () =>
   defineComponent({
-    components: { QBadge, QIcon },
+    components: { QBadge },
     template: `
       <q-badge :value="3" type="primary">
-        <q-icon name="bell" size="large" />
+        <span class="q-icon-bell" style="font-size: 20px;" />
       </q-badge>
     `
   });

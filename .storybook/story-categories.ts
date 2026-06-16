@@ -10,7 +10,6 @@ export const STORY_CATEGORIES = {
 export const STORY_TITLES = {
   QButton: 'Basic/QButton',
   QContainer: 'Basic/QContainer',
-  QIcon: 'Basic/QIcon',
   Layout: 'Basic/Layout',
   'Layout/QRow': 'Basic/Layout/QRow',
   'Layout/QCol': 'Basic/Layout/QCol',
@@ -88,7 +87,6 @@ export const STORY_SORT_ORDER = [
   [
     'QButton',
     'QContainer',
-    'QIcon',
     'Layout',
     'QLayout',
     'QRow',

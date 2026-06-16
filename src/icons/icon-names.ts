@@ -1,4 +1,4 @@
-export const Q_ICON_NAMES = [
+export const ICON_NAMES = [
   'q-icon-account-check-fill',
   'q-icon-account-couple-fill',
   'q-icon-account-group-web',
@@ -110,4 +110,4 @@ export const Q_ICON_NAMES = [
   'q-icon-y-4'
 ] as const;
 
-export type QIconName = (typeof Q_ICON_NAMES)[number];
+export type IconName = (typeof ICON_NAMES)[number];
