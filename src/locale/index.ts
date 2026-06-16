@@ -2,10 +2,10 @@ import { get, isString } from 'lodash-es';
 
 import { getConfig } from '@/components/config';
 
-import type { Nullable } from '#/helpers';
+import type { Nullable, Enumerable } from '#/helpers';
 
 export type Messages = {
-  [key: string]: string | string[] | Messages;
+  [key: string]: Enumerable<string> | Messages;
 };
 
 let currentMessages: Nullable<Messages> = null;

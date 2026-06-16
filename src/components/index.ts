@@ -80,6 +80,89 @@ import { QTitle, QText, QParagraph } from './QTypography';
 import { QUpload } from './QUpload';
 import type { ConfigOptions } from './types';
 
+const installableComponents = [
+  QBreadcrumbs,
+  QBackTop,
+  QAlert,
+  QAvatar,
+  QBadge,
+  QButton,
+  QCard,
+  QCarousel,
+  QCarouselItem,
+  QCascader,
+  QCheckbox,
+  QCheckboxGroup,
+  QCol,
+  QContainer,
+  QCollapse,
+  QCollapseItem,
+  QColorPicker,
+  QContextMenu,
+  QDatePicker,
+  QDescriptions,
+  QDescriptionsItem,
+  QDialogModal,
+  QDrawerModal,
+  QDivider,
+  QDropdown,
+  QEmpty,
+  QForm,
+  QFormItem,
+  QFooter,
+  QHeader,
+  QIcon,
+  QImage,
+  QInput,
+  QInputNumber,
+  QLink,
+  QList,
+  QListItem,
+  QLayout,
+  QLoadingPlugin,
+  QMenu,
+  QMenuItem,
+  QNotification,
+  QOption,
+  QPageHeader,
+  QPagination,
+  QPopover,
+  QProgress,
+  QProgressIndicatior,
+  QRate,
+  QRadio,
+  QRadioGroup,
+  QResult,
+  QRow,
+  QScrollbar,
+  QSegmented,
+  QSelect,
+  QSidebar,
+  QSlider,
+  QSkeleton,
+  QSpace,
+  QStatistic,
+  QSteps,
+  QSwitch,
+  QTable,
+  QTabPane,
+  QTabs,
+  QTag,
+  QTextarea,
+  QTimeline,
+  QTimePicker,
+  QTooltip,
+  QTree,
+  QTreeSelect,
+  QTransfer,
+  QUpload,
+  QTitle,
+  QText,
+  QParagraph,
+  QMentions,
+  QCalendar
+] as const;
+
 const setupQui = ({
   localization: { locale, messages, i18n } = {},
   zIndexCounter
@@ -106,7 +189,10 @@ const createDesignSystem = (config?: ConfigOptions): Plugin => ({
 
 // install
 const install = (app: App, config?: ConfigOptions): void => {
-  const messages = merge({ en: localeEn }, config?.localization?.messages);
+  const messages = merge(
+    { en: localeEn, ru: localeRu },
+    config?.localization?.messages
+  );
   setupQui({
     ...(config ?? {}),
     localization: {
@@ -115,86 +201,9 @@ const install = (app: App, config?: ConfigOptions): void => {
     }
   });
 
-  app.use(QBreadcrumbs);
-  app.use(QBackTop);
-  app.use(QAlert);
-  app.use(QAvatar);
-  app.use(QBadge);
-  app.use(QButton);
-  app.use(QCard);
-  app.use(QCarousel);
-  app.use(QCarouselItem);
-  app.use(QCascader);
-  app.use(QCheckbox);
-  app.use(QCheckboxGroup);
-  app.use(QCol);
-  app.use(QContainer);
-  app.use(QCollapse);
-  app.use(QCollapseItem);
-  app.use(QColorPicker);
-  app.use(QContextMenu);
-  app.use(QDatePicker);
-  app.use(QDescriptions);
-  app.use(QDescriptionsItem);
-  app.use(QDialogModal);
-  app.use(QDrawerModal);
-  app.use(QDivider);
-  app.use(QDropdown);
-  app.use(QEmpty);
-  app.use(QForm);
-  app.use(QFormItem);
-  app.use(QFooter);
-  app.use(QHeader);
-  app.use(QIcon);
-  app.use(QImage);
-  app.use(QInput);
-  app.use(QInputNumber);
-  app.use(QLink);
-  app.use(QList);
-  app.use(QListItem);
-  app.use(QLayout);
-  app.use(QLoadingPlugin);
-  app.use(QMenu);
-  app.use(QMenuItem);
-  app.use(QNotification);
-  app.use(QOption);
-  app.use(QPageHeader);
-  app.use(QPagination);
-  app.use(QPopover);
-  app.use(QProgress);
-  app.use(QProgressIndicatior);
-  app.use(QRate);
-  app.use(QRadio);
-  app.use(QRadioGroup);
-  app.use(QResult);
-  app.use(QRow);
-  app.use(QScrollbar);
-  app.use(QSegmented);
-  app.use(QSelect);
-  app.use(QSidebar);
-  app.use(QSlider);
-  app.use(QSkeleton);
-  app.use(QSpace);
-  app.use(QStatistic);
-  app.use(QSteps);
-  app.use(QSwitch);
-  app.use(QTable);
-  app.use(QTabPane);
-  app.use(QTabs);
-  app.use(QTag);
-  app.use(QTextarea);
-  app.use(QTimeline);
-  app.use(QTimePicker);
-  app.use(QTooltip);
-  app.use(QTree);
-  app.use(QTreeSelect);
-  app.use(QTransfer);
-  app.use(QUpload);
-  app.use(QTitle);
-  app.use(QText);
-  app.use(QParagraph);
-  app.use(QMentions);
-  app.use(QCalendar);
+  installableComponents.forEach((component) => {
+    app.use(component);
+  });
 };
 
 export default { install };

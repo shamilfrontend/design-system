@@ -107,5 +107,11 @@ export default tseslint.config(
       'no-console': 'off'
     }
   },
+  {
+    files: ['stories/**/*.stories.ts'],
+    rules: {
+      'vue/one-component-per-file': 'off'
+    }
+  },
   eslintConfigPrettier
 );

@@ -1,30 +1,48 @@
-import { merge } from 'lodash-es';
-
 export interface InstallOptions {
   nextZIndex: number;
   locale: string;
 }
 
-let $Q: InstallOptions = {
+interface ConfigUpdate {
+  locale?: InstallOptions['locale'];
+  nextZIndex?: InstallOptions['nextZIndex'];
+  zIndex?: InstallOptions['nextZIndex'];
+}
+
+const DEFAULT_NEXT_Z_INDEX = 2000;
+
+let $DSOptions: InstallOptions = {
   nextZIndex: 0,
-  locale: 'en'
+  locale: 'ru'
 };
 
-const setConfig = ({
-  zIndex,
-  ...options
-}: Partial<Pick<InstallOptions, 'locale'> & { zIndex: number }>): void => {
-  $Q.nextZIndex = zIndex ?? 2000;
+const normalizeConfigUpdate = (configUpdate: ConfigUpdate): InstallOptions => {
+  const nextZIndex =
+    configUpdate.zIndex ?? configUpdate.nextZIndex ?? DEFAULT_NEXT_Z_INDEX;
 
-  $Q = merge($Q, options);
+  return {
+    ...$DSOptions,
+    locale: configUpdate.locale ?? $DSOptions.locale,
+    nextZIndex
+  };
 };
 
-const getConfig = <T extends keyof InstallOptions>(
-  key: T
-): InstallOptions[T] => {
-  if (key === 'nextZIndex') $Q.nextZIndex += 1;
+const setConfig = (configUpdate: ConfigUpdate = {}): void => {
+  $DSOptions = normalizeConfigUpdate(configUpdate);
+};
 
-  return $Q[key];
+const getNextZIndex = (): number => {
+  $DSOptions.nextZIndex += 1;
+
+  return $DSOptions.nextZIndex;
+};
+
+const getConfig = <T extends keyof InstallOptions>(key: T): InstallOptions[T] => {
+  if (key === 'nextZIndex') {
+    return getNextZIndex() as InstallOptions[T];
+  }
+
+  return $DSOptions[key];
 };
 
 export { getConfig, setConfig };
